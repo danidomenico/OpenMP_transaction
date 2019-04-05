@@ -1,0 +1,233 @@
+K 25
+svn:wc:ra_dav:version-url
+V 27
+/svn/!svn/ver/268/test/data
+END
+mat_5x5_nat
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/268/test/data/mat_5x5_nat
+END
+mat_50x50_nat
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/268/test/data/mat_50x50_nat
+END
+mat_10x10_bool
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/268/test/data/mat_10x10_bool
+END
+mat_1x1_bool
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/268/test/data/mat_1x1_bool
+END
+vec_10_point
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/268/test/data/vec_10_point
+END
+mat_10x10_float_sdd
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/268/test/data/mat_10x10_float_sdd
+END
+mat_1x1_float_sdd
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/268/test/data/mat_1x1_float_sdd
+END
+mat_10x50_bool
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/268/test/data/mat_10x50_bool
+END
+mat_50x10_bool
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/268/test/data/mat_50x10_bool
+END
+vec_50_point
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/268/test/data/vec_50_point
+END
+mat_5x5_bool
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/268/test/data/mat_5x5_bool
+END
+mat_50x50_bool
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/268/test/data/mat_50x50_bool
+END
+mat_1x1_float
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/268/test/data/mat_1x1_float
+END
+mat_10x10_float
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/268/test/data/mat_10x10_float
+END
+mat_50x50_float_sdd
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/268/test/data/mat_50x50_float_sdd
+END
+mat_5x5_float_sdd
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/268/test/data/mat_5x5_float_sdd
+END
+mat_50x10_float
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/268/test/data/mat_50x10_float
+END
+mat_10x50_float
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/268/test/data/mat_10x50_float
+END
+vec_1_float2
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/268/test/data/vec_1_float2
+END
+mat_5x5_float
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/268/test/data/mat_5x5_float
+END
+mat_50x50_float
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/268/test/data/mat_50x50_float
+END
+vec_5_float2
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/268/test/data/vec_5_float2
+END
+mat_0x0
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/268/test/data/mat_0x0
+END
+vec_1_float
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/268/test/data/vec_1_float
+END
+vec_10_float2
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/268/test/data/vec_10_float2
+END
+mat_1x1_int
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/268/test/data/mat_1x1_int
+END
+mat_10x10_int
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/268/test/data/mat_10x10_int
+END
+vec_5_float
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/268/test/data/vec_5_float
+END
+mat_10x50_int
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/268/test/data/mat_10x50_int
+END
+vec_50_float2
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/268/test/data/vec_50_float2
+END
+mat_50x10_int
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/268/test/data/mat_50x10_int
+END
+mat_5x5_int
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/268/test/data/mat_5x5_int
+END
+mat_50x50_int
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/268/test/data/mat_50x50_int
+END
+vec_10_float
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/268/test/data/vec_10_float
+END
+vec_1_point
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/268/test/data/vec_1_point
+END
+vec_50_float
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/268/test/data/vec_50_float
+END
+vec_5_point
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/268/test/data/vec_5_point
+END
+mat_10x10_nat
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/268/test/data/mat_10x10_nat
+END

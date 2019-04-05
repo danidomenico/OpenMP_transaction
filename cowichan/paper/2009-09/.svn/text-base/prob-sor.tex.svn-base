@@ -1,0 +1,23 @@
+\subsection{{\tt{sor}}: Successive Over-Relaxation\label{s:toys-sor}}
+
+This module solves a matrix equation $AX=V$
+for a dense, symmetric, diagonally dominant matrix $A$
+and an arbitrary vector non-zero $V$ using successive over-relaxation.
+
+{\inputspec}
+
+\begin{description}
+\item[{\tt{matrix}}:]
+	the square real matrix $A$.
+\item[{\tt{target}}:]
+	the real vector $V$.
+\item[{\tt{tolerance}}:]
+	the solution tolerance, e.g., $10^{-6}$.
+\end{description}
+
+{\outputspec}
+
+\begin{description}
+\item[{\tt{solution}}:]
+	a real vector containing the solution $X$.
+\end{description}

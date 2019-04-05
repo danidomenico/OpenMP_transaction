@@ -1,0 +1,57 @@
+\hypertarget{cowichan__tbb_8hpp}{
+\section{cowichan\_\-tbb/cowichan\_\-tbb.hpp File Reference}
+\label{cowichan__tbb_8hpp}\index{cowichan\_\-tbb/cowichan\_\-tbb.hpp@{cowichan\_\-tbb/cowichan\_\-tbb.hpp}}
+}
+Thread Building Blocks (TBB) implementation of \hyperlink{class_cowichan}{Cowichan} problems.  
+
+
+{\tt \#include \char`\"{}../cowichan/cowichan.hpp\char`\"{}}\par
+{\tt \#include \char`\"{}tbb/task\_\-scheduler\_\-init.h\char`\"{}}\par
+{\tt \#include \char`\"{}tbb/blocked\_\-range2d.h\char`\"{}}\par
+{\tt \#include \char`\"{}tbb/parallel\_\-for.h\char`\"{}}\par
+{\tt \#include \char`\"{}tbb/parallel\_\-reduce.h\char`\"{}}\par
+{\tt \#include \char`\"{}tbb/parallel\_\-sort.h\char`\"{}}\par
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{class_cowichan_t_b_b}{CowichanTBB}
+\begin{CompactList}\small\item\em Thread Building Blocks (TBB) implementation. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Namespaces}
+\begin{CompactItemize}
+\item 
+namespace \hyperlink{namespacecowichan__tbb}{cowichan\_\-tbb}
+\begin{CompactList}\small\item\em Additional classes and functions specific to tbb implementation. \item\end{CompactList}
+
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef blocked\_\-range$<$ \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $>$ \hyperlink{cowichan__tbb_8hpp_8e2057f725b08f3a15513c378a453a47}{Range}
+\item 
+typedef blocked\_\-range2d$<$ \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t}, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $>$ \hyperlink{cowichan__tbb_8hpp_e591b8e6980ddc5982ee22655da2ab8e}{Range2D}
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+Thread Building Blocks (TBB) implementation of \hyperlink{class_cowichan}{Cowichan} problems. 
+
+
+
+\subsection{Typedef Documentation}
+\hypertarget{cowichan__tbb_8hpp_8e2057f725b08f3a15513c378a453a47}{
+\index{cowichan\_\-tbb.hpp@{cowichan\_\-tbb.hpp}!Range@{Range}}
+\index{Range@{Range}!cowichan_tbb.hpp@{cowichan\_\-tbb.hpp}}
+\subsubsection[{Range}]{\setlength{\rightskip}{0pt plus 5cm}typedef blocked\_\-range$<${\bf index\_\-t}$>$ {\bf Range}}}
+\label{cowichan__tbb_8hpp_8e2057f725b08f3a15513c378a453a47}
+
+
+One-dimensional tbb range. \hypertarget{cowichan__tbb_8hpp_e591b8e6980ddc5982ee22655da2ab8e}{
+\index{cowichan\_\-tbb.hpp@{cowichan\_\-tbb.hpp}!Range2D@{Range2D}}
+\index{Range2D@{Range2D}!cowichan_tbb.hpp@{cowichan\_\-tbb.hpp}}
+\subsubsection[{Range2D}]{\setlength{\rightskip}{0pt plus 5cm}typedef blocked\_\-range2d$<${\bf index\_\-t}, {\bf index\_\-t}$>$ {\bf Range2D}}}
+\label{cowichan__tbb_8hpp_e591b8e6980ddc5982ee22655da2ab8e}
+
+
+Two-dimensional tbb range. 

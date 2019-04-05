@@ -1,0 +1,51 @@
+\hypertarget{cowichan__mpi_2sort_8hpp}{
+\section{cowichan\_\-mpi/sort.hpp File Reference}
+\label{cowichan__mpi_2sort_8hpp}\index{cowichan\_\-mpi/sort.hpp@{cowichan\_\-mpi/sort.hpp}}
+}
+Sorting algorithms that use MPI.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-mpi.hpp\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{CompactItemize}
+\item 
+namespace \hyperlink{namespacecowichan__mpi}{cowichan\_\-mpi}
+\begin{CompactList}\small\item\em Additional classes and functions specific to mpi implementation. \item\end{CompactList}
+
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{cowichan__mpi_2sort_8hpp_b3aee1394b5864d458c40b7878acbe83}{QUICK\_\-SORT\_\-CUTOFF}~100
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{namespacecowichan__mpi_7f82c459ad086060228b2bd8100bf9c7}{cowichan\_\-mpi::getNumRemainingNodes} (const mpi::communicator \&world, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} level)
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{namespacecowichan__mpi_a7c14e0bec9c9da1d56a348c9a0cf1f8}{cowichan\_\-mpi::power2} (\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} n)
+\item 
+void \hyperlink{namespacecowichan__mpi_4ab537d0df99e9011b206c7259e82d35}{cowichan\_\-mpi::quick\_\-sort} (const mpi::communicator \&world, \hyperlink{class_weighted_point}{WeightedPointVector} vector, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} len, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} level, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} owner)
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{namespacecowichan__mpi_83904b95f448398ff15331182ee0c007}{cowichan\_\-mpi::quick\_\-sort\_\-partition} (\hyperlink{class_weighted_point}{WeightedPointVector} vector, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} len, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} pivotIndex)
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+Sorting algorithms that use MPI. 
+
+One algorithms is included: \begin{enumerate}
+\item Parallel Quick Sort \end{enumerate}
+
+
+\subsection{Define Documentation}
+\hypertarget{cowichan__mpi_2sort_8hpp_b3aee1394b5864d458c40b7878acbe83}{
+\index{cowichan\_\-mpi/sort.hpp@{cowichan\_\-mpi/sort.hpp}!QUICK\_\-SORT\_\-CUTOFF@{QUICK\_\-SORT\_\-CUTOFF}}
+\index{QUICK\_\-SORT\_\-CUTOFF@{QUICK\_\-SORT\_\-CUTOFF}!cowichan_mpi/sort.hpp@{cowichan\_\-mpi/sort.hpp}}
+\subsubsection[{QUICK\_\-SORT\_\-CUTOFF}]{\setlength{\rightskip}{0pt plus 5cm}\#define QUICK\_\-SORT\_\-CUTOFF~100}}
+\label{cowichan__mpi_2sort_8hpp_b3aee1394b5864d458c40b7878acbe83}
+
+
+Quick sort cutoff (becomes insertion sort) - must be $>$ 1 

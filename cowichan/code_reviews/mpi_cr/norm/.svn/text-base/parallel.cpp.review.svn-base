@@ -1,0 +1,47 @@
+     1	/**
+     2	 * Parallel implementation of vector norm
+     3	 *
+     4	 * \file parallel.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-10-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#include "parallel.h"
+    11	
+    12	void norm_mpi (mpi::communicator world,
+    13	               pt1D* vec,      /* points to normalize */
+    14	               int  n)       /* length of vector */
+    15	{
+    16	  pt		ptMin, ptMax;		/* pseudo-points */
+    17	  real		sclX, sclY;		/* scaling factors */
+    18	  int		i;			/* loop index */
+    19	  int		lo, hi;		/* work controls */
+    20	  int rank;
+    21	
+    
+This function calculates the minimum and maximum points, I assume?
+It's the same function as in serial.cpp, so I think you're probably losing
+some parallel speed-up by not parallelizing the reduction here.
+    
+    22	  redPt1DPos(vec, n, &ptMin, &ptMax);
+    23	  if (get_block_rows_mpi (world, 0, n, &lo, &hi)) {
+    24	    /* scaling factors */
+    25	    sclX = (ptMax.x == ptMin.x) ? 0.0 : 1/(ptMax.x - ptMin.x);
+    26	    sclY = (ptMax.y == ptMin.y) ? 0.0 : 1/(ptMax.y - ptMin.y);
+    27	    /* scale */
+    28	    for (i = lo; i < hi; i++) {
+    29	      vec[i].x = sclX * (vec[i].x - ptMin.x);
+    30	      vec[i].y = sclY * (vec[i].y - ptMin.y);
+    31	    }
+    32	  }
+    33	
+    34	  // broadcast normalized values
+    35	  for (i = 0; i < n; i++) {
+    36	    rank = get_block_rank_mpi (world, 0, n, i);
+    37	    broadcast (world, vec[i].x, rank);
+    38	    broadcast (world, vec[i].y, rank);
+    39	  }
+    40	
+    41	  /* return */
+    42	}

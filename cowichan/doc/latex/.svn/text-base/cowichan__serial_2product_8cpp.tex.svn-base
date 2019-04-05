@@ -1,0 +1,17 @@
+\hypertarget{cowichan__serial_2product_8cpp}{
+\section{cowichan\_\-serial/product.cpp File Reference}
+\label{cowichan__serial_2product_8cpp}\index{cowichan\_\-serial/product.cpp@{cowichan\_\-serial/product.cpp}}
+}
+Serial product implementation.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-serial.hpp\char`\"{}}\par
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+Serial product implementation. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_serial_00411b35445d7d3038b96d53e43bdffa}{CowichanSerial::product} \end{Desc}

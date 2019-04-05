@@ -1,0 +1,35 @@
+\hypertarget{cowichan__serial_8cpp}{
+\section{cowichan\_\-serial/cowichan\_\-serial.cpp File Reference}
+\label{cowichan__serial_8cpp}\index{cowichan\_\-serial/cowichan\_\-serial.cpp@{cowichan\_\-serial/cowichan\_\-serial.cpp}}
+}
+This file contains main method that drives the serial implementation.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-serial.hpp\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+int \hyperlink{cowichan__serial_8cpp_0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+This file contains main method that drives the serial implementation. 
+
+
+
+\subsection{Function Documentation}
+\hypertarget{cowichan__serial_8cpp_0ddf1224851353fc92bfbff6f499fa97}{
+\index{cowichan\_\-serial.cpp@{cowichan\_\-serial.cpp}!main@{main}}
+\index{main@{main}!cowichan_serial.cpp@{cowichan\_\-serial.cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (int {\em argc}, \/  char $\ast$ {\em argv}\mbox{[}$\,$\mbox{]})}}
+\label{cowichan__serial_8cpp_0ddf1224851353fc92bfbff6f499fa97}
+
+
+Main method - creates a \hyperlink{class_cowichan_serial}{CowichanSerial} instance and executes \hyperlink{class_cowichan_905f3eb45f21cdaa1c32a421d001fa4c}{Cowichan::main}. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em argc}]number of command line arguments. \item[{\em argv}]command line arguments. \end{description}
+\end{Desc}

@@ -1,0 +1,69 @@
+     1	/**
+     2	 * Serial implementation of invasion percolation
+     3	 *
+     4	 * \file serial.h
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-28-09
+     7	 */
+     8	
+     9	#pragma once
+    10	#ifndef INVPERC_SERIAL_H
+    11	#define INVPERC_SERIAL_H
+    12	
+    13	/*--------------------------------------------------------------*/
+    14	/* private types						*/
+    15	/*--------------------------------------------------------------*/
+    16	
+    17	typedef struct node_struct  node_t;
+    18	typedef struct node_struct* node_p;
+    19	
+    20	struct node_struct {
+    21	  int		val;			/* matrix value */
+    22	  int		r, c;			/* location indices */
+    23	};
+    24	
+    25	typedef std::multimap<int, node_p> mapNodesType;
+    26	
+    27	/*--------------------------------------------------------------*/
+    28	/* public functions						*/
+    29	/*--------------------------------------------------------------*/
+    30	
+    31	void
+    32	invperc(
+    33	  int2D*		matrix,			/* matrix to invade */
+    34	  bool2D*	mask,			/* mask to fill */
+    35	  int		nr,			/* row size */
+    36	  int		nc,			/* column size */
+    37	  real		fraction		/* how much to fill */
+    38	);
+    39	
+    40	/*--------------------------------------------------------------*/
+    41	/* private functions 					*/
+    42	/*--------------------------------------------------------------*/
+    43	
+    44	void
+    45	inv_deq(mapNodesType* nodes,
+    46	  int	      * r,			/* row index */
+    47	  int	      * c			/* column index */
+    48	);
+    49	void
+    50	inv_enq(mapNodesType* nodes,
+    51	  node_p	node			/* what to enqueue */
+    52	);
+    53	node_p
+    54	inv_node(
+    55	  int		val,			/* location value */
+    56	  int		r,			/* row index */
+    57	  int		c			/* column index */
+    58	);
+    59	void
+    60	inv_enqPt(mapNodesType* nodes,
+    61	  int2D*		matrix,			/* matrix of values */
+    62	  bool2D*	mask,			/* mask to be filled */
+    63	  int		nr,			/* number of rows */
+    64	  int		nc,			/* number of columns */
+    65	  int		r,			/* point row */
+    66	  int		c			/* point column */
+    67	);
+    68	
+    69	#endif /* INVPERC_SERIAL_H */

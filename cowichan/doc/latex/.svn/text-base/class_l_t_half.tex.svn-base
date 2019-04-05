@@ -1,0 +1,84 @@
+\hypertarget{class_l_t_half}{
+\section{LTHalf Class Reference}
+\label{class_l_t_half}\index{LTHalf@{LTHalf}}
+}
+{\tt \#include $<$half.hpp$>$}
+
+Inheritance diagram for LTHalf::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{class_l_t_half}
+\end{center}
+\end{figure}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{class_l_t_half_fc07035f40f22a3f827504b13e8f99c9}{consumeInput} ()
+\item 
+void \hyperlink{class_l_t_half_e60dd430fb782498837492c0331e0dea}{work} ()
+\item 
+void \hyperlink{class_l_t_half_bf36d89af87f94ff2aaff36338717f37}{produceOutput} ()
+\end{CompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{CompactItemize}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_half_b5b706c81754d3d74f5ed82aa304d518}{REQUEST} = \char`\"{}half request\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_half_2475f33ea01053a45cc88cbe207f3bd8}{DONE} = \char`\"{}half done\char`\"{}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Performs the halving shuffle on an input matrix. Generates an output matrix using LinuxTuples. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_l_t_half_fc07035f40f22a3f827504b13e8f99c9}{
+\index{LTHalf@{LTHalf}!consumeInput@{consumeInput}}
+\index{consumeInput@{consumeInput}!LTHalf@{LTHalf}}
+\subsubsection[{consumeInput}]{\setlength{\rightskip}{0pt plus 5cm}void LTHalf::consumeInput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_half_fc07035f40f22a3f827504b13e8f99c9}
+
+
+The consume input process is spawned once and should distribute tasks to the worker processes. 
+
+Implements \hyperlink{class_tuple_application_e163c5a536de01c8b94b49528a17dab2}{TupleApplication}.\hypertarget{class_l_t_half_bf36d89af87f94ff2aaff36338717f37}{
+\index{LTHalf@{LTHalf}!produceOutput@{produceOutput}}
+\index{produceOutput@{produceOutput}!LTHalf@{LTHalf}}
+\subsubsection[{produceOutput}]{\setlength{\rightskip}{0pt plus 5cm}void LTHalf::produceOutput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_half_bf36d89af87f94ff2aaff36338717f37}
+
+
+The output producer decides when the tuple application is finished; once this function returns, the tuple application is complete. 
+
+Implements \hyperlink{class_tuple_application_8743dfcf17dedd52887c0b2ab170d8dc}{TupleApplication}.\hypertarget{class_l_t_half_e60dd430fb782498837492c0331e0dea}{
+\index{LTHalf@{LTHalf}!work@{work}}
+\index{work@{work}!LTHalf@{LTHalf}}
+\subsubsection[{work}]{\setlength{\rightskip}{0pt plus 5cm}void LTHalf::work ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_half_e60dd430fb782498837492c0331e0dea}
+
+
+Worker processes are created and killed after the output process has finished. 
+
+Implements \hyperlink{class_tuple_application_ef6ae8bb1d697e4ed038b43320183c89}{TupleApplication}.
+
+\subsection{Member Data Documentation}
+\hypertarget{class_l_t_half_2475f33ea01053a45cc88cbe207f3bd8}{
+\index{LTHalf@{LTHalf}!DONE@{DONE}}
+\index{DONE@{DONE}!LTHalf@{LTHalf}}
+\subsubsection[{DONE}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTHalf::DONE} = \char`\"{}half done\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_half_2475f33ea01053a45cc88cbe207f3bd8}
+
+
+Done with the halving shuffle. \hypertarget{class_l_t_half_b5b706c81754d3d74f5ed82aa304d518}{
+\index{LTHalf@{LTHalf}!REQUEST@{REQUEST}}
+\index{REQUEST@{REQUEST}!LTHalf@{LTHalf}}
+\subsubsection[{REQUEST}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTHalf::REQUEST} = \char`\"{}half request\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_half_b5b706c81754d3d74f5ed82aa304d518}
+
+
+A request to perform computation on a row of the matrix. 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+cowichan\_\-lt/src/\hyperlink{half_8hpp}{half.hpp}\item 
+cowichan\_\-lt/src/\hyperlink{cowichan__lt_2src_2half_8cpp}{half.cpp}\end{CompactItemize}

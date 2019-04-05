@@ -1,0 +1,26 @@
+     1	/**
+     2	 * Serial implementation of histogram thresholding
+     3	 *
+     4	 * \file serial.h
+     5	 * \author Andrew Borzenko
+     6	 * \date 03-02-09
+     7	 */
+     8	
+     9	#pragma once
+    10	#ifndef THRESH_SERIAL_H
+    11	#define THRESH_SERIAL_H
+    12	
+    13	/*--------------------------------------------------------------*/
+    14	/* public functions						*/
+    15	/*--------------------------------------------------------------*/
+    16	
+    17	void
+    18	thresh(
+    19	  int2D*		matrix,			/* to threshold */
+    20	  bool2D*	mask,			/* threshold mask */
+    21	  int		nr,			/* row size */
+    22	  int		nc,			/* column size */
+    23	  real		fraction		/* how much to keep */
+    24	);
+    25	
+    26	#endif /* THRESH_SERIAL_H */

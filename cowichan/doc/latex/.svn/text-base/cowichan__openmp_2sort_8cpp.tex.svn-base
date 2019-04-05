@@ -1,0 +1,31 @@
+\hypertarget{cowichan__openmp_2sort_8cpp}{
+\section{cowichan\_\-openmp/sort.cpp File Reference}
+\label{cowichan__openmp_2sort_8cpp}\index{cowichan\_\-openmp/sort.cpp@{cowichan\_\-openmp/sort.cpp}}
+}
+Implementation of OpenMP sorting algorithms.  
+
+
+{\tt \#include \char`\"{}sort.hpp\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{CompactItemize}
+\item 
+namespace \hyperlink{namespacecowichan__openmp}{cowichan\_\-openmp}
+\begin{CompactList}\small\item\em Additional classes and functions specific to openmp implementation. \item\end{CompactList}
+
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{namespacecowichan__openmp_9cbb3540b84f4e051f072a08c2c1d5db}{cowichan\_\-openmp::histogram\_\-sort} (\hyperlink{class_weighted_point}{WeightedPointVector} vector, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} len)
+\item 
+void \hyperlink{namespacecowichan__openmp_64208258cab6e46db879b46b40581134}{cowichan\_\-openmp::quick\_\-sort} (\hyperlink{class_weighted_point}{WeightedPointVector} vector, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} len)
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{namespacecowichan__openmp_2733c307de545e237e020a1f166850c5}{cowichan\_\-openmp::quick\_\-sort\_\-partition} (\hyperlink{class_weighted_point}{WeightedPointVector} vector, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} len, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} pivotIndex)
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+Implementation of OpenMP sorting algorithms. 
+

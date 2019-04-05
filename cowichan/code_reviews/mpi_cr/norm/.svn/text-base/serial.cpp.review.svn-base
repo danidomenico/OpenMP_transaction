@@ -1,0 +1,40 @@
+     1	/**
+     2	 * Serial implementation of vector norm
+     3	 *
+     4	 * \file serial.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-10-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#include "serial.h"
+    11	
+    12	void
+    13	norm(
+    14	  pt1D*		vec,			/* points to normalize */
+    15	  int		n			/* length of vector */
+    16	){
+    17	  pt		ptMin, ptMax;		/* pseudo-points */
+    18	  real		sclX, sclY;		/* scaling factors */
+    19	  int		i;			/* loop index */
+    20	#if GRAPHICS
+    21	  int		gfxCount = 0;
+    22	#endif
+    23	
+    24	  /* scaling factors */
+    25	  redPt1DPos(vec, n, &ptMin, &ptMax);
+    26	  sclX = (ptMax.x == ptMin.x) ? 0.0 : 1/(ptMax.x - ptMin.x);
+    27	  sclY = (ptMax.y == ptMin.y) ? 0.0 : 1/(ptMax.y - ptMin.y);
+    28	
+    29	  /* scale */
+    30	  for (i=0; i<n; i++){
+    31	    vec[i].x = sclX * (vec[i].x - ptMin.x);
+    32	    vec[i].y = sclY * (vec[i].y - ptMin.y);
+    33	  }
+    34	
+    35	#if GRAPHICS
+    36	  gfx_norm(gfxCount++, vec, n);
+    37	#endif
+    38	
+    39	  /* return */
+    40	}

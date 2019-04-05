@@ -1,0 +1,155 @@
+\hypertarget{namespacecowichan__openmp}{
+\section{cowichan\_\-openmp Namespace Reference}
+\label{namespacecowichan__openmp}\index{cowichan\_\-openmp@{cowichan\_\-openmp}}
+}
+Additional classes and functions specific to openmp implementation.  
+
+
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{classcowichan__openmp_1_1_perc_point}{PercPoint}
+\begin{CompactList}\small\item\em Percolation point. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{namespacecowichan__openmp_f261011870b201d556308f43b5b25b89}{quickhull} (\hyperlink{class_point}{PointVector} pointsIn, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} n, \hyperlink{class_point}{PointVector} pointsOut, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$hn)
+\item 
+void \hyperlink{namespacecowichan__openmp_d31787f1b4c9d57119160411e96f769f}{split} (\hyperlink{class_point}{PointVector} pointsIn, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} n, \hyperlink{class_point}{PointVector} pointsOut, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$hn, \hyperlink{class_point}{Point} $\ast$p1, \hyperlink{class_point}{Point} $\ast$p2)
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{namespacecowichan__openmp_a4ce5b0ba78cd9480bf45e7c313f59d1}{sumNeighbours} (\hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix} first, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} r, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} c, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} nr, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} nc)
+\item 
+\hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} \hyperlink{namespacecowichan__openmp_2753e3856bc41c61099c4702d789823e}{mandel\_\-calc} (\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} x, \hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} y)
+\item 
+void \hyperlink{namespacecowichan__openmp_e96598e37e2b937c861c5bc93eda77b8}{findMinMax} (\hyperlink{class_point}{PointVector} points, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} n, \hyperlink{class_point}{Point} $\ast$minPoint, \hyperlink{class_point}{Point} $\ast$maxPoint)
+\item 
+void \hyperlink{namespacecowichan__openmp_9cbb3540b84f4e051f072a08c2c1d5db}{histogram\_\-sort} (\hyperlink{class_weighted_point}{WeightedPointVector} vector, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} len)
+\item 
+void \hyperlink{namespacecowichan__openmp_64208258cab6e46db879b46b40581134}{quick\_\-sort} (\hyperlink{class_weighted_point}{WeightedPointVector} vector, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} len)
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{namespacecowichan__openmp_2733c307de545e237e020a1f166850c5}{quick\_\-sort\_\-partition} (\hyperlink{class_weighted_point}{WeightedPointVector} vector, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} len, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} pivotIndex)
+\item 
+void \hyperlink{namespacecowichan__openmp_9c68e88badede2262dd4ded923e804dc}{mask\_\-count} (\hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix} mask, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} nr, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} nc, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$buckets)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Additional classes and functions specific to openmp implementation. 
+
+
+
+\subsection{Function Documentation}
+\hypertarget{namespacecowichan__openmp_e96598e37e2b937c861c5bc93eda77b8}{
+\index{cowichan\_\-openmp@{cowichan\_\-openmp}!findMinMax@{findMinMax}}
+\index{findMinMax@{findMinMax}!cowichan_openmp@{cowichan\_\-openmp}}
+\subsubsection[{findMinMax}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-openmp::findMinMax ({\bf PointVector} {\em points}, \/  {\bf index\_\-t} {\em n}, \/  {\bf Point} $\ast$ {\em minPoint}, \/  {\bf Point} $\ast$ {\em maxPoint})}}
+\label{namespacecowichan__openmp_e96598e37e2b937c861c5bc93eda77b8}
+
+
+Find min/max x/y coordinates. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em points}]point vector. \item[{\em n}]number of points. \item[{\em minPoint}]min x/y values. \item[{\em maxPoint}]max x/y values. \end{description}
+\end{Desc}
+\hypertarget{namespacecowichan__openmp_9cbb3540b84f4e051f072a08c2c1d5db}{
+\index{cowichan\_\-openmp@{cowichan\_\-openmp}!histogram\_\-sort@{histogram\_\-sort}}
+\index{histogram\_\-sort@{histogram\_\-sort}!cowichan_openmp@{cowichan\_\-openmp}}
+\subsubsection[{histogram\_\-sort}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-openmp::histogram\_\-sort ({\bf WeightedPointVector} {\em vector}, \/  {\bf index\_\-t} {\em len})}}
+\label{namespacecowichan__openmp_9cbb3540b84f4e051f072a08c2c1d5db}
+
+
+This performs parallel histogram sort. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em vector}]vector to sort. \item[{\em len}]vector length. \end{description}
+\end{Desc}
+\hypertarget{namespacecowichan__openmp_2753e3856bc41c61099c4702d789823e}{
+\index{cowichan\_\-openmp@{cowichan\_\-openmp}!mandel\_\-calc@{mandel\_\-calc}}
+\index{mandel\_\-calc@{mandel\_\-calc}!cowichan_openmp@{cowichan\_\-openmp}}
+\subsubsection[{mandel\_\-calc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf INT\_\-TYPE} cowichan\_\-openmp::mandel\_\-calc ({\bf real} {\em x}, \/  {\bf real} {\em y})}}
+\label{namespacecowichan__openmp_2753e3856bc41c61099c4702d789823e}
+
+
+Calculate mandelbrot value. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em x}]x-coordinate. \item[{\em y}]y-coordinate. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Mandelbrot value. \end{Desc}
+\hypertarget{namespacecowichan__openmp_9c68e88badede2262dd4ded923e804dc}{
+\index{cowichan\_\-openmp@{cowichan\_\-openmp}!mask\_\-count@{mask\_\-count}}
+\index{mask\_\-count@{mask\_\-count}!cowichan_openmp@{cowichan\_\-openmp}}
+\subsubsection[{mask\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-openmp::mask\_\-count ({\bf BoolMatrix} {\em mask}, \/  {\bf index\_\-t} {\em nr}, \/  {\bf index\_\-t} {\em nc}, \/  {\bf index\_\-t} $\ast$ {\em buckets})}}
+\label{namespacecowichan__openmp_9c68e88badede2262dd4ded923e804dc}
+
+
+Count the number of set cells in each thread bucket. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em mask}]boolean mask. \item[{\em nr}]number of rows in mask. \item[{\em nc}]number of columns in mask. \item[{\em buckets}]number of cells in each bucket. \end{description}
+\end{Desc}
+\hypertarget{namespacecowichan__openmp_64208258cab6e46db879b46b40581134}{
+\index{cowichan\_\-openmp@{cowichan\_\-openmp}!quick\_\-sort@{quick\_\-sort}}
+\index{quick\_\-sort@{quick\_\-sort}!cowichan_openmp@{cowichan\_\-openmp}}
+\subsubsection[{quick\_\-sort}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-openmp::quick\_\-sort ({\bf WeightedPointVector} {\em vector}, \/  {\bf index\_\-t} {\em len})}}
+\label{namespacecowichan__openmp_64208258cab6e46db879b46b40581134}
+
+
+This performs parallel quick sort. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em vector}]vector to sort. \item[{\em len}]vector length. \end{description}
+\end{Desc}
+\hypertarget{namespacecowichan__openmp_2733c307de545e237e020a1f166850c5}{
+\index{cowichan\_\-openmp@{cowichan\_\-openmp}!quick\_\-sort\_\-partition@{quick\_\-sort\_\-partition}}
+\index{quick\_\-sort\_\-partition@{quick\_\-sort\_\-partition}!cowichan_openmp@{cowichan\_\-openmp}}
+\subsubsection[{quick\_\-sort\_\-partition}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} cowichan\_\-openmp::quick\_\-sort\_\-partition ({\bf WeightedPointVector} {\em vector}, \/  {\bf index\_\-t} {\em len}, \/  {\bf index\_\-t} {\em pivotIndex})}}
+\label{namespacecowichan__openmp_2733c307de545e237e020a1f166850c5}
+
+
+Partitions vector into points less than and greater than the pivot. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em vector}]vector to partition. \item[{\em len}]vector length. \item[{\em pivotIndex}]index to partition around. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]New pivot index. \end{Desc}
+\hypertarget{namespacecowichan__openmp_f261011870b201d556308f43b5b25b89}{
+\index{cowichan\_\-openmp@{cowichan\_\-openmp}!quickhull@{quickhull}}
+\index{quickhull@{quickhull}!cowichan_openmp@{cowichan\_\-openmp}}
+\subsubsection[{quickhull}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-openmp::quickhull ({\bf PointVector} {\em pointsIn}, \/  {\bf index\_\-t} {\em n}, \/  {\bf PointVector} {\em pointsOut}, \/  {\bf index\_\-t} $\ast$ {\em hn})}}
+\label{namespacecowichan__openmp_f261011870b201d556308f43b5b25b89}
+
+
+Runs quickhull algorithm. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pointsIn}]input points. \item[{\em n}]number of inputs points to use. \item[{\em pointsOut}]output points. \item[{\em hn}]number of output points generated so far. \end{description}
+\end{Desc}
+\hypertarget{namespacecowichan__openmp_d31787f1b4c9d57119160411e96f769f}{
+\index{cowichan\_\-openmp@{cowichan\_\-openmp}!split@{split}}
+\index{split@{split}!cowichan_openmp@{cowichan\_\-openmp}}
+\subsubsection[{split}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-openmp::split ({\bf PointVector} {\em pointsIn}, \/  {\bf index\_\-t} {\em n}, \/  {\bf PointVector} {\em pointsOut}, \/  {\bf index\_\-t} $\ast$ {\em hn}, \/  {\bf Point} $\ast$ {\em p1}, \/  {\bf Point} $\ast$ {\em p2})}}
+\label{namespacecowichan__openmp_d31787f1b4c9d57119160411e96f769f}
+
+
+Recursive step of the quickhull algorithm - compute hull on one side of the splitting line. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pointsIn}]input points. \item[{\em n}]number of inputs points to use. \item[{\em pointsOut}]output points. \item[{\em hn}]number of output points generated so far. \item[{\em p1}]first point of the splitting line (p1,p2). \item[{\em p2}]second point of the splitting line (p1,p2). \end{description}
+\end{Desc}
+\hypertarget{namespacecowichan__openmp_a4ce5b0ba78cd9480bf45e7c313f59d1}{
+\index{cowichan\_\-openmp@{cowichan\_\-openmp}!sumNeighbours@{sumNeighbours}}
+\index{sumNeighbours@{sumNeighbours}!cowichan_openmp@{cowichan\_\-openmp}}
+\subsubsection[{sumNeighbours}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} cowichan\_\-openmp::sumNeighbours ({\bf BoolMatrix} {\em first}, \/  {\bf index\_\-t} {\em r}, \/  {\bf index\_\-t} {\em c}, \/  {\bf index\_\-t} {\em nr}, \/  {\bf index\_\-t} {\em nc})}}
+\label{namespacecowichan__openmp_a4ce5b0ba78cd9480bf45e7c313f59d1}
+
+
+Calculate number of peers. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em first}]world matrix. \item[{\em r}]row. \item[{\em c}]column. \item[{\em nr}]number of rows in the matrix. \item[{\em nc}]number of columns in the matrix. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The number of peers. \end{Desc}

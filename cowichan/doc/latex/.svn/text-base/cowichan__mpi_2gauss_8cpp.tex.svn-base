@@ -1,0 +1,17 @@
+\hypertarget{cowichan__mpi_2gauss_8cpp}{
+\section{cowichan\_\-mpi/gauss.cpp File Reference}
+\label{cowichan__mpi_2gauss_8cpp}\index{cowichan\_\-mpi/gauss.cpp@{cowichan\_\-mpi/gauss.cpp}}
+}
+MPI gauss implementation.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-mpi.hpp\char`\"{}}\par
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+MPI gauss implementation. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_m_p_i_975f8da6c166fe1db3cf9341eeaab000}{CowichanMPI::gauss} \end{Desc}

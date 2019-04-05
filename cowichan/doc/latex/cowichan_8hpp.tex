@@ -1,0 +1,443 @@
+\hypertarget{cowichan_8hpp}{
+\section{cowichan/cowichan.hpp File Reference}
+\label{cowichan_8hpp}\index{cowichan/cowichan.hpp@{cowichan/cowichan.hpp}}
+}
+Datatypes and common routines for \hyperlink{class_cowichan}{Cowichan} programs.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-defaults.hpp\char`\"{}}\par
+{\tt \#include $<$iostream$>$}\par
+{\tt \#include $<$cstdlib$>$}\par
+{\tt \#include $<$ctime$>$}\par
+{\tt \#include $<$cmath$>$}\par
+{\tt \#include $<$algorithm$>$}\par
+{\tt \#include $<$iomanip$>$}\par
+{\tt \#include $<$climits$>$}\par
+{\tt \#include $<$limits$>$}\par
+{\tt \#include $<$string$>$}\par
+{\tt \#include $<$cstring$>$}\par
+{\tt \#include $<$windows.h$>$}\par
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{class_point}{Point}
+\begin{CompactList}\small\item\em Two-dimensional point. \item\end{CompactList}\item 
+class \hyperlink{class_weighted_point}{WeightedPoint}
+\begin{CompactList}\small\item\em Two-dimensional point with an integer weight. \item\end{CompactList}\item 
+class \hyperlink{class_cowichan}{Cowichan}
+\begin{CompactList}\small\item\em Base class for all C++ implementations. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{cowichan_8hpp_9adcfa1dcb92dd0d8757264ae41d1710}{TEST\_\-TIME}
+\item 
+\#define \hyperlink{cowichan_8hpp_e0937999ad4f52ae055b86396280604a}{SORT\_\-TIME}
+\item 
+\#define \hyperlink{cowichan_8hpp_7db5e8ee7c27e6fb5c9caf9d674ea949}{REAL\_\-TYPE}~float
+\item 
+\#define \hyperlink{cowichan_8hpp_9f8bbf20bc9432260a35b2f3cdb009f8}{MAXIMUM\_\-INT}~numeric\_\-limits$<$\hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE}$>$::max()
+\item 
+\#define \hyperlink{cowichan_8hpp_af258621cee3ac54ad546ab5297c2476}{MINIMUM\_\-INT}~numeric\_\-limits$<$\hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE}$>$::min()
+\item 
+\#define \hyperlink{cowichan_8hpp_753345ec3932dd32057b98ab9386efa0}{MAXIMUM\_\-REAL}~numeric\_\-limits$<$\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real}$>$::min()
+\item 
+\#define \hyperlink{cowichan_8hpp_e618a02a4bb148a144f9b9f99aa0b581}{MINIMUM\_\-REAL}~numeric\_\-limits$<$\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real}$>$::min()
+\item 
+\#define \hyperlink{cowichan_8hpp_bb50b5f693a0b64cdf91bca21cb464de}{INFINITY\_\-REAL}~numeric\_\-limits$<$\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real}$>$::infinity()
+\item 
+\#define \hyperlink{cowichan_8hpp_e2f68e53d100109588bb54ccc1c3d85b}{MATRIX\_\-RECT}(mtrx, row, col)~(mtrx)\mbox{[}(row)$\ast$this $\rightarrow$ nc + col\mbox{]}
+\item 
+\#define \hyperlink{cowichan_8hpp_2747f4d7d371c6ebdcaeb134876a2cf3}{MATRIX\_\-RECT\_\-NC}(mtrx, row, col, nc)~(mtrx)\mbox{[}(row)$\ast$(nc) + col\mbox{]}
+\item 
+\#define \hyperlink{cowichan_8hpp_79012ec47cbea66cd6664a54ca8a754c}{MATRIX\_\-SQUARE}(mtrx, row, col)~(mtrx)\mbox{[}(row)$\ast$this $\rightarrow$ n + col\mbox{]}
+\item 
+\#define \hyperlink{cowichan_8hpp_6772060ae1a2d5750934131acf95322a}{MATRIX\_\-SQUARE\_\-N}(mtrx, row, col, n)~(mtrx)\mbox{[}(row)$\ast$(n) + col\mbox{]}
+\item 
+\#define \hyperlink{cowichan_8hpp_f1d98fb728b5c7300f80dd782702d1dd}{MATRIX}~MATRIX\_\-SQUARE
+\item 
+\#define \hyperlink{cowichan_8hpp_41a3c329b378fa03397ed8a8925cbc73}{VECTOR}(vect, row)~(vect)\mbox{[}row\mbox{]}
+\item 
+\#define \hyperlink{cowichan_8hpp_bacaf90ccfec9927a6d97aa37f39917d}{DIAG}(mtrx, v)~(mtrx)\mbox{[}(v)$\ast$this $\rightarrow$ n + v\mbox{]}
+\item 
+\#define \hyperlink{cowichan_8hpp_7b818ef6ccf7d45bd25b07a402ca500f}{DIAG\_\-SZ}(mtrx, v, n)~(mtrx)\mbox{[}(v)$\ast$(n) + v\mbox{]}
+\item 
+\#define \hyperlink{cowichan_8hpp_07e1668b7974a041604d27b62cbe76f5}{NEW\_\-MATRIX\_\-RECT}(\_\-\_\-type)~(new \_\-\_\-type\mbox{[}this $\rightarrow$ nr $\ast$ this $\rightarrow$ nc\mbox{]})
+\item 
+\#define \hyperlink{cowichan_8hpp_03c9abf69e2e60f4ed74eebad85b750f}{NEW\_\-MATRIX\_\-SQUARE}(\_\-\_\-type)~(new \_\-\_\-type\mbox{[}this $\rightarrow$ n $\ast$ this $\rightarrow$ n\mbox{]})
+\item 
+\#define \hyperlink{cowichan_8hpp_e37a7bc1a3de6387853e097f2a8b24b5}{NEW\_\-VECTOR\_\-SZ}(\_\-\_\-type, \_\-\_\-num)~(new \_\-\_\-type\mbox{[}\_\-\_\-num\mbox{]})
+\item 
+\#define \hyperlink{cowichan_8hpp_71e0e9927a2730d38d0335484f7554fe}{NEW\_\-VECTOR}(\_\-\_\-type)~NEW\_\-VECTOR\_\-SZ(\_\-\_\-type, this $\rightarrow$ n)
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef REAL\_\-TYPE \hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real}
+\item 
+typedef UINT32 \hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE}
+\item 
+typedef \hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} $\ast$ \hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix}
+\item 
+typedef bool $\ast$ \hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix}
+\item 
+typedef \hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} $\ast$ \hyperlink{cowichan_8hpp_7b68f24757f8f24846e7b556a6563030}{RealMatrix}
+\item 
+typedef \hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} $\ast$ \hyperlink{cowichan_8hpp_9bab229b7d95f858be62c35cca6ff294}{IntVector}
+\item 
+typedef bool $\ast$ \hyperlink{cowichan_8hpp_69facfadf10e8e6e1b3ea0d02af7fef4}{BoolVector}
+\item 
+typedef \hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} $\ast$ \hyperlink{cowichan_8hpp_b40f3659328a6b06e3f83252e79e7b9a}{RealVector}
+\item 
+typedef \hyperlink{cowichan_8hpp_7b68f24757f8f24846e7b556a6563030}{RealMatrix} \hyperlink{cowichan_8hpp_3fb46f939e55c239fbc95656fc0f3399}{Matrix}
+\item 
+typedef \hyperlink{cowichan_8hpp_b40f3659328a6b06e3f83252e79e7b9a}{RealVector} \hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector}
+\item 
+typedef ptrdiff\_\-t \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t}
+\item 
+typedef \hyperlink{class_point}{Point} $\ast$ \hyperlink{cowichan_8hpp_1551f7def82edc60d7e37053954b7a07}{PointVector}
+\item 
+typedef \hyperlink{class_weighted_point}{WeightedPoint} $\ast$ \hyperlink{cowichan_8hpp_bd6eb1c54f195e0982817565e2ca9c31}{WeightedPointVector}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+INT64 \hyperlink{cowichan_8hpp_fa824504b2ae4f2f1ebbf5e6f76fb4fa}{get\_\-ticks} ()
+\item 
+INT64 \hyperlink{cowichan_8hpp_40356e6c8804a8f94e41c156ad368c83}{get\_\-freq} ()
+\item 
+void \hyperlink{cowichan_8hpp_560007e135455d06968b8a834d970cf9}{print\_\-elapsed\_\-time} (INT64 start, INT64 end)
+\item 
+void \hyperlink{cowichan_8hpp_1bf3d816eb607b5a06a97e05e9b95099}{timeInfo} (INT64 $\ast$start, INT64 $\ast$end, std::string message)
+\item 
+void \hyperlink{cowichan_8hpp_faa5a0a08b60255e5a59cbd3b1f5e45f}{out\_\-of\_\-memory} ()
+\item 
+void \hyperlink{cowichan_8hpp_501801b9dcd90a910432c7712ff763e7}{not\_\-enough\_\-points} ()
+\item 
+void \hyperlink{cowichan_8hpp_19e1551f7e954a984729d96c2c0bf5ba}{no\_\-cells\_\-alive} ()
+\item 
+\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{cowichan_8hpp_eb2386a0fab0a548605cd5f0898da5b4}{uniform} (\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} mean, \hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} range)
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+Datatypes and common routines for \hyperlink{class_cowichan}{Cowichan} programs. 
+
+
+
+\subsection{Define Documentation}
+\hypertarget{cowichan_8hpp_bacaf90ccfec9927a6d97aa37f39917d}{
+\index{cowichan.hpp@{cowichan.hpp}!DIAG@{DIAG}}
+\index{DIAG@{DIAG}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{DIAG}]{\setlength{\rightskip}{0pt plus 5cm}\#define DIAG(mtrx, \/  v)~(mtrx)\mbox{[}(v)$\ast$this $\rightarrow$ n + v\mbox{]}}}
+\label{cowichan_8hpp_bacaf90ccfec9927a6d97aa37f39917d}
+
+
+Access a square matrix diagonal element v from a class using member variable n as the matrix size. \hypertarget{cowichan_8hpp_7b818ef6ccf7d45bd25b07a402ca500f}{
+\index{cowichan.hpp@{cowichan.hpp}!DIAG\_\-SZ@{DIAG\_\-SZ}}
+\index{DIAG\_\-SZ@{DIAG\_\-SZ}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{DIAG\_\-SZ}]{\setlength{\rightskip}{0pt plus 5cm}\#define DIAG\_\-SZ(mtrx, \/  v, \/  n)~(mtrx)\mbox{[}(v)$\ast$(n) + v\mbox{]}}}
+\label{cowichan_8hpp_7b818ef6ccf7d45bd25b07a402ca500f}
+
+
+Access a square matrix diagonal element v using n as the matrix size. \hypertarget{cowichan_8hpp_bb50b5f693a0b64cdf91bca21cb464de}{
+\index{cowichan.hpp@{cowichan.hpp}!INFINITY\_\-REAL@{INFINITY\_\-REAL}}
+\index{INFINITY\_\-REAL@{INFINITY\_\-REAL}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{INFINITY\_\-REAL}]{\setlength{\rightskip}{0pt plus 5cm}\#define INFINITY\_\-REAL~numeric\_\-limits$<${\bf real}$>$::infinity()}}
+\label{cowichan_8hpp_bb50b5f693a0b64cdf91bca21cb464de}
+
+
+Real infinity value. \hypertarget{cowichan_8hpp_f1d98fb728b5c7300f80dd782702d1dd}{
+\index{cowichan.hpp@{cowichan.hpp}!MATRIX@{MATRIX}}
+\index{MATRIX@{MATRIX}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{MATRIX}]{\setlength{\rightskip}{0pt plus 5cm}\#define MATRIX~MATRIX\_\-SQUARE}}
+\label{cowichan_8hpp_f1d98fb728b5c7300f80dd782702d1dd}
+
+
+Same as MATRIX\_\-SQUARE (shorter name) \hypertarget{cowichan_8hpp_e2f68e53d100109588bb54ccc1c3d85b}{
+\index{cowichan.hpp@{cowichan.hpp}!MATRIX\_\-RECT@{MATRIX\_\-RECT}}
+\index{MATRIX\_\-RECT@{MATRIX\_\-RECT}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{MATRIX\_\-RECT}]{\setlength{\rightskip}{0pt plus 5cm}\#define MATRIX\_\-RECT(mtrx, \/  row, \/  col)~(mtrx)\mbox{[}(row)$\ast$this $\rightarrow$ nc + col\mbox{]}}}
+\label{cowichan_8hpp_e2f68e53d100109588bb54ccc1c3d85b}
+
+
+Access a rectangular matrix at row/col from a class using member variable nc as the number of columns. \hypertarget{cowichan_8hpp_2747f4d7d371c6ebdcaeb134876a2cf3}{
+\index{cowichan.hpp@{cowichan.hpp}!MATRIX\_\-RECT\_\-NC@{MATRIX\_\-RECT\_\-NC}}
+\index{MATRIX\_\-RECT\_\-NC@{MATRIX\_\-RECT\_\-NC}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{MATRIX\_\-RECT\_\-NC}]{\setlength{\rightskip}{0pt plus 5cm}\#define MATRIX\_\-RECT\_\-NC(mtrx, \/  row, \/  col, \/  nc)~(mtrx)\mbox{[}(row)$\ast$(nc) + col\mbox{]}}}
+\label{cowichan_8hpp_2747f4d7d371c6ebdcaeb134876a2cf3}
+
+
+Access a rectangular matrix at row/col using nc as the number of columns. \hypertarget{cowichan_8hpp_79012ec47cbea66cd6664a54ca8a754c}{
+\index{cowichan.hpp@{cowichan.hpp}!MATRIX\_\-SQUARE@{MATRIX\_\-SQUARE}}
+\index{MATRIX\_\-SQUARE@{MATRIX\_\-SQUARE}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{MATRIX\_\-SQUARE}]{\setlength{\rightskip}{0pt plus 5cm}\#define MATRIX\_\-SQUARE(mtrx, \/  row, \/  col)~(mtrx)\mbox{[}(row)$\ast$this $\rightarrow$ n + col\mbox{]}}}
+\label{cowichan_8hpp_79012ec47cbea66cd6664a54ca8a754c}
+
+
+Access a square matrix at row/col from a class using member variable n as the matrix size. \hypertarget{cowichan_8hpp_6772060ae1a2d5750934131acf95322a}{
+\index{cowichan.hpp@{cowichan.hpp}!MATRIX\_\-SQUARE\_\-N@{MATRIX\_\-SQUARE\_\-N}}
+\index{MATRIX\_\-SQUARE\_\-N@{MATRIX\_\-SQUARE\_\-N}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{MATRIX\_\-SQUARE\_\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define MATRIX\_\-SQUARE\_\-N(mtrx, \/  row, \/  col, \/  n)~(mtrx)\mbox{[}(row)$\ast$(n) + col\mbox{]}}}
+\label{cowichan_8hpp_6772060ae1a2d5750934131acf95322a}
+
+
+Access a square matrix at row/col using n as the matrix size. \hypertarget{cowichan_8hpp_9f8bbf20bc9432260a35b2f3cdb009f8}{
+\index{cowichan.hpp@{cowichan.hpp}!MAXIMUM\_\-INT@{MAXIMUM\_\-INT}}
+\index{MAXIMUM\_\-INT@{MAXIMUM\_\-INT}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{MAXIMUM\_\-INT}]{\setlength{\rightskip}{0pt plus 5cm}\#define MAXIMUM\_\-INT~numeric\_\-limits$<${\bf INT\_\-TYPE}$>$::max()}}
+\label{cowichan_8hpp_9f8bbf20bc9432260a35b2f3cdb009f8}
+
+
+Maximum integer value in matrices/vectors. \hypertarget{cowichan_8hpp_753345ec3932dd32057b98ab9386efa0}{
+\index{cowichan.hpp@{cowichan.hpp}!MAXIMUM\_\-REAL@{MAXIMUM\_\-REAL}}
+\index{MAXIMUM\_\-REAL@{MAXIMUM\_\-REAL}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{MAXIMUM\_\-REAL}]{\setlength{\rightskip}{0pt plus 5cm}\#define MAXIMUM\_\-REAL~numeric\_\-limits$<${\bf real}$>$::min()}}
+\label{cowichan_8hpp_753345ec3932dd32057b98ab9386efa0}
+
+
+Maximum real value in matrices/vectors. \hypertarget{cowichan_8hpp_af258621cee3ac54ad546ab5297c2476}{
+\index{cowichan.hpp@{cowichan.hpp}!MINIMUM\_\-INT@{MINIMUM\_\-INT}}
+\index{MINIMUM\_\-INT@{MINIMUM\_\-INT}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{MINIMUM\_\-INT}]{\setlength{\rightskip}{0pt plus 5cm}\#define MINIMUM\_\-INT~numeric\_\-limits$<${\bf INT\_\-TYPE}$>$::min()}}
+\label{cowichan_8hpp_af258621cee3ac54ad546ab5297c2476}
+
+
+Minimum integer value in matrices/vectors. \hypertarget{cowichan_8hpp_e618a02a4bb148a144f9b9f99aa0b581}{
+\index{cowichan.hpp@{cowichan.hpp}!MINIMUM\_\-REAL@{MINIMUM\_\-REAL}}
+\index{MINIMUM\_\-REAL@{MINIMUM\_\-REAL}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{MINIMUM\_\-REAL}]{\setlength{\rightskip}{0pt plus 5cm}\#define MINIMUM\_\-REAL~numeric\_\-limits$<${\bf real}$>$::min()}}
+\label{cowichan_8hpp_e618a02a4bb148a144f9b9f99aa0b581}
+
+
+Minimum real value in matrices/vectors. \hypertarget{cowichan_8hpp_07e1668b7974a041604d27b62cbe76f5}{
+\index{cowichan.hpp@{cowichan.hpp}!NEW\_\-MATRIX\_\-RECT@{NEW\_\-MATRIX\_\-RECT}}
+\index{NEW\_\-MATRIX\_\-RECT@{NEW\_\-MATRIX\_\-RECT}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{NEW\_\-MATRIX\_\-RECT}]{\setlength{\rightskip}{0pt plus 5cm}\#define NEW\_\-MATRIX\_\-RECT(\_\-\_\-type)~(new \_\-\_\-type\mbox{[}this $\rightarrow$ nr $\ast$ this $\rightarrow$ nc\mbox{]})}}
+\label{cowichan_8hpp_07e1668b7974a041604d27b62cbe76f5}
+
+
+Allocate a new rectangular matrix from a class using member variable nr as the number of rows and member variable nc as the number of columns. \hypertarget{cowichan_8hpp_03c9abf69e2e60f4ed74eebad85b750f}{
+\index{cowichan.hpp@{cowichan.hpp}!NEW\_\-MATRIX\_\-SQUARE@{NEW\_\-MATRIX\_\-SQUARE}}
+\index{NEW\_\-MATRIX\_\-SQUARE@{NEW\_\-MATRIX\_\-SQUARE}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{NEW\_\-MATRIX\_\-SQUARE}]{\setlength{\rightskip}{0pt plus 5cm}\#define NEW\_\-MATRIX\_\-SQUARE(\_\-\_\-type)~(new \_\-\_\-type\mbox{[}this $\rightarrow$ n $\ast$ this $\rightarrow$ n\mbox{]})}}
+\label{cowichan_8hpp_03c9abf69e2e60f4ed74eebad85b750f}
+
+
+Allocate a new square matrix from a class using member variable n as the matrix size. \hypertarget{cowichan_8hpp_71e0e9927a2730d38d0335484f7554fe}{
+\index{cowichan.hpp@{cowichan.hpp}!NEW\_\-VECTOR@{NEW\_\-VECTOR}}
+\index{NEW\_\-VECTOR@{NEW\_\-VECTOR}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{NEW\_\-VECTOR}]{\setlength{\rightskip}{0pt plus 5cm}\#define NEW\_\-VECTOR(\_\-\_\-type)~NEW\_\-VECTOR\_\-SZ(\_\-\_\-type, this $\rightarrow$ n)}}
+\label{cowichan_8hpp_71e0e9927a2730d38d0335484f7554fe}
+
+
+Allocate a new vector from a class using member variable n as the size of the vector. \hypertarget{cowichan_8hpp_e37a7bc1a3de6387853e097f2a8b24b5}{
+\index{cowichan.hpp@{cowichan.hpp}!NEW\_\-VECTOR\_\-SZ@{NEW\_\-VECTOR\_\-SZ}}
+\index{NEW\_\-VECTOR\_\-SZ@{NEW\_\-VECTOR\_\-SZ}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{NEW\_\-VECTOR\_\-SZ}]{\setlength{\rightskip}{0pt plus 5cm}\#define NEW\_\-VECTOR\_\-SZ(\_\-\_\-type, \/  \_\-\_\-num)~(new \_\-\_\-type\mbox{[}\_\-\_\-num\mbox{]})}}
+\label{cowichan_8hpp_e37a7bc1a3de6387853e097f2a8b24b5}
+
+
+Allocate a new vector of size \_\-\_\-num. \hypertarget{cowichan_8hpp_7db5e8ee7c27e6fb5c9caf9d674ea949}{
+\index{cowichan.hpp@{cowichan.hpp}!REAL\_\-TYPE@{REAL\_\-TYPE}}
+\index{REAL\_\-TYPE@{REAL\_\-TYPE}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{REAL\_\-TYPE}]{\setlength{\rightskip}{0pt plus 5cm}\#define REAL\_\-TYPE~float}}
+\label{cowichan_8hpp_7db5e8ee7c27e6fb5c9caf9d674ea949}
+
+
+Use IEEE single floating-point by default. \hypertarget{cowichan_8hpp_e0937999ad4f52ae055b86396280604a}{
+\index{cowichan.hpp@{cowichan.hpp}!SORT\_\-TIME@{SORT\_\-TIME}}
+\index{SORT\_\-TIME@{SORT\_\-TIME}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{SORT\_\-TIME}]{\setlength{\rightskip}{0pt plus 5cm}\#define SORT\_\-TIME}}
+\label{cowichan_8hpp_e0937999ad4f52ae055b86396280604a}
+
+
+Enables printing of sort time (in winnow). \hypertarget{cowichan_8hpp_9adcfa1dcb92dd0d8757264ae41d1710}{
+\index{cowichan.hpp@{cowichan.hpp}!TEST\_\-TIME@{TEST\_\-TIME}}
+\index{TEST\_\-TIME@{TEST\_\-TIME}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{TEST\_\-TIME}]{\setlength{\rightskip}{0pt plus 5cm}\#define TEST\_\-TIME}}
+\label{cowichan_8hpp_9adcfa1dcb92dd0d8757264ae41d1710}
+
+
+Enables printing of test time. \hypertarget{cowichan_8hpp_41a3c329b378fa03397ed8a8925cbc73}{
+\index{cowichan.hpp@{cowichan.hpp}!VECTOR@{VECTOR}}
+\index{VECTOR@{VECTOR}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{VECTOR}]{\setlength{\rightskip}{0pt plus 5cm}\#define VECTOR(vect, \/  row)~(vect)\mbox{[}row\mbox{]}}}
+\label{cowichan_8hpp_41a3c329b378fa03397ed8a8925cbc73}
+
+
+Access row of a vector. 
+
+\subsection{Typedef Documentation}
+\hypertarget{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{
+\index{cowichan.hpp@{cowichan.hpp}!BoolMatrix@{BoolMatrix}}
+\index{BoolMatrix@{BoolMatrix}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{BoolMatrix}]{\setlength{\rightskip}{0pt plus 5cm}typedef bool$\ast$ {\bf BoolMatrix}}}
+\label{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}
+
+
+Boolean matrix type. \hypertarget{cowichan_8hpp_69facfadf10e8e6e1b3ea0d02af7fef4}{
+\index{cowichan.hpp@{cowichan.hpp}!BoolVector@{BoolVector}}
+\index{BoolVector@{BoolVector}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{BoolVector}]{\setlength{\rightskip}{0pt plus 5cm}typedef bool$\ast$ {\bf BoolVector}}}
+\label{cowichan_8hpp_69facfadf10e8e6e1b3ea0d02af7fef4}
+
+
+Boolean vector type. \hypertarget{cowichan_8hpp_5b04577d5d21124855deaad298595371}{
+\index{cowichan.hpp@{cowichan.hpp}!index\_\-t@{index\_\-t}}
+\index{index\_\-t@{index\_\-t}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{index\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef ptrdiff\_\-t {\bf index\_\-t}}}
+\label{cowichan_8hpp_5b04577d5d21124855deaad298595371}
+
+
+Index type (signed version of size\_\-t). \hypertarget{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{
+\index{cowichan.hpp@{cowichan.hpp}!INT\_\-TYPE@{INT\_\-TYPE}}
+\index{INT\_\-TYPE@{INT\_\-TYPE}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{INT\_\-TYPE}]{\setlength{\rightskip}{0pt plus 5cm}typedef UINT32 {\bf INT\_\-TYPE}}}
+\label{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}
+
+
+Integer type (used in matrix/vector values). \hypertarget{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{
+\index{cowichan.hpp@{cowichan.hpp}!IntMatrix@{IntMatrix}}
+\index{IntMatrix@{IntMatrix}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{IntMatrix}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf INT\_\-TYPE}$\ast$ {\bf IntMatrix}}}
+\label{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}
+
+
+Integer matrix type. \hypertarget{cowichan_8hpp_9bab229b7d95f858be62c35cca6ff294}{
+\index{cowichan.hpp@{cowichan.hpp}!IntVector@{IntVector}}
+\index{IntVector@{IntVector}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{IntVector}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf INT\_\-TYPE}$\ast$ {\bf IntVector}}}
+\label{cowichan_8hpp_9bab229b7d95f858be62c35cca6ff294}
+
+
+Integer vector type. \hypertarget{cowichan_8hpp_3fb46f939e55c239fbc95656fc0f3399}{
+\index{cowichan.hpp@{cowichan.hpp}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{Matrix}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf RealMatrix} {\bf Matrix}}}
+\label{cowichan_8hpp_3fb46f939e55c239fbc95656fc0f3399}
+
+
+Real matrix type (shorter name). \hypertarget{cowichan_8hpp_1551f7def82edc60d7e37053954b7a07}{
+\index{cowichan.hpp@{cowichan.hpp}!PointVector@{PointVector}}
+\index{PointVector@{PointVector}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{PointVector}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Point}$\ast$ {\bf PointVector}}}
+\label{cowichan_8hpp_1551f7def82edc60d7e37053954b7a07}
+
+
+Vector of points type. \hypertarget{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{
+\index{cowichan.hpp@{cowichan.hpp}!real@{real}}
+\index{real@{real}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{real}]{\setlength{\rightskip}{0pt plus 5cm}typedef REAL\_\-TYPE {\bf real}}}
+\label{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}
+
+
+Real type (used in matrix/vector values). \hypertarget{cowichan_8hpp_7b68f24757f8f24846e7b556a6563030}{
+\index{cowichan.hpp@{cowichan.hpp}!RealMatrix@{RealMatrix}}
+\index{RealMatrix@{RealMatrix}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{RealMatrix}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf real}$\ast$ {\bf RealMatrix}}}
+\label{cowichan_8hpp_7b68f24757f8f24846e7b556a6563030}
+
+
+Real matrix type. \hypertarget{cowichan_8hpp_b40f3659328a6b06e3f83252e79e7b9a}{
+\index{cowichan.hpp@{cowichan.hpp}!RealVector@{RealVector}}
+\index{RealVector@{RealVector}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{RealVector}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf real}$\ast$ {\bf RealVector}}}
+\label{cowichan_8hpp_b40f3659328a6b06e3f83252e79e7b9a}
+
+
+Real vector type. \hypertarget{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{
+\index{cowichan.hpp@{cowichan.hpp}!Vector@{Vector}}
+\index{Vector@{Vector}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{Vector}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf RealVector} {\bf Vector}}}
+\label{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}
+
+
+Real vector type (shorter name). \hypertarget{cowichan_8hpp_bd6eb1c54f195e0982817565e2ca9c31}{
+\index{cowichan.hpp@{cowichan.hpp}!WeightedPointVector@{WeightedPointVector}}
+\index{WeightedPointVector@{WeightedPointVector}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{WeightedPointVector}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf WeightedPoint}$\ast$ {\bf WeightedPointVector}}}
+\label{cowichan_8hpp_bd6eb1c54f195e0982817565e2ca9c31}
+
+
+Vector of weighted points type. 
+
+\subsection{Function Documentation}
+\hypertarget{cowichan_8hpp_40356e6c8804a8f94e41c156ad368c83}{
+\index{cowichan.hpp@{cowichan.hpp}!get\_\-freq@{get\_\-freq}}
+\index{get\_\-freq@{get\_\-freq}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{get\_\-freq}]{\setlength{\rightskip}{0pt plus 5cm}INT64 get\_\-freq ()}}
+\label{cowichan_8hpp_40356e6c8804a8f94e41c156ad368c83}
+
+
+Get tick frequency. \begin{Desc}
+\item[Returns:]Tick frequency. \end{Desc}
+\hypertarget{cowichan_8hpp_fa824504b2ae4f2f1ebbf5e6f76fb4fa}{
+\index{cowichan.hpp@{cowichan.hpp}!get\_\-ticks@{get\_\-ticks}}
+\index{get\_\-ticks@{get\_\-ticks}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{get\_\-ticks}]{\setlength{\rightskip}{0pt plus 5cm}INT64 get\_\-ticks ()}}
+\label{cowichan_8hpp_fa824504b2ae4f2f1ebbf5e6f76fb4fa}
+
+
+Get tick count. \begin{Desc}
+\item[Returns:]Tick count. \end{Desc}
+\hypertarget{cowichan_8hpp_19e1551f7e954a984729d96c2c0bf5ba}{
+\index{cowichan.hpp@{cowichan.hpp}!no\_\-cells\_\-alive@{no\_\-cells\_\-alive}}
+\index{no\_\-cells\_\-alive@{no\_\-cells\_\-alive}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{no\_\-cells\_\-alive}]{\setlength{\rightskip}{0pt plus 5cm}void no\_\-cells\_\-alive ()}}
+\label{cowichan_8hpp_19e1551f7e954a984729d96c2c0bf5ba}
+
+
+Prints no cells alive message and exits. \hypertarget{cowichan_8hpp_501801b9dcd90a910432c7712ff763e7}{
+\index{cowichan.hpp@{cowichan.hpp}!not\_\-enough\_\-points@{not\_\-enough\_\-points}}
+\index{not\_\-enough\_\-points@{not\_\-enough\_\-points}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{not\_\-enough\_\-points}]{\setlength{\rightskip}{0pt plus 5cm}void not\_\-enough\_\-points ()}}
+\label{cowichan_8hpp_501801b9dcd90a910432c7712ff763e7}
+
+
+Prints not enough points message and exits. \hypertarget{cowichan_8hpp_faa5a0a08b60255e5a59cbd3b1f5e45f}{
+\index{cowichan.hpp@{cowichan.hpp}!out\_\-of\_\-memory@{out\_\-of\_\-memory}}
+\index{out\_\-of\_\-memory@{out\_\-of\_\-memory}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{out\_\-of\_\-memory}]{\setlength{\rightskip}{0pt plus 5cm}void out\_\-of\_\-memory ()}}
+\label{cowichan_8hpp_faa5a0a08b60255e5a59cbd3b1f5e45f}
+
+
+Prints out of memory message and exits. \hypertarget{cowichan_8hpp_560007e135455d06968b8a834d970cf9}{
+\index{cowichan.hpp@{cowichan.hpp}!print\_\-elapsed\_\-time@{print\_\-elapsed\_\-time}}
+\index{print\_\-elapsed\_\-time@{print\_\-elapsed\_\-time}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{print\_\-elapsed\_\-time}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-elapsed\_\-time (INT64 {\em start}, \/  INT64 {\em end})}}
+\label{cowichan_8hpp_560007e135455d06968b8a834d970cf9}
+
+
+Print elapsed time to std::cout. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em start}]initial tick count. \item[{\em end}]final tick count. \end{description}
+\end{Desc}
+\hypertarget{cowichan_8hpp_1bf3d816eb607b5a06a97e05e9b95099}{
+\index{cowichan.hpp@{cowichan.hpp}!timeInfo@{timeInfo}}
+\index{timeInfo@{timeInfo}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{timeInfo}]{\setlength{\rightskip}{0pt plus 5cm}void timeInfo (INT64 $\ast$ {\em start}, \/  INT64 $\ast$ {\em end}, \/  std::string {\em message})}}
+\label{cowichan_8hpp_1bf3d816eb607b5a06a97e05e9b95099}
+
+
+Does a sort of swap-out, printing progress. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em start}]pointer to initial tick count. \item[{\em end}]pointeger to final tick count. \item[{\em message}]message to print before the elapsed time. \end{description}
+\end{Desc}
+\hypertarget{cowichan_8hpp_eb2386a0fab0a548605cd5f0898da5b4}{
+\index{cowichan.hpp@{cowichan.hpp}!uniform@{uniform}}
+\index{uniform@{uniform}!cowichan.hpp@{cowichan.hpp}}
+\subsubsection[{uniform}]{\setlength{\rightskip}{0pt plus 5cm}{\bf real} uniform ({\bf real} {\em mean}, \/  {\bf real} {\em range})}}
+\label{cowichan_8hpp_eb2386a0fab0a548605cd5f0898da5b4}
+
+
+Returns a pseudorandom number $\sim$ U\mbox{[}mean - range, mean + range\mbox{]}. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em mean}]mean. \item[{\em range}]range. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The pseudorandom number. \end{Desc}

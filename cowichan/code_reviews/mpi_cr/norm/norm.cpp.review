@@ -1,0 +1,73 @@
+     1	/**
+     2	 * Vector norm
+     3	 *
+     4	 * \file norm.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-10-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#ifdef IS_PARALLEL
+    11	  #include "parallel.h"
+    12	#else
+    13	  #include "serial.h"
+    14	#endif
+    15	
+    16	int main(int argc, char* argv[])
+    17	{
+    18	#ifdef IS_PARALLEL
+    19	  mpi::environment env(argc, argv);
+    20	  mpi::communicator world;
+    21	
+    22	#ifdef TEST_OUTPUT
+    23	  printf ("I am process %d\n", world.rank ());
+    24	#endif
+    25	#endif
+    26	
+    27	  pt1D* vec;
+    28	  int n;
+    29	  int limit;
+    30	  int i;
+    31	
+    32	  n = MAXEXT;
+    33	  limit = MAXEXT;
+    34	
+    35	  srand (333);
+    36	
+    37	  vec = new pt1D[MAXEXT];
+    38	  for (i = 0; i < n; i++) {
+    39	    vec[i].x = rand () % limit;
+    40	    vec[i].y = rand () % limit;
+    41	    vec[i].w = rand () % limit;
+    42	  }
+    43	
+    44	#ifdef TEST_OUTPUT
+    45	  printf ("Vector:\n");
+    46	  print_vector (vec, n);
+    47	#endif
+    48	
+    49	#ifdef TEST_TIME
+    50	  INT64 start, end;
+    51	  start = get_ticks ();
+    52	#endif
+    53	
+    54	#ifdef IS_PARALLEL
+    55	  norm_mpi (world, vec, n);
+    56	#else
+    57	  norm (vec, n);
+    58	#endif
+    59	
+    60	#ifdef TEST_TIME
+    61	  end = get_ticks ();
+    62	  print_elapsed_time (start, end);
+    63	#endif
+    64	
+    65	#ifdef TEST_OUTPUT
+    66	  printf ("Norm:\n");
+    67	  print_vector (vec, n);
+    68	#endif
+    69	
+    70	  delete [] vec;
+    71	
+    72	  return 0;
+    73	}

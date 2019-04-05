@@ -1,0 +1,35 @@
+\hypertarget{cowichan__openmp_8cpp}{
+\section{cowichan\_\-openmp/cowichan\_\-openmp.cpp File Reference}
+\label{cowichan__openmp_8cpp}\index{cowichan\_\-openmp/cowichan\_\-openmp.cpp@{cowichan\_\-openmp/cowichan\_\-openmp.cpp}}
+}
+This file contains main method that drives the OpenMP implementation.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-openmp.hpp\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+int \hyperlink{cowichan__openmp_8cpp_0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+This file contains main method that drives the OpenMP implementation. 
+
+
+
+\subsection{Function Documentation}
+\hypertarget{cowichan__openmp_8cpp_0ddf1224851353fc92bfbff6f499fa97}{
+\index{cowichan\_\-openmp.cpp@{cowichan\_\-openmp.cpp}!main@{main}}
+\index{main@{main}!cowichan_openmp.cpp@{cowichan\_\-openmp.cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (int {\em argc}, \/  char $\ast$ {\em argv}\mbox{[}$\,$\mbox{]})}}
+\label{cowichan__openmp_8cpp_0ddf1224851353fc92bfbff6f499fa97}
+
+
+Main method - creates a \hyperlink{class_cowichan_open_m_p}{CowichanOpenMP} instance and executes \hyperlink{class_cowichan_905f3eb45f21cdaa1c32a421d001fa4c}{Cowichan::main}. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em argc}]number of command line arguments. \item[{\em argv}]command line arguments. \end{description}
+\end{Desc}

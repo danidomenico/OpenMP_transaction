@@ -1,0 +1,33 @@
+\subsection{{\tt{outer}}: Outer Product\label{s:toys-outer}}
+
+This module turns a vector containing point positions
+into a dense, symmetric, diagonally dominant matrix
+by calculating the distances between each pair of points.
+It also constructs a real vector whose values are
+the distance of each point from the origin.
+
+{\inputspec}
+
+\begin{description}
+\item[{\tt{points}}:]
+	a vector of $(x,y)$ points, where $x$ and $y$ are the point's position.
+\end{description}
+
+{\outputspec}
+
+\begin{description}
+\item[{\tt{matrix}}:]
+	a real matrix, whose values are filled with inter-point distances.
+\item[{\tt{vector}}:]
+	a real vector, whose values are filled with origin-to-point distances.
+\end{description}
+
+Each matrix element $M_{i,j}$ such that $i \neq j$
+is given the value $d_{i, j}$,
+the Euclidean distance between point $i$ and point $j$.
+The diagonal values $M_{i, i}$ are then set to
+{\tt{nelts}} times the maximum off-diagonal value
+to ensure that the matrix is diagonally dominant.
+The value of the vector element $v_i$ is set to
+the distance of point $i$ from the origin,
+which is given by $\sqrt{{x_i}^2 + {y_i}^2}$.

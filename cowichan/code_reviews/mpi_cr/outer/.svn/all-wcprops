@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/275/code_reviews/mpi_cr/outer
+END
+parallel.h.review
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/275/code_reviews/mpi_cr/outer/parallel.h.review
+END
+parallel.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/275/code_reviews/mpi_cr/outer/parallel.h
+END
+serial.h.review
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/275/code_reviews/mpi_cr/outer/serial.h.review
+END
+serial.h
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/275/code_reviews/mpi_cr/outer/serial.h
+END
+parallel.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/275/code_reviews/mpi_cr/outer/parallel.cpp
+END
+parallel.cpp.review
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/275/code_reviews/mpi_cr/outer/parallel.cpp.review
+END
+outer.cpp.review
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/275/code_reviews/mpi_cr/outer/outer.cpp.review
+END
+outer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/275/code_reviews/mpi_cr/outer/outer.cpp
+END
+serial.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/275/code_reviews/mpi_cr/outer/serial.cpp
+END
+serial.cpp.review
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/275/code_reviews/mpi_cr/outer/serial.cpp.review
+END

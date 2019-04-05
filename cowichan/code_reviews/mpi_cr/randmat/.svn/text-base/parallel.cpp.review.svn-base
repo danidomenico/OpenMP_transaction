@@ -1,0 +1,67 @@
+     1	/**
+     2	 * Parallel implementation of random matrix generation
+     3	 *
+     4	 * \file parallel.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-02-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#include "parallel.h"
+    11	
+    12	// shared data structures
+    13	
+    14	static unsigned int* state;		/* random state vector */
+    15	static unsigned int aPrime, cPrime;		/* modified constants */ 
+    16	
+    17	// public
+    18	
+    19	void
+    20	randmat_mpi (
+    21	  mpi::communicator world,			/* mpi communicator */
+    22	  int2D*		matrix,			/* to fill */
+    23	  int		nr,			/* row size */
+    24	  int		nc,			/* column size */
+    25	  unsigned int		limit,			/* value limit */
+    26	  unsigned int		seed			/* RNG seed */
+    27	){
+    28	  int		i, j;			/* loop index */
+    29	  int		lo, hi, str;		/* work controls */
+    30	
+    31	  int rank = world.rank ();
+    32	  int size = world.size ();
+    33	
+    34	  state = new unsigned int[size];
+    35	
+    36	  // set up
+    37	  if (rank == 0) {
+    38	    randStateInit(seed, size, state, &aPrime, &cPrime);
+    39	  }
+    40	  // broadcast set up
+    41	  broadcast (world, state, size, 0);
+    42	  broadcast (world, aPrime, 0);
+    43	  broadcast (world, cPrime, 0);
+    44	
+    45	  // special scheduling
+    
+Would normal, row-by-row breaking up have worked, too?
+It seems to me like it would but I'm not 100% sure due to specifics of MPI.
+    
+    46	  if (get_cyclic_rows_mpi (world, 0, nr * nc, &lo, &hi, &str)) {
+    47	    for (i = lo; i < hi; i += str) {
+    48	      matrix[i / nr][i % nr] = state[rank] % limit;
+    49	      state[rank] = (aPrime * state[rank] + cPrime) % RAND_M;
+    50	    }
+    51	  }
+    52	  // broadcast result
+    53	  for (i = 0; i < nr; i++) {
+    54	    for (j = 0; j < nc; j++) {
+    55	      rank = get_cyclic_rank_mpi (world, 0, nr * nc, i * nc + j);
+    56	      broadcast (world, matrix[i][j], rank);
+    57	    }
+    58	  }
+    59	
+    60	  delete [] state;
+    61	
+    62	  /* return */
+    63	}

@@ -1,0 +1,17 @@
+\hypertarget{cowichan__openmp_2vecdiff_8cpp}{
+\section{cowichan\_\-openmp/vecdiff.cpp File Reference}
+\label{cowichan__openmp_2vecdiff_8cpp}\index{cowichan\_\-openmp/vecdiff.cpp@{cowichan\_\-openmp/vecdiff.cpp}}
+}
+OpenMP vecdiff implementation.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-openmp.hpp\char`\"{}}\par
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+OpenMP vecdiff implementation. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_open_m_p_92aa23ed47da0a5a3b43416ab08199b3}{CowichanOpenMP::vecdiff} \end{Desc}

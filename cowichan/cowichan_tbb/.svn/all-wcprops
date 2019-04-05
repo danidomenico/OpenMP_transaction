@@ -1,0 +1,131 @@
+K 25
+svn:wc:ra_dav:version-url
+V 30
+/svn/!svn/ver/271/cowichan_tbb
+END
+life.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/238/cowichan_tbb/life.cpp
+END
+product.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/235/cowichan_tbb/product.cpp
+END
+winnow.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/238/cowichan_tbb/winnow.cpp
+END
+gauss.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/233/cowichan_tbb/gauss.cpp
+END
+cowichan_tbb.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/233/cowichan_tbb/cowichan_tbb.cpp
+END
+randmat.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/235/cowichan_tbb/randmat.cpp
+END
+cowichan_tbb.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/240/cowichan_tbb/cowichan_tbb.hpp
+END
+comp32.bat
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/242/cowichan_tbb/comp32.bat
+END
+comp32.sh
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/242/cowichan_tbb/comp32.sh
+END
+comp64.bat
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/242/cowichan_tbb/comp64.bat
+END
+thresh.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/271/cowichan_tbb/thresh.cpp
+END
+outer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/238/cowichan_tbb/outer.cpp
+END
+mandel.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/233/cowichan_tbb/mandel.cpp
+END
+comp64.sh
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/242/cowichan_tbb/comp64.sh
+END
+cowichan_tbb.vcproj
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/227/cowichan_tbb/cowichan_tbb.vcproj
+END
+sor.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/235/cowichan_tbb/sor.cpp
+END
+hull.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/233/cowichan_tbb/hull.cpp
+END
+vecdiff.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/238/cowichan_tbb/vecdiff.cpp
+END
+invperc.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/271/cowichan_tbb/invperc.cpp
+END
+half.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/233/cowichan_tbb/half.cpp
+END
+norm.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/233/cowichan_tbb/norm.cpp
+END

@@ -1,0 +1,47 @@
+\subsection{{\tt{invperc}}: Invasion Percolation\label{s:toys-invperc}}
+
+Invasion percolation models the displacement of one fluid (such as oil)
+by another (such as water)
+in fractured rock \cite{b:percolation-theory}.
+In two dimensions,
+this can be simulated by generating
+an $N{\times}N$ grid of random numbers in the range $[1{\ldots}R]$,
+and then marking the center cell of the grid as filled.
+In each iteration,
+one examines the four orthogonal neighbors of all filled cells,
+chooses the one with the lowest value
+(i.e., the one with the least resistance to filling),
+and fills it in.
+
+The simulation continues until
+some fixed percentage of cells have been filled,
+or until some other condition
+(such as the presence of trapped regions)
+is achieved.
+The fractal structure of the filled and unfilled regions
+is then examined to determine how much oil could be recovered.
+
+The na\"{\i}ve way to implement this is to repeatedly scan the array.
+A much faster technique is to maintain a priority queue of unfilled cells
+which are neighbors of filled cells.
+This latter technique is similar to the list-based methods used in some cellular automaton programs,
+and is very difficult to parallelize effectively.
+
+{\inputspec}
+
+\begin{description}
+\item[{\tt{matrix}}:]
+	an integer matrix.
+\item[{\tt{nfill}}:]
+	the number of points to fill.
+\end{description}
+
+{\outputspec}
+
+\begin{description}
+\item[{\tt{mask}}:]
+	a Boolean matrix filled with {\tt{true}} (showing a filled cell) or {\tt{false}} (showing an unfilled cell).
+\end{description}
+
+Filling begins at the central cell of the matrix
+(rounding down for even-sized axes).

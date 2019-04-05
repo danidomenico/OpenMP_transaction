@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/275/code_reviews/mpi_cr/winnow
+END
+parallel.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/275/code_reviews/mpi_cr/winnow/parallel.cpp
+END
+parallel.cpp.review
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/275/code_reviews/mpi_cr/winnow/parallel.cpp.review
+END
+serial.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/275/code_reviews/mpi_cr/winnow/serial.cpp
+END
+serial.cpp.review
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/275/code_reviews/mpi_cr/winnow/serial.cpp.review
+END
+parallel.h.review
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/275/code_reviews/mpi_cr/winnow/parallel.h.review
+END
+parallel.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/275/code_reviews/mpi_cr/winnow/parallel.h
+END
+winnow.cpp.review
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/275/code_reviews/mpi_cr/winnow/winnow.cpp.review
+END
+winnow.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/275/code_reviews/mpi_cr/winnow/winnow.cpp
+END
+serial.h.review
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/275/code_reviews/mpi_cr/winnow/serial.h.review
+END
+serial.h
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/275/code_reviews/mpi_cr/winnow/serial.h
+END

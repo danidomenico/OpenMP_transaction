@@ -1,0 +1,122 @@
+\hypertarget{class_point}{
+\section{Point Class Reference}
+\label{class_point}\index{Point@{Point}}
+}
+Two-dimensional point.  
+
+
+{\tt \#include $<$cowichan.hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_point_e3633bf9b9559b53271705aa4963aa39}{Point} (\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{class_point_9cf9466659efcd0c3f694df2e076a620}{x}, \hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{class_point_4eb74233429bc00653883fb6085b7436}{y})
+\item 
+\hyperlink{class_point_d92f2337b839a94ce97dcdb439b4325a}{Point} ()
+\item 
+\hyperlink{class_point_f6ec88f9dcdb89bd70c5b20065da06bf}{Point} (const \hyperlink{class_point}{Point} \&other)
+\end{CompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{CompactItemize}
+\item 
+static \hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{class_point_89e1bcad932eff23a597241d0f4d146b}{distance} (const \hyperlink{class_point}{Point} \&p1, const \hyperlink{class_point}{Point} \&p2)
+\item 
+static \hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{class_point_1075264c8cee3b66d68764d131fc7c84}{cross} (const \hyperlink{class_point}{Point} \&l1, const \hyperlink{class_point}{Point} \&l2, const \hyperlink{class_point}{Point} \&p)
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{class_point_9cf9466659efcd0c3f694df2e076a620}{x}
+\item 
+\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{class_point_4eb74233429bc00653883fb6085b7436}{y}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Two-dimensional point. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_point_e3633bf9b9559b53271705aa4963aa39}{
+\index{Point@{Point}!Point@{Point}}
+\index{Point@{Point}!Point@{Point}}
+\subsubsection[{Point}]{\setlength{\rightskip}{0pt plus 5cm}Point::Point ({\bf real} {\em x}, \/  {\bf real} {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_point_e3633bf9b9559b53271705aa4963aa39}
+
+
+Construct a point. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em x}]x-coordinate. \item[{\em y}]y-coordinate. \end{description}
+\end{Desc}
+\hypertarget{class_point_d92f2337b839a94ce97dcdb439b4325a}{
+\index{Point@{Point}!Point@{Point}}
+\index{Point@{Point}!Point@{Point}}
+\subsubsection[{Point}]{\setlength{\rightskip}{0pt plus 5cm}Point::Point ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_point_d92f2337b839a94ce97dcdb439b4325a}
+
+
+Default constructor. \hypertarget{class_point_f6ec88f9dcdb89bd70c5b20065da06bf}{
+\index{Point@{Point}!Point@{Point}}
+\index{Point@{Point}!Point@{Point}}
+\subsubsection[{Point}]{\setlength{\rightskip}{0pt plus 5cm}Point::Point (const {\bf Point} \& {\em other})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_point_f6ec88f9dcdb89bd70c5b20065da06bf}
+
+
+Copy constructor. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em other}]point to copy. \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_point_1075264c8cee3b66d68764d131fc7c84}{
+\index{Point@{Point}!cross@{cross}}
+\index{cross@{cross}!Point@{Point}}
+\subsubsection[{cross}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf real} Point::cross (const {\bf Point} \& {\em l1}, \/  const {\bf Point} \& {\em l2}, \/  const {\bf Point} \& {\em p})\hspace{0.3cm}{\tt  \mbox{[}inline, static\mbox{]}}}}
+\label{class_point_1075264c8cee3b66d68764d131fc7c84}
+
+
+Compute the cross product of the vectors (l1,l2) and (l1,p). \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em l1}]first point. \item[{\em l2}]second point. \item[{\em p}]third point. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The cross product. \end{Desc}
+\hypertarget{class_point_89e1bcad932eff23a597241d0f4d146b}{
+\index{Point@{Point}!distance@{distance}}
+\index{distance@{distance}!Point@{Point}}
+\subsubsection[{distance}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf real} Point::distance (const {\bf Point} \& {\em p1}, \/  const {\bf Point} \& {\em p2})\hspace{0.3cm}{\tt  \mbox{[}inline, static\mbox{]}}}}
+\label{class_point_89e1bcad932eff23a597241d0f4d146b}
+
+
+Calculate euclidean distance between two points. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em p1}]first point. \item[{\em p2}]second point. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The distance between p1 and p2. \end{Desc}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_point_9cf9466659efcd0c3f694df2e076a620}{
+\index{Point@{Point}!x@{x}}
+\index{x@{x}!Point@{Point}}
+\subsubsection[{x}]{\setlength{\rightskip}{0pt plus 5cm}{\bf real} {\bf Point::x}}}
+\label{class_point_9cf9466659efcd0c3f694df2e076a620}
+
+
+x coordinate. \hypertarget{class_point_4eb74233429bc00653883fb6085b7436}{
+\index{Point@{Point}!y@{y}}
+\index{y@{y}!Point@{Point}}
+\subsubsection[{y}]{\setlength{\rightskip}{0pt plus 5cm}{\bf real} {\bf Point::y}}}
+\label{class_point_4eb74233429bc00653883fb6085b7436}
+
+
+y coordinate. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+cowichan/\hyperlink{cowichan_8hpp}{cowichan.hpp}\end{CompactItemize}

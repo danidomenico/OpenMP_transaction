@@ -1,0 +1,17 @@
+\hypertarget{cowichan__mpi_2outer_8cpp}{
+\section{cowichan\_\-mpi/outer.cpp File Reference}
+\label{cowichan__mpi_2outer_8cpp}\index{cowichan\_\-mpi/outer.cpp@{cowichan\_\-mpi/outer.cpp}}
+}
+MPI outer product implementation.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-mpi.hpp\char`\"{}}\par
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+MPI outer product implementation. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_m_p_i_39fcc8a331b0e26438fbf43fa01cf7c1}{CowichanMPI::outer} \end{Desc}

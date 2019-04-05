@@ -1,0 +1,23 @@
+     1	/**
+     2	 * Parallel implementation of generic gauss
+     3	 *
+     4	 * \file parallel.h
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-03-09
+     7	 */
+     8	
+     9	#pragma once
+    10	#ifndef GAUSS_PARALLEL_H
+    11	#define GAUSS_PARALLEL_H
+    12	
+    13	/*--------------------------------------------------------------*/
+    14	/* public functions						*/
+    15	/*--------------------------------------------------------------*/
+    16	
+    17	void gauss_mpi (mpi::communicator world,
+    18	                real2D*	matrix,			/* to solve */
+    19	                real1D*	vector,			/* target vector */
+    20	                real1D*	answer,			/* solution found */
+    21	                int		n);			/* size */
+    22	
+    23	#endif /* GAUSS_PARALLEL_H */

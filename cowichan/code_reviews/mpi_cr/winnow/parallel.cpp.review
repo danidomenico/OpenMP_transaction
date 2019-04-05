@@ -1,0 +1,615 @@
+TODO! This file is huge!!!
+
+     1	/**
+     2	 * Parallel implementation of weighted point selection
+     3	 *
+     4	 * \file parallel.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-23-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#include "parallel.h"
+    11	
+    12	// private
+    13	
+    14	static int1D*	Totals;		/* row totals */
+    15	static pt*	TmpPt;		/* temporary storage vector */
+    16	static pt*	TmpPt2;		/* another temporary storage vector */
+    17	static int*	Pivots;	/* pivot elements */
+    18	static int*	Counts;	/* number of elements in each interval */
+    19	static int*	Starts;	/* starts of sub-sections */
+    20	static int	Len;		/* number of points */
+    21	static int	NumSamples;	/* total number of samples */
+    22	static int	SectionSize;	/* size of individual sections */
+    23	static int	IntervalSize;	/* sampling interval */
+    24	static int	ParWidth_1;	/* number of threads - 1 */ 
+    25	
+    26	static int*	SumProc;		/* partial sums */
+    27	static int	SumShared;		/* final result */
+    28	
+    29	// public
+    30	
+    31	void
+    32	winnow_mpi(mpi::communicator world,
+    33	  int2D*		matrix,			/* point values */
+    34	  bool2D*	mask,			/* suitable points */
+    35	  int		nr,			/* row size */
+    36	  int		nc,			/* column size */
+    37	  pt1D*		pts,			/* points to create */
+    38	  int		npt			/* number of points */
+    39	){
+    40	  int		i, j;			/* loop indices */
+    41	  int		sum, tmp;		/* for scanning */
+    42	#if GRAPHICS
+    43	  int		gfxCount = 0;
+    44	#endif
+    45	  int rank, size;
+    46	
+    47	  rank = world.rank ();
+    48	  size = world.size ();
+    49	  if (size > 1) {
+    50	    ParWidth_1 = size - 1;
+    51	
+    52	    Totals = new int1D[MAXEXT];
+    53	    TmpPt = new pt[MAXEXT * MAXEXT];
+    54	    TmpPt2 = new pt[MAXEXT * MAXEXT];
+    55	
+    56	    Pivots = new int[size * size];
+    57	    Counts = new int[size * size];
+    58	    Starts = new int[size * size];
+    59	
+    60	    SumProc = new int[size];
+    61	
+    62	    /* pack points into temporary storage */
+    63	
+    64	    winnow_count(world, mask, nr, nc);
+    65	    i = scanIntSum(world, Totals, nr);
+    66	
+    67	    Len = i;
+    68	
+    69	    /* set slice sizes */
+    70	    NumSamples   = size * (ParWidth_1);
+    71	    SectionSize  = INT_CEIL(Len, size);
+    72	    IntervalSize = INT_CEIL(SectionSize, ParWidth_1);
+    73	
+    74	    ASSERT(Len >= npt);
+    75	    winnow_copy(world, matrix, mask, nr, nc);
+    76	
+    77	    /* sort */
+    78	    if ((size == 1) || (Len < NumSamples)){
+    79	      if (rank == 0) {
+    80	        ptSort(TmpPt, Len);
+    81	        winnow_pack(pts, npt, TmpPt, Len, 1, 0);
+    82	      }
+    83	      // broadcast pts
+    84	      broadcast (world, pts, npt, 0);
+    85	    } else {
+    86	      /* sort sections and select P-1 pivot values */
+    87	#if defined(TEST_OUTPUT) || defined(TEST_TIME)
+    88	      printf ("Started stage 1\n");
+    89	#endif
+    90	      fflush (stdout);
+    91	      winnow_psrs_1 (world);
+    92	      if (rank == 0) {
+    93	        intSort(Pivots, NumSamples);
+    94	      }
+    95	      // broadcast Pivots
+    96	      broadcast (world, Pivots, NumSamples, 0);
+    97	
+    98	      /* select P-1 pivot values from P*(P-1) pivot values */
+    99	      if (rank == 0) {
+   100	        for (i = 0, j = ParWidth_1 / 2; j < NumSamples; i++, j += size) {
+   101	          Pivots[i] = Pivots[j];
+   102	        }
+   103	        ASSERT(i == ParWidth_1);
+   104	      }
+   105	      // broadcast Pivots
+   106	      broadcast (world, Pivots, ParWidth_1, 0);
+   107	
+   108	      /* count elements in processor intervals that belong in pivot intervals */
+   109	#if defined(TEST_OUTPUT) || defined(TEST_TIME)
+   110	      printf ("Started stage 2\n");
+   111	#endif
+   112	      fflush (stdout);
+   113	      winnow_psrs_2(world);
+   114	      /* scan number of elements in pivot intervals */
+   115	      if (rank == 0) {
+   116	        sum = 0;
+   117	        for (i = 0; i < size; i++) {
+   118	          for (j = 0; j < size * size; j += size) {
+   119	            tmp = Counts[i+j];
+   120	            Starts[i+j] = sum;
+   121	            sum += tmp;
+   122	          }
+   123	        }
+   124	      }
+   125	      // broadcast Starts
+   126	      broadcast (world, Starts, size * size, 0);
+   127	
+   128	      /* copy values into pivot intervals */
+   129	#if defined(TEST_OUTPUT) || defined(TEST_TIME)
+   130	      printf ("Started stage 3\n");
+   131	#endif
+   132	      fflush (stdout);
+   133	      winnow_psrs_3(world);
+   134	      /* sort pivot intervals */
+   135	#if defined(TEST_OUTPUT) || defined(TEST_TIME)
+   136	      printf ("Started stage 4\n");
+   137	#endif
+   138	      fflush (stdout);
+   139	      winnow_psrs_4(world);
+   140	      /* copy selected points */
+   141	      winnow_pack(pts, npt, TmpPt2, Len, size, rank);
+   142	
+   143	      // broadcast pts
+   144	      int		stride;			/* stride in source */
+   145	      stride = Len / npt;
+   146	      for (rank = 0; rank < size; rank++) {
+   147	        for (i = (npt - 1) - rank; i >= 0; i -= size) {
+   148	          broadcast (world, pts[i], rank);
+   149	        }
+   150	      }
+   151	    }
+   152	
+   153	    delete [] Totals;
+   154	    delete [] TmpPt;
+   155	    delete [] TmpPt2;
+   156	
+   157	    delete [] Pivots;
+   158	    delete [] Counts;
+   159	    delete [] Starts;
+   160	
+   161	    delete [] SumProc;
+   162	  }
+   163	  else {
+   164	    pt1DX* ptVec;         // temp point vector
+   165	    int r, c, i, j, len;	// indices and number of points
+   166	    int stride;           // selection stride
+   167	
+   168	    ptVec = new pt1DX[MAXEXT * MAXEXT];
+   169	
+   170	    // fill temporary vector
+   171	    len = winnow_redBool2DCount_mpi(mask, nr, nc);
+   172	    ASSERT(len >= npt);
+   173	    i = 0;
+   174	    for (r=0; r<nr; r++){
+   175	      for (c=0; c<nc; c++){
+   176	        if (mask[r][c]){
+   177	          ptVec[i].x = r;
+   178	          ptVec[i].y = c;
+   179	          ptVec[i].w = matrix[r][c];
+   180	          i++;
+   181	        }
+   182	      }
+   183	    }
+   184	
+   185	    // sort
+   186	    ptSort(ptVec, len);
+   187	
+   188	    // copy over points
+   189	    stride = len / npt;
+   190	    for (i=npt-1, j=len-1; i>=0; i--, j-=stride){
+   191	      pts[i] = ptVec[j];
+   192	    }
+   193	  }
+   194	
+   195	  /* return */
+   196	}
+   197	
+   198	// private
+   199	
+   200	/*
+   201	 * @ winnow_copy : copy selected points from rows
+   202	 * > none
+   203	 * + fill tmpPt
+   204	 */
+   205	
+   206	void
+   207	winnow_copy(mpi::communicator world,
+   208	  int2D*		matrix,			/* matrix of values */
+   209	  bool2D*	mask,			/* mask on values */
+   210	  int		nr,			/* row size */
+   211	  int		nc			/* column size */
+   212	){
+   213	  int		lo, hi;		/* work descriptors */
+   214	  int		r, c, i;		/* loop and vector indices */
+   215	
+   216	  /* work */
+   217	  if (get_block_rows_mpi (world, 0, nr, &lo, &hi)) {
+   218	    for (r = lo; r < hi; r++) {
+   219	      i = Totals[r];
+   220	      for (c = 0; c < nc; c++) {
+   221	        if (mask[r][c]) {
+   222	          TmpPt[i].x = r;
+   223	          TmpPt[i].y = c;
+   224	          TmpPt[i].w = matrix[r][c];
+   225	          i++;
+   226	        }
+   227	      }
+   228	    }
+   229	  }
+   230	  // broadcast TmpPt
+   231	  for (r = 0; r < nr - 1; r++) {
+   232	    i = get_block_rank_mpi (world, 0, nr, r);
+   233	    if (Totals[r + 1] - Totals[r] > 0) {
+   234	      broadcast (world, &TmpPt[Totals[r]], Totals[r + 1] - Totals[r], i);
+   235	    }
+   236	  }
+   237	  i = get_block_rank_mpi (world, 0, nr, r);
+   238	  if (nr * nc - Totals[r] > 0) {
+   239	    broadcast (world, &TmpPt[Totals[r]], nr * nc - Totals[r], i);
+   240	  }
+   241	
+   242	  /* return */
+   243	}
+   244	
+   245	/*
+   246	 * @ winnow_count : count selected points within rows
+   247	 * > none
+   248	 * + fill totals
+   249	 */
+   250	
+   251	void
+   252	winnow_count(mpi::communicator world,
+   253	  bool2D*	mask,			/* mask on points */
+   254	  int		nr,			/* row size */
+   255	  int		nc			/* column size */
+   256	){
+   257	  int		lo, hi;		/* work descriptors */
+   258	  int		r, c;			/* loop indices */
+   259	  int i;
+   260	
+   261	  /* work */
+   262	  if (get_block_rows_mpi (world, 0, nr, &lo, &hi)) {
+   263	    for (r = lo; r < hi; r++) {
+   264	      Totals[r] = 0;
+   265	      for (c = 0; c < nc; c++) {
+   266	        if (mask[r][c]) {
+   267	          Totals[r] += 1;
+   268	        }
+   269	      }
+   270	    }
+   271	  }
+   272	  // broadcast Totals
+   273	  for (i = 0; i < world.size (); i++) {
+   274	    if (get_block_rows_mpi (world, 0, nr, &lo, &hi, i)) {
+   275	      broadcast (world, &Totals[lo], hi - lo, i);
+   276	    }
+   277	  }
+   278	
+   279	  /* return */
+   280	}
+   281	
+   282	/*
+   283	 * @ winnow_pack : compact points (serially)
+   284	 * > none
+   285	 * + pack points
+   286	 */
+   287	
+   288	void
+   289	winnow_pack(
+   290	  pt1D*		ptDst,			/* to pack into */
+   291	  int		nDst,			/* number of points */
+   292	  pt1D*		ptSrc,			/* to pull from */
+   293	  int		nSrc,			/* number of tmps */
+   294	  int		nt,			/* number of threads */
+   295	  int		rank
+   296	){
+   297	  int		i, j;			/* loop indices */
+   298	  int		stride;			/* stride in source */
+   299	
+   300	  stride = nSrc / nDst;
+   301	  for (i=(nDst-1)-rank, j=(nSrc-1)-(rank*stride);
+   302	       i>=0;
+   303	       i-=nt, j-=(stride*nt))
+   304	  {
+   305	    ptDst[i] = ptSrc[j];
+   306	  }
+   307	  /* return */
+   308	}
+   309	
+   310	/*
+   311	 * @ winnow_psrs_1 : first pass of PSRS
+   312	 * > none
+   313	 * + sort subsections, choose pivot elements
+   314	 */
+   315	
+   316	void
+   317	winnow_psrs_1(mpi::communicator world
+   318	){
+   319	  int		lo, hi;			/* work descriptors */
+   320	  int		i;			/* indices */
+   321	  int		offset;			/* to ensure even sampling */
+   322	  int		dex;			/* total index */
+   323	
+   324	  int rank, size;
+   325	
+   326	  rank = world.rank ();
+   327	  size = world.size ();
+   328	
+   329	  /* do own scheduling */
+   330	  offset = IntervalSize / 2;
+   331	  winnow_sched (rank, &lo, &hi);
+   332	
+   333	  /* sort */
+   334	  ptSort(TmpPt + lo, hi - lo);
+   335	
+   336	  // broadcast TmpPt
+   337	  for (i = 0; i < size; i++) {
+   338	    winnow_sched (i, &lo, &hi);
+   339	    broadcast (world, &TmpPt[lo], hi - lo, i);
+   340	  }
+   341	
+   342	  /* pack pivots */
+   343	  for (i = 0; i < ParWidth_1; i++) {
+   344	    dex = lo + offset + (i*IntervalSize);
+   345	    if (dex < hi){
+   346	      Pivots[(rank * ParWidth_1)+i] = TmpPt[dex].w;
+   347	    } else {
+   348	      Pivots[(rank * ParWidth_1)+i] = TmpPt[hi-1].w;
+   349	    }
+   350	  }
+   351	
+   352	  // broadcast Pivots
+   353	  for (rank = 0; rank < size; rank++) {
+   354	    for (i = 0; i < ParWidth_1; i++) {
+   355	      winnow_sched (i, &lo, &hi);
+   356	      broadcast (world, Pivots[(rank * ParWidth_1)+i], rank);
+   357	    }
+   358	  }
+   359	
+   360	  /* return */
+   361	}
+   362	
+   363	/*
+   364	 * @ winnow_psrs_2 : second phase of PSRS
+   365	 * > none
+   366	 * + count elements in each subsection
+   367	 */
+   368	
+   369	void
+   370	winnow_psrs_2(mpi::communicator world
+   371	){
+   372	  int		lo, hi;			/* own interval */
+   373	  int		i;			/* index into array */
+   374	  int		dexPivot, dexCount;	/* indices into pivots and counts */
+   375	  int		limCount;		/* limit on dexCount */
+   376	  int rank, size;
+   377	
+   378	  rank = world.rank ();
+   379	  size = world.size ();
+   380	
+   381	  /* do own scheduling */
+   382	  winnow_sched(rank, &lo, &hi);
+   383	
+   384	  /* count elements */
+   385	  dexPivot = 0;
+   386	  dexCount = rank * size;
+   387	  limCount = (rank + 1) * size;
+   388	  Counts[dexCount] = 0;
+   389	  for (i=lo; (i<hi) && (dexCount < limCount-1); i++){
+   390	    /* into current bucket */
+   391	    if (TmpPt[i].w < Pivots[dexPivot]){
+   392	      Counts[dexCount]++;
+   393	    }
+   394	    /* move on to next bucket */
+   395	    else {
+   396	      while ((dexPivot < ParWidth_1) && (Pivots[dexPivot] <= TmpPt[i].w)){
+   397	        dexPivot++;
+   398	        dexCount++;
+   399	        ASSERT(dexCount < limCount);
+   400	        Counts[dexCount] = 0;
+   401	      }
+   402	      /* account for this element */
+   403	      if (dexCount == limCount-1){
+   404	        Counts[dexCount] = (hi - i);
+   405	      } else {
+   406	        Counts[dexCount] = 1;
+   407	      }
+   408	    }
+   409	  }
+   410	  /* tidy up end */
+   411	  dexCount++;
+   412	  while (dexCount < limCount){
+   413	    Counts[dexCount] = 0;
+   414	    dexCount++;
+   415	  }
+   416	
+   417	  // broadcast Counts
+   418	  for (i = 0; i < size; i++) {
+   419	    broadcast (world, &Counts[i * size], size, i);
+   420	  }
+   421	
+   422	  /* return */
+   423	}
+   424	
+   425	/*
+   426	 * @ winnow_psrs_3 : third pass of PSRS
+   427	 * > none
+   428	 * + copy elements into correct section
+   429	 */
+   430	
+   431	void
+   432	winnow_psrs_3(mpi::communicator world
+   433	){
+   434	  int		lo, hi;			/* own source section boundaries */
+   435	  int		dexSrc, dexDst;		/* source and destination indices */
+   436	  int		dexCtrl;		/* index into control structures */
+   437	  int rank, size;
+   438	  int i;
+   439	
+   440	  rank = world.rank ();
+   441	  size = world.size ();
+   442	
+   443	  /* do own scheduling */
+   444	  winnow_sched(rank, &lo, &hi);
+   445	
+   446	  /* work */
+   447	  dexSrc = lo;
+   448	  for (dexCtrl = rank * size; dexCtrl < (rank + 1) * size; dexCtrl++) {
+   449	    for (dexDst = Starts[dexCtrl];
+   450	         dexDst < Starts[dexCtrl] + Counts[dexCtrl];
+   451	         dexDst++) {
+   452	      TmpPt2[dexDst] = TmpPt[dexSrc];
+   453	      dexSrc++;
+   454	    }
+   455	  }
+   456	  ASSERT(dexSrc == hi);
+   457	
+   458	  // broadcast TmpPt2
+   459	  for (i = 0; i < size; i++) {
+   460	    for (dexCtrl = i * size; dexCtrl < (i + 1) * size; dexCtrl++) {
+   461	      if (Counts[dexCtrl] > 0) {
+   462	        broadcast (world, &TmpPt2[Starts[dexCtrl]], Counts[dexCtrl], i);
+   463	      }
+   464	    }
+   465	  }
+   466	
+   467	  /* return */
+   468	}
+   469	
+   470	/*
+   471	 * @ winnow_psrs_4 : fourth phase of PSRS
+   472	 * > none
+   473	 * + sort elements in subsections
+   474	 */
+   475	
+   476	void
+   477	winnow_psrs_4(mpi::communicator world
+   478	){
+   479	  int		secBase, secLen;	/* base of own section and its length */
+   480	  int rank, size;
+   481	  int i;
+   482	
+   483	  rank = world.rank ();
+   484	  size = world.size ();
+   485	
+   486	  secBase = Starts[rank];
+   487	  if (rank < ParWidth_1){
+   488	    secLen = Starts[rank + 1] - secBase;
+   489	  } else {
+   490	    secLen = Len - secBase;
+   491	  }
+   492	  ptSort(TmpPt2 + secBase, secLen);
+   493	
+   494	  // broadcast TmpPt2
+   495	  for (i = 0; i < size; i++) {
+   496	    secBase = Starts[i];
+   497	    if (i < ParWidth_1){
+   498	      secLen = Starts[i + 1] - secBase;
+   499	    } else {
+   500	      secLen = Len - secBase;
+   501	    }
+   502	    if (secLen > 0) {
+   503	      broadcast (world, TmpPt2 + secBase, secLen, i);
+   504	    }
+   505	  }
+   506	
+   507	  /* return */
+   508	}
+   509	/*
+   510	 * @ winnow_sched : do scheduling for PSRS
+   511	 * > none
+   512	 * + set limit parameters
+   513	 */
+   514	
+   515	void
+   516	winnow_sched(int rank,
+   517	  int	      * start,			/* start of own interval */
+   518	  int	      * end			/* end of own interval */
+   519	){
+   520	  *start = rank * SectionSize;
+   521	  *end = (rank + 1) * SectionSize;
+   522	  if (*end > Len){
+   523	    *end = Len;
+   524	  }
+   525	  /* return */
+   526	}
+   527	
+   528	/*
+   529	 * @ scanIntSum : upward exclusive prefix sum of integer vector
+   530	 * > overall total
+   531	 * + do prefix sum
+   532	 */
+   533	
+   534	int
+   535	scanIntSum(mpi::communicator world,
+   536	  int	      * vec,			/* to sum */
+   537	  int		len			/* vector length */
+   538	){
+   539	  int		i, tmp, sum;		/* for summing */
+   540	  int		lo, hi;		/* work controls */
+   541	  bool		work;			/* do useful work? */
+   542	  int rank, size;
+   543	  int blo, bhi;
+   544	
+   545	  rank = world.rank ();
+   546	  size = world.size ();
+   547	
+   548	  /* prefix */
+   549	  if ((work = get_block_rows_mpi (world, 0, len, &lo, &hi))) {
+   550	    SumProc[rank] = 0;
+   551	    for (i = lo; i < hi; i++) {
+   552	      tmp = vec[i];
+   553	      vec[i] = SumProc[rank];
+   554	      SumProc[rank] += tmp;
+   555	    }
+   556	  }
+   557	  else {
+   558	    SumProc[rank] = 0;
+   559	  }
+   560	  // broadcast SumProc, vec
+   561	  for (i = 0; i < size; i++) {
+   562	    broadcast (world, SumProc[i], i);
+   563	    if(get_block_rows_mpi (world, 0, len, &blo, &bhi, i)) {
+   564	      broadcast (world, &vec[blo], bhi - blo, i);
+   565	    }
+   566	  }
+   567	
+   568	  /* smear */
+   569	  if (rank == 0) {
+   570	    SumShared = 0;
+   571	    for (i = 0; i < size; i++){
+   572	      tmp = SumProc[i];
+   573	      SumProc[i] = SumShared;
+   574	      SumShared += tmp;
+   575	    }
+   576	  }
+   577	  // broadcast SumShared, SumProc
+   578	  broadcast (world, SumProc, size, 0);
+   579	  broadcast (world, SumShared, 0);
+   580	
+   581	  /* suffix */
+   582	  if (work) {
+   583	    if (rank > 0){
+   584	      sum = SumProc[rank];
+   585	      for (i = lo; i < hi; i++) {
+   586	        vec[i] += sum;
+   587	      }
+   588	    }
+   589	  }
+   590	  // broadcast vec
+   591	  for (i = 1; i < size; i++) {
+   592	    if (get_block_rows_mpi (world, 0, len, &blo, &bhi, i)) {
+   593	      broadcast (world, &vec[blo], bhi - blo, i);
+   594	    }
+   595	  }
+   596	
+   597	  return SumShared;
+   598	}
+   599	
+   600	int winnow_redBool2DCount_mpi(bool2D* mask, // to reduce
+   601	                              int nr,       // row size
+   602	                              int nc)       // column size
+   603	{
+   604	  int		r, c, sum = 0;		/* indices and result */
+   605	
+   606	  for (r=0; r<nr; r++){
+   607	    for (c=0; c<nc; c++){
+   608	      if (mask[r][c]) sum++;
+   609	    }
+   610	  }
+   611	
+   612	  return sum;
+   613	}

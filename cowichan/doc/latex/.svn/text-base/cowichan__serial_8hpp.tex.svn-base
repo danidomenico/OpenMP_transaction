@@ -1,0 +1,27 @@
+\hypertarget{cowichan__serial_8hpp}{
+\section{cowichan\_\-serial/cowichan\_\-serial.hpp File Reference}
+\label{cowichan__serial_8hpp}\index{cowichan\_\-serial/cowichan\_\-serial.hpp@{cowichan\_\-serial/cowichan\_\-serial.hpp}}
+}
+Serial implementation of \hyperlink{class_cowichan}{Cowichan} problems.  
+
+
+{\tt \#include \char`\"{}../cowichan/cowichan.hpp\char`\"{}}\par
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{class_cowichan_serial}{CowichanSerial}
+\begin{CompactList}\small\item\em Serial implementation. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Namespaces}
+\begin{CompactItemize}
+\item 
+namespace \hyperlink{namespacecowichan__serial}{cowichan\_\-serial}
+\begin{CompactList}\small\item\em Additional classes and functions specific to serial implementation. \item\end{CompactList}
+
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+Serial implementation of \hyperlink{class_cowichan}{Cowichan} problems. 
+

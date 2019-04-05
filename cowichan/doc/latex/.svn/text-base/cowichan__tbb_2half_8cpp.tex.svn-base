@@ -1,0 +1,29 @@
+\hypertarget{cowichan__tbb_2half_8cpp}{
+\section{cowichan\_\-tbb/half.cpp File Reference}
+\label{cowichan__tbb_2half_8cpp}\index{cowichan\_\-tbb/half.cpp@{cowichan\_\-tbb/half.cpp}}
+}
+TBB half implementation.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-tbb.hpp\char`\"{}}\par
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{classcowichan__tbb_1_1_shuffle}{cowichan\_\-tbb::Shuffle}
+\begin{CompactList}\small\item\em This class does a halving shuffle. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Namespaces}
+\begin{CompactItemize}
+\item 
+namespace \hyperlink{namespacecowichan__tbb}{cowichan\_\-tbb}
+\begin{CompactList}\small\item\em Additional classes and functions specific to tbb implementation. \item\end{CompactList}
+
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+TBB half implementation. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_t_b_b_bbf17e641657d54fc0c571c008ac8f7a}{CowichanTBB::half} \end{Desc}

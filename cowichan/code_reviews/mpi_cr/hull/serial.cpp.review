@@ -1,0 +1,84 @@
+     1	/**
+     2	 * Serial implementation of convex hull
+     3	 *
+     4	 * \file serial.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 03-06-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#include "serial.h"
+    11	
+    12	// public
+    13	
+    14	void hull (pt1D* points,     // list of points
+    15	           int n,            // number of points
+    16	           pt1D* hullPoints, // list of points in convex hull
+    17	           int* hn)          // number of points in convex hull
+    18	{
+    19	  int i;
+    20	  pt min_p;
+    21	  pt max_p;
+    22	
+    23	  min_p = points[0];
+    24	  max_p = points[0];
+    25	  *hn = 0;
+    26	
+    27	  // figure out the points with minimum and maximum x values
+    28	  for (i = 1; i < n; i++) {
+    29	    if (min_p.x > points[i].x) {
+    30	      min_p = points[i];
+    31	    }
+    32	    if (max_p.x < points[i].x) {
+    33	      max_p = points[i];
+    34	    }
+    35	  }
+    36	
+    37	  // use these as initial pivots
+    38	  split (points, n, hullPoints, hn, min_p, max_p);
+    39	  split (points, n, hullPoints, hn, max_p, min_p);
+    40	}
+    41	
+    42	// private
+    43	
+    44	void split (pt1D* points,     // list of points
+    45	            int n,            // number of points
+    46	            pt1D* hullPoints, // list of points in convex hull
+    47	            int* hn,          // number of points in convex hull
+    48	            pt p1,            // boundary point #1
+    49	            pt p2)            // boundary point #2
+    50	{
+    51	  pt* maxPoint = NULL;
+    52	  real maxCross = -std::numeric_limits<real>::infinity ();
+    53	
+    54	  // compute the signed distances from the line for each point
+    55	  for (int i = 0; i < n; i++) {
+    56	    real currentCross = cross (p1, p2, points[i]);
+    57	    if (currentCross > maxCross) {
+    58	      maxPoint = &(points[i]);
+    59	      maxCross = currentCross;
+    60	    }
+    61	  }
+    62	
+    63	  // is there a point in the positive half-space?
+    64	  // if so, it has maximal distance, and we must recurse based on that point.
+    65	  if (maxCross > 0.0) {
+    66	    // recurse on the new set with the given far point
+    67	    split (points, n, hullPoints, hn, p1, *maxPoint);
+    68	    split (points, n, hullPoints, hn, *maxPoint, p2);
+    69	    return;
+    70	  } 
+    71	
+    72	  // otherwise, it's not on the right side; we don't need to split anymore.
+    73	  // this is because all points are inside the hull when we use this half-space.
+    74	  // add the first point and return.
+    75	  hullPoints[(*hn)++] = p1;
+    76	}
+    77	
+    78	/**
+    79	 * Computes the cross product of the vectors (l1,l2) and (l1,p).
+    80	 */
+    81	inline real cross (pt l1, pt l2, pt p)
+    82	{
+    83	  return (l1.x - p.x) * (l2.y - p.y) - (l1.y - p.y) * (l2.x - p.x);
+    84	}

@@ -1,0 +1,49 @@
+     1	/**
+     2	 * Parallel implementation of vector difference
+     3	 *
+     4	 * \file parallel.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-27-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#include "parallel.h"
+    11	
+    12	/*
+    13	 * @ vecdiff : do vector difference
+    14	 * > none
+    15	 * + find norm-1 vector difference
+    16	 */
+    17	
+    18	void
+    19	vecdiff_mpi(mpi::communicator world,
+    20	  real1D*	left,			/* left vector */
+    21	  real1D*	right,			/* right vector */
+    22	  int		n,			/* vector lengths */
+    23	  real	      * diff			/* norm-1 difference */
+    24	){
+    25	  int		lo, hi;		/* work controls */
+    26	  int		i;			/* loop index */
+    27	  real		d;			/* difference */
+    28	  real max_d;           // maximum difference
+    29	
+    
+Cleaner if you use a flag or 0 (as all values are >= 0 in this case),
+rather than extracting the first loop iteration. Could also be faster.
+    
+    30	  max_d = (real) fabs ((double) (left[0] - right[0]));
+    31	
+    32	  if (get_block_rows_mpi (world, 0, n, &lo, &hi)) {
+    33	    for (i = lo; i < hi; i++) {
+    34	      d = (real) fabs ((double) (left[i] - right[i]));
+    35	      if (d > max_d) {
+    36	        max_d = d;
+    37	      }
+    38	    }
+    39	  }
+    40	
+    41	  // reduce to maximum d's
+    42	  all_reduce (world, max_d, *diff, mpi::maximum<real>());
+    43	
+    44	  /* return */
+    45	}

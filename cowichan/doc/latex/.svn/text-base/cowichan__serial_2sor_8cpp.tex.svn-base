@@ -1,0 +1,17 @@
+\hypertarget{cowichan__serial_2sor_8cpp}{
+\section{cowichan\_\-serial/sor.cpp File Reference}
+\label{cowichan__serial_2sor_8cpp}\index{cowichan\_\-serial/sor.cpp@{cowichan\_\-serial/sor.cpp}}
+}
+Serial sor implementation.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-serial.hpp\char`\"{}}\par
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+Serial sor implementation. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_serial_6e8b06711d976de1adc1e4dc81e560e5}{CowichanSerial::sor} \end{Desc}

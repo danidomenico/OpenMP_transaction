@@ -1,0 +1,94 @@
+%!
+%%Title: /tmp/xfig-fig007191
+%%Creator: fig2dev
+%%CreationDate: Thu Apr 21 21:09:17 1994
+%%For: gvw@flits.cs.vu.nl (Wilson GV,kamer xxxx,telef. xxxx,via bal,tot 31dec94)
+%%BoundingBox: 0 0 558 166
+%%Pages: 0
+%%EndComments
+/$F2psDict 6400 dict def 
+$F2psDict begin
+$F2psDict /mtrx matrix put
+/l {lineto} bind def
+/m {moveto} bind def
+/s {stroke} bind def
+/n {newpath} bind def
+/gs {gsave} bind def
+/gr {grestore} bind def
+/clp {closepath} bind def
+/graycol {dup dup currentrgbcolor 4 -2 roll mul 4 -2 roll mul
+4 -2 roll mul setrgbcolor} bind def
+/col-1 {} def
+/col0 {0 0 0 setrgbcolor} bind def
+/col1 {0 0 1 setrgbcolor} bind def
+/col2 {0 1 0 setrgbcolor} bind def
+/col3 {0 1 1 setrgbcolor} bind def
+/col4 {1 0 0 setrgbcolor} bind def
+/col5 {1 0 1 setrgbcolor} bind def
+/col6 {1 1 0 setrgbcolor} bind def
+/col7 {1 1 1 setrgbcolor} bind def
+	end
+	/$F2psBegin {$F2psDict begin /$F2psEnteredState save def} def
+	/$F2psEnd {$F2psEnteredState restore end} def
+	%%EndProlog
+
+$F2psBegin
+0 setlinecap 0 setlinejoin
+-9 54 translate
+0.0 166.0 translate 0.900 -0.900 scale
+0.500 setlinewidth
+% Polyline
+n 59 219 m 119 219 l  119 179 l  144 179 l 
+ 144 154 l  159 154 l  159 169 l  204 169 l  204 134 l 
+ 229 134 l  229 119 l gs col-1 s gr
+n 229 119 m 254 119 l  254 99 l  279 99 l gs col-1 s gr
+n 271.000 97.000 m 279.000 99.000 l 271.000 101.000 l gs 2 setlinejoin col-1 s gr
+1.000 setlinewidth
+n 55.000 75.000 m 59.000 59.000 l 63.000 75.000 l gs 2 setlinejoin col-1 s gr
+% Polyline
+n 59 59 m 59 219 l  279 219 l gs col-1 s gr
+n 263.000 215.000 m 279.000 219.000 l 263.000 223.000 l gs 2 setlinejoin col-1 s gr
+0.500 setlinewidth
+	[4.000000] 0 setdash
+% Polyline
+n 59 99 m 274 99 l gs col-1 s gr
+	[] 0 setdash
+1.000 setlinewidth
+n 405.000 75.000 m 409.000 59.000 l 413.000 75.000 l gs 2 setlinejoin col-1 s gr
+% Polyline
+n 409 59 m 409 219 l  629 219 l gs col-1 s gr
+n 613.000 215.000 m 629.000 219.000 l 613.000 223.000 l gs 2 setlinejoin col-1 s gr
+0.500 setlinewidth
+	[4.000000] 0 setdash
+% Polyline
+n 409 99 m 624 99 l gs col-1 s gr
+	[] 0 setdash
+	[4.000000] 0 setdash
+% Polyline
+n 409 159 m 499 159 l  499 219 l gs col-1 s gr
+	[] 0 setdash
+% Interpolated spline
+n 459 219 m
+	468.866 195.263 473.866 185.263 479 179 curveto
+	487.726 168.356 512.467 150.615 524 144 curveto
+	534.894 137.751 562.262 127.795 574 124 curveto
+	582.987 121.094 604.509 115.168 614 114 curveto
+	614.863 113.894 616.113 113.894 619 114 curveto
+gs col-1 s gr
+n 611.079 111.708 m 619.000 114.000 l 610.932 115.705 l gs 2 setlinejoin col-1 s gr
+/Times-Roman findfont 12.00 scalefont setfont
+9 139 m 
+gs 1 -1 scale (Speedup) col-1 show gr
+/Times-Roman findfont 12.00 scalefont setfont
+104 239 m 
+gs 1 -1 scale (Programming Effort) col-1 show gr
+/Times-Roman findfont 12.00 scalefont setfont
+359 139 m 
+gs 1 -1 scale (Speedup) col-1 show gr
+/Times-Roman findfont 12.00 scalefont setfont
+489 234 m 
+gs 1 -1 scale (P) col-1 show gr
+/Times-Roman findfont 12.00 scalefont setfont
+494 244 m 
+gs 1 -1 scale (1/2) col-1 show gr
+$F2psEnd

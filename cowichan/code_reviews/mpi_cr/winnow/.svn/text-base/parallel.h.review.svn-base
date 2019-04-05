@@ -1,0 +1,92 @@
+     1	/**
+     2	 * Parallel implementation of weighted point selection
+     3	 *
+     4	 * \file parallel.h
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-23-09
+     7	 */
+     8	
+     9	#pragma once
+    10	#ifndef WINNOW_PARALLEL_H
+    11	#define WINNOW_PARALLEL_H
+    12	
+    13	/*--------------------------------------------------------------*/
+    14	/* private function prototypes					*/
+    15	/*--------------------------------------------------------------*/
+    16	
+    17	void
+    18	winnow_copy(mpi::communicator world,
+    19	  int2D*		matrix,			/* matrix of values */
+    20	  bool2D*	mask,			/* mask on values */
+    21	  int		nr,			/* row size */
+    22	  int		nc			/* column size */
+    23	);
+    24	void
+    25	winnow_count(mpi::communicator world,
+    26	  bool2D*	mask,			/* mask on points */
+    27	  int		nr,			/* row size */
+    28	  int		nc			/* column size */
+    29	);
+    30	void
+    31	winnow_pack(
+    32	  pt1D*		ptDst,			/* to pack into */
+    33	  int		nDst,			/* number of points */
+    34	  pt1D*		ptSrc,			/* to pull from */
+    35	  int		nSrc,			/* number of tmps */
+    36	  int		nt,			/* number of threads */
+    37	  int		rank
+    38	);
+    39	void
+    40	winnow_psrs_1(
+    41	  mpi::communicator world
+    42	);
+    43	void
+    44	winnow_psrs_2(
+    45	  mpi::communicator world
+    46	);
+    47	void
+    48	winnow_psrs_3(
+    49	  mpi::communicator world
+    50	);
+    51	void
+    52	winnow_psrs_4(
+    53	  mpi::communicator world
+    54	);
+    55	void
+    56	winnow_sched(
+    57	  int		rank,			/* caller thread ID */
+    58	  int	      * start,			/* start of own interval */
+    59	  int	      * end			/* end of own interval */
+    60	); 
+    61	
+    62	int
+    63	scanIntSum(mpi::communicator world,
+    64	  int	      * vec,			/* to sum */
+    65	  int		len			/* vector length */
+    66	);
+    67	
+    68	int winnow_redBool2DCount_mpi(bool2D* mask, // to reduce
+    69	                              int nr,       // row size
+    70	                              int nc);      // column size
+    71	
+    72	/*--------------------------------------------------------------*/
+    73	/* public functions						*/
+    74	/*--------------------------------------------------------------*/
+    75	
+    76	/*
+    77	 * @ winnow : do point winnowing
+    78	 * > none
+    79	 * + create vector of points
+    80	 */
+    81	
+    82	void
+    83	winnow_mpi(mpi::communicator world,
+    84	  int2D*		matrix,			/* point values */
+    85	  bool2D*	mask,			/* suitable points */
+    86	  int		nr,			/* row size */
+    87	  int		nc,			/* column size */
+    88	  pt1D*		pt,			/* points to create */
+    89	  int		npt			/* number of points */
+    90	);
+    91	
+    92	#endif /* WINNOW_PARALLEL_H */

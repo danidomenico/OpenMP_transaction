@@ -1,0 +1,17 @@
+\hypertarget{cowichan__serial_2vecdiff_8cpp}{
+\section{cowichan\_\-serial/vecdiff.cpp File Reference}
+\label{cowichan__serial_2vecdiff_8cpp}\index{cowichan\_\-serial/vecdiff.cpp@{cowichan\_\-serial/vecdiff.cpp}}
+}
+Serial vecdiff implementation.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-serial.hpp\char`\"{}}\par
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+Serial vecdiff implementation. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_serial_34b75a2084051b3677071bb3c334d1f4}{CowichanSerial::vecdiff} \end{Desc}

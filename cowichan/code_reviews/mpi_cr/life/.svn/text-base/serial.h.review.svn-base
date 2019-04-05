@@ -1,0 +1,70 @@
+     1	/**
+     2	 * Serial implementation of conway's game of life
+     3	 *
+     4	 * \file serial.h
+     5	 * \author Andrew Borzenko
+     6	 * \date 01-26-09
+     7	 */
+     8	
+     9	#pragma once
+    10	#ifndef LIFE_SERIAL_H
+    11	#define LIFE_SERIAL_H
+    12	
+    13	/*--------------------------------------------------------------*/
+    14	/* public functions						*/
+    15	/*--------------------------------------------------------------*/
+    16	
+    17	/*
+    18	 * @ life : simulate Game of Life
+    19	 * > none
+    20	 * + evolve world
+    21	 */
+    22	
+    23	void
+    24	life(
+    25	  bool2D*	world,			/* world to evolve */
+    26	  int		nr,			/* row size */
+    27	  int		nc,			/* column size */
+    28	  int		iters			/* number of iterations */
+    29	);
+    30	
+    31	/*--------------------------------------------------------------*/
+    32	/* private functions						*/
+    33	/*--------------------------------------------------------------*/
+    34	
+    35	/*
+    36	 * @ life_one : update count for single cell
+    37	 * > none
+    38	 * + update count (using fact that TRUE==1 and FALSE==0)
+    39	 */
+    40	
+    41	void
+    42	life_one(
+    43	  bool2D*	world,			/* world to evolve */
+    44	  int2D*		count,			/* neighborhood counts */
+    45	  int		r,			/* this row */
+    46	  int		r_lo,			/* lower row */
+    47	  int		r_hi,			/* higher row */
+    48	  int		c,			/* this column */
+    49	  int		c_lo,			/* lower column */
+    50	  int		c_hi			/* higher column */
+    51	);
+    52	
+    53	/*
+    54	 * @ life_row : count entire row
+    55	 * > none
+    56	 * + update counts
+    57	 */
+    58	
+    59	void
+    60	life_row(
+    61	  bool2D*	world,			/* world to evolve */
+    62	  int2D*		count,			/* neighborhood counts */
+    63	  int		nr,			/* row size */
+    64	  int		nc,			/* column size */
+    65	  int		r,			/* this row */
+    66	  int		r_lo,			/* lower row */
+    67	  int		r_hi			/* higher row */
+    68	);
+    69	
+    70	#endif /* LIFE_SERIAL_H */

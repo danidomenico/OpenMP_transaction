@@ -1,0 +1,44 @@
+\hypertarget{index_intro_sec}{}\section{Introduction}\label{index_intro_sec}
+The \hyperlink{class_cowichan}{Cowichan} problems are implemented by various parallel programming systems. Serial C++ implementation is available for comparison. The \hyperlink{class_cowichan}{Cowichan} class is the base class for all C++ implementations.\hypertarget{index_problems_sec}{}\section{The Problems}\label{index_problems_sec}
+Currently, there are 14 \hyperlink{class_cowichan}{Cowichan} problems. They are described below. \hyperlink{class_cowichan}{Cowichan} class. Problems can be run separately by passing the problem name as an argument on the command line. The inputs to the problems are defined in \hyperlink{cowichan__defaults_8hpp}{cowichan\_\-defaults.hpp}. There is currently no way to override the inputs without recompiling.\hypertarget{index_mandel_sec}{}\subsection{1. Mandelbrot Set Generation}\label{index_mandel_sec}
+This module generates the Mandelbrot Set for a specified region of the complex plane. \begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_ec6cc4eb2ad444474b923532167e98a2}{Cowichan::mandel}\end{Desc}
+\hypertarget{index_randmat_sec}{}\subsection{2. Random Number Generation}\label{index_randmat_sec}
+This module fills a matrix with pseudo-random integers. Note that, as in all problems, the output is required to be independent of the number of processors used. However, the matrices generated may be different in each implementation. \begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_c44cacf9d9e363a5b076bcee8b9a7a73}{Cowichan::randmat}\end{Desc}
+\hypertarget{index_half_sec}{}\subsection{3. Two-Dimensional Shuffle}\label{index_half_sec}
+This module divides the values in a rectangular two-dimensional integer matrix into two halves along one axis, shuffles them, and then repeats this operation along the other axis. Values in odd-numbered locations are collected at the low end of each row or column, while values in even-numbered locations are moved to the high end. \begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_308603053675bccbe631f04af921f57c}{Cowichan::half}\end{Desc}
+\hypertarget{index_invperc_sec}{}\subsection{4. Invasion Percolation}\label{index_invperc_sec}
+Invasion percolation models the displacement of one fluid (such as oil) by another (such as water) in fractured rock. In two dimensions, this can be simulated by generating an NxN grid of random numbers in the range \mbox{[}1. . .R\mbox{]}, and then marking the center cell of the grid as filled. In each iteration, one examines the four orthogonal neighbors of all filled cells, chooses the one with the lowest value (i.e. the one with the least resistance to filling), and fills it in. The simulation continues until some fixed percentage of cells have been filled, or until some other condition (such as the presence of trapped regions) is achieved. The fractal structure of the filled and unfilled regions is then examined to determine how much oil could be recovered. The naive way to implement this is to repeatedly scan the array; a more sophisticated, and much faster, sequential technique is to maintain a priority queue of unfilled cells which are neighbors of filled cells. This latter technique is similar to the list-based methods used in some cellular automaton programs, and is very difficult to parallelize effectively. Filling begins at the central cell of the matrix (rounding down for even-sized axes). \begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_ea126792a31e54a8722663b7ea768955}{Cowichan::invperc}\end{Desc}
+\hypertarget{index_thresh_sec}{}\subsection{5. Histogram Thresholding}\label{index_thresh_sec}
+This module performs histogram thresholding on an image. Given an integer image I and a target percentage p, it constructs a binary image B such that B\mbox{[}i,j\mbox{]} is set if no more than p percent of the pixels in I are brighter than I\mbox{[}i,j\mbox{]}. The general idea is that an image's histogram should have 2 peaks, one centered around the average foreground intensity, and one centered around the average background intensity. This program attempts to set a threshold between the two peaks in the histogram and select the pixels above the threshold. \begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_a0b633b8c1f21884e0998a9c7020c08c}{Cowichan::thresh}\end{Desc}
+\hypertarget{index_life_sec}{}\subsection{6. Game of Life}\label{index_life_sec}
+This module simulates the evolution of Conway's Game of Life, a two-dimensional cellular automaton. At each time step, this module must count the number of live (true) neighbors of each cell, using both orthogonal and diagonal connectivity. The update rule is simple: if a cell has 3 live neighbors, or has 2 live neighbors and is already alive, it is alive in the next generation. In any other situation, the cell becomes, or stays, dead. \begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_d449595ef2fe934bdd128ac8b1f51d07}{Cowichan::life}\end{Desc}
+\hypertarget{index_winnow_sec}{}\subsection{7. Weighted Point Selection}\label{index_winnow_sec}
+This module converts a matrix of integer values to a vector of points, represented as x and y coordinates. Each location where mask is true becomes a candidate point, with a weight equal to the integer value in matrix at that location and x and y coordinates equal to its row and column indices. These candidate points are then {\bf sorted} into increasing order by weight, and n evenly-spaced points selected to create the result vector. \begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_13d60e06ced3b5da79d62c133ce82337}{Cowichan::winnow}\end{Desc}
+\hypertarget{index_norm_sec}{}\subsection{8. Point Location Normalization}\label{index_norm_sec}
+This module normalizes point coordinates so that all points lie within the unit square \mbox{[}0. . .1\mbox{]}x\mbox{[}0. . .1\mbox{]}. \begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_3df21e3c627958114e045c3559a29f30}{Cowichan::norm}\end{Desc}
+\hypertarget{index_hull_sec}{}\subsection{9. Convex Hull}\label{index_hull_sec}
+This module takes a list of two-dimensional points and reorders them by doing multiple convex hull computations. Convex hull is the boundary of the minimal convex set containing a given non-empty finite set of points in the plane. In other words, all points not in the convex hull are enclosed in the convex hull polygon. At each step the convex hull points are taken out of the input list and are put into the output list. The computation terminates when there are no more points left in the input list. \begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_0c6b68ae3c059b66893405f8530a2e0a}{Cowichan::hull}\end{Desc}
+\hypertarget{index_outer_sec}{}\subsection{10. Outer Product}\label{index_outer_sec}
+This module turns a vector containing point positions into a dense, symmetric, diagonally dominant matrix by calculating the distances between each pair of points. It also constructs a real vector whose values are the distance of each point from the origin. \begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_52f17221019290b88334b0ca7f3bcdb9}{Cowichan::outer}\end{Desc}
+\hypertarget{index_gauss_sec}{}\subsection{11. Gaussian Elimination}\label{index_gauss_sec}
+This module solves a matrix equation AX = V for a dense, symmetric, diagonally dominant matrix A and an arbitrary vector non-zero V using explicit reduction (matrices are required to be symmetric and diagonally dominant in order to guarantee that there is a well-formed solution to the equation). \begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_aa9aac74b96dc5ed33e821d94649d1b2}{Cowichan::gauss}\end{Desc}
+\hypertarget{index_sor_sec}{}\subsection{12. Successive Over-Relaxation}\label{index_sor_sec}
+This module solves a matrix equation AX = V for a dense, symmetric, diagonally dominant matrix A and an arbitrary vector non-zero V using successive over-relaxation. \begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_92d8d9ae77208115fdfe69e1174f601c}{Cowichan::sor}\end{Desc}
+\hypertarget{index_product_sec}{}\subsection{13. Matrix-Vector Product}\label{index_product_sec}
+This module calculates V in AX = V where A is a matrix and X is a vector. \begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_3d7d4b581a1d6f0392dc452830fb3b03}{Cowichan::product}\end{Desc}
+\hypertarget{index_vecdiff_sec}{}\subsection{14. 1-Norm Vector Difference}\label{index_vecdiff_sec}
+This module calculates the 1-norm of the difference between two vectors. In case the vectors are actual and computed values of some calculation the result represents the magnitude of the error. \begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_775d72b5e7d122f9f32555352278250e}{Cowichan::vecdiff} \end{Desc}

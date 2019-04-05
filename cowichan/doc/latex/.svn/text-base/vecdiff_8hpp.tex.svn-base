@@ -1,0 +1,23 @@
+\hypertarget{vecdiff_8hpp}{
+\section{cowichan\_\-lt/src/vecdiff.hpp File Reference}
+\label{vecdiff_8hpp}\index{cowichan\_\-lt/src/vecdiff.hpp@{cowichan\_\-lt/src/vecdiff.hpp}}
+}
+LinuxTuples vector difference header file.  
+
+
+{\tt \#include \char`\"{}tuple\_\-common.hpp\char`\"{}}\par
+{\tt \#include \char`\"{}cowichan\_\-lt.hpp\char`\"{}}\par
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{class_l_t_vecdiff}{LTVecdiff}
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+LinuxTuples vector difference header file. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_linux_tuples_213185666ea7dd0c9abc59899b454086}{CowichanLinuxTuples::vecdiff} \end{Desc}

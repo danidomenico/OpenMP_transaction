@@ -1,0 +1,20 @@
+\hypertarget{cowichan__lt_2src_2gauss_8cpp}{
+\section{cowichan\_\-lt/src/gauss.cpp File Reference}
+\label{cowichan__lt_2src_2gauss_8cpp}\index{cowichan\_\-lt/src/gauss.cpp@{cowichan\_\-lt/src/gauss.cpp}}
+}
+LinuxTuples gauss implementation.  
+
+
+{\tt \#include $<$iostream$>$}\par
+{\tt \#include $<$cstdio$>$}\par
+{\tt \#include $<$cmath$>$}\par
+{\tt \#include \char`\"{}gauss.hpp\char`\"{}}\par
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+LinuxTuples gauss implementation. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_linux_tuples_fd3e659afb38415f56fd508333b7bb1b}{CowichanLinuxTuples::gauss} \end{Desc}

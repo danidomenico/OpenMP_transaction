@@ -1,0 +1,32 @@
+\hypertarget{structcowichan__mpi_1_1minimum__pt}{
+\section{cowichan\_\-mpi::minimum\_\-pt Struct Reference}
+\label{structcowichan__mpi_1_1minimum__pt}\index{cowichan\_\-mpi::minimum\_\-pt@{cowichan\_\-mpi::minimum\_\-pt}}
+}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_point}{Point} \hyperlink{structcowichan__mpi_1_1minimum__pt_627215a36e3748e8ca0ff907a2a24f65}{operator()} (\hyperlink{class_point}{Point} a, \hyperlink{class_point}{Point} b)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+MPI reduction primitive for calculating point minimum. 
+
+\subsection{Member Function Documentation}
+\hypertarget{structcowichan__mpi_1_1minimum__pt_627215a36e3748e8ca0ff907a2a24f65}{
+\index{cowichan\_\-mpi::minimum\_\-pt@{cowichan\_\-mpi::minimum\_\-pt}!operator()@{operator()}}
+\index{operator()@{operator()}!cowichan_mpi::minimum_pt@{cowichan\_\-mpi::minimum\_\-pt}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point} cowichan\_\-mpi::minimum\_\-pt::operator() ({\bf Point} {\em a}, \/  {\bf Point} {\em b})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{structcowichan__mpi_1_1minimum__pt_627215a36e3748e8ca0ff907a2a24f65}
+
+
+Get point minimum. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em a}]point 1. \item[{\em b}]point 2. \end{description}
+\end{Desc}
+
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+cowichan\_\-mpi/\hyperlink{cowichan__mpi_2norm_8cpp}{norm.cpp}\end{CompactItemize}

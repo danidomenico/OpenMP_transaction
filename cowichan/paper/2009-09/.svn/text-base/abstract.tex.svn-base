@@ -1,0 +1,10 @@
+\begin{abstract}
+Most programmers believe that parallel programming is harder than sequential programming.
+Many also believe that today's parallel programming systems make it even harder.
+We have developed a suite of chained toy problems that can be used to assess
+the usability of different scientific programming languages, parallel or otherwise.
+This paper motivates and describes the suite,
+and discusses what we have learned from porting it to four parallel C++ systems
+(MPI, OpenMP, Intel Thread Building Blocks, and a Linux tuple space system),
+and from translating it into sequential and parallel Haskell.
+\end{abstract}

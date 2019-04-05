@@ -1,0 +1,54 @@
+\section{Introduction\label{s:intro}}
+
+In the late 1980s and early 1990s,
+many people (including the first author of this paper)
+were convinced that programming was about to ``go parallel'' in a big way.
+Those same predictions are being made again today:
+fans of GPUs, multicore CPUs, and cloud computing all claim
+that programmers can no longer afford to \emph{not} think about parallelism,
+and that we will have to rethink programming from the ground up
+to take advantage of all that shiny new hardware.
+
+But how?
+And how will we know if we're on the right track?
+Twenty years ago,
+a survey by Bal \emph{et~al.} listed more than 300 parallel programming systems \cite{b:par-lang-survey}.
+Only a handful have survived,
+all of them very conservative extensions to, or libraries for, mainstream languages.
+If Erlang, Haskell, ML, F\#, or other exotic languages are to gain ground,
+their advocates must convince a sceptical audience
+that they actually can solve real problems more easily than existing alternatives.
+
+We propose using a suite of simple problems
+to compare the usability of parallel programming systems.
+Competent programmers, fluent in a specific system,
+will implement solutions to these problems and report their experiences
+in terms of development time, code clarity, and runtime performance.
+These problems are individually very simple,
+but together cover a broad range of scientific domains.
+
+One significant innovation in this work is that
+we also require implementors to chain applications together,
+so that the output of one is an input to another.
+This will allow us to assess how well each language or library supports modularization and re-use.
+It is also more realistic than having each application run in isolation,
+since large scientific codes are usually composed of modules
+that have different ``best'' data layouts and parallelization strategies.
+
+Section~\ref{s:quant} motivates this work by showing how poor usability reduces realizable performance.
+Section~\ref{s:method} outlines our method;
+Section~\ref{s:toys} presents our benchmark suite,
+Section~\ref{s:issues} discusses outstanding issues,
+and Section~\ref{s:concl} summarizes the project's current status.
+
+\subsection*{History and Acknowledgments}
+
+The first author originally developed this suite in the mid-1990s,
+inspired by discussions with R.\ Bruce Irvin (then at the University of Wisconsin)
+and Henri Bal (Vrije Universiteit, Amsterdam),
+and by the work of Feo and others on the Salishan Problems~\cite{b:salishan}.
+In recognition of the latter,
+this suite is called
+the Cowichan\footnote{\noindent Pronounced {\em{Cow}\/}-i-chun.
+	Like Salishan, the word is a Northwest Coast native place name.} Problems.
+Early experiences were described in \cite{b:cowichan-ifip} and \cite{b:cowichan-orca}.

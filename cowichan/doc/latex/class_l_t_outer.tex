@@ -1,0 +1,102 @@
+\hypertarget{class_l_t_outer}{
+\section{LTOuter Class Reference}
+\label{class_l_t_outer}\index{LTOuter@{LTOuter}}
+}
+{\tt \#include $<$outer.hpp$>$}
+
+Inheritance diagram for LTOuter::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{class_l_t_outer}
+\end{center}
+\end{figure}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{class_l_t_outer_3e0493a0d06fbc86fe614edbd752eb8a}{consumeInput} ()
+\item 
+void \hyperlink{class_l_t_outer_e0b1322b40271bb94c272b6117c8d16c}{work} ()
+\item 
+void \hyperlink{class_l_t_outer_2a12a006761b2e1132b84209d29fddac}{produceOutput} ()
+\end{CompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{CompactItemize}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_outer_39056ff036f5138e2f7529c804698bb4}{SYNCH\_\-LOCK} = \char`\"{}outer synch lock\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_outer_6941f4f6ba366cff85accf2adc955a66}{REQUEST} = \char`\"{}outer request\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_outer_3a27e2c7371866691ebe47def5db76fa}{MAX\_\-DISTANCE} = \char`\"{}outer max distance\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_outer_b1e7e3c0471f26305f697f1324f769fa}{MATRIX\_\-ENTRY} = \char`\"{}outer matrix entry\char`\"{}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Performs the outer product with LinuxTuples. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_l_t_outer_3e0493a0d06fbc86fe614edbd752eb8a}{
+\index{LTOuter@{LTOuter}!consumeInput@{consumeInput}}
+\index{consumeInput@{consumeInput}!LTOuter@{LTOuter}}
+\subsubsection[{consumeInput}]{\setlength{\rightskip}{0pt plus 5cm}void LTOuter::consumeInput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_outer_3e0493a0d06fbc86fe614edbd752eb8a}
+
+
+The consume input process is spawned once and should distribute tasks to the worker processes. 
+
+Implements \hyperlink{class_tuple_application_e163c5a536de01c8b94b49528a17dab2}{TupleApplication}.\hypertarget{class_l_t_outer_2a12a006761b2e1132b84209d29fddac}{
+\index{LTOuter@{LTOuter}!produceOutput@{produceOutput}}
+\index{produceOutput@{produceOutput}!LTOuter@{LTOuter}}
+\subsubsection[{produceOutput}]{\setlength{\rightskip}{0pt plus 5cm}void LTOuter::produceOutput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_outer_2a12a006761b2e1132b84209d29fddac}
+
+
+The output producer decides when the tuple application is finished; once this function returns, the tuple application is complete. 
+
+Implements \hyperlink{class_tuple_application_8743dfcf17dedd52887c0b2ab170d8dc}{TupleApplication}.\hypertarget{class_l_t_outer_e0b1322b40271bb94c272b6117c8d16c}{
+\index{LTOuter@{LTOuter}!work@{work}}
+\index{work@{work}!LTOuter@{LTOuter}}
+\subsubsection[{work}]{\setlength{\rightskip}{0pt plus 5cm}void LTOuter::work ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_outer_e0b1322b40271bb94c272b6117c8d16c}
+
+
+Worker processes are created and killed after the output process has finished. 
+
+Implements \hyperlink{class_tuple_application_ef6ae8bb1d697e4ed038b43320183c89}{TupleApplication}.
+
+\subsection{Member Data Documentation}
+\hypertarget{class_l_t_outer_b1e7e3c0471f26305f697f1324f769fa}{
+\index{LTOuter@{LTOuter}!MATRIX\_\-ENTRY@{MATRIX\_\-ENTRY}}
+\index{MATRIX\_\-ENTRY@{MATRIX\_\-ENTRY}!LTOuter@{LTOuter}}
+\subsubsection[{MATRIX\_\-ENTRY}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTOuter::MATRIX\_\-ENTRY} = \char`\"{}outer matrix entry\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_outer_b1e7e3c0471f26305f697f1324f769fa}
+
+
+An entry in the matrix, to be stored in the output. \hypertarget{class_l_t_outer_3a27e2c7371866691ebe47def5db76fa}{
+\index{LTOuter@{LTOuter}!MAX\_\-DISTANCE@{MAX\_\-DISTANCE}}
+\index{MAX\_\-DISTANCE@{MAX\_\-DISTANCE}!LTOuter@{LTOuter}}
+\subsubsection[{MAX\_\-DISTANCE}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTOuter::MAX\_\-DISTANCE} = \char`\"{}outer max distance\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_outer_3a27e2c7371866691ebe47def5db76fa}
+
+
+The maximum length of any vector. \hypertarget{class_l_t_outer_6941f4f6ba366cff85accf2adc955a66}{
+\index{LTOuter@{LTOuter}!REQUEST@{REQUEST}}
+\index{REQUEST@{REQUEST}!LTOuter@{LTOuter}}
+\subsubsection[{REQUEST}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTOuter::REQUEST} = \char`\"{}outer request\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_outer_6941f4f6ba366cff85accf2adc955a66}
+
+
+Request to compute for one vector. \hypertarget{class_l_t_outer_39056ff036f5138e2f7529c804698bb4}{
+\index{LTOuter@{LTOuter}!SYNCH\_\-LOCK@{SYNCH\_\-LOCK}}
+\index{SYNCH\_\-LOCK@{SYNCH\_\-LOCK}!LTOuter@{LTOuter}}
+\subsubsection[{SYNCH\_\-LOCK}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTOuter::SYNCH\_\-LOCK} = \char`\"{}outer synch lock\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_outer_39056ff036f5138e2f7529c804698bb4}
+
+
+Synchronization lock (critical section). 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+cowichan\_\-lt/src/\hyperlink{outer_8hpp}{outer.hpp}\item 
+cowichan\_\-lt/src/\hyperlink{cowichan__lt_2src_2outer_8cpp}{outer.cpp}\end{CompactItemize}

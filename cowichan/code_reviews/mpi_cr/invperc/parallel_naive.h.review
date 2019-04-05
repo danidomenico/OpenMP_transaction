@@ -1,0 +1,32 @@
+     1	/**
+     2	 * Parallel implementation of invasion percolation
+     3	 *
+     4	 * \file parallel.h
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-28-09
+     7	 */
+     8	
+     9	#pragma once
+    10	#ifndef PARALLEL_H
+    11	#define PARALLEL_H
+    12	
+    13	/*--------------------------------------------------------------*/
+    14	/* public functions						*/
+    15	/*--------------------------------------------------------------*/
+    16	
+    17	void
+    18	invperc_mpi (mpi::communicator world,
+    19	  int2D*		matrix,			/* matrix to invade */
+    20	  bool2D*	mask,			/* mask to fill */
+    21	  int		nr,			/* row size */
+    22	  int		nc,			/* column size */
+    23	  real		fraction		/* how much to fill */
+    24	);
+    25	
+    26	/*--------------------------------------------------------------*/
+    27	/* private functions						*/
+    28	/*--------------------------------------------------------------*/
+    29	
+    30	bool is_connected (bool2D* mask, int r, int c, int nr, int nc);
+    31	
+    32	#endif /* PARALLEL_H */

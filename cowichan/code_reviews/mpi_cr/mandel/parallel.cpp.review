@@ -1,0 +1,134 @@
+     1	/**
+     2	 * Parallel implementation of Mandelbrot set
+     3	 *
+     4	 * \file parallel.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-09-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#include "parallel.h"
+    11	
+    12	// public
+    13	
+    14	void mandel_mpi (mpi::communicator world,
+    15	                 int2D*		matrix,			/* to fill */
+    16	                 int		nr,			/* row size */
+    17	                 int		nc,			/* column size */
+    18	                 real		base_x,			/* lower left corner */
+    19	                 real		base_y,			/* lower left corner */
+    20	                 real		ext_x,			/* extent */
+    21	                 real		ext_y)			/* extent */
+    22	{
+    23	  int		r, c;			/* row and column indices */
+    24	  real		dx, dy;			/* per-step deltas */
+    25	#if GRAPHICS
+    26	  int		gfxCount = 0;		/* number of times graphics called */
+    27	#endif
+    28	
+    
+Well-commented, very readable.
+    
+    29	  int row_count = 0;
+    30	  int i;
+    31	  mpi::status status;
+    32	  int source;
+    33	  const int WORK_REQUEST_TAG = 0;
+    34	  const int WORK_RESPONSE_TAG = 1;
+    35	  const int NO_MORE_WORK = -1;
+    36	  int processed_rows = 0;
+    37	
+    38	  dx = ext_x / (nr - 1);
+    39	  dy = ext_y / (nc - 1);
+    40	
+    41	  if (world.size () > 1) {
+    42	    if (world.rank () == 0) {
+    43	      // control process
+    44	
+    
+Clearly state which workers are getting work, which workers are not, and why.
+    
+    45	      // send out work
+    46	      while (row_count < nr) {
+    47	        status = world.recv (mpi::any_source, WORK_REQUEST_TAG);
+    48	        source = status.source ();
+    49	        // send next row
+    50	        world.isend (source, WORK_RESPONSE_TAG, row_count);
+    51	        row_count++;
+    52	      }
+    53	      // send out no more work
+    54	      for (i = 1; i < world.size (); i++) {
+    55	        status = world.recv (mpi::any_source, WORK_REQUEST_TAG);
+    56	        source = status.source ();
+    57	        world.isend (source, WORK_RESPONSE_TAG, NO_MORE_WORK);
+    58	      }
+    59	      // receive results
+    60	      for (r = 0; r < nr; r++) {
+    61	        world.recv (mpi::any_source, r + 1, matrix[r], nc);
+    62	      }
+    63	    }
+    64	    else {
+    65	      // work process
+    66	      while (true) {
+    67	        // request next row
+    68	        world.send (0, WORK_REQUEST_TAG);
+    69	        world.recv (0, WORK_RESPONSE_TAG, r);
+    70	        if (r != NO_MORE_WORK) {
+    71	          for (c = 0; c < nc; c++) {
+    72	            matrix[r][c] = mandel_calc_mpi (base_x + (r * dx), base_y + (c * dy));
+    73	          }
+    74	          processed_rows++;
+    75	          // send results
+    76	          world.isend (0, r + 1, matrix[r], nc);
+    77	        }
+    78	        else {
+    79	          break;
+    80	        }
+    81	      }
+    82	#if defined(TEST_OUTPUT) || defined(TEST_TIME)
+    83	      printf ("processed rows: %d\n", processed_rows);
+    84	#endif
+    85	    }
+    86	    // broadcast matrix
+    87	    for (r = 0; r < nr; r++) {
+    88	      broadcast (world, matrix[r], nc, 0);
+    89	    }
+    90	  }
+    91	  else {
+    
+This is just the serial impl., right?
+    
+    92	    for (r = 0; r < nr; r++) {
+    93	      for (c = 0; c < nc; c++) {
+    94	        matrix[r][c] = mandel_calc_mpi (base_x + (r * dx), base_y + (c * dy));
+    95	      }
+    96	    }
+    97	  }
+    98	
+    99	#if GRAPHICS
+   100	  gfx_mandel(gfxCount++, matrix, nr, nc);
+   101	#endif
+   102	
+   103	  /* return */
+   104	}
+   105	
+   106	
+   107	// private
+   108	
+   109	int mandel_calc_mpi (real		x,			/* x coordinate */
+   110	                     real		y)			/* y coordinate */
+   111	{
+   112	  real		r    = 0.0, i  = 0.0;	/* real and imaginary parts */
+   113	  real		rs   = 0.0, is = 0.0; 	/* " ", squared */
+   114	  int		iter = 0;		/* number of iterations */
+   115	
+   116	  do {
+   117	    i = (2.0 * r * i) + x;
+   118	    r = (rs - is) + y;
+   119	    iter++;
+   120	    rs = r * r;
+   121	    is = i * i;
+   122	  } while ((iter < MANDEL_MAX_ITER) && ((rs + is) < MANDEL_INFINITY));
+   123	
+   124	  return iter;
+   125	}

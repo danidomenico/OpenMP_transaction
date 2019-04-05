@@ -1,0 +1,74 @@
+\section{Quantifying the Importance of Usability\label{s:quant}}
+
+According to Amdahl's Law,
+if $t(n)$ is an algorithm's running time on $n$ processors
+and $\sigma$ is the algorithm's serial fraction
+(i.e., the fraction of the algorithm that cannot be parallelized),
+then:
+\begin{eqnarray*}
+t(p) & = & {\sigma}t(1) + (1 - {\sigma})t(1)/p
+\end{eqnarray*}
+The speedup on $p$ processors is therefore:
+\begin{eqnarray*}
+s(p) & = & t(1)/t(p) \\
+     & = & t(1)/({\sigma}t(1) + (1 - {\sigma})t(1)/p) \\
+     & = & 1/({\sigma} + (1 - {\sigma})/p)
+\end{eqnarray*}
+As $p{\leftarrow}{\infty}$, the speedup is bounded by $1/{\sigma}$.
+This makes intuitive sense:
+if 10\% of an algorithm can't be parallelized,
+then even with infinite hardware,
+the program can only be made to run 10 times faster.
+
+But software doesn't just happen:
+it has to be written and debugged,
+and these activities usually aren't made faster by parallel hardware\footnote{In fact,
+most programmers believe that doing parallel programming is harder and slower than doing it sequentially.}.
+If we let $T$ and $S$ be the equivalents of $t$ and $s$ over the program's whole lifetime,
+and $D$ be its total development time,
+then:
+\begin{eqnarray*}
+T(p) & = & {\sigma}T(1) + (1 - {\sigma})t(1)/p + D
+\end{eqnarray*}
+The achievable \emph{lifetime} speedup is then:
+\begin{eqnarray*}
+S(\infty) & = & 1/({\sigma} + D/T(1))
+\end{eqnarray*}
+
+The ratio of development time to (sequential) running time is therefore as important to speedup
+as the serial fraction of the algorithm.
+Put another way,
+the time required to parallelize a program effectively increases the program's effective serial fraction.
+Unless parallelization time can be substantially reduced,
+parallel programming will only be cost-effective when:
+\begin{itemlist}
+\item	the application is trivially parallel (e.g., task-farming a rendering calculation);
+\item	the expected total program runtime is very large
+	(i.e., the program is a package used extensively in a field
+	such as computational chemistry or vehicle crash simulation);
+	or
+\item	cost is not an obstacle (i.e., the customer is Disney or the NSA).
+\end{itemlist}
+
+The aim of this problem suite is to capture enough information about $D$
+to allow competing parallel programming systems to be ranked and compared.
+
+\subsection{Previous Work\label{s:previous}}
+
+Two comparative efforts in parallel programming are \cite{b:babb-cases} and \cite{b:salishan}.
+The first presented implementations of a simple numerical quadrature program
+in more than a dozen different parallel languages used on mid-1980s hardware.
+The second presented implementations of
+the Salishan Problems---Hamming number generation,
+isomer enumeration,
+skyline matrix reduction,
+and a simple discrete event simulator---in
+C*~\cite{b:dataparallel-c}, Occam~\cite{b:occam}, Ada~\cite{b:ada},
+and several dataflow and functional languages.
+Both books conveyed the flavor of the languages they describe,
+but neither compared languages or problem implementations directly.
+
+More recently,
+Lutz has explored quantitative comparison of the relative productivity
+of different programming languages \cite{b:prechelt-languages,b:prechelt-platforms}.
+Our long-term aim is to replicate his work in the domain of parallel programming.

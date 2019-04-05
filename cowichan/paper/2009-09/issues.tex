@@ -1,0 +1,85 @@
+\section{Other Issues\label{s:issues}}
+
+As described in Section~\ref{s:method-softeng},
+implementors are required to chain modules together in the manner shown in Figure~\ref{f:chaining}.
+This section describes the flow of control and data between these chained problems,
+and discusses several other important aspects of this suite,
+including I/O and visualization.
+
+\subsection{Chained Problem Sequences\label{s:issues-chain}}
+
+The chained implementation of these toys executes in the order shown below.
+Because of choices in steps~\ref{e:chain-choice-1} and~\ref{e:chain-choice-2},
+there are four possible chained sequences.
+
+\begin{itemlist}
+
+\item	An integer matrix $I$ with $r$ rows and $c$ columns is created
+	either by using the Mandelbrot Set algorithm (Section~\ref{s:toys-mandel})
+	or by filling locations with random values (Section~\ref{s:toys-rng}).
+	\label{e:chain-choice-1}
+
+\item	The integer matrix $I$ is shuffled in both dimensions (Section~\ref{s:toys-half}).
+
+\item	Either invasion percolation (Section~\ref{s:toys-invperc}) or histogram thresholding (Section~\ref{s:toys-thresh}) is used
+	to generate a Boolean mask $B$ from $I$ in which the (minimum) percentage of {\tt{true}} locations is $P$.
+	Like $I$, $B$ has $r$ rows and $c$ columns.
+	\label{e:chain-choice-2}
+
+\item	The Game of Life (Section~\ref{s:toys-life}) is simulated for $G$ generations, using $B$ as an initial configuration.
+	This step overwrites the Boolean matrix $B$.
+
+\item	A vector of $L$ $(m,x,y)$ points is created using the integer matrix $I$ and the Boolean matrix $B$ (Section~\ref{s:toys-winnow}).
+
+\item	A series of convex hulls are obtained from the points produced above (Section~\ref{s:toys-convex}).
+
+\item	The final locations of the net points from the previous step are normalized (Section~\ref{s:toys-norm}).
+
+\item	An $L{\times}L$ matrix $A$ and an $L$-vector $V$ are created using the normalized point locations from the previous step
+	(Section~\ref{s:toys-outer}).
+
+\item	The matrix equation $AX=V$ is solved using Gaussian elimination and using successive over-relaxation
+	to generate two solution vectors $X_{gauss}$ and $X_{sor}$.
+	These two toys should execute concurrently if possible.
+
+\item	The checking vectors $V_{gauss}=AX_{gauss}$ and $V_{sor}=AX_{sor}$ are calculated.
+	These two toys should execute concurrently if possible.
+
+\item	The norm-1 distance between $V_{gauss}$ and $V_{sor}$ (i.e., the greatest element-wise absolute difference) is calculated.
+	This measures the agreement between the solutions found by the two methods.
+
+\end{itemlist}
+
+\subsection{Input and Output\label{s:issues-io}}
+
+I/O is an important part of programming,
+but is often treated as being of secondary importance by language designers.
+This suite requires all stand-alone toys to read input values from files, and write results back;
+the chained version must be able to checkpoint intermediate results between toys.
+Finally,
+implementors are strongly encouraged to include some means of visualizing the output or evolution of individual toys.
+
+The file formats used in the Cowichan Problems are shown in Appendix~\ref{s:formats}.
+Files are required to be human-readable (i.e., to use ASCII text).
+Implementations may also include I/O using binary (non-ASCII) files
+in whatever file formats are convenient.
+This will allow programmers to demonstrate the ``natural'' I/O capabilities of particular systems
+which most probably be used for checkpointing intermediate results in real programs.
+
+\subsection{Reproducibility\label{s:issues-reproduce}}
+
+Reproducibility is an important issue for parallel programming systems.
+While constraining the order of operations in a parallel system to guarantee reproducibility makes programs in that system easier to debug,
+it can also reduce the expressiveness or performance of the system.
+
+In this problem set, irreproducibility can appear in two forms: numerical and algorithmic.
+The first arises in toys such as {\tt{gauss}}, {\tt{sor}}, and {\tt{elastic}}, which use floating-point numbers.
+Precisely how round-off errors occur in these calculations can depend on the distribution of work among processors,
+or the order in which those processors carry out particular operations.
+
+Irreproducibility also arises in toys which only use exact numbers, such as {\tt{invperc}} and {\tt{randmat}}.
+In the former, the percolation region is grown by repeatedly filling the lowest-valued cell on its perimeter.
+If several cells have this value, implementations may choose one arbitrarily.
+Thus, different implementations may produce very different fractal shapes.
+In the case of random number generation, the simplest thing to do is to run the same generator independently on each processor,
+although the values in the resulting matrix then depend on the number of processors used.

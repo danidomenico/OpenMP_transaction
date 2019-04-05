@@ -1,0 +1,142 @@
+\hypertarget{classcowichan__tbb_1_1_relaxer}{
+\section{cowichan\_\-tbb::Relaxer Class Reference}
+\label{classcowichan__tbb_1_1_relaxer}\index{cowichan\_\-tbb::Relaxer@{cowichan\_\-tbb::Relaxer}}
+}
+Performs one iteration of relaxation.  
+
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classcowichan__tbb_1_1_relaxer_007031df46e4bb579d8bb43cf623c71a}{Relaxer} (\hyperlink{cowichan_8hpp_3fb46f939e55c239fbc95656fc0f3399}{Matrix} matrix, \hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} target, \hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} solution, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_relaxer_32a9d96813efe736a80481961e051daa}{n})
+\item 
+\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{classcowichan__tbb_1_1_relaxer_87263d59ed43f848c73fb123af52d67e}{getMaxDiff} () const 
+\item 
+void \hyperlink{classcowichan__tbb_1_1_relaxer_700302637105a5d70fe9b34f5776fd46}{operator()} (const \hyperlink{cowichan__tbb_8hpp_8e2057f725b08f3a15513c378a453a47}{Range} \&range)
+\item 
+\hyperlink{classcowichan__tbb_1_1_relaxer_e5afb63e0fe0e72f612b7116810e61e1}{Relaxer} (\hyperlink{classcowichan__tbb_1_1_relaxer}{Relaxer} \&other, split)
+\item 
+void \hyperlink{classcowichan__tbb_1_1_relaxer_467e800adb1c986a345349140706a180}{join} (const \hyperlink{classcowichan__tbb_1_1_relaxer}{Relaxer} \&other)
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{cowichan_8hpp_3fb46f939e55c239fbc95656fc0f3399}{Matrix} \hyperlink{classcowichan__tbb_1_1_relaxer_80c6f34ee5d00dfd28ef0f0805f2b380}{\_\-matrix}
+\item 
+\hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} \hyperlink{classcowichan__tbb_1_1_relaxer_2fdbcbdc0a5e606631b3a20ac831e93b}{\_\-target}
+\item 
+\hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} \hyperlink{classcowichan__tbb_1_1_relaxer_4f72a0f5a2680bae30b8257f6b171dca}{\_\-solution}
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_relaxer_32a9d96813efe736a80481961e051daa}{n}
+\item 
+\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{classcowichan__tbb_1_1_relaxer_38344a1fe64f3eeb35382760033fe9b1}{maxDiff}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Performs one iteration of relaxation. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcowichan__tbb_1_1_relaxer_007031df46e4bb579d8bb43cf623c71a}{
+\index{cowichan\_\-tbb::Relaxer@{cowichan\_\-tbb::Relaxer}!Relaxer@{Relaxer}}
+\index{Relaxer@{Relaxer}!cowichan_tbb::Relaxer@{cowichan\_\-tbb::Relaxer}}
+\subsubsection[{Relaxer}]{\setlength{\rightskip}{0pt plus 5cm}cowichan\_\-tbb::Relaxer::Relaxer ({\bf Matrix} {\em matrix}, \/  {\bf Vector} {\em target}, \/  {\bf Vector} {\em solution}, \/  {\bf index\_\-t} {\em n})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_relaxer_007031df46e4bb579d8bb43cf623c71a}
+
+
+Construct a relaxer object. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em matrix}]matrix to use. \item[{\em target}]target vector. \item[{\em solution}]solution vector. \item[{\em n}]matrix size. \end{description}
+\end{Desc}
+\hypertarget{classcowichan__tbb_1_1_relaxer_e5afb63e0fe0e72f612b7116810e61e1}{
+\index{cowichan\_\-tbb::Relaxer@{cowichan\_\-tbb::Relaxer}!Relaxer@{Relaxer}}
+\index{Relaxer@{Relaxer}!cowichan_tbb::Relaxer@{cowichan\_\-tbb::Relaxer}}
+\subsubsection[{Relaxer}]{\setlength{\rightskip}{0pt plus 5cm}cowichan\_\-tbb::Relaxer::Relaxer ({\bf Relaxer} \& {\em other}, \/  split)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_relaxer_e5afb63e0fe0e72f612b7116810e61e1}
+
+
+Splitting (TBB) constructor. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em other}]object to split. \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcowichan__tbb_1_1_relaxer_87263d59ed43f848c73fb123af52d67e}{
+\index{cowichan\_\-tbb::Relaxer@{cowichan\_\-tbb::Relaxer}!getMaxDiff@{getMaxDiff}}
+\index{getMaxDiff@{getMaxDiff}!cowichan_tbb::Relaxer@{cowichan\_\-tbb::Relaxer}}
+\subsubsection[{getMaxDiff}]{\setlength{\rightskip}{0pt plus 5cm}{\bf real} cowichan\_\-tbb::Relaxer::getMaxDiff () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_relaxer_87263d59ed43f848c73fb123af52d67e}
+
+
+Get maximum difference. \begin{Desc}
+\item[Returns:]Maximum difference. \end{Desc}
+\hypertarget{classcowichan__tbb_1_1_relaxer_467e800adb1c986a345349140706a180}{
+\index{cowichan\_\-tbb::Relaxer@{cowichan\_\-tbb::Relaxer}!join@{join}}
+\index{join@{join}!cowichan_tbb::Relaxer@{cowichan\_\-tbb::Relaxer}}
+\subsubsection[{join}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::Relaxer::join (const {\bf Relaxer} \& {\em other})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_relaxer_467e800adb1c986a345349140706a180}
+
+
+Joiner (TBB). \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em other}]object to join. \end{description}
+\end{Desc}
+\hypertarget{classcowichan__tbb_1_1_relaxer_700302637105a5d70fe9b34f5776fd46}{
+\index{cowichan\_\-tbb::Relaxer@{cowichan\_\-tbb::Relaxer}!operator()@{operator()}}
+\index{operator()@{operator()}!cowichan_tbb::Relaxer@{cowichan\_\-tbb::Relaxer}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::Relaxer::operator() (const {\bf Range} \& {\em range})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_relaxer_700302637105a5d70fe9b34f5776fd46}
+
+
+Performs one iteration of relaxation. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em range}]range of rows. \end{description}
+\end{Desc}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classcowichan__tbb_1_1_relaxer_80c6f34ee5d00dfd28ef0f0805f2b380}{
+\index{cowichan\_\-tbb::Relaxer@{cowichan\_\-tbb::Relaxer}!\_\-matrix@{\_\-matrix}}
+\index{\_\-matrix@{\_\-matrix}!cowichan_tbb::Relaxer@{cowichan\_\-tbb::Relaxer}}
+\subsubsection[{\_\-matrix}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} {\bf cowichan\_\-tbb::Relaxer::\_\-matrix}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_relaxer_80c6f34ee5d00dfd28ef0f0805f2b380}
+
+
+Matrix to use. \hypertarget{classcowichan__tbb_1_1_relaxer_4f72a0f5a2680bae30b8257f6b171dca}{
+\index{cowichan\_\-tbb::Relaxer@{cowichan\_\-tbb::Relaxer}!\_\-solution@{\_\-solution}}
+\index{\_\-solution@{\_\-solution}!cowichan_tbb::Relaxer@{cowichan\_\-tbb::Relaxer}}
+\subsubsection[{\_\-solution}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} {\bf cowichan\_\-tbb::Relaxer::\_\-solution}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_relaxer_4f72a0f5a2680bae30b8257f6b171dca}
+
+
+Solution to update. \hypertarget{classcowichan__tbb_1_1_relaxer_2fdbcbdc0a5e606631b3a20ac831e93b}{
+\index{cowichan\_\-tbb::Relaxer@{cowichan\_\-tbb::Relaxer}!\_\-target@{\_\-target}}
+\index{\_\-target@{\_\-target}!cowichan_tbb::Relaxer@{cowichan\_\-tbb::Relaxer}}
+\subsubsection[{\_\-target}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} {\bf cowichan\_\-tbb::Relaxer::\_\-target}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_relaxer_2fdbcbdc0a5e606631b3a20ac831e93b}
+
+
+Given target vector. \hypertarget{classcowichan__tbb_1_1_relaxer_38344a1fe64f3eeb35382760033fe9b1}{
+\index{cowichan\_\-tbb::Relaxer@{cowichan\_\-tbb::Relaxer}!maxDiff@{maxDiff}}
+\index{maxDiff@{maxDiff}!cowichan_tbb::Relaxer@{cowichan\_\-tbb::Relaxer}}
+\subsubsection[{maxDiff}]{\setlength{\rightskip}{0pt plus 5cm}{\bf real} {\bf cowichan\_\-tbb::Relaxer::maxDiff}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_relaxer_38344a1fe64f3eeb35382760033fe9b1}
+
+
+Maximum difference found. \hypertarget{classcowichan__tbb_1_1_relaxer_32a9d96813efe736a80481961e051daa}{
+\index{cowichan\_\-tbb::Relaxer@{cowichan\_\-tbb::Relaxer}!n@{n}}
+\index{n@{n}!cowichan_tbb::Relaxer@{cowichan\_\-tbb::Relaxer}}
+\subsubsection[{n}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} {\bf cowichan\_\-tbb::Relaxer::n}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_relaxer_32a9d96813efe736a80481961e051daa}
+
+
+Matrix size. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+cowichan\_\-tbb/\hyperlink{cowichan__tbb_2sor_8cpp}{sor.cpp}\end{CompactItemize}

@@ -1,0 +1,127 @@
+\hypertarget{class_l_t_winnow}{
+\section{LTWinnow Class Reference}
+\label{class_l_t_winnow}\index{LTWinnow@{LTWinnow}}
+}
+{\tt \#include $<$winnow.hpp$>$}
+
+Inheritance diagram for LTWinnow::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{class_l_t_winnow}
+\end{center}
+\end{figure}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{class_l_t_winnow_ec961ab4e19c71b475903972111c20e9}{consumeInput} ()
+\item 
+void \hyperlink{class_l_t_winnow_472d0a232050f4674339029b1aa47531}{work} ()
+\item 
+void \hyperlink{class_l_t_winnow_865de8a240ae781c8cc5567082edc2ea}{produceOutput} ()
+\item 
+\hyperlink{class_point}{Point} \hyperlink{class_l_t_winnow_768a5ced06ddfce6752be6cff4949500}{nextWeightedPoint} (\hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} $\ast$order)
+\end{CompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{CompactItemize}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_winnow_9a64120d24bd1be307729b3ab560053c}{SYNCH\_\-LOCK} = \char`\"{}winnow synchronization lock\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_winnow_5e608a12be3c5b85d3bf7d20aff67be7}{REQUEST} = \char`\"{}winnow request\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_winnow_39f42512128fc000cd417bc0b36c659c}{WEIGHTED\_\-POINT} = \char`\"{}winnow weighted point\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_winnow_f975efec2812f3c4f675fa8ac867b2a0}{COUNT} = \char`\"{}winnow number of points\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_winnow_63e05f9d6b31574d30008155947682b7}{ROWS\_\-DONE} = \char`\"{}winnow rows reporting\char`\"{}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Performs the weighted point selection in tuple space. Uses a property of tuple-space which means no sorting needs to occur! 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_l_t_winnow_ec961ab4e19c71b475903972111c20e9}{
+\index{LTWinnow@{LTWinnow}!consumeInput@{consumeInput}}
+\index{consumeInput@{consumeInput}!LTWinnow@{LTWinnow}}
+\subsubsection[{consumeInput}]{\setlength{\rightskip}{0pt plus 5cm}void LTWinnow::consumeInput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_winnow_ec961ab4e19c71b475903972111c20e9}
+
+
+The consume input process is spawned once and should distribute tasks to the worker processes. 
+
+Implements \hyperlink{class_tuple_application_e163c5a536de01c8b94b49528a17dab2}{TupleApplication}.\hypertarget{class_l_t_winnow_768a5ced06ddfce6752be6cff4949500}{
+\index{LTWinnow@{LTWinnow}!nextWeightedPoint@{nextWeightedPoint}}
+\index{nextWeightedPoint@{nextWeightedPoint}!LTWinnow@{LTWinnow}}
+\subsubsection[{nextWeightedPoint}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point} LTWinnow::nextWeightedPoint ({\bf INT\_\-TYPE} $\ast$ {\em order})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class_l_t_winnow_768a5ced06ddfce6752be6cff4949500}
+
+
+Figure out the next point we can pull out of tuple space. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em order}]the weight of the next point to pull out. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the point with the smallest weight w such that w $>$= order. \end{Desc}
+\hypertarget{class_l_t_winnow_865de8a240ae781c8cc5567082edc2ea}{
+\index{LTWinnow@{LTWinnow}!produceOutput@{produceOutput}}
+\index{produceOutput@{produceOutput}!LTWinnow@{LTWinnow}}
+\subsubsection[{produceOutput}]{\setlength{\rightskip}{0pt plus 5cm}void LTWinnow::produceOutput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_winnow_865de8a240ae781c8cc5567082edc2ea}
+
+
+The output producer decides when the tuple application is finished; once this function returns, the tuple application is complete. 
+
+Implements \hyperlink{class_tuple_application_8743dfcf17dedd52887c0b2ab170d8dc}{TupleApplication}.\hypertarget{class_l_t_winnow_472d0a232050f4674339029b1aa47531}{
+\index{LTWinnow@{LTWinnow}!work@{work}}
+\index{work@{work}!LTWinnow@{LTWinnow}}
+\subsubsection[{work}]{\setlength{\rightskip}{0pt plus 5cm}void LTWinnow::work ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_winnow_472d0a232050f4674339029b1aa47531}
+
+
+Worker processes are created and killed after the output process has finished. 
+
+Implements \hyperlink{class_tuple_application_ef6ae8bb1d697e4ed038b43320183c89}{TupleApplication}.
+
+\subsection{Member Data Documentation}
+\hypertarget{class_l_t_winnow_f975efec2812f3c4f675fa8ac867b2a0}{
+\index{LTWinnow@{LTWinnow}!COUNT@{COUNT}}
+\index{COUNT@{COUNT}!LTWinnow@{LTWinnow}}
+\subsubsection[{COUNT}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTWinnow::COUNT} = \char`\"{}winnow number of points\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_winnow_f975efec2812f3c4f675fa8ac867b2a0}
+
+
+The number of weighted points in the tuple space. \hypertarget{class_l_t_winnow_5e608a12be3c5b85d3bf7d20aff67be7}{
+\index{LTWinnow@{LTWinnow}!REQUEST@{REQUEST}}
+\index{REQUEST@{REQUEST}!LTWinnow@{LTWinnow}}
+\subsubsection[{REQUEST}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTWinnow::REQUEST} = \char`\"{}winnow request\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_winnow_5e608a12be3c5b85d3bf7d20aff67be7}
+
+
+Request to perform computation on a matrix row. \hypertarget{class_l_t_winnow_63e05f9d6b31574d30008155947682b7}{
+\index{LTWinnow@{LTWinnow}!ROWS\_\-DONE@{ROWS\_\-DONE}}
+\index{ROWS\_\-DONE@{ROWS\_\-DONE}!LTWinnow@{LTWinnow}}
+\subsubsection[{ROWS\_\-DONE}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTWinnow::ROWS\_\-DONE} = \char`\"{}winnow rows reporting\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_winnow_63e05f9d6b31574d30008155947682b7}
+
+
+The number of rows that have had their computation finish. \hypertarget{class_l_t_winnow_9a64120d24bd1be307729b3ab560053c}{
+\index{LTWinnow@{LTWinnow}!SYNCH\_\-LOCK@{SYNCH\_\-LOCK}}
+\index{SYNCH\_\-LOCK@{SYNCH\_\-LOCK}!LTWinnow@{LTWinnow}}
+\subsubsection[{SYNCH\_\-LOCK}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTWinnow::SYNCH\_\-LOCK} = \char`\"{}winnow synchronization lock\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_winnow_9a64120d24bd1be307729b3ab560053c}
+
+
+Synchronization lock (critical section). \hypertarget{class_l_t_winnow_39f42512128fc000cd417bc0b36c659c}{
+\index{LTWinnow@{LTWinnow}!WEIGHTED\_\-POINT@{WEIGHTED\_\-POINT}}
+\index{WEIGHTED\_\-POINT@{WEIGHTED\_\-POINT}!LTWinnow@{LTWinnow}}
+\subsubsection[{WEIGHTED\_\-POINT}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTWinnow::WEIGHTED\_\-POINT} = \char`\"{}winnow weighted point\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_winnow_39f42512128fc000cd417bc0b36c659c}
+
+
+A weighted point in the tuple space. 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+cowichan\_\-lt/src/\hyperlink{winnow_8hpp}{winnow.hpp}\item 
+cowichan\_\-lt/src/\hyperlink{cowichan__lt_2src_2winnow_8cpp}{winnow.cpp}\end{CompactItemize}

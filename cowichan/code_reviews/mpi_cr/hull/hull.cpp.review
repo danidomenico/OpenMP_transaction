@@ -1,0 +1,82 @@
+     1	/**
+     2	 * Convex hull
+     3	 *
+     4	 * \file hull.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 03-06-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#ifdef IS_PARALLEL
+    11	  #include "parallel.h"
+    12	#else
+    13	  #include "serial.h"
+    14	#endif
+    15	
+    16	int main(int argc, char* argv[])
+    17	{
+    18	#ifdef IS_PARALLEL
+    19	  mpi::environment env(argc, argv);
+    20	  mpi::communicator world;
+    21	
+    22	#ifdef TEST_OUTPUT
+    23	  printf ("I am process %d\n", world.rank ());
+    24	#endif
+    25	#endif
+    26	
+    27	  pt1D* points;
+    28	  pt1D* hullPoints;
+    29	  int    n;    // number of points
+    30	  int    hn;    // number of hull points
+    31	  int limit;
+    32	  int i;
+    33	
+    34	  srand (333);
+    35	
+    36	  n = MAXEXT;
+    37	  limit = 10;
+    38	  
+    39	  points = new pt1D[MAXEXT];
+    40	  for (i = 0; i < n; i++)
+    41	  {
+    42	    points[i].x = rand () % limit;
+    43	    points[i].y = rand () % limit;
+    
+What's w?
+    
+    44	    points[i].w = 0;
+    45	  }
+    46	
+    47	  hullPoints = new pt1D[MAXEXT];
+    48	
+    49	#ifdef TEST_OUTPUT
+    50	  printf ("Points:\n");
+    51	  print_points (points, n, limit);
+    52	#endif
+    53	
+    54	#ifdef TEST_TIME
+    55	  INT64 start, end;
+    56	  start = get_ticks ();
+    57	#endif
+    58	
+    59	#ifdef IS_PARALLEL
+    60	  hull_mpi (world, points, n, hullPoints, &hn);
+    61	#else
+    62	  hull (points, n, hullPoints, &hn);
+    63	#endif
+    64	
+    65	#ifdef TEST_TIME
+    66	  end = get_ticks ();
+    67	  print_elapsed_time (start, end);
+    68	#endif
+    69	
+    70	#ifdef TEST_OUTPUT
+    71	  printf ("Convex Hull Points:\n");
+    72	  print_points (hullPoints, hn, limit);
+    73	#endif
+    74	
+    75	  delete [] points;
+    76	  delete [] hullPoints;
+    77	
+    78	  return 0;
+    79	}

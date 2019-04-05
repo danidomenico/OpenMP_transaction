@@ -1,0 +1,93 @@
+\hypertarget{class_l_t_vecdiff}{
+\section{LTVecdiff Class Reference}
+\label{class_l_t_vecdiff}\index{LTVecdiff@{LTVecdiff}}
+}
+{\tt \#include $<$vecdiff.hpp$>$}
+
+Inheritance diagram for LTVecdiff::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{class_l_t_vecdiff}
+\end{center}
+\end{figure}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{class_l_t_vecdiff_9daf31de467c9694e59b55936780dce8}{consumeInput} ()
+\item 
+void \hyperlink{class_l_t_vecdiff_0117017e12284b1eb57532ca447684f6}{work} ()
+\item 
+void \hyperlink{class_l_t_vecdiff_69d3c6e3c51052522d474cc75d11a2f2}{produceOutput} ()
+\end{CompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{CompactItemize}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_vecdiff_251e456901f73b685b41a3826c3a5f8c}{SYNCH\_\-LOCK} = \char`\"{}vecdiff synch lock\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_vecdiff_552dd71094bbdd099775890405a05221}{ELEMENTS\_\-DONE} = \char`\"{}vecdiff elements reporting\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_vecdiff_4eecee406e18ced8eef15dfc074d9a55}{MAX\_\-DIFF} = \char`\"{}vecdiff max difference\char`\"{}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Performs the vector difference with LinuxTuples. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_l_t_vecdiff_9daf31de467c9694e59b55936780dce8}{
+\index{LTVecdiff@{LTVecdiff}!consumeInput@{consumeInput}}
+\index{consumeInput@{consumeInput}!LTVecdiff@{LTVecdiff}}
+\subsubsection[{consumeInput}]{\setlength{\rightskip}{0pt plus 5cm}void LTVecdiff::consumeInput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_vecdiff_9daf31de467c9694e59b55936780dce8}
+
+
+The consume input process is spawned once and should distribute tasks to the worker processes. 
+
+Implements \hyperlink{class_tuple_application_e163c5a536de01c8b94b49528a17dab2}{TupleApplication}.\hypertarget{class_l_t_vecdiff_69d3c6e3c51052522d474cc75d11a2f2}{
+\index{LTVecdiff@{LTVecdiff}!produceOutput@{produceOutput}}
+\index{produceOutput@{produceOutput}!LTVecdiff@{LTVecdiff}}
+\subsubsection[{produceOutput}]{\setlength{\rightskip}{0pt plus 5cm}void LTVecdiff::produceOutput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_vecdiff_69d3c6e3c51052522d474cc75d11a2f2}
+
+
+The output producer decides when the tuple application is finished; once this function returns, the tuple application is complete. 
+
+Implements \hyperlink{class_tuple_application_8743dfcf17dedd52887c0b2ab170d8dc}{TupleApplication}.\hypertarget{class_l_t_vecdiff_0117017e12284b1eb57532ca447684f6}{
+\index{LTVecdiff@{LTVecdiff}!work@{work}}
+\index{work@{work}!LTVecdiff@{LTVecdiff}}
+\subsubsection[{work}]{\setlength{\rightskip}{0pt plus 5cm}void LTVecdiff::work ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_vecdiff_0117017e12284b1eb57532ca447684f6}
+
+
+Worker processes are created and killed after the output process has finished. 
+
+Implements \hyperlink{class_tuple_application_ef6ae8bb1d697e4ed038b43320183c89}{TupleApplication}.
+
+\subsection{Member Data Documentation}
+\hypertarget{class_l_t_vecdiff_552dd71094bbdd099775890405a05221}{
+\index{LTVecdiff@{LTVecdiff}!ELEMENTS\_\-DONE@{ELEMENTS\_\-DONE}}
+\index{ELEMENTS\_\-DONE@{ELEMENTS\_\-DONE}!LTVecdiff@{LTVecdiff}}
+\subsubsection[{ELEMENTS\_\-DONE}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTVecdiff::ELEMENTS\_\-DONE} = \char`\"{}vecdiff elements reporting\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_vecdiff_552dd71094bbdd099775890405a05221}
+
+
+The number of differences already accomplished. \hypertarget{class_l_t_vecdiff_4eecee406e18ced8eef15dfc074d9a55}{
+\index{LTVecdiff@{LTVecdiff}!MAX\_\-DIFF@{MAX\_\-DIFF}}
+\index{MAX\_\-DIFF@{MAX\_\-DIFF}!LTVecdiff@{LTVecdiff}}
+\subsubsection[{MAX\_\-DIFF}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTVecdiff::MAX\_\-DIFF} = \char`\"{}vecdiff max difference\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_vecdiff_4eecee406e18ced8eef15dfc074d9a55}
+
+
+The maximum difference found, so far. \hypertarget{class_l_t_vecdiff_251e456901f73b685b41a3826c3a5f8c}{
+\index{LTVecdiff@{LTVecdiff}!SYNCH\_\-LOCK@{SYNCH\_\-LOCK}}
+\index{SYNCH\_\-LOCK@{SYNCH\_\-LOCK}!LTVecdiff@{LTVecdiff}}
+\subsubsection[{SYNCH\_\-LOCK}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTVecdiff::SYNCH\_\-LOCK} = \char`\"{}vecdiff synch lock\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_vecdiff_251e456901f73b685b41a3826c3a5f8c}
+
+
+Synchronization lock (critical section). 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+cowichan\_\-lt/src/\hyperlink{vecdiff_8hpp}{vecdiff.hpp}\item 
+cowichan\_\-lt/src/\hyperlink{cowichan__lt_2src_2vecdiff_8cpp}{vecdiff.cpp}\end{CompactItemize}

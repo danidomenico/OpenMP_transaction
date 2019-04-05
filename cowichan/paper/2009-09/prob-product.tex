@@ -1,0 +1,25 @@
+\subsection{{\tt{product}}: Matrix-Vector Product\label{s:toys-product}}
+
+Given a matrix $A$,
+a vector $V$,
+and an assumed solution $X$ to the equation $AX=V$,
+this module calculates the actual product $AX={V^{\prime}}$,
+and then finds the magnitude of the error.
+
+{\inputspec}
+
+\begin{description}
+\item[{\tt{matrix}}:]
+	the real matrix $A$.
+\item[{\tt{actual}}:]
+	the real vector $V$.
+\item[{\tt{candidate}}:]
+	the real vector $X$.
+\end{description}
+
+{\outputspec}
+
+\begin{description}
+\item[{\tt{e}}:]
+	the largest absolute value in the element-wise difference of $V$ and $V^{\prime}$.
+\end{description}

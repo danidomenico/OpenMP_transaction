@@ -1,0 +1,25 @@
+     1	/**
+     2	 * Parallel implementation of vector difference
+     3	 *
+     4	 * \file parallel.h
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-27-09
+     7	 */
+     8	
+     9	#pragma once
+    10	#ifndef VECDIFF_PARALLEL_H
+    11	#define VECDIFF_PARALLEL_H
+    12	
+    13	/*--------------------------------------------------------------*/
+    14	/* public functions						*/
+    15	/*--------------------------------------------------------------*/
+    16	
+    17	void
+    18	vecdiff_mpi(mpi::communicator world,
+    19	  real1D*	left,			/* left vector */
+    20	  real1D*	right,			/* right vector */
+    21	  int		n,			/* vector lengths */
+    22	  real	      * diff			/* norm-1 difference */
+    23	);
+    24	
+    25	#endif /* VECDIFF_PARALLEL_H */

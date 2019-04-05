@@ -1,0 +1,111 @@
+\hypertarget{class_l_t_forward}{
+\section{LTForward Class Reference}
+\label{class_l_t_forward}\index{LTForward@{LTForward}}
+}
+{\tt \#include $<$gauss.hpp$>$}
+
+Inheritance diagram for LTForward::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{class_l_t_forward}
+\end{center}
+\end{figure}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{class_l_t_forward_6f3bbdf720e1899b0df8a8f222727086}{consumeInput} ()
+\item 
+void \hyperlink{class_l_t_forward_d98aff7a063bf6e8542046c6f2c097fa}{work} ()
+\item 
+void \hyperlink{class_l_t_forward_56c27cd419407319f95afa4e7d43409a}{produceOutput} ()
+\end{CompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{CompactItemize}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_forward_52da5e0079361dc8daf8c6a9a976c98d}{ROWS\_\-DONE} = \char`\"{}forward rows reporting\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_forward_f638f80e205c1c7dc14766015d1247e6}{FORWARD\_\-DONE} = \char`\"{}forward done\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_forward_e5706fd083624c202c274015935c865b}{REQUEST} = \char`\"{}forward request\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_forward_79ab5e95abdc47acc8150941a17fb54a}{TARGET} = \char`\"{}gauss target\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_forward_31820d362b40c3d15df139fde2f871f2}{MATRIX\_\-ROW} = \char`\"{}gauss matrix row\char`\"{}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Forward-elimination tuple application. Performs forward elimination on a square matrix in parallel. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_l_t_forward_6f3bbdf720e1899b0df8a8f222727086}{
+\index{LTForward@{LTForward}!consumeInput@{consumeInput}}
+\index{consumeInput@{consumeInput}!LTForward@{LTForward}}
+\subsubsection[{consumeInput}]{\setlength{\rightskip}{0pt plus 5cm}void LTForward::consumeInput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_forward_6f3bbdf720e1899b0df8a8f222727086}
+
+
+The consume input process is spawned once and should distribute tasks to the worker processes. 
+
+Implements \hyperlink{class_tuple_application_e163c5a536de01c8b94b49528a17dab2}{TupleApplication}.\hypertarget{class_l_t_forward_56c27cd419407319f95afa4e7d43409a}{
+\index{LTForward@{LTForward}!produceOutput@{produceOutput}}
+\index{produceOutput@{produceOutput}!LTForward@{LTForward}}
+\subsubsection[{produceOutput}]{\setlength{\rightskip}{0pt plus 5cm}void LTForward::produceOutput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_forward_56c27cd419407319f95afa4e7d43409a}
+
+
+The output producer decides when the tuple application is finished; once this function returns, the tuple application is complete. 
+
+Implements \hyperlink{class_tuple_application_8743dfcf17dedd52887c0b2ab170d8dc}{TupleApplication}.\hypertarget{class_l_t_forward_d98aff7a063bf6e8542046c6f2c097fa}{
+\index{LTForward@{LTForward}!work@{work}}
+\index{work@{work}!LTForward@{LTForward}}
+\subsubsection[{work}]{\setlength{\rightskip}{0pt plus 5cm}void LTForward::work ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_forward_d98aff7a063bf6e8542046c6f2c097fa}
+
+
+Worker processes are created and killed after the output process has finished. 
+
+Implements \hyperlink{class_tuple_application_ef6ae8bb1d697e4ed038b43320183c89}{TupleApplication}.
+
+\subsection{Member Data Documentation}
+\hypertarget{class_l_t_forward_f638f80e205c1c7dc14766015d1247e6}{
+\index{LTForward@{LTForward}!FORWARD\_\-DONE@{FORWARD\_\-DONE}}
+\index{FORWARD\_\-DONE@{FORWARD\_\-DONE}!LTForward@{LTForward}}
+\subsubsection[{FORWARD\_\-DONE}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTForward::FORWARD\_\-DONE} = \char`\"{}forward done\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_forward_f638f80e205c1c7dc14766015d1247e6}
+
+
+Is forward-elimination complete? \hypertarget{class_l_t_forward_31820d362b40c3d15df139fde2f871f2}{
+\index{LTForward@{LTForward}!MATRIX\_\-ROW@{MATRIX\_\-ROW}}
+\index{MATRIX\_\-ROW@{MATRIX\_\-ROW}!LTForward@{LTForward}}
+\subsubsection[{MATRIX\_\-ROW}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTForward::MATRIX\_\-ROW} = \char`\"{}gauss matrix row\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_forward_31820d362b40c3d15df139fde2f871f2}
+
+
+One of the matrix rows, stored in the tuple space. \hypertarget{class_l_t_forward_e5706fd083624c202c274015935c865b}{
+\index{LTForward@{LTForward}!REQUEST@{REQUEST}}
+\index{REQUEST@{REQUEST}!LTForward@{LTForward}}
+\subsubsection[{REQUEST}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTForward::REQUEST} = \char`\"{}forward request\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_forward_e5706fd083624c202c274015935c865b}
+
+
+A matrix row computation request. \hypertarget{class_l_t_forward_52da5e0079361dc8daf8c6a9a976c98d}{
+\index{LTForward@{LTForward}!ROWS\_\-DONE@{ROWS\_\-DONE}}
+\index{ROWS\_\-DONE@{ROWS\_\-DONE}!LTForward@{LTForward}}
+\subsubsection[{ROWS\_\-DONE}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTForward::ROWS\_\-DONE} = \char`\"{}forward rows reporting\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_forward_52da5e0079361dc8daf8c6a9a976c98d}
+
+
+Number of rows computed. \hypertarget{class_l_t_forward_79ab5e95abdc47acc8150941a17fb54a}{
+\index{LTForward@{LTForward}!TARGET@{TARGET}}
+\index{TARGET@{TARGET}!LTForward@{LTForward}}
+\subsubsection[{TARGET}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTForward::TARGET} = \char`\"{}gauss target\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_forward_79ab5e95abdc47acc8150941a17fb54a}
+
+
+The target vector stored in the tuple space. 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+cowichan\_\-lt/src/\hyperlink{gauss_8hpp}{gauss.hpp}\item 
+cowichan\_\-lt/src/\hyperlink{cowichan__lt_2src_2gauss_8cpp}{gauss.cpp}\end{CompactItemize}

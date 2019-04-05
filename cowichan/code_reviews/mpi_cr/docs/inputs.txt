@@ -1,0 +1,117 @@
+Chaining:
+
+1. mandel or randmat
+
+2. half
+
+3. invperc or thresh
+
+4. life
+
+5. winnow
+
+6. norm
+
+7. hull
+
+8. outer
+
+9. gauss and sor
+
+10. product and product
+
+11. vecdiff
+
+
+Inputs:
+
+mandel           Used from previous program in the chain?
+- matrix         no
+- nr             no
+- nc             no
+- base_x         no
+- base_y         no
+- ext_x          no
+- ext_y          no
+
+randmat
+- matrix         no
+- nr             no
+- nc             no
+- limit          no
+- seed           no
+
+half
+- matrix         yes
+- nr             yes
+- nc             yes
+
+invperc
+- matrix         yes
+- mask           no
+- nr             yes
+- nc             yes
+- fraction       no
+
+thresh
+- matrix         yes
+- mask           no
+- nr             yes
+- nc             yes
+- fraction       no
+
+life
+- mask           yes
+- nr             yes
+- nc             yes
+- iters          no
+
+winnow
+- matrix         yes
+- mask           yes
+- nr             yes
+- nc             yes
+- pts            no
+- npts           no
+
+norm
+- vec            yes
+- n              yes
+
+hull
+- points         yes
+- n              yes
+- hullPoints     no
+- hn             no
+
+outer
+- ptVec          yes
+- matrix         no
+- realVec        no
+- n              yes
+
+gauss
+- matrix         no
+- vector         no
+- answer         no
+- n              yes
+
+sor
+- matrix         yes
+- vector         yes
+- answer         no
+- n              yes
+- tolerance      no
+
+product
+- matrix         yes/no
+- vector         yes
+- result         no
+- nr             yes
+- nc             yes
+
+vecdiff
+- left           yes
+- right          yes
+- n              yes
+- norm1diff      no

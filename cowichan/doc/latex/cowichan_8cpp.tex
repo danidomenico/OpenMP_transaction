@@ -1,0 +1,114 @@
+\hypertarget{cowichan_8cpp}{
+\section{cowichan/cowichan.cpp File Reference}
+\label{cowichan_8cpp}\index{cowichan/cowichan.cpp@{cowichan/cowichan.cpp}}
+}
+Implementation for \hyperlink{class_cowichan}{Cowichan} class and common routines for \hyperlink{class_cowichan}{Cowichan} programs.  
+
+
+{\tt \#include \char`\"{}cowichan.hpp\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{cowichan_8cpp_eb2386a0fab0a548605cd5f0898da5b4}{uniform} (\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} mean, \hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} range)
+\item 
+void \hyperlink{cowichan_8cpp_faa5a0a08b60255e5a59cbd3b1f5e45f}{out\_\-of\_\-memory} ()
+\item 
+void \hyperlink{cowichan_8cpp_501801b9dcd90a910432c7712ff763e7}{not\_\-enough\_\-points} ()
+\item 
+void \hyperlink{cowichan_8cpp_19e1551f7e954a984729d96c2c0bf5ba}{no\_\-cells\_\-alive} ()
+\item 
+INT64 \hyperlink{cowichan_8cpp_fa824504b2ae4f2f1ebbf5e6f76fb4fa}{get\_\-ticks} ()
+\item 
+INT64 \hyperlink{cowichan_8cpp_40356e6c8804a8f94e41c156ad368c83}{get\_\-freq} ()
+\item 
+void \hyperlink{cowichan_8cpp_560007e135455d06968b8a834d970cf9}{print\_\-elapsed\_\-time} (INT64 start, INT64 end)
+\item 
+void \hyperlink{cowichan_8cpp_1bf3d816eb607b5a06a97e05e9b95099}{timeInfo} (INT64 $\ast$start, INT64 $\ast$end, std::string message)
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+Implementation for \hyperlink{class_cowichan}{Cowichan} class and common routines for \hyperlink{class_cowichan}{Cowichan} programs. 
+
+
+
+\subsection{Function Documentation}
+\hypertarget{cowichan_8cpp_40356e6c8804a8f94e41c156ad368c83}{
+\index{cowichan.cpp@{cowichan.cpp}!get\_\-freq@{get\_\-freq}}
+\index{get\_\-freq@{get\_\-freq}!cowichan.cpp@{cowichan.cpp}}
+\subsubsection[{get\_\-freq}]{\setlength{\rightskip}{0pt plus 5cm}INT64 get\_\-freq ()}}
+\label{cowichan_8cpp_40356e6c8804a8f94e41c156ad368c83}
+
+
+Get tick frequency. \begin{Desc}
+\item[Returns:]Tick frequency. \end{Desc}
+\hypertarget{cowichan_8cpp_fa824504b2ae4f2f1ebbf5e6f76fb4fa}{
+\index{cowichan.cpp@{cowichan.cpp}!get\_\-ticks@{get\_\-ticks}}
+\index{get\_\-ticks@{get\_\-ticks}!cowichan.cpp@{cowichan.cpp}}
+\subsubsection[{get\_\-ticks}]{\setlength{\rightskip}{0pt plus 5cm}INT64 get\_\-ticks ()}}
+\label{cowichan_8cpp_fa824504b2ae4f2f1ebbf5e6f76fb4fa}
+
+
+Get tick count. \begin{Desc}
+\item[Returns:]Tick count. \end{Desc}
+\hypertarget{cowichan_8cpp_19e1551f7e954a984729d96c2c0bf5ba}{
+\index{cowichan.cpp@{cowichan.cpp}!no\_\-cells\_\-alive@{no\_\-cells\_\-alive}}
+\index{no\_\-cells\_\-alive@{no\_\-cells\_\-alive}!cowichan.cpp@{cowichan.cpp}}
+\subsubsection[{no\_\-cells\_\-alive}]{\setlength{\rightskip}{0pt plus 5cm}void no\_\-cells\_\-alive ()}}
+\label{cowichan_8cpp_19e1551f7e954a984729d96c2c0bf5ba}
+
+
+Prints no cells alive message and exits. \hypertarget{cowichan_8cpp_501801b9dcd90a910432c7712ff763e7}{
+\index{cowichan.cpp@{cowichan.cpp}!not\_\-enough\_\-points@{not\_\-enough\_\-points}}
+\index{not\_\-enough\_\-points@{not\_\-enough\_\-points}!cowichan.cpp@{cowichan.cpp}}
+\subsubsection[{not\_\-enough\_\-points}]{\setlength{\rightskip}{0pt plus 5cm}void not\_\-enough\_\-points ()}}
+\label{cowichan_8cpp_501801b9dcd90a910432c7712ff763e7}
+
+
+Prints not enough points message and exits. \hypertarget{cowichan_8cpp_faa5a0a08b60255e5a59cbd3b1f5e45f}{
+\index{cowichan.cpp@{cowichan.cpp}!out\_\-of\_\-memory@{out\_\-of\_\-memory}}
+\index{out\_\-of\_\-memory@{out\_\-of\_\-memory}!cowichan.cpp@{cowichan.cpp}}
+\subsubsection[{out\_\-of\_\-memory}]{\setlength{\rightskip}{0pt plus 5cm}void out\_\-of\_\-memory ()}}
+\label{cowichan_8cpp_faa5a0a08b60255e5a59cbd3b1f5e45f}
+
+
+Prints out of memory message and exits. \hypertarget{cowichan_8cpp_560007e135455d06968b8a834d970cf9}{
+\index{cowichan.cpp@{cowichan.cpp}!print\_\-elapsed\_\-time@{print\_\-elapsed\_\-time}}
+\index{print\_\-elapsed\_\-time@{print\_\-elapsed\_\-time}!cowichan.cpp@{cowichan.cpp}}
+\subsubsection[{print\_\-elapsed\_\-time}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-elapsed\_\-time (INT64 {\em start}, \/  INT64 {\em end})}}
+\label{cowichan_8cpp_560007e135455d06968b8a834d970cf9}
+
+
+Print elapsed time to std::cout. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em start}]initial tick count. \item[{\em end}]final tick count. \end{description}
+\end{Desc}
+\hypertarget{cowichan_8cpp_1bf3d816eb607b5a06a97e05e9b95099}{
+\index{cowichan.cpp@{cowichan.cpp}!timeInfo@{timeInfo}}
+\index{timeInfo@{timeInfo}!cowichan.cpp@{cowichan.cpp}}
+\subsubsection[{timeInfo}]{\setlength{\rightskip}{0pt plus 5cm}void timeInfo (INT64 $\ast$ {\em start}, \/  INT64 $\ast$ {\em end}, \/  std::string {\em message})}}
+\label{cowichan_8cpp_1bf3d816eb607b5a06a97e05e9b95099}
+
+
+Does a sort of swap-out, printing progress. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em start}]pointer to initial tick count. \item[{\em end}]pointeger to final tick count. \item[{\em message}]message to print before the elapsed time. \end{description}
+\end{Desc}
+\hypertarget{cowichan_8cpp_eb2386a0fab0a548605cd5f0898da5b4}{
+\index{cowichan.cpp@{cowichan.cpp}!uniform@{uniform}}
+\index{uniform@{uniform}!cowichan.cpp@{cowichan.cpp}}
+\subsubsection[{uniform}]{\setlength{\rightskip}{0pt plus 5cm}{\bf real} uniform ({\bf real} {\em mean}, \/  {\bf real} {\em range})}}
+\label{cowichan_8cpp_eb2386a0fab0a548605cd5f0898da5b4}
+
+
+Returns a pseudorandom number $\sim$ U\mbox{[}mean - range, mean + range\mbox{]}. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em mean}]mean. \item[{\em range}]range. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The pseudorandom number. \end{Desc}

@@ -1,0 +1,102 @@
+\hypertarget{class_l_t_bounds}{
+\section{LTBounds Class Reference}
+\label{class_l_t_bounds}\index{LTBounds@{LTBounds}}
+}
+{\tt \#include $<$norm.hpp$>$}
+
+Inheritance diagram for LTBounds::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{class_l_t_bounds}
+\end{center}
+\end{figure}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{class_l_t_bounds_ac6861a60c9a42ec8fc71025b481c380}{consumeInput} ()
+\item 
+void \hyperlink{class_l_t_bounds_877b72b63e19fbb7114bae270fe20c53}{work} ()
+\item 
+void \hyperlink{class_l_t_bounds_028a451c099ee3377dc64a5a8ae9954f}{produceOutput} ()
+\end{CompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{CompactItemize}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_bounds_80e32001ceca2a006abbf604c6359cef}{SYNCH\_\-LOCK} = \char`\"{}norm synch lock\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_bounds_4b20608cc18141ad4427a373bb3f341c}{POINTS\_\-DONE} = \char`\"{}norm points reporting\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_bounds_c8258b77f06e3eba82d3df7557c42829}{MIN\_\-POINT} = \char`\"{}norm minPoint\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_bounds_8338863457650133e0aa18b5968d00fb}{MAX\_\-POINT} = \char`\"{}norm maxPoint\char`\"{}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Calculates the minimum/maximum point in the point cloud, so that the other points can be later normalized. Keeps those values in the tuple space so they can be used later. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_l_t_bounds_ac6861a60c9a42ec8fc71025b481c380}{
+\index{LTBounds@{LTBounds}!consumeInput@{consumeInput}}
+\index{consumeInput@{consumeInput}!LTBounds@{LTBounds}}
+\subsubsection[{consumeInput}]{\setlength{\rightskip}{0pt plus 5cm}void LTBounds::consumeInput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_bounds_ac6861a60c9a42ec8fc71025b481c380}
+
+
+The consume input process is spawned once and should distribute tasks to the worker processes. 
+
+Implements \hyperlink{class_tuple_application_e163c5a536de01c8b94b49528a17dab2}{TupleApplication}.\hypertarget{class_l_t_bounds_028a451c099ee3377dc64a5a8ae9954f}{
+\index{LTBounds@{LTBounds}!produceOutput@{produceOutput}}
+\index{produceOutput@{produceOutput}!LTBounds@{LTBounds}}
+\subsubsection[{produceOutput}]{\setlength{\rightskip}{0pt plus 5cm}void LTBounds::produceOutput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_bounds_028a451c099ee3377dc64a5a8ae9954f}
+
+
+The output producer decides when the tuple application is finished; once this function returns, the tuple application is complete. 
+
+Implements \hyperlink{class_tuple_application_8743dfcf17dedd52887c0b2ab170d8dc}{TupleApplication}.\hypertarget{class_l_t_bounds_877b72b63e19fbb7114bae270fe20c53}{
+\index{LTBounds@{LTBounds}!work@{work}}
+\index{work@{work}!LTBounds@{LTBounds}}
+\subsubsection[{work}]{\setlength{\rightskip}{0pt plus 5cm}void LTBounds::work ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_bounds_877b72b63e19fbb7114bae270fe20c53}
+
+
+Worker processes are created and killed after the output process has finished. 
+
+Implements \hyperlink{class_tuple_application_ef6ae8bb1d697e4ed038b43320183c89}{TupleApplication}.
+
+\subsection{Member Data Documentation}
+\hypertarget{class_l_t_bounds_8338863457650133e0aa18b5968d00fb}{
+\index{LTBounds@{LTBounds}!MAX\_\-POINT@{MAX\_\-POINT}}
+\index{MAX\_\-POINT@{MAX\_\-POINT}!LTBounds@{LTBounds}}
+\subsubsection[{MAX\_\-POINT}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTBounds::MAX\_\-POINT} = \char`\"{}norm maxPoint\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_bounds_8338863457650133e0aa18b5968d00fb}
+
+
+The largest point (in x and y) found \hypertarget{class_l_t_bounds_c8258b77f06e3eba82d3df7557c42829}{
+\index{LTBounds@{LTBounds}!MIN\_\-POINT@{MIN\_\-POINT}}
+\index{MIN\_\-POINT@{MIN\_\-POINT}!LTBounds@{LTBounds}}
+\subsubsection[{MIN\_\-POINT}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTBounds::MIN\_\-POINT} = \char`\"{}norm minPoint\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_bounds_c8258b77f06e3eba82d3df7557c42829}
+
+
+The smallest point (in x and y) found \hypertarget{class_l_t_bounds_4b20608cc18141ad4427a373bb3f341c}{
+\index{LTBounds@{LTBounds}!POINTS\_\-DONE@{POINTS\_\-DONE}}
+\index{POINTS\_\-DONE@{POINTS\_\-DONE}!LTBounds@{LTBounds}}
+\subsubsection[{POINTS\_\-DONE}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTBounds::POINTS\_\-DONE} = \char`\"{}norm points reporting\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_bounds_4b20608cc18141ad4427a373bb3f341c}
+
+
+Number of points that have been processed. \hypertarget{class_l_t_bounds_80e32001ceca2a006abbf604c6359cef}{
+\index{LTBounds@{LTBounds}!SYNCH\_\-LOCK@{SYNCH\_\-LOCK}}
+\index{SYNCH\_\-LOCK@{SYNCH\_\-LOCK}!LTBounds@{LTBounds}}
+\subsubsection[{SYNCH\_\-LOCK}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTBounds::SYNCH\_\-LOCK} = \char`\"{}norm synch lock\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_bounds_80e32001ceca2a006abbf604c6359cef}
+
+
+Synchronization lock (critical section). 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+cowichan\_\-lt/src/\hyperlink{norm_8hpp}{norm.hpp}\item 
+cowichan\_\-lt/src/\hyperlink{cowichan__lt_2src_2norm_8cpp}{norm.cpp}\end{CompactItemize}

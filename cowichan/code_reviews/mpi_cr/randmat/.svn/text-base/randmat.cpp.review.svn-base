@@ -1,0 +1,63 @@
+     1	/**
+     2	 * Random matrix generation
+     3	 *
+     4	 * \file randmat.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 01-26-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#ifdef IS_PARALLEL
+    11	  #include "parallel.h"
+    12	#else
+    13	  #include "serial.h"
+    14	#endif
+    15	
+    16	int main(int argc, char* argv[])
+    17	{
+    18	#ifdef IS_PARALLEL
+    19	  mpi::environment env(argc, argv);
+    20	  mpi::communicator world;
+    21	
+    22	#ifdef TEST_OUTPUT
+    23	  printf ("I am process %d\n", world.rank ());
+    24	#endif
+    25	#endif
+    26	
+    27	  int2D* matrix; /* to fill */
+    28	  int   nr;     /* row size */
+    29	  int   nc;     /* column size */
+    30	  unsigned int   limit;  /* value limit */
+    31	  unsigned int   seed;   /* RNG seed */
+    32	
+    33	  nr = MAXEXT;
+    34	  nc = MAXEXT;
+    35	  limit = 10;
+    36	  seed = 222;
+    37	
+    38	  matrix = new int2D[MAXEXT];
+    39	
+    40	#ifdef TEST_TIME
+    41	  INT64 start, end;
+    42	  start = get_ticks ();
+    43	#endif
+    44	
+    45	#ifdef IS_PARALLEL
+    46	  randmat_mpi (world, matrix, nr, nc, limit, seed);
+    47	#else
+    48	  randmat (matrix, nr, nc, limit, seed);
+    49	#endif
+    50	
+    51	#ifdef TEST_TIME
+    52	  end = get_ticks ();
+    53	  print_elapsed_time (start, end);
+    54	#endif
+    55	
+    56	#ifdef TEST_OUTPUT
+    57	  print_matrix (matrix, nr, nc);
+    58	#endif
+    59	
+    60	  delete [] matrix;
+    61	
+    62	  return 0;
+    63	}

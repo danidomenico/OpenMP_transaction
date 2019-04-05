@@ -1,0 +1,98 @@
+\hypertarget{classcowichan__tbb_1_1_perc_point}{
+\section{cowichan\_\-tbb::PercPoint Class Reference}
+\label{classcowichan__tbb_1_1_perc_point}\index{cowichan\_\-tbb::PercPoint@{cowichan\_\-tbb::PercPoint}}
+}
+Percolation point.  
+
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classcowichan__tbb_1_1_perc_point_6181f073828abb43fd9db668c7954841}{PercPoint} (\hyperlink{class_point}{Point} \hyperlink{classcowichan__tbb_1_1_perc_point_42029c309350f2f2768c33ef608c24cd}{point})
+\item 
+bool \hyperlink{classcowichan__tbb_1_1_perc_point_f8e5cc2f3104c8aaf2183ef21ae78b6d}{operator$<$} (const \hyperlink{classcowichan__tbb_1_1_perc_point}{PercPoint} \&other) const 
+\item 
+\hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} \hyperlink{classcowichan__tbb_1_1_perc_point_53cad861ab94aac7d92a447b072a61f5}{value} () const 
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_point}{Point} \hyperlink{classcowichan__tbb_1_1_perc_point_42029c309350f2f2768c33ef608c24cd}{point}
+\item 
+\hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} \hyperlink{classcowichan__tbb_1_1_perc_point_66cf1ffa25f7a83d6f36d3fa80148f8e}{matrix}
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_perc_point_10b21f3ed373ae36976f42df52992b56}{nc}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Percolation point. 
+
+These are put into a heap to extract the one with lowest value. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcowichan__tbb_1_1_perc_point_6181f073828abb43fd9db668c7954841}{
+\index{cowichan\_\-tbb::PercPoint@{cowichan\_\-tbb::PercPoint}!PercPoint@{PercPoint}}
+\index{PercPoint@{PercPoint}!cowichan_tbb::PercPoint@{cowichan\_\-tbb::PercPoint}}
+\subsubsection[{PercPoint}]{\setlength{\rightskip}{0pt plus 5cm}cowichan\_\-tbb::PercPoint::PercPoint ({\bf Point} {\em point})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_perc_point_6181f073828abb43fd9db668c7954841}
+
+
+Construct a percolation point. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em point}]point. \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcowichan__tbb_1_1_perc_point_f8e5cc2f3104c8aaf2183ef21ae78b6d}{
+\index{cowichan\_\-tbb::PercPoint@{cowichan\_\-tbb::PercPoint}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!cowichan_tbb::PercPoint@{cowichan\_\-tbb::PercPoint}}
+\subsubsection[{operator$<$}]{\setlength{\rightskip}{0pt plus 5cm}bool cowichan\_\-tbb::PercPoint::operator$<$ (const {\bf PercPoint} \& {\em other}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_perc_point_f8e5cc2f3104c8aaf2183ef21ae78b6d}
+
+
+Less than comparison - we want to extract lowest values. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em other}]right hand side percolation point. \end{description}
+\end{Desc}
+\hypertarget{classcowichan__tbb_1_1_perc_point_53cad861ab94aac7d92a447b072a61f5}{
+\index{cowichan\_\-tbb::PercPoint@{cowichan\_\-tbb::PercPoint}!value@{value}}
+\index{value@{value}!cowichan_tbb::PercPoint@{cowichan\_\-tbb::PercPoint}}
+\subsubsection[{value}]{\setlength{\rightskip}{0pt plus 5cm}{\bf INT\_\-TYPE} cowichan\_\-tbb::PercPoint::value () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_perc_point_53cad861ab94aac7d92a447b072a61f5}
+
+
+Get the value at this point. \begin{Desc}
+\item[Returns:]value from the matrix. \end{Desc}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classcowichan__tbb_1_1_perc_point_66cf1ffa25f7a83d6f36d3fa80148f8e}{
+\index{cowichan\_\-tbb::PercPoint@{cowichan\_\-tbb::PercPoint}!matrix@{matrix}}
+\index{matrix@{matrix}!cowichan_tbb::PercPoint@{cowichan\_\-tbb::PercPoint}}
+\subsubsection[{matrix}]{\setlength{\rightskip}{0pt plus 5cm}{\bf IntMatrix} {\bf cowichan\_\-tbb::PercPoint::matrix}}}
+\label{classcowichan__tbb_1_1_perc_point_66cf1ffa25f7a83d6f36d3fa80148f8e}
+
+
+Matrix. \hypertarget{classcowichan__tbb_1_1_perc_point_10b21f3ed373ae36976f42df52992b56}{
+\index{cowichan\_\-tbb::PercPoint@{cowichan\_\-tbb::PercPoint}!nc@{nc}}
+\index{nc@{nc}!cowichan_tbb::PercPoint@{cowichan\_\-tbb::PercPoint}}
+\subsubsection[{nc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} {\bf cowichan\_\-tbb::PercPoint::nc}}}
+\label{classcowichan__tbb_1_1_perc_point_10b21f3ed373ae36976f42df52992b56}
+
+
+Number of columns. \hypertarget{classcowichan__tbb_1_1_perc_point_42029c309350f2f2768c33ef608c24cd}{
+\index{cowichan\_\-tbb::PercPoint@{cowichan\_\-tbb::PercPoint}!point@{point}}
+\index{point@{point}!cowichan_tbb::PercPoint@{cowichan\_\-tbb::PercPoint}}
+\subsubsection[{point}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point} {\bf cowichan\_\-tbb::PercPoint::point}}}
+\label{classcowichan__tbb_1_1_perc_point_42029c309350f2f2768c33ef608c24cd}
+
+
+\hyperlink{class_point}{Point}. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+cowichan\_\-tbb/\hyperlink{cowichan__tbb_2invperc_8cpp}{invperc.cpp}\end{CompactItemize}

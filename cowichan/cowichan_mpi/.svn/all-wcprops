@@ -1,0 +1,143 @@
+K 25
+svn:wc:ra_dav:version-url
+V 30
+/svn/!svn/ver/277/cowichan_mpi
+END
+comp32.sh
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/242/cowichan_mpi/comp32.sh
+END
+sort.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/244/cowichan_mpi/sort.hpp
+END
+comp64.bat
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/242/cowichan_mpi/comp64.bat
+END
+thresh.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/277/cowichan_mpi/thresh.cpp
+END
+outer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/277/cowichan_mpi/outer.cpp
+END
+mandel.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/277/cowichan_mpi/mandel.cpp
+END
+cowichan_mpi.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/277/cowichan_mpi/cowichan_mpi.cpp
+END
+comp64.sh
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/242/cowichan_mpi/comp64.sh
+END
+sor.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/277/cowichan_mpi/sor.cpp
+END
+hull.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/277/cowichan_mpi/hull.cpp
+END
+cowichan_mpi.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/277/cowichan_mpi/cowichan_mpi.hpp
+END
+vecdiff.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/277/cowichan_mpi/vecdiff.cpp
+END
+invperc.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/272/cowichan_mpi/invperc.cpp
+END
+half.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/277/cowichan_mpi/half.cpp
+END
+norm.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/277/cowichan_mpi/norm.cpp
+END
+life.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/277/cowichan_mpi/life.cpp
+END
+product.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/277/cowichan_mpi/product.cpp
+END
+winnow.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/277/cowichan_mpi/winnow.cpp
+END
+cowichan_mpi.vcproj
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/277/cowichan_mpi/cowichan_mpi.vcproj
+END
+gauss.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/277/cowichan_mpi/gauss.cpp
+END
+randmat.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/277/cowichan_mpi/randmat.cpp
+END
+comp32.bat
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/242/cowichan_mpi/comp32.bat
+END
+sort.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/243/cowichan_mpi/sort.cpp
+END

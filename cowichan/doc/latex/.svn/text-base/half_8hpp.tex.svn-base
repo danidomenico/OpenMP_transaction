@@ -1,0 +1,23 @@
+\hypertarget{half_8hpp}{
+\section{cowichan\_\-lt/src/half.hpp File Reference}
+\label{half_8hpp}\index{cowichan\_\-lt/src/half.hpp@{cowichan\_\-lt/src/half.hpp}}
+}
+LinuxTuples halving shuffle header file.  
+
+
+{\tt \#include \char`\"{}tuple\_\-common.hpp\char`\"{}}\par
+{\tt \#include \char`\"{}cowichan\_\-lt.hpp\char`\"{}}\par
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{class_l_t_half}{LTHalf}
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+LinuxTuples halving shuffle header file. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_linux_tuples_f3bd58ad2653f06d242d473e7bffda0b}{CowichanLinuxTuples::half} \end{Desc}

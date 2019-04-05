@@ -1,0 +1,32 @@
+\hypertarget{tuple__common_8hpp}{
+\section{cowichan\_\-lt/src/tuple\_\-common.hpp File Reference}
+\label{tuple__common_8hpp}\index{cowichan\_\-lt/src/tuple\_\-common.hpp@{cowichan\_\-lt/src/tuple\_\-common.hpp}}
+}
+Header file for tuple applications.  
+
+
+{\tt \#include $<$sys/types.h$>$}\par
+{\tt \#include $<$unistd.h$>$}\par
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$signal.h$>$}\par
+{\tt \#include $<$sys/ipc.h$>$}\par
+{\tt \#include $<$sys/shm.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$sys/wait.h$>$}\par
+{\tt \#include $<$cassert$>$}\par
+{\tt \#include $<$sys/mman.h$>$}\par
+{\tt \#include \char`\"{}tuple.h\char`\"{}}\par
+{\tt \#include $<$map$>$}\par
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{class_tuple_application}{TupleApplication}
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+Header file for tuple applications. 
+

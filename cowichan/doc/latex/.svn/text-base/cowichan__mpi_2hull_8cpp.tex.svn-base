@@ -1,0 +1,40 @@
+\hypertarget{cowichan__mpi_2hull_8cpp}{
+\section{cowichan\_\-mpi/hull.cpp File Reference}
+\label{cowichan__mpi_2hull_8cpp}\index{cowichan\_\-mpi/hull.cpp@{cowichan\_\-mpi/hull.cpp}}
+}
+MPI convex hull implementation.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-mpi.hpp\char`\"{}}\par
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{structcowichan__mpi_1_1minimum__x__pt}{cowichan\_\-mpi::minimum\_\-x\_\-pt}
+\item 
+struct \hyperlink{structcowichan__mpi_1_1maximum__x__pt}{cowichan\_\-mpi::maximum\_\-x\_\-pt}
+\item 
+struct \hyperlink{structcowichan__mpi_1_1pt__cross}{cowichan\_\-mpi::pt\_\-cross}
+\item 
+struct \hyperlink{structcowichan__mpi_1_1maximum__cp}{cowichan\_\-mpi::maximum\_\-cp}
+\end{CompactItemize}
+\subsection*{Namespaces}
+\begin{CompactItemize}
+\item 
+namespace \hyperlink{namespacecowichan__mpi}{cowichan\_\-mpi}
+\begin{CompactList}\small\item\em Additional classes and functions specific to mpi implementation. \item\end{CompactList}
+
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{namespacecowichan__mpi_c9ddfd8c08bb0f11a90abac20453dd2c}{cowichan\_\-mpi::split\_\-mpi} (mpi::communicator world, \hyperlink{class_point}{PointVector} points, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} n, \hyperlink{class_point}{PointVector} hullPoints, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$hn, \hyperlink{class_point}{Point} \&p1, \hyperlink{class_point}{Point} \&p2)
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+MPI convex hull implementation. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_m_p_i_22b3dce35fd93635bd4c1596e7fb839c}{CowichanMPI::hull} \end{Desc}

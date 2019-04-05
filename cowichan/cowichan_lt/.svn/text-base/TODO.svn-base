@@ -1,0 +1,17 @@
+Throw out LinuxTuples and replace it with a better tuple-space implementation
+(good luck finding one!)
+ - Winnow only works with extremely small data sets (e.g. n around 10)
+   due to the TCP problems with LinuxTuples at this point.
+ - the chain does not work due to buffer overflow errors in the library
+
+Evaluate performance concerns in thresh and winnow (large loops over potential
+tuples).
+
+Get rid of inputs/outputs architecture; pass everything in a constructor.
+
+#define off tuple functions so that tuple back-end (e.g. LinuxTuples, ???) can
+be changed much more easily in the future.
+
+Add thread-based ability to TupleApplication, and a mixed mode. Provide support
+for distributing across different machines, as tuple spaces are inherently
+distributed.

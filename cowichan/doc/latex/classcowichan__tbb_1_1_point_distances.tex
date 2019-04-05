@@ -1,0 +1,142 @@
+\hypertarget{classcowichan__tbb_1_1_point_distances}{
+\section{cowichan\_\-tbb::PointDistances Class Reference}
+\label{classcowichan__tbb_1_1_point_distances}\index{cowichan\_\-tbb::PointDistances@{cowichan\_\-tbb::PointDistances}}
+}
+Fills in matrix and vector with distances.  
+
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classcowichan__tbb_1_1_point_distances_2c706157dc5644c83b2be957a3e73ee1}{PointDistances} (\hyperlink{class_point}{PointVector} points, \hyperlink{cowichan_8hpp_3fb46f939e55c239fbc95656fc0f3399}{Matrix} matrix, \hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} vector, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_point_distances_623f4224db7a141a9f376e8c5bc51b03}{n})
+\item 
+\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{classcowichan__tbb_1_1_point_distances_bd1df7d38eaed63a1d44c3aab93f16d5}{getMaximum} () const 
+\item 
+void \hyperlink{classcowichan__tbb_1_1_point_distances_950a8a9aa03229cf8e00eb4ca941f1b2}{operator()} (const \hyperlink{cowichan__tbb_8hpp_8e2057f725b08f3a15513c378a453a47}{Range} \&rows)
+\item 
+\hyperlink{classcowichan__tbb_1_1_point_distances_417faef7b5cb360d0299cf4faacf9dd7}{PointDistances} (\hyperlink{classcowichan__tbb_1_1_point_distances}{PointDistances} \&other, split)
+\item 
+void \hyperlink{classcowichan__tbb_1_1_point_distances_db5e32d184099cae39b6a85e1670bea4}{join} (const \hyperlink{classcowichan__tbb_1_1_point_distances}{PointDistances} \&other)
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_point}{PointVector} \hyperlink{classcowichan__tbb_1_1_point_distances_98528a38b93f367d6f5da78d4efb7fa7}{\_\-points}
+\item 
+\hyperlink{cowichan_8hpp_3fb46f939e55c239fbc95656fc0f3399}{Matrix} \hyperlink{classcowichan__tbb_1_1_point_distances_2f52c8fa9b61e6baf83ff17afd01cc14}{\_\-matrix}
+\item 
+\hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} \hyperlink{classcowichan__tbb_1_1_point_distances_c125f8f4d3dc01725c1809c9766d0948}{\_\-vector}
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_point_distances_623f4224db7a141a9f376e8c5bc51b03}{n}
+\item 
+\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{classcowichan__tbb_1_1_point_distances_e765ab87c711d42e65fe9a5558e2b5e2}{\_\-max}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Fills in matrix and vector with distances. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcowichan__tbb_1_1_point_distances_2c706157dc5644c83b2be957a3e73ee1}{
+\index{cowichan\_\-tbb::PointDistances@{cowichan\_\-tbb::PointDistances}!PointDistances@{PointDistances}}
+\index{PointDistances@{PointDistances}!cowichan_tbb::PointDistances@{cowichan\_\-tbb::PointDistances}}
+\subsubsection[{PointDistances}]{\setlength{\rightskip}{0pt plus 5cm}cowichan\_\-tbb::PointDistances::PointDistances ({\bf PointVector} {\em points}, \/  {\bf Matrix} {\em matrix}, \/  {\bf Vector} {\em vector}, \/  {\bf index\_\-t} {\em n})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_point_distances_2c706157dc5644c83b2be957a3e73ee1}
+
+
+Construct point distances object. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em points}]given points. \item[{\em matrix}]matrix to fill. \item[{\em vector}]vector to fill. \item[{\em n}]matrix size. \end{description}
+\end{Desc}
+\hypertarget{classcowichan__tbb_1_1_point_distances_417faef7b5cb360d0299cf4faacf9dd7}{
+\index{cowichan\_\-tbb::PointDistances@{cowichan\_\-tbb::PointDistances}!PointDistances@{PointDistances}}
+\index{PointDistances@{PointDistances}!cowichan_tbb::PointDistances@{cowichan\_\-tbb::PointDistances}}
+\subsubsection[{PointDistances}]{\setlength{\rightskip}{0pt plus 5cm}cowichan\_\-tbb::PointDistances::PointDistances ({\bf PointDistances} \& {\em other}, \/  split)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_point_distances_417faef7b5cb360d0299cf4faacf9dd7}
+
+
+Splitting (TBB) constructor. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em other}]object to split. \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcowichan__tbb_1_1_point_distances_bd1df7d38eaed63a1d44c3aab93f16d5}{
+\index{cowichan\_\-tbb::PointDistances@{cowichan\_\-tbb::PointDistances}!getMaximum@{getMaximum}}
+\index{getMaximum@{getMaximum}!cowichan_tbb::PointDistances@{cowichan\_\-tbb::PointDistances}}
+\subsubsection[{getMaximum}]{\setlength{\rightskip}{0pt plus 5cm}{\bf real} cowichan\_\-tbb::PointDistances::getMaximum () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_point_distances_bd1df7d38eaed63a1d44c3aab93f16d5}
+
+
+Get maximum of the distances. \begin{Desc}
+\item[Returns:]Max distance. \end{Desc}
+\hypertarget{classcowichan__tbb_1_1_point_distances_db5e32d184099cae39b6a85e1670bea4}{
+\index{cowichan\_\-tbb::PointDistances@{cowichan\_\-tbb::PointDistances}!join@{join}}
+\index{join@{join}!cowichan_tbb::PointDistances@{cowichan\_\-tbb::PointDistances}}
+\subsubsection[{join}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::PointDistances::join (const {\bf PointDistances} \& {\em other})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_point_distances_db5e32d184099cae39b6a85e1670bea4}
+
+
+Joiner (TBB). \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em other}]object to join. \end{description}
+\end{Desc}
+\hypertarget{classcowichan__tbb_1_1_point_distances_950a8a9aa03229cf8e00eb4ca941f1b2}{
+\index{cowichan\_\-tbb::PointDistances@{cowichan\_\-tbb::PointDistances}!operator()@{operator()}}
+\index{operator()@{operator()}!cowichan_tbb::PointDistances@{cowichan\_\-tbb::PointDistances}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::PointDistances::operator() (const {\bf Range} \& {\em rows})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_point_distances_950a8a9aa03229cf8e00eb4ca941f1b2}
+
+
+Calculates inter-point distances on the given range. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em rows}]range of rows to work on. \end{description}
+\end{Desc}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classcowichan__tbb_1_1_point_distances_2f52c8fa9b61e6baf83ff17afd01cc14}{
+\index{cowichan\_\-tbb::PointDistances@{cowichan\_\-tbb::PointDistances}!\_\-matrix@{\_\-matrix}}
+\index{\_\-matrix@{\_\-matrix}!cowichan_tbb::PointDistances@{cowichan\_\-tbb::PointDistances}}
+\subsubsection[{\_\-matrix}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} {\bf cowichan\_\-tbb::PointDistances::\_\-matrix}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_point_distances_2f52c8fa9b61e6baf83ff17afd01cc14}
+
+
+Matrix to fill. \hypertarget{classcowichan__tbb_1_1_point_distances_e765ab87c711d42e65fe9a5558e2b5e2}{
+\index{cowichan\_\-tbb::PointDistances@{cowichan\_\-tbb::PointDistances}!\_\-max@{\_\-max}}
+\index{\_\-max@{\_\-max}!cowichan_tbb::PointDistances@{cowichan\_\-tbb::PointDistances}}
+\subsubsection[{\_\-max}]{\setlength{\rightskip}{0pt plus 5cm}{\bf real} {\bf cowichan\_\-tbb::PointDistances::\_\-max}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_point_distances_e765ab87c711d42e65fe9a5558e2b5e2}
+
+
+Maximum distance. \hypertarget{classcowichan__tbb_1_1_point_distances_98528a38b93f367d6f5da78d4efb7fa7}{
+\index{cowichan\_\-tbb::PointDistances@{cowichan\_\-tbb::PointDistances}!\_\-points@{\_\-points}}
+\index{\_\-points@{\_\-points}!cowichan_tbb::PointDistances@{cowichan\_\-tbb::PointDistances}}
+\subsubsection[{\_\-points}]{\setlength{\rightskip}{0pt plus 5cm}{\bf PointVector} {\bf cowichan\_\-tbb::PointDistances::\_\-points}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_point_distances_98528a38b93f367d6f5da78d4efb7fa7}
+
+
+Given points. \hypertarget{classcowichan__tbb_1_1_point_distances_c125f8f4d3dc01725c1809c9766d0948}{
+\index{cowichan\_\-tbb::PointDistances@{cowichan\_\-tbb::PointDistances}!\_\-vector@{\_\-vector}}
+\index{\_\-vector@{\_\-vector}!cowichan_tbb::PointDistances@{cowichan\_\-tbb::PointDistances}}
+\subsubsection[{\_\-vector}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} {\bf cowichan\_\-tbb::PointDistances::\_\-vector}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_point_distances_c125f8f4d3dc01725c1809c9766d0948}
+
+
+Vector to fill. \hypertarget{classcowichan__tbb_1_1_point_distances_623f4224db7a141a9f376e8c5bc51b03}{
+\index{cowichan\_\-tbb::PointDistances@{cowichan\_\-tbb::PointDistances}!n@{n}}
+\index{n@{n}!cowichan_tbb::PointDistances@{cowichan\_\-tbb::PointDistances}}
+\subsubsection[{n}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} {\bf cowichan\_\-tbb::PointDistances::n}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_point_distances_623f4224db7a141a9f376e8c5bc51b03}
+
+
+Matrix size. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+cowichan\_\-tbb/\hyperlink{cowichan__tbb_2outer_8cpp}{outer.cpp}\end{CompactItemize}

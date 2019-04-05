@@ -1,0 +1,115 @@
+\hypertarget{namespacecowichan__serial}{
+\section{cowichan\_\-serial Namespace Reference}
+\label{namespacecowichan__serial}\index{cowichan\_\-serial@{cowichan\_\-serial}}
+}
+Additional classes and functions specific to serial implementation.  
+
+
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{classcowichan__serial_1_1_perc_point}{PercPoint}
+\begin{CompactList}\small\item\em Percolation point. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{namespacecowichan__serial_b0aad3f081e04d4676fae7b6ae8d7d10}{quickhull} (\hyperlink{class_point}{PointVector} pointsIn, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} n, \hyperlink{class_point}{PointVector} pointsOut, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$hn)
+\item 
+void \hyperlink{namespacecowichan__serial_e1e9f58ca5f603f8215abffb30b78d71}{split} (\hyperlink{class_point}{PointVector} pointsIn, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} n, \hyperlink{class_point}{PointVector} pointsOut, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$hn, \hyperlink{class_point}{Point} $\ast$p1, \hyperlink{class_point}{Point} $\ast$p2)
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{namespacecowichan__serial_93fd16bd1e6cb78235571ce617773639}{sumNeighbours} (\hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix} first, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} r, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} c, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} nr, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} nc)
+\item 
+\hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} \hyperlink{namespacecowichan__serial_4cde20338a4976564f4ceaf7a8a2c68e}{mandel\_\-calc} (\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} x, \hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} y)
+\item 
+void \hyperlink{namespacecowichan__serial_bd0760b2ea719ded039c711324fc1bd4}{findMinMax} (\hyperlink{class_point}{PointVector} points, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} n, \hyperlink{class_point}{Point} $\ast$minPoint, \hyperlink{class_point}{Point} $\ast$maxPoint)
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{namespacecowichan__serial_4a948387cf6c0310f0dc43d50fdef087}{mask\_\-count} (\hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix} mask, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} nr, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} nc)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Additional classes and functions specific to serial implementation. 
+
+
+
+\subsection{Function Documentation}
+\hypertarget{namespacecowichan__serial_bd0760b2ea719ded039c711324fc1bd4}{
+\index{cowichan\_\-serial@{cowichan\_\-serial}!findMinMax@{findMinMax}}
+\index{findMinMax@{findMinMax}!cowichan_serial@{cowichan\_\-serial}}
+\subsubsection[{findMinMax}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-serial::findMinMax ({\bf PointVector} {\em points}, \/  {\bf index\_\-t} {\em n}, \/  {\bf Point} $\ast$ {\em minPoint}, \/  {\bf Point} $\ast$ {\em maxPoint})}}
+\label{namespacecowichan__serial_bd0760b2ea719ded039c711324fc1bd4}
+
+
+Find min/max x/y coordinates. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em points}]point vector. \item[{\em n}]number of points. \item[{\em minPoint}]min x/y values. \item[{\em maxPoint}]max x/y values. \end{description}
+\end{Desc}
+\hypertarget{namespacecowichan__serial_4cde20338a4976564f4ceaf7a8a2c68e}{
+\index{cowichan\_\-serial@{cowichan\_\-serial}!mandel\_\-calc@{mandel\_\-calc}}
+\index{mandel\_\-calc@{mandel\_\-calc}!cowichan_serial@{cowichan\_\-serial}}
+\subsubsection[{mandel\_\-calc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf INT\_\-TYPE} cowichan\_\-serial::mandel\_\-calc ({\bf real} {\em x}, \/  {\bf real} {\em y})}}
+\label{namespacecowichan__serial_4cde20338a4976564f4ceaf7a8a2c68e}
+
+
+Calculate mandelbrot value. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em x}]x-coordinate. \item[{\em y}]y-coordinate. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Mandelbrot value. \end{Desc}
+\hypertarget{namespacecowichan__serial_4a948387cf6c0310f0dc43d50fdef087}{
+\index{cowichan\_\-serial@{cowichan\_\-serial}!mask\_\-count@{mask\_\-count}}
+\index{mask\_\-count@{mask\_\-count}!cowichan_serial@{cowichan\_\-serial}}
+\subsubsection[{mask\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} cowichan\_\-serial::mask\_\-count ({\bf BoolMatrix} {\em mask}, \/  {\bf index\_\-t} {\em nr}, \/  {\bf index\_\-t} {\em nc})}}
+\label{namespacecowichan__serial_4a948387cf6c0310f0dc43d50fdef087}
+
+
+Count the number of set cells in the mask. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em mask}]boolean mask. \item[{\em nr}]number of rows. \item[{\em nc}]number of columns. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Number of set cells in the mask. \end{Desc}
+\hypertarget{namespacecowichan__serial_b0aad3f081e04d4676fae7b6ae8d7d10}{
+\index{cowichan\_\-serial@{cowichan\_\-serial}!quickhull@{quickhull}}
+\index{quickhull@{quickhull}!cowichan_serial@{cowichan\_\-serial}}
+\subsubsection[{quickhull}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-serial::quickhull ({\bf PointVector} {\em pointsIn}, \/  {\bf index\_\-t} {\em n}, \/  {\bf PointVector} {\em pointsOut}, \/  {\bf index\_\-t} $\ast$ {\em hn})}}
+\label{namespacecowichan__serial_b0aad3f081e04d4676fae7b6ae8d7d10}
+
+
+Runs quickhull algorithm. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pointsIn}]input points. \item[{\em n}]number of inputs points to use. \item[{\em pointsOut}]output points. \item[{\em hn}]number of output points generated so far. \end{description}
+\end{Desc}
+\hypertarget{namespacecowichan__serial_e1e9f58ca5f603f8215abffb30b78d71}{
+\index{cowichan\_\-serial@{cowichan\_\-serial}!split@{split}}
+\index{split@{split}!cowichan_serial@{cowichan\_\-serial}}
+\subsubsection[{split}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-serial::split ({\bf PointVector} {\em pointsIn}, \/  {\bf index\_\-t} {\em n}, \/  {\bf PointVector} {\em pointsOut}, \/  {\bf index\_\-t} $\ast$ {\em hn}, \/  {\bf Point} $\ast$ {\em p1}, \/  {\bf Point} $\ast$ {\em p2})}}
+\label{namespacecowichan__serial_e1e9f58ca5f603f8215abffb30b78d71}
+
+
+For description see \hyperlink{index_hull_sec}{9. Convex Hull}
+
+Recursive step of the quickhull algorithm - compute hull on one side of the splitting line. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pointsIn}]input points. \item[{\em n}]number of inputs points to use. \item[{\em pointsOut}]output points. \item[{\em hn}]number of output points generated so far. \item[{\em p1}]first point of the splitting line (p1,p2). \item[{\em p2}]second point of the splitting line (p1,p2). \end{description}
+\end{Desc}
+\hypertarget{namespacecowichan__serial_93fd16bd1e6cb78235571ce617773639}{
+\index{cowichan\_\-serial@{cowichan\_\-serial}!sumNeighbours@{sumNeighbours}}
+\index{sumNeighbours@{sumNeighbours}!cowichan_serial@{cowichan\_\-serial}}
+\subsubsection[{sumNeighbours}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} cowichan\_\-serial::sumNeighbours ({\bf BoolMatrix} {\em first}, \/  {\bf index\_\-t} {\em r}, \/  {\bf index\_\-t} {\em c}, \/  {\bf index\_\-t} {\em nr}, \/  {\bf index\_\-t} {\em nc})}}
+\label{namespacecowichan__serial_93fd16bd1e6cb78235571ce617773639}
+
+
+Calculate number of peers. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em first}]world matrix. \item[{\em r}]row. \item[{\em c}]column. \item[{\em nr}]number of rows in the matrix. \item[{\em nc}]number of columns in the matrix. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The number of peers. \end{Desc}

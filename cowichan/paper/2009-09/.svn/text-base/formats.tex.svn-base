@@ -1,0 +1,28 @@
+\section{File Formats\label{s:formats}}
+
+\subsection*{Vector}
+
+A vector file begins with a single positive integer,
+which specifies the number of elements in the vector.
+This is then followed by N rows,
+each containing a single value.
+
+\subsection*{Matrix}
+
+A file containing a matrix begins with a pair of positive integers,
+which specify the number of rows and columns in the matrix respectively.
+(Note that this means the first number is the Y extent, and the second number is the X extent.)
+Elements of the vector or matrix then appear one per line in order of increasing index,
+i.e.,
+the element at (1,1) appears first,
+then the element at (1,2),
+and so on up to (1,N),
+which is followed by the element at index (2,1).
+
+\subsection*{Basic Types}
+
+Vectors and matrices may contain Booleans, integers, or reals;
+vectors may also contain (x,y) points.
+The two Boolean values are represented by upper-case 'T' and 'F'.
+Integers and reals are represented in the usual way;
+points are represented as two numbers separated by a single space character.

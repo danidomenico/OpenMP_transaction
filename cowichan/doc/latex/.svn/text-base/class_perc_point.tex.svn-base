@@ -1,0 +1,88 @@
+\hypertarget{class_perc_point}{
+\section{PercPoint Class Reference}
+\label{class_perc_point}\index{PercPoint@{PercPoint}}
+}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_perc_point_52b0b83113727e5d43ac0d3db3125ad0}{PercPoint} (\hyperlink{class_point}{Point} \hyperlink{class_perc_point_6f5497e144144fa0f0e5e4783ab30761}{point})
+\item 
+bool \hyperlink{class_perc_point_f798aa389b770208bd172542267ec811}{operator$<$} (const \hyperlink{class_perc_point}{PercPoint} \&other) const 
+\item 
+\hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} \hyperlink{class_perc_point_0099784a4e3728c1f28b546a5b94104a}{value} () const 
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_point}{Point} \hyperlink{class_perc_point_6f5497e144144fa0f0e5e4783ab30761}{point}
+\item 
+\hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} \hyperlink{class_perc_point_730c461b6a04bcb883d60df9b297b5d5}{matrix}
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{class_perc_point_dc46d54bf942be6e7774ae522e563f87}{nc}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_point}{Point} that also stores matrix value at its given row and column. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_perc_point_52b0b83113727e5d43ac0d3db3125ad0}{
+\index{PercPoint@{PercPoint}!PercPoint@{PercPoint}}
+\index{PercPoint@{PercPoint}!PercPoint@{PercPoint}}
+\subsubsection[{PercPoint}]{\setlength{\rightskip}{0pt plus 5cm}PercPoint::PercPoint ({\bf Point} {\em point})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_perc_point_52b0b83113727e5d43ac0d3db3125ad0}
+
+
+Construct with matrix location. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em point}]place on the matrix to \char`\"{}claim\char`\"{} \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_perc_point_f798aa389b770208bd172542267ec811}{
+\index{PercPoint@{PercPoint}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!PercPoint@{PercPoint}}
+\subsubsection[{operator$<$}]{\setlength{\rightskip}{0pt plus 5cm}bool PercPoint::operator$<$ (const {\bf PercPoint} \& {\em other}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_perc_point_f798aa389b770208bd172542267ec811}
+
+
+we want to extract lowest values. \hypertarget{class_perc_point_0099784a4e3728c1f28b546a5b94104a}{
+\index{PercPoint@{PercPoint}!value@{value}}
+\index{value@{value}!PercPoint@{PercPoint}}
+\subsubsection[{value}]{\setlength{\rightskip}{0pt plus 5cm}{\bf INT\_\-TYPE} PercPoint::value () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_perc_point_0099784a4e3728c1f28b546a5b94104a}
+
+
+Figure out matrix value at the point's position. \begin{Desc}
+\item[Returns:]the value of the given matrix at this position. \end{Desc}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_perc_point_730c461b6a04bcb883d60df9b297b5d5}{
+\index{PercPoint@{PercPoint}!matrix@{matrix}}
+\index{matrix@{matrix}!PercPoint@{PercPoint}}
+\subsubsection[{matrix}]{\setlength{\rightskip}{0pt plus 5cm}{\bf IntMatrix} {\bf PercPoint::matrix}}}
+\label{class_perc_point_730c461b6a04bcb883d60df9b297b5d5}
+
+
+Matrix to draw values from. \hypertarget{class_perc_point_dc46d54bf942be6e7774ae522e563f87}{
+\index{PercPoint@{PercPoint}!nc@{nc}}
+\index{nc@{nc}!PercPoint@{PercPoint}}
+\subsubsection[{nc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} {\bf PercPoint::nc}}}
+\label{class_perc_point_dc46d54bf942be6e7774ae522e563f87}
+
+
+Number of columns in the given matrix. \hypertarget{class_perc_point_6f5497e144144fa0f0e5e4783ab30761}{
+\index{PercPoint@{PercPoint}!point@{point}}
+\index{point@{point}!PercPoint@{PercPoint}}
+\subsubsection[{point}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point} {\bf PercPoint::point}}}
+\label{class_perc_point_6f5497e144144fa0f0e5e4783ab30761}
+
+
+Location on the matrix. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+cowichan\_\-lt/src/\hyperlink{cowichan__lt_2src_2invperc_8cpp}{invperc.cpp}\end{CompactItemize}

@@ -1,0 +1,56 @@
+     1	/**
+     2	 * Serial implementation of generic gauss
+     3	 *
+     4	 * \file serial.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-03-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#include "serial.h"
+    11	
+    12	// public
+    13	
+    14	void
+    15	gauss(
+    16	  real2D*	matrix,			/* to solve */
+    17	  real1D*	vector,			/* target vector */
+    18	  real1D*	answer,			/* solution found */
+    19	  int		n			/* size */
+    20	){
+    21	  int		r, c, k;		/* indices */
+    22	#if GRAPHICS
+    23	  int		gfxCount = 0;
+    24	#endif
+    25	
+    26	  /* forward elimination */
+    27	  for (k=0; k<n; k++){
+    28	#if GRAPHICS
+    29	    gfx_gauss(gfxCount++, matrix, vector, answer, n);
+    30	#endif
+    31	    /* calculate pivots in k'th column */
+    32	    for (r=k+1; r<n; r++){
+    33	      matrix[r][k] = matrix[r][k]/matrix[k][k];
+    34	    }
+    35	    /* update elements below k'th row */
+    36	    for (r=k+1; r<n; r++){
+    37	      for (c=k+1; c<n; c++){
+    38		matrix[r][c] = matrix[r][c] - (matrix[r][k] * matrix[k][c]);
+    39	      }
+    40	    }
+    41	    /* update element of solution vector */
+    42	    for (r=k+1; r<n; r++){
+    43	      vector[r] = vector[r] - (matrix[r][k] * vector[k]);
+    44	    }
+    45	  }
+    46	
+    47	  /* back substitution */
+    48	  for (k=(n-1); k>=0; k--){
+    49	    answer[k] = vector[k]/matrix[k][k];
+    50	    for (r=k-1; r>=0; r--){
+    51	      vector[r] = vector[r] - (matrix[r][k] * answer[k]);
+    52	    }
+    53	  }
+    54	
+    55	  /* return */
+    56	}

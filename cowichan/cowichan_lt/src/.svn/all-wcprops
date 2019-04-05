@@ -1,0 +1,191 @@
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/svn/!svn/ver/264/cowichan_lt/src
+END
+half.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/262/cowichan_lt/src/half.hpp
+END
+life.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/259/cowichan_lt/src/life.cpp
+END
+winnow.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/262/cowichan_lt/src/winnow.cpp
+END
+life.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/257/cowichan_lt/src/life.hpp
+END
+winnow.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/262/cowichan_lt/src/winnow.hpp
+END
+cowichan_lt.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/259/cowichan_lt/src/cowichan_lt.cpp
+END
+thresh.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/259/cowichan_lt/src/thresh.cpp
+END
+cowichan_lt.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/262/cowichan_lt/src/cowichan_lt.hpp
+END
+mandel.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/259/cowichan_lt/src/mandel.cpp
+END
+thresh.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/262/cowichan_lt/src/thresh.hpp
+END
+hull.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/263/cowichan_lt/src/hull.cpp
+END
+mandel.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/262/cowichan_lt/src/mandel.hpp
+END
+hull.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/263/cowichan_lt/src/hull.hpp
+END
+norm.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/257/cowichan_lt/src/norm.cpp
+END
+product.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/256/cowichan_lt/src/product.cpp
+END
+norm.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/262/cowichan_lt/src/norm.hpp
+END
+gauss.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/256/cowichan_lt/src/gauss.cpp
+END
+product.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/257/cowichan_lt/src/product.hpp
+END
+randmat.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/259/cowichan_lt/src/randmat.cpp
+END
+gauss.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/262/cowichan_lt/src/gauss.hpp
+END
+randmat.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/264/cowichan_lt/src/randmat.hpp
+END
+outer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/256/cowichan_lt/src/outer.cpp
+END
+tuple_common.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/256/cowichan_lt/src/tuple_common.cpp
+END
+outer.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/262/cowichan_lt/src/outer.hpp
+END
+sor.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/256/cowichan_lt/src/sor.cpp
+END
+tuple_common.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/256/cowichan_lt/src/tuple_common.hpp
+END
+invperc.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/263/cowichan_lt/src/invperc.cpp
+END
+vecdiff.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/256/cowichan_lt/src/vecdiff.cpp
+END
+sor.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/263/cowichan_lt/src/sor.hpp
+END
+half.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/259/cowichan_lt/src/half.cpp
+END
+vecdiff.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/263/cowichan_lt/src/vecdiff.hpp
+END

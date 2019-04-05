@@ -1,0 +1,16 @@
+\section{Conclusion\label{s:concl}}
+
+A full ANSI~C version of this problem suite has been written, and is available by anonymous FTP from:
+\begin{center}
+{\tt{ftp.cs.toronto.edu :: pub/gvw/cowichan/src.tar.gz}}
+\end{center}
+This release includes two parallel versions,
+both based on the POSIX threads package.
+The first uses repeated fork-and-join parallelism,
+while the second creates a fixed number of threads at the beginning of the program,
+then synchronizes them repeatedly using barriers.
+
+We would like to invite interested groups to participate in this project by parallelizing the problem suite using their favourite language or tool.
+Our aim is to make both the implementations and their descriptions available as a hypertext document through the World-Wide Web,
+and, if there is sufficient interest, to publish this material in book form.
+If you would like to contribute to this effort, please contact either of the first two authors.

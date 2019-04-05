@@ -1,0 +1,25 @@
+     1	/**
+     2	 * Parallel implementation of outer product matrix
+     3	 *
+     4	 * \file parallel.h
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-27-09
+     7	 */
+     8	
+     9	#pragma once
+    10	#ifndef OUTER_PARALLEL_H
+    11	#define OUTER_PARALLEL_H
+    12	
+    13	/*--------------------------------------------------------------*/
+    14	/* public functions						*/
+    15	/*--------------------------------------------------------------*/
+    16	
+    17	void
+    18	outer_mpi(mpi::communicator world,
+    19	  pt1D*		ptVec,			/* vector of points */
+    20	  real2D*	matrix,			/* matrix to fill */
+    21	  real1D*	realVec,		/* vector to fill */
+    22	  int		n			/* size */
+    23	);
+    24	
+    25	#endif /* OUTER_PARALLEL_H */

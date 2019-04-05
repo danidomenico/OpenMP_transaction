@@ -1,0 +1,17 @@
+\hypertarget{cowichan__openmp_2sor_8cpp}{
+\section{cowichan\_\-openmp/sor.cpp File Reference}
+\label{cowichan__openmp_2sor_8cpp}\index{cowichan\_\-openmp/sor.cpp@{cowichan\_\-openmp/sor.cpp}}
+}
+OpenMP sor implementation.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-openmp.hpp\char`\"{}}\par
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+OpenMP sor implementation. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_open_m_p_d6482d0369a26a51ef0e37ab238fc664}{CowichanOpenMP::sor} \end{Desc}

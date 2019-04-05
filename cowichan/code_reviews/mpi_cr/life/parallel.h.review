@@ -1,0 +1,72 @@
+     1	/**
+     2	 * Parallel implementation of conway's game of life
+     3	 *
+     4	 * \file parallel.h
+     5	 * \author Andrew Borzenko
+     6	 * \date 01-26-09
+     7	 */
+     8	
+     9	#pragma once
+    10	#ifndef LIFE_PARALLEL_H
+    11	#define LIFE_PARALLEL_H
+    12	
+    13	/*--------------------------------------------------------------*/
+    14	/* public functions						*/
+    15	/*--------------------------------------------------------------*/
+    16	
+    17	/*
+    18	 * @ life : simulate Game of Life
+    19	 * > none
+    20	 * + evolve world
+    21	 */
+    22	
+    23	void
+    24	life_mpi(
+    25	  mpi::communicator world,
+    26	  bool2D*	matrix,			/* world to evolve */
+    27	  int		nr,			/* row size */
+    28	  int		nc,			/* column size */
+    29	  int		iters			/* number of iterations */
+    30	);
+    31	
+    32	/*--------------------------------------------------------------*/
+    33	/* private functions						*/
+    34	/*--------------------------------------------------------------*/
+    35	
+    36	/*
+    37	 * @ life_one : update count for single cell
+    38	 * > none
+    39	 * + update count (using fact that TRUE==1 and FALSE==0)
+    40	 */
+    41	
+    42	void
+    43	life_one_mpi(
+    44	  bool2D*	matrix,			/* world to evolve */
+    45	  int2D*		count,			/* neighborhood counts */
+    46	  int		r,			/* this row */
+    47	  int		r_lo,			/* lower row */
+    48	  int		r_hi,			/* higher row */
+    49	  int		c,			/* this column */
+    50	  int		c_lo,			/* lower column */
+    51	  int		c_hi,			/* higher column */
+    52	  int   width
+    53	);
+    54	
+    55	/*
+    56	 * @ life_row : count entire row
+    57	 * > none
+    58	 * + update counts
+    59	 */
+    60	
+    61	void
+    62	life_row_mpi(
+    63	  bool2D*	matrix,			/* world to evolve */
+    64	  int2D*		count,			/* neighborhood counts */
+    65	  int		nr,			/* row size */
+    66	  int		nc,			/* column size */
+    67	  int		r,			/* this row */
+    68	  int		r_lo,			/* lower row */
+    69	  int		r_hi			/* higher row */
+    70	);
+    71	
+    72	#endif /* LIFE_PARALLEL_H */

@@ -1,0 +1,95 @@
+     1	/**
+     2	 * Successive over-relaxation
+     3	 *
+     4	 * \file sor.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 03-02-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#ifdef IS_PARALLEL
+    11	  #include "parallel.h"
+    12	#else
+    13	  #include "serial.h"
+    14	#endif
+    15	
+    16	int main(int argc, char* argv[])
+    17	{
+    18	#ifdef IS_PARALLEL
+    19	  mpi::environment env(argc, argv);
+    20	  mpi::communicator world;
+    21	
+    22	#ifdef TEST_OUTPUT
+    23	  printf ("I am process %d\n", world.rank ());
+    24	#endif
+    25	#endif
+    26	
+    27	  real2D* matrix;
+    28	  real1D* vector;
+    29	  real1D* answer;
+    30	  int n;
+    31	  int limit;
+    32	  int i, j;
+    33	  real tolerance;
+    34	  real max;
+    35	
+    36	  n = MAXEXT;
+    37	  limit = 10;
+    38	  tolerance = 10e-3;
+    39	  max = -1.0;
+    40	
+    41	  srand (333);
+    42	
+    43	  matrix = new real2D[MAXEXT];
+    44	  for (i = 0; i < n; i++) {
+    45	    for (j = 0; j < n; j++) {
+    46	      matrix[i][j] = rand () % limit;
+    47	      if (matrix[i][j] > max) {
+    48	        max = matrix[i][j];
+    49	      }
+    50	    }
+    51	  }
+    52	  // ensure diagonally dominant
+    53	  max *= n;
+    54	  for (i = 0; i < n; i++) {
+    55	    matrix[i][i] = max;
+    56	  }
+    57	
+    58	  vector = new real1D[MAXEXT];
+    59	  for (i = 0; i < n; i++) {
+    60	    vector[i] = rand () % limit;
+    61	  }
+    62	
+    63	  answer = new real1D[MAXEXT];
+    64	
+    65	#ifdef TEST_OUTPUT
+    66	  printf ("Matrix is:\n");
+    67	  print_matrix (matrix, n, n);
+    68	
+    69	  printf ("Vector is:\n");
+    70	  print_vector (vector, n);
+    71	#endif
+    72	
+    73	#ifdef TEST_TIME
+    74	  INT64 start, end;
+    75	  start = get_ticks ();
+    76	#endif
+    77	
+    78	#ifdef IS_PARALLEL
+    79	  sor_mpi (world, matrix, vector, answer, n, tolerance);
+    80	#else
+    81	  sor (matrix, vector, answer, n, tolerance);
+    82	#endif
+    83	
+    84	#ifdef TEST_TIME
+    85	  end = get_ticks ();
+    86	  print_elapsed_time (start, end);
+    87	#endif
+    88	
+    89	#ifdef TEST_OUTPUT
+    90	  printf ("Answer is:\n");
+    91	  print_vector (answer, n);
+    92	#endif
+    93	
+    94	  return 0;
+    95	}

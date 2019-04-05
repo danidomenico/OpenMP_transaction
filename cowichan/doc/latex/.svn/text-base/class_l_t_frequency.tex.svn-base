@@ -1,0 +1,102 @@
+\hypertarget{class_l_t_frequency}{
+\section{LTFrequency Class Reference}
+\label{class_l_t_frequency}\index{LTFrequency@{LTFrequency}}
+}
+{\tt \#include $<$thresh.hpp$>$}
+
+Inheritance diagram for LTFrequency::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{class_l_t_frequency}
+\end{center}
+\end{figure}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{class_l_t_frequency_4ac4fa1a348246caf0d34506fcd09a64}{consumeInput} ()
+\item 
+void \hyperlink{class_l_t_frequency_7c47cf36b228505f79225a3fe8a00f01}{work} ()
+\item 
+void \hyperlink{class_l_t_frequency_e80cd869c8935cb7fe553c6ad27e861b}{produceOutput} ()
+\end{CompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{CompactItemize}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_frequency_805150bf6fcc824bac1fcbb14914ecd4}{SYNCH\_\-LOCK} = \char`\"{}thresh synch lock\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_frequency_db43dba3f48655d75150da76ff2a6a88}{ROWS\_\-DONE} = \char`\"{}thresh rows reporting\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_frequency_f2db2bc6c1837dff0fa90a88a2290d62}{REQUEST} = \char`\"{}freq request\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_frequency_731ba0c5b44e4ffa55496bceb2bd6578}{POINT} = \char`\"{}thresh point\char`\"{}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Counts the frequency of different values in a matrix; figures out the breaking point so that a certain percentage lay under the mark. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_l_t_frequency_4ac4fa1a348246caf0d34506fcd09a64}{
+\index{LTFrequency@{LTFrequency}!consumeInput@{consumeInput}}
+\index{consumeInput@{consumeInput}!LTFrequency@{LTFrequency}}
+\subsubsection[{consumeInput}]{\setlength{\rightskip}{0pt plus 5cm}void LTFrequency::consumeInput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_frequency_4ac4fa1a348246caf0d34506fcd09a64}
+
+
+The consume input process is spawned once and should distribute tasks to the worker processes. 
+
+Implements \hyperlink{class_tuple_application_e163c5a536de01c8b94b49528a17dab2}{TupleApplication}.\hypertarget{class_l_t_frequency_e80cd869c8935cb7fe553c6ad27e861b}{
+\index{LTFrequency@{LTFrequency}!produceOutput@{produceOutput}}
+\index{produceOutput@{produceOutput}!LTFrequency@{LTFrequency}}
+\subsubsection[{produceOutput}]{\setlength{\rightskip}{0pt plus 5cm}void LTFrequency::produceOutput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_frequency_e80cd869c8935cb7fe553c6ad27e861b}
+
+
+The output producer decides when the tuple application is finished; once this function returns, the tuple application is complete. 
+
+Implements \hyperlink{class_tuple_application_8743dfcf17dedd52887c0b2ab170d8dc}{TupleApplication}.\hypertarget{class_l_t_frequency_7c47cf36b228505f79225a3fe8a00f01}{
+\index{LTFrequency@{LTFrequency}!work@{work}}
+\index{work@{work}!LTFrequency@{LTFrequency}}
+\subsubsection[{work}]{\setlength{\rightskip}{0pt plus 5cm}void LTFrequency::work ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_frequency_7c47cf36b228505f79225a3fe8a00f01}
+
+
+Worker processes are created and killed after the output process has finished. 
+
+Implements \hyperlink{class_tuple_application_ef6ae8bb1d697e4ed038b43320183c89}{TupleApplication}.
+
+\subsection{Member Data Documentation}
+\hypertarget{class_l_t_frequency_731ba0c5b44e4ffa55496bceb2bd6578}{
+\index{LTFrequency@{LTFrequency}!POINT@{POINT}}
+\index{POINT@{POINT}!LTFrequency@{LTFrequency}}
+\subsubsection[{POINT}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTFrequency::POINT} = \char`\"{}thresh point\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_frequency_731ba0c5b44e4ffa55496bceb2bd6578}
+
+
+The breaking-point for the thresholding process. \hypertarget{class_l_t_frequency_f2db2bc6c1837dff0fa90a88a2290d62}{
+\index{LTFrequency@{LTFrequency}!REQUEST@{REQUEST}}
+\index{REQUEST@{REQUEST}!LTFrequency@{LTFrequency}}
+\subsubsection[{REQUEST}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTFrequency::REQUEST} = \char`\"{}freq request\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_frequency_f2db2bc6c1837dff0fa90a88a2290d62}
+
+
+A request to compute a row. \hypertarget{class_l_t_frequency_db43dba3f48655d75150da76ff2a6a88}{
+\index{LTFrequency@{LTFrequency}!ROWS\_\-DONE@{ROWS\_\-DONE}}
+\index{ROWS\_\-DONE@{ROWS\_\-DONE}!LTFrequency@{LTFrequency}}
+\subsubsection[{ROWS\_\-DONE}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTFrequency::ROWS\_\-DONE} = \char`\"{}thresh rows reporting\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_frequency_db43dba3f48655d75150da76ff2a6a88}
+
+
+Number of rows computed for. \hypertarget{class_l_t_frequency_805150bf6fcc824bac1fcbb14914ecd4}{
+\index{LTFrequency@{LTFrequency}!SYNCH\_\-LOCK@{SYNCH\_\-LOCK}}
+\index{SYNCH\_\-LOCK@{SYNCH\_\-LOCK}!LTFrequency@{LTFrequency}}
+\subsubsection[{SYNCH\_\-LOCK}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTFrequency::SYNCH\_\-LOCK} = \char`\"{}thresh synch lock\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_frequency_805150bf6fcc824bac1fcbb14914ecd4}
+
+
+Synchronization lock (critical section). 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+cowichan\_\-lt/src/\hyperlink{thresh_8hpp}{thresh.hpp}\item 
+cowichan\_\-lt/src/\hyperlink{cowichan__lt_2src_2thresh_8cpp}{thresh.cpp}\end{CompactItemize}

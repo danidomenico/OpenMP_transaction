@@ -1,0 +1,23 @@
+\hypertarget{winnow_8hpp}{
+\section{cowichan\_\-lt/src/winnow.hpp File Reference}
+\label{winnow_8hpp}\index{cowichan\_\-lt/src/winnow.hpp@{cowichan\_\-lt/src/winnow.hpp}}
+}
+LinuxTuples winnow header file.  
+
+
+{\tt \#include \char`\"{}tuple\_\-common.hpp\char`\"{}}\par
+{\tt \#include \char`\"{}cowichan\_\-lt.hpp\char`\"{}}\par
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{class_l_t_winnow}{LTWinnow}
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+LinuxTuples winnow header file. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_linux_tuples_2b1a77ecbd01ec847cf63fe7ebb50e35}{CowichanLinuxTuples::winnow} \end{Desc}

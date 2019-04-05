@@ -1,0 +1,76 @@
+     1	/**
+     2	 * Serial implementation of halving shuffle
+     3	 *
+     4	 * \file serial.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-27-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#include "serial.h"
+    11	
+    12	// public
+    13	
+    14	/*
+    15	 * @ half : do halving shuffle
+    16	 * > none
+    17	 * + shuffle rows and columns
+    18	 */
+    19	
+    20	void
+    21	half(
+    22	  int2D*		matrix,			/* to shuffle */
+    23	  int		nr,			/* row size */
+    24	  int		nc			/* column size */
+    25	){
+    26	  int		r, c, i;		/* loop indices */
+    27	  int1D*		tmp;			/* temporary */
+    28	
+    29	  tmp = new int1D[MAXEXT];
+    30	
+    31	#if GRAPHICS
+    32	  int		gfxCount = 0;
+    33	#endif
+    34	
+    35	#if GRAPHICS
+    36	  gfx_half(gfxCount++, matrix, nr, nc);
+    37	#endif
+    38	
+    39	  /* rows */
+    40	  for (r=0; r<nr; r++){
+    41	    for (c=1, i=0; c<nc; c+=2, i++){
+    42	      tmp[i] = matrix[r][c];
+    43	    }
+    44	    for (c=0, i=0; c<(nc+1)/2; c++, i+=2){
+    45	      matrix[r][c] = matrix[r][i];
+    46	    }
+    47	    for (c=(nc+1)/2, i=0; c<nc; c++, i++){
+    48	      matrix[r][c] = tmp[i];
+    49	    }
+    50	  }
+    51	
+    52	#if GRAPHICS
+    53	  gfx_half(gfxCount++, matrix, nr, nc);
+    54	#endif
+    55	
+    56	  /* columns */
+    57	  for (c=0; c<nc; c++){
+    58	    for (r=1, i=0; r<nr; r+=2, i++){
+    59	      tmp[i] = matrix[r][c];
+    60	    }
+    61	    for (r=0, i=0; r<(nr+1)/2; r++, i+=2){
+    62	      matrix[r][c] = matrix[i][c];
+    63	    }
+    64	    for (r=(nr+1)/2, i=0; r<nr; r++, i++){
+    65	      matrix[r][c] = tmp[i];
+    66	    }
+    67	  }
+    68	
+    69	#if GRAPHICS
+    70	  gfx_half(gfxCount++, matrix, nr, nc);
+    71	#endif
+    72	
+    73	  delete [] tmp;
+    74	
+    75	  /* return */
+    76	}

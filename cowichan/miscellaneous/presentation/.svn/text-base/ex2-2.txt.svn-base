@@ -1,0 +1,102 @@
+Mandel using Boost Message Passing Interface:
+
+Compare with serial or TBB implementations:
+
+// step 1: as before: make the mpi communicator visible.
+
+void mandel_mpi (mpi::communicator world,
+                 int2D*		matrix,			/* to fill */
+                 int		nr,			/* row size */
+                 int		nc,			/* column size */
+                 real		base_x,			/* lower left corner */
+                 real		base_y,			/* lower left corner */
+                 real		ext_x,			/* extent */
+                 real		ext_y)			/* extent */
+{
+  int		r, c;			/* row and column indices */
+  real		dx, dy;			/* per-step deltas */
+
+  // step 2: as before: declare variables needed to split work.
+  //
+  // This is where it gets tricky.
+  //
+  // Q: How to do load balancing?
+  // A: Implement a task farm by using MPI peer-to-peer messages.
+  //    A task farm consists of one (mostly idle) process that distributes
+  //    work and the rest are worker processes.
+
+  int row_count = 0;
+  int i;
+  mpi::status status;
+  int source;
+  const int WORK_REQUEST_TAG = 0;
+  const int WORK_RESPONSE_TAG = 1;
+  const int NO_MORE_WORK = -1;
+
+  dx = ext_x / (nr - 1);
+  dy = ext_y / (nc - 1);
+
+  // step 3: check that you have at least 2 processes.
+  //         if not, run the serial version.
+
+  if (world.size () > 1) {
+    if (world.rank () == 0) {
+
+      // step 4: define control process behaviour.
+      //         control process acts as a server, i.e. it processes requests.
+
+      // step 4.1: send out work (asynchronous sending)
+      while (row_count < nr) {
+        status = world.recv (mpi::any_source, WORK_REQUEST_TAG);
+        source = status.source ();
+        world.isend (source, WORK_RESPONSE_TAG, row_count);
+        row_count++;
+      }
+      // step 4.2: send out no more work (asynchronous sending)
+      for (i = 1; i < world.size (); i++) {
+        status = world.recv (mpi::any_source, WORK_REQUEST_TAG);
+        source = status.source ();
+        world.isend (source, WORK_RESPONSE_TAG, NO_MORE_WORK);
+      }
+      // step 4.3: receive results
+      for (r = 0; r < nr; r++) {
+        world.recv (mpi::any_source, r + 1, matrix[r], nc);
+      }
+    }
+    else {
+
+      // step 5: define worker process behaviour.
+
+      while (true) {
+        // step 5.1: request next row
+        world.send (0, WORK_REQUEST_TAG);
+        world.recv (0, WORK_RESPONSE_TAG, r);
+        if (r != NO_MORE_WORK) {
+          // step 5.2: for every column in row r calculate mandel value.
+          for (c = 0; c < nc; c++) {
+            matrix[r][c] = mandel_calc_mpi (base_x + (r * dx), base_y + (c * dy));
+          }
+          // step 5.3: send result row to root (asynchronous send)
+          world.isend (0, r + 1, matrix[r], nc);
+        }
+        else {
+          break;
+        }
+      }
+    }
+
+    // step 6: broadcast result matrix to all processes
+    for (r = 0; r < nr; r++) {
+      broadcast (world, matrix[r], nc, 0);
+    }
+  }
+  else {
+    // serial implementation
+    for (r = 0; r < nr; r++) {
+      for (c = 0; c < nc; c++) {
+        matrix[r][c] = mandel_calc_mpi (base_x + (r * dx), base_y + (c * dy));
+      }
+    }
+  }
+}
+

@@ -1,0 +1,17 @@
+\hypertarget{cowichan__serial_2outer_8cpp}{
+\section{cowichan\_\-serial/outer.cpp File Reference}
+\label{cowichan__serial_2outer_8cpp}\index{cowichan\_\-serial/outer.cpp@{cowichan\_\-serial/outer.cpp}}
+}
+Serial outer implementation.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-serial.hpp\char`\"{}}\par
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+Serial outer implementation. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_serial_05f6899081a457d58978e4f6bda2db6a}{CowichanSerial::outer} \end{Desc}

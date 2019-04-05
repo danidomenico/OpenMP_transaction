@@ -1,0 +1,80 @@
+     1	/**
+     2	 * Histogram thresholding
+     3	 *
+     4	 * \file vecdiff.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 03-02-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#ifdef IS_PARALLEL
+    11	  #include "parallel.h"
+    12	#else
+    13	  #include "serial.h"
+    14	#endif
+    15	
+    16	int main(int argc, char* argv[])
+    17	{
+    18	#ifdef IS_PARALLEL
+    19	  mpi::environment env(argc, argv);
+    20	  mpi::communicator world;
+    21	
+    22	#ifdef TEST_OUTPUT
+    23	  printf ("I am process %d\n", world.rank ());
+    24	#endif
+    25	#endif
+    26	
+    27	  int2D* matrix;
+    28	  bool2D* mask;
+    29	  int nr, nc;
+    30	  real fraction;
+    31	  int i, j;
+    32	  int limit;
+    33	
+    34	  nr = MAXEXT;
+    35	  nc = MAXEXT;
+    36	  limit = 10;
+    37	  fraction = 0.5;
+    38	
+    39	  srand (222);
+    40	
+    41	  matrix = new int2D[MAXEXT];
+    42	  for (i = 0; i < nr; i++) {
+    43	    for (j = 0; j < nc; j++) {
+    44	      matrix[i][j] = rand () % limit;
+    45	    }
+    46	  }
+    47	
+    48	  mask = new bool2D[MAXEXT];
+    49	
+    50	#ifdef TEST_OUTPUT
+    51	  printf ("Matrix is:\n");
+    52	  print_matrix (matrix, nr, nc);
+    53	#endif
+    54	
+    55	#ifdef TEST_TIME
+    56	  INT64 start, end;
+    57	  start = get_ticks ();
+    58	#endif
+    59	
+    60	#ifdef IS_PARALLEL
+    61	  thresh_mpi (world, matrix, mask, nr, nc, fraction);
+    62	#else
+    63	  thresh (matrix, mask, nr, nc, fraction);
+    64	#endif
+    65	
+    66	#ifdef TEST_TIME
+    67	  end = get_ticks ();
+    68	  print_elapsed_time (start, end);
+    69	#endif
+    70	
+    71	#ifdef TEST_OUTPUT
+    72	  printf ("Mask is:\n");
+    73	  print_matrix (mask, nr, nc);
+    74	#endif
+    75	
+    76	  delete [] matrix;
+    77	  delete [] mask;
+    78	
+    79	  return 0;
+    80	}

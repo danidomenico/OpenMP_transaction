@@ -1,0 +1,31 @@
+\hypertarget{cowichan__serial_2hull_8cpp}{
+\section{cowichan\_\-serial/hull.cpp File Reference}
+\label{cowichan__serial_2hull_8cpp}\index{cowichan\_\-serial/hull.cpp@{cowichan\_\-serial/hull.cpp}}
+}
+Serial hull implementation.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-serial.hpp\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{CompactItemize}
+\item 
+namespace \hyperlink{namespacecowichan__serial}{cowichan\_\-serial}
+\begin{CompactList}\small\item\em Additional classes and functions specific to serial implementation. \item\end{CompactList}
+
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{namespacecowichan__serial_b0aad3f081e04d4676fae7b6ae8d7d10}{cowichan\_\-serial::quickhull} (\hyperlink{class_point}{PointVector} pointsIn, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} n, \hyperlink{class_point}{PointVector} pointsOut, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$hn)
+\item 
+void \hyperlink{namespacecowichan__serial_e1e9f58ca5f603f8215abffb30b78d71}{cowichan\_\-serial::split} (\hyperlink{class_point}{PointVector} pointsIn, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} n, \hyperlink{class_point}{PointVector} pointsOut, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$hn, \hyperlink{class_point}{Point} $\ast$p1, \hyperlink{class_point}{Point} $\ast$p2)
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+Serial hull implementation. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_serial_e75cedf0a296dd7ad3dc41cadc51776f}{CowichanSerial::hull} \end{Desc}

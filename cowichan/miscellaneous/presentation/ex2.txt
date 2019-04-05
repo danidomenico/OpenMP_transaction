@@ -1,0 +1,144 @@
+2. Mandelbrot set (fractal generation):
+
+Serial C++ code for Mandel:
+
+void
+mandel(
+  int2D*	matrix,			/* to fill */
+  int		nr,			/* row size */
+  int		nc,			/* column size */
+  real		base_x,			/* lower left corner */
+  real		base_y,			/* lower left corner */
+  real		ext_x,			/* extent */
+  real		ext_y			/* extent */
+){
+  int		r, c;			/* row and column indices */
+  real		dx, dy;			/* per-step deltas */
+
+  dx = ext_x / (nr - 1);
+  dy = ext_y / (nc - 1);
+
+  for (r = 0; r < nr; r++) {
+    for (c = 0; c < nc; c++) {
+      matrix[r][c] = mandel_calc (base_x + (r * dx), base_y + (c * dy));
+    }
+  }
+
+  /* return */
+}
+
+int mandel_calc(
+  real		x,			/* x coordinate */
+  real		y			/* y coordinate */
+){
+  real		r    = 0.0, i  = 0.0;	/* real and imaginary parts */
+  real		rs   = 0.0, is = 0.0; 	/* " ", squared */
+  int		iter = 0;		/* number of iterations */
+
+  do {
+    i = (2.0 * r * i) + x;
+    r = (rs - is) + y;
+    iter++;
+    rs = r * r;
+    is = i * i;
+  } while ((iter < MANDEL_MAX_ITER) && ((rs + is) < MANDEL_INFINITY));
+
+  return iter;
+}
+
+
+Mandel using Thread Building Blocks:
+
+// step 1: as before: define a class
+
+class Mandelbrot {
+
+  // step 2: as before: declare all data structures required for the operation.
+
+  IntMatrix _matrix; // to store the result.
+
+  real dX, dY;       // co-ordinate -> complex plane mapping coeff.
+  real baseX, baseY; // where to start the mandelbrot set
+
+private:
+
+  // step 3: bring mandelCalc method inside the class (optional)
+
+  /**
+   * Performs the mandelbrot set calculation.
+   */
+  int mandelCalc(real x, real y) const {
+
+  real r = 0.0, i = 0.0;
+  real rs = 0.0, is = 0.0;
+  int numIterations = 0;		
+  do {
+    // calculate the complex value according to the mandelbrot set specs.
+    i = (2.0 * r * i) + x;
+    r = (rs - is) + y;
+
+    // calculate squared complex value
+    rs = r * r;
+    is = i * i;			
+			
+    // "step" the simulation for this co-ordinate.
+    ++numIterations;			
+  } while ((numIterations < MANDEL_MAX_ITER) && ((rs + is) < MANDEL_INFINITY));
+		
+  // we are interested if the series converges or diverges. Return the
+  // number of iterations before such an event (divergence).
+
+  return numIterations;
+}
+	
+public:
+
+  // step 4: as before: add initialization of all data structures.
+
+  Mandelbrot(IntMatrix matrix, real x, real y, real width, real height):
+      _matrix(matrix), baseX(x), baseY(y) {
+
+    dX = width / (Cowichan::NCOLS - 1);
+    dY = height / (Cowichan::NROWS - 1);
+
+  }
+
+  // step 5: as before: override the function call operator ().
+
+  /**
+   * Calculates a given portion of the current mandelbrot set "window".
+   */
+  void operator()(const Range2D& range) const {
+
+    // step 6: bring parameters to local scope
+
+    IntMatrix matrix = _matrix;
+
+    // step 7: get the range of rows and columns
+
+    const Range& rows = range.rows();
+    const Range& cols = range.cols();
+
+    // step 8: for every row/column assigned to this thread calculate
+    //         the mandel value
+
+    for (size_t y = rows.begin(); y != rows.end(); ++y) {
+      for (size_t x = cols.begin(); x != cols.end(); ++x) {
+        MATRIX_RECT(matrix, y,x) = mandelCalc(baseX + (x * dX), baseY + (y * dY));
+      }
+    }
+  }
+
+};
+
+// step 9: create an instance of Mandelbrot.
+
+*matrix = NEW_MATRIX_RECT(uint);
+Mandelbrot mandel(matrix, x, y, width, height);
+
+// step 10: execute parallelly by splitting the matrix along its
+//          rows AND columns.
+
+parallel_for(Range2D(0, Cowichan::NROWS, 0, Cowichan::NCOLS), mandel,
+    auto_partitioner());
+

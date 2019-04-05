@@ -1,0 +1,112 @@
+\hypertarget{classcowichan__tbb_1_1_row_elimination}{
+\section{cowichan\_\-tbb::RowElimination Class Reference}
+\label{classcowichan__tbb_1_1_row_elimination}\index{cowichan\_\-tbb::RowElimination@{cowichan\_\-tbb::RowElimination}}
+}
+Performs row elimination, i.e. eliminate i-th column in j-th row.  
+
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classcowichan__tbb_1_1_row_elimination_917509da76905d645488e5f387ee9562}{RowElimination} (\hyperlink{cowichan_8hpp_3fb46f939e55c239fbc95656fc0f3399}{Matrix} matrix, \hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} target, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_row_elimination_1d7f660f2ff6859e63d43ff83558f319}{n})
+\item 
+void \hyperlink{classcowichan__tbb_1_1_row_elimination_66dfd8e6d7f31e8bfaa4dbd2782149ba}{setI} (\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_row_elimination_8e0b0b44136b0e0d5f61cd3017003574}{i})
+\item 
+void \hyperlink{classcowichan__tbb_1_1_row_elimination_1123e0c48e52628a0e543bbd75d2086f}{operator()} (const \hyperlink{cowichan__tbb_8hpp_8e2057f725b08f3a15513c378a453a47}{Range} \&rows) const 
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{cowichan_8hpp_3fb46f939e55c239fbc95656fc0f3399}{Matrix} \hyperlink{classcowichan__tbb_1_1_row_elimination_433177510f10b66e8062325e3f4fd6c3}{\_\-matrix}
+\item 
+\hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} \hyperlink{classcowichan__tbb_1_1_row_elimination_1ba949c170d5f85582fc7ab968f28ac1}{\_\-target}
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_row_elimination_1d7f660f2ff6859e63d43ff83558f319}{n}
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_row_elimination_8e0b0b44136b0e0d5f61cd3017003574}{i}
+\item 
+\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{classcowichan__tbb_1_1_row_elimination_2d2d59f426efd3d2c16aa6f30db8b688}{column\_\-i}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Performs row elimination, i.e. eliminate i-th column in j-th row. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcowichan__tbb_1_1_row_elimination_917509da76905d645488e5f387ee9562}{
+\index{cowichan\_\-tbb::RowElimination@{cowichan\_\-tbb::RowElimination}!RowElimination@{RowElimination}}
+\index{RowElimination@{RowElimination}!cowichan_tbb::RowElimination@{cowichan\_\-tbb::RowElimination}}
+\subsubsection[{RowElimination}]{\setlength{\rightskip}{0pt plus 5cm}cowichan\_\-tbb::RowElimination::RowElimination ({\bf Matrix} {\em matrix}, \/  {\bf Vector} {\em target}, \/  {\bf index\_\-t} {\em n})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_row_elimination_917509da76905d645488e5f387ee9562}
+
+
+Construct a row elimination object. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em matrix}]matrix. \item[{\em target}]target vector. \item[{\em n}]matrix size. \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcowichan__tbb_1_1_row_elimination_1123e0c48e52628a0e543bbd75d2086f}{
+\index{cowichan\_\-tbb::RowElimination@{cowichan\_\-tbb::RowElimination}!operator()@{operator()}}
+\index{operator()@{operator()}!cowichan_tbb::RowElimination@{cowichan\_\-tbb::RowElimination}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::RowElimination::operator() (const {\bf Range} \& {\em rows}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_row_elimination_1123e0c48e52628a0e543bbd75d2086f}
+
+
+Perform row elimination on a range of rows. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em rows}]range of rows. \end{description}
+\end{Desc}
+\hypertarget{classcowichan__tbb_1_1_row_elimination_66dfd8e6d7f31e8bfaa4dbd2782149ba}{
+\index{cowichan\_\-tbb::RowElimination@{cowichan\_\-tbb::RowElimination}!setI@{setI}}
+\index{setI@{setI}!cowichan_tbb::RowElimination@{cowichan\_\-tbb::RowElimination}}
+\subsubsection[{setI}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::RowElimination::setI ({\bf index\_\-t} {\em i})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_row_elimination_66dfd8e6d7f31e8bfaa4dbd2782149ba}
+
+
+Set current row index. 
+
+\subsection{Member Data Documentation}
+\hypertarget{classcowichan__tbb_1_1_row_elimination_433177510f10b66e8062325e3f4fd6c3}{
+\index{cowichan\_\-tbb::RowElimination@{cowichan\_\-tbb::RowElimination}!\_\-matrix@{\_\-matrix}}
+\index{\_\-matrix@{\_\-matrix}!cowichan_tbb::RowElimination@{cowichan\_\-tbb::RowElimination}}
+\subsubsection[{\_\-matrix}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} {\bf cowichan\_\-tbb::RowElimination::\_\-matrix}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_row_elimination_433177510f10b66e8062325e3f4fd6c3}
+
+
+Matrix. \hypertarget{classcowichan__tbb_1_1_row_elimination_1ba949c170d5f85582fc7ab968f28ac1}{
+\index{cowichan\_\-tbb::RowElimination@{cowichan\_\-tbb::RowElimination}!\_\-target@{\_\-target}}
+\index{\_\-target@{\_\-target}!cowichan_tbb::RowElimination@{cowichan\_\-tbb::RowElimination}}
+\subsubsection[{\_\-target}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} {\bf cowichan\_\-tbb::RowElimination::\_\-target}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_row_elimination_1ba949c170d5f85582fc7ab968f28ac1}
+
+
+Target vector. \hypertarget{classcowichan__tbb_1_1_row_elimination_2d2d59f426efd3d2c16aa6f30db8b688}{
+\index{cowichan\_\-tbb::RowElimination@{cowichan\_\-tbb::RowElimination}!column\_\-i@{column\_\-i}}
+\index{column\_\-i@{column\_\-i}!cowichan_tbb::RowElimination@{cowichan\_\-tbb::RowElimination}}
+\subsubsection[{column\_\-i}]{\setlength{\rightskip}{0pt plus 5cm}{\bf real} {\bf cowichan\_\-tbb::RowElimination::column\_\-i}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_row_elimination_2d2d59f426efd3d2c16aa6f30db8b688}
+
+
+Current i-th row i-th column value. \hypertarget{classcowichan__tbb_1_1_row_elimination_8e0b0b44136b0e0d5f61cd3017003574}{
+\index{cowichan\_\-tbb::RowElimination@{cowichan\_\-tbb::RowElimination}!i@{i}}
+\index{i@{i}!cowichan_tbb::RowElimination@{cowichan\_\-tbb::RowElimination}}
+\subsubsection[{i}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} {\bf cowichan\_\-tbb::RowElimination::i}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_row_elimination_8e0b0b44136b0e0d5f61cd3017003574}
+
+
+Current row index. \hypertarget{classcowichan__tbb_1_1_row_elimination_1d7f660f2ff6859e63d43ff83558f319}{
+\index{cowichan\_\-tbb::RowElimination@{cowichan\_\-tbb::RowElimination}!n@{n}}
+\index{n@{n}!cowichan_tbb::RowElimination@{cowichan\_\-tbb::RowElimination}}
+\subsubsection[{n}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} {\bf cowichan\_\-tbb::RowElimination::n}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_row_elimination_1d7f660f2ff6859e63d43ff83558f319}
+
+
+Matrix size. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+cowichan\_\-tbb/\hyperlink{cowichan__tbb_2gauss_8cpp}{gauss.cpp}\end{CompactItemize}

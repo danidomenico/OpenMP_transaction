@@ -1,0 +1,46 @@
+\hypertarget{cowichan__mpi_8cpp}{
+\section{cowichan\_\-mpi/cowichan\_\-mpi.cpp File Reference}
+\label{cowichan__mpi_8cpp}\index{cowichan\_\-mpi/cowichan\_\-mpi.cpp@{cowichan\_\-mpi/cowichan\_\-mpi.cpp}}
+}
+This file contains main method that drives the MPI implementation.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-mpi.hpp\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{CompactItemize}
+\item 
+namespace \hyperlink{namespacecowichan__mpi}{cowichan\_\-mpi}
+\begin{CompactList}\small\item\em Additional classes and functions specific to mpi implementation. \item\end{CompactList}
+
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+int \hyperlink{cowichan__mpi_8cpp_0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\item 
+bool \hyperlink{namespacecowichan__mpi_bb7c07d8b23660efe06c7ee12d60bbdc}{cowichan\_\-mpi::get\_\-block} (const mpi::communicator \&world, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} lo, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} hi, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$start, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$end)
+\item 
+bool \hyperlink{namespacecowichan__mpi_413bf41c8bf73b560d1c16a8e5206e5f}{cowichan\_\-mpi::get\_\-block} (const mpi::communicator \&world, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} lo, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} hi, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$start, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$end, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} rank)
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+This file contains main method that drives the MPI implementation. 
+
+
+
+\subsection{Function Documentation}
+\hypertarget{cowichan__mpi_8cpp_0ddf1224851353fc92bfbff6f499fa97}{
+\index{cowichan\_\-mpi.cpp@{cowichan\_\-mpi.cpp}!main@{main}}
+\index{main@{main}!cowichan_mpi.cpp@{cowichan\_\-mpi.cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (int {\em argc}, \/  char $\ast$ {\em argv}\mbox{[}$\,$\mbox{]})}}
+\label{cowichan__mpi_8cpp_0ddf1224851353fc92bfbff6f499fa97}
+
+
+Main method - creates a \hyperlink{class_cowichan_m_p_i}{CowichanMPI} instance and executes \hyperlink{class_cowichan_905f3eb45f21cdaa1c32a421d001fa4c}{Cowichan::main}. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em argc}]number of command line arguments. \item[{\em argv}]command line arguments. \end{description}
+\end{Desc}

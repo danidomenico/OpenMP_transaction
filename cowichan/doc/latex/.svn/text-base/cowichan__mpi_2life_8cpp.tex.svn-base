@@ -1,0 +1,29 @@
+\hypertarget{cowichan__mpi_2life_8cpp}{
+\section{cowichan\_\-mpi/life.cpp File Reference}
+\label{cowichan__mpi_2life_8cpp}\index{cowichan\_\-mpi/life.cpp@{cowichan\_\-mpi/life.cpp}}
+}
+MPI Conway's Game of Life implementation.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-mpi.hpp\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{CompactItemize}
+\item 
+namespace \hyperlink{namespacecowichan__mpi}{cowichan\_\-mpi}
+\begin{CompactList}\small\item\em Additional classes and functions specific to mpi implementation. \item\end{CompactList}
+
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{namespacecowichan__mpi_c244baae47084737f2274a270a24ad46}{cowichan\_\-mpi::sumNeighbours} (\hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix} first, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} r, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} c, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} nr, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} nc)
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+MPI Conway's Game of Life implementation. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_m_p_i_9c739951d036ef7905bda7cb896e0edf}{CowichanMPI::life} \end{Desc}

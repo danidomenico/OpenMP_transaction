@@ -1,0 +1,84 @@
+\hypertarget{class_l_t_norm}{
+\section{LTNorm Class Reference}
+\label{class_l_t_norm}\index{LTNorm@{LTNorm}}
+}
+{\tt \#include $<$norm.hpp$>$}
+
+Inheritance diagram for LTNorm::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{class_l_t_norm}
+\end{center}
+\end{figure}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{class_l_t_norm_58c0b2b050ac4e0fd5927fff451ae9ff}{consumeInput} ()
+\item 
+void \hyperlink{class_l_t_norm_f0905a2c85b2e2713e98b9b22714a022}{work} ()
+\item 
+void \hyperlink{class_l_t_norm_2e142e5c7fabd218436f2abe99f4535b}{produceOutput} ()
+\end{CompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{CompactItemize}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_norm_2df7b3b8cefbb49106f51ba258b1bdd4}{MIN\_\-POINT} = \char`\"{}norm minPoint\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_norm_54deb1fe0a9ad3f7244a25963aafdec7}{MAX\_\-POINT} = \char`\"{}norm maxPoint\char`\"{}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Re-scales the points in the cloud so that they all lay in the unit square. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_l_t_norm_58c0b2b050ac4e0fd5927fff451ae9ff}{
+\index{LTNorm@{LTNorm}!consumeInput@{consumeInput}}
+\index{consumeInput@{consumeInput}!LTNorm@{LTNorm}}
+\subsubsection[{consumeInput}]{\setlength{\rightskip}{0pt plus 5cm}void LTNorm::consumeInput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_norm_58c0b2b050ac4e0fd5927fff451ae9ff}
+
+
+The consume input process is spawned once and should distribute tasks to the worker processes. 
+
+Implements \hyperlink{class_tuple_application_e163c5a536de01c8b94b49528a17dab2}{TupleApplication}.\hypertarget{class_l_t_norm_2e142e5c7fabd218436f2abe99f4535b}{
+\index{LTNorm@{LTNorm}!produceOutput@{produceOutput}}
+\index{produceOutput@{produceOutput}!LTNorm@{LTNorm}}
+\subsubsection[{produceOutput}]{\setlength{\rightskip}{0pt plus 5cm}void LTNorm::produceOutput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_norm_2e142e5c7fabd218436f2abe99f4535b}
+
+
+The output producer decides when the tuple application is finished; once this function returns, the tuple application is complete. 
+
+Implements \hyperlink{class_tuple_application_8743dfcf17dedd52887c0b2ab170d8dc}{TupleApplication}.\hypertarget{class_l_t_norm_f0905a2c85b2e2713e98b9b22714a022}{
+\index{LTNorm@{LTNorm}!work@{work}}
+\index{work@{work}!LTNorm@{LTNorm}}
+\subsubsection[{work}]{\setlength{\rightskip}{0pt plus 5cm}void LTNorm::work ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_norm_f0905a2c85b2e2713e98b9b22714a022}
+
+
+Worker processes are created and killed after the output process has finished. 
+
+Implements \hyperlink{class_tuple_application_ef6ae8bb1d697e4ed038b43320183c89}{TupleApplication}.
+
+\subsection{Member Data Documentation}
+\hypertarget{class_l_t_norm_54deb1fe0a9ad3f7244a25963aafdec7}{
+\index{LTNorm@{LTNorm}!MAX\_\-POINT@{MAX\_\-POINT}}
+\index{MAX\_\-POINT@{MAX\_\-POINT}!LTNorm@{LTNorm}}
+\subsubsection[{MAX\_\-POINT}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTNorm::MAX\_\-POINT} = \char`\"{}norm maxPoint\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_norm_54deb1fe0a9ad3f7244a25963aafdec7}
+
+
+The largest point (in x and y) found \hypertarget{class_l_t_norm_2df7b3b8cefbb49106f51ba258b1bdd4}{
+\index{LTNorm@{LTNorm}!MIN\_\-POINT@{MIN\_\-POINT}}
+\index{MIN\_\-POINT@{MIN\_\-POINT}!LTNorm@{LTNorm}}
+\subsubsection[{MIN\_\-POINT}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTNorm::MIN\_\-POINT} = \char`\"{}norm minPoint\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_norm_2df7b3b8cefbb49106f51ba258b1bdd4}
+
+
+The smallest point (in x and y) found 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+cowichan\_\-lt/src/\hyperlink{norm_8hpp}{norm.hpp}\item 
+cowichan\_\-lt/src/\hyperlink{cowichan__lt_2src_2norm_8cpp}{norm.cpp}\end{CompactItemize}

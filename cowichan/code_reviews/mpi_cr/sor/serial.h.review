@@ -1,0 +1,26 @@
+     1	/**
+     2	 * Serial implementation of successive over-relaxation
+     3	 *
+     4	 * \file serial.h
+     5	 * \author Andrew Borzenko
+     6	 * \date 03-02-09
+     7	 */
+     8	
+     9	#pragma once
+    10	#ifndef SOR_SERIAL_H
+    11	#define SOR_SERIAL_H
+    12	
+    13	/*--------------------------------------------------------------*/
+    14	/* public functions						*/
+    15	/*--------------------------------------------------------------*/
+    16	
+    17	void
+    18	sor(
+    19	  real2D*	matrix,			/* to solve */
+    20	  real1D*	vector,			/* target vector */
+    21	  real1D*	answer,			/* solution found */
+    22	  int		n,			/* size */
+    23	  real		tol			/* tolerance on answer */
+    24	);
+    25	
+    26	#endif /* SOR_SERIAL_H */

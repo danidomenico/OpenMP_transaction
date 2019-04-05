@@ -1,0 +1,176 @@
+\hypertarget{classcowichan__tbb_1_1_random_generator}{
+\section{cowichan\_\-tbb::RandomGenerator Class Reference}
+\label{classcowichan__tbb_1_1_random_generator}\index{cowichan\_\-tbb::RandomGenerator@{cowichan\_\-tbb::RandomGenerator}}
+}
+Random generator.  
+
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{classcowichan__tbb_1_1_random_generator_360ad4095d0a257c4787c04b4f624442}{operator()} (const \hyperlink{cowichan__tbb_8hpp_8e2057f725b08f3a15513c378a453a47}{Range} \&rows) const 
+\item 
+\hyperlink{classcowichan__tbb_1_1_random_generator_0f58b78decf186b5d70c6ef32430df49}{RandomGenerator} (\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_random_generator_b7d617ee4c194eacc534df3589adce20}{nr}, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_random_generator_c48e1ab81e657b238d19c72fa1f1bf0a}{nc})
+\item 
+void \hyperlink{classcowichan__tbb_1_1_random_generator_84066b4f3bdf47b57d27174abb6c5d32}{execute} (\hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} matrix)
+\end{CompactItemize}
+\subsection*{Private Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} \hyperlink{classcowichan__tbb_1_1_random_generator_deb3aab43e3b17a60f98cd2e90ea44a7}{next} (\hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} \&current) const 
+\item 
+\hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} \hyperlink{classcowichan__tbb_1_1_random_generator_12a4a91e8e77579fde17e1c707c97b19}{nextK} (\hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} \&current) const 
+\item 
+void \hyperlink{classcowichan__tbb_1_1_random_generator_9bcb65cd30c9bc8fa99084b6daf2c148}{initialise} ()
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} \hyperlink{classcowichan__tbb_1_1_random_generator_2aaebcbedce6e0dcdc4d828bd57df467}{\_\-matrix}
+\item 
+\hyperlink{cowichan_8hpp_9bab229b7d95f858be62c35cca6ff294}{IntVector} \hyperlink{classcowichan__tbb_1_1_random_generator_8347501a85a115b517854c95b4032044}{state}
+\item 
+\hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} \hyperlink{classcowichan__tbb_1_1_random_generator_7e3ba7b1498d53cdf9c8ea06065feefe}{aPrime}
+\item 
+\hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} \hyperlink{classcowichan__tbb_1_1_random_generator_8c86d3cd7760c32dc80cfd2d221d6939}{cPrime}
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_random_generator_b7d617ee4c194eacc534df3589adce20}{nr}
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_random_generator_c48e1ab81e657b238d19c72fa1f1bf0a}{nc}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Random generator. 
+
+This class generates random integers in a matrix, using a simple linear congruential number generator with a given seed value, i.e. using the recurrence:
+
+X\_\-i+1 = (a$\ast$X\_\-i + c) mod m
+
+The class also provides a parallel implementation with parallel\_\-for. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcowichan__tbb_1_1_random_generator_0f58b78decf186b5d70c6ef32430df49}{
+\index{cowichan\_\-tbb::RandomGenerator@{cowichan\_\-tbb::RandomGenerator}!RandomGenerator@{RandomGenerator}}
+\index{RandomGenerator@{RandomGenerator}!cowichan_tbb::RandomGenerator@{cowichan\_\-tbb::RandomGenerator}}
+\subsubsection[{RandomGenerator}]{\setlength{\rightskip}{0pt plus 5cm}cowichan\_\-tbb::RandomGenerator::RandomGenerator ({\bf index\_\-t} {\em nr}, \/  {\bf index\_\-t} {\em nc})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_random_generator_0f58b78decf186b5d70c6ef32430df49}
+
+
+Construct a random number generator. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em nr}]number of matrix rows. \item[{\em nc}]number of matrix columns. \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcowichan__tbb_1_1_random_generator_84066b4f3bdf47b57d27174abb6c5d32}{
+\index{cowichan\_\-tbb::RandomGenerator@{cowichan\_\-tbb::RandomGenerator}!execute@{execute}}
+\index{execute@{execute}!cowichan_tbb::RandomGenerator@{cowichan\_\-tbb::RandomGenerator}}
+\subsubsection[{execute}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::RandomGenerator::execute ({\bf IntMatrix} {\em matrix})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_random_generator_84066b4f3bdf47b57d27174abb6c5d32}
+
+
+Run in parallel. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em matrix}]matrix to use. \end{description}
+\end{Desc}
+\hypertarget{classcowichan__tbb_1_1_random_generator_9bcb65cd30c9bc8fa99084b6daf2c148}{
+\index{cowichan\_\-tbb::RandomGenerator@{cowichan\_\-tbb::RandomGenerator}!initialise@{initialise}}
+\index{initialise@{initialise}!cowichan_tbb::RandomGenerator@{cowichan\_\-tbb::RandomGenerator}}
+\subsubsection[{initialise}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::RandomGenerator::initialise ()\hspace{0.3cm}{\tt  \mbox{[}inline, private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_random_generator_9bcb65cd30c9bc8fa99084b6daf2c148}
+
+
+Initialises the random number generator to operate on NROWS different rows completely independently. \hypertarget{classcowichan__tbb_1_1_random_generator_deb3aab43e3b17a60f98cd2e90ea44a7}{
+\index{cowichan\_\-tbb::RandomGenerator@{cowichan\_\-tbb::RandomGenerator}!next@{next}}
+\index{next@{next}!cowichan_tbb::RandomGenerator@{cowichan\_\-tbb::RandomGenerator}}
+\subsubsection[{next}]{\setlength{\rightskip}{0pt plus 5cm}{\bf INT\_\-TYPE} cowichan\_\-tbb::RandomGenerator::next ({\bf INT\_\-TYPE} \& {\em current}) const\hspace{0.3cm}{\tt  \mbox{[}inline, private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_random_generator_deb3aab43e3b17a60f98cd2e90ea44a7}
+
+
+Generates the next random number. Convenience method for next(current, a, c); \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em current}]current element. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Next element. \end{Desc}
+\hypertarget{classcowichan__tbb_1_1_random_generator_12a4a91e8e77579fde17e1c707c97b19}{
+\index{cowichan\_\-tbb::RandomGenerator@{cowichan\_\-tbb::RandomGenerator}!nextK@{nextK}}
+\index{nextK@{nextK}!cowichan_tbb::RandomGenerator@{cowichan\_\-tbb::RandomGenerator}}
+\subsubsection[{nextK}]{\setlength{\rightskip}{0pt plus 5cm}{\bf INT\_\-TYPE} cowichan\_\-tbb::RandomGenerator::nextK ({\bf INT\_\-TYPE} \& {\em current}) const\hspace{0.3cm}{\tt  \mbox{[}inline, private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_random_generator_12a4a91e8e77579fde17e1c707c97b19}
+
+
+Generates the k-th next random number, using an identity, where A = a$^\wedge$k mod m and C = c $\ast$ sum\mbox{[}j=0..k-1\mbox{]}(a$^\wedge$j mod m). \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em current}]element. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Next k-th element. \end{Desc}
+\hypertarget{classcowichan__tbb_1_1_random_generator_360ad4095d0a257c4787c04b4f624442}{
+\index{cowichan\_\-tbb::RandomGenerator@{cowichan\_\-tbb::RandomGenerator}!operator()@{operator()}}
+\index{operator()@{operator()}!cowichan_tbb::RandomGenerator@{cowichan\_\-tbb::RandomGenerator}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::RandomGenerator::operator() (const {\bf Range} \& {\em rows}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_random_generator_360ad4095d0a257c4787c04b4f624442}
+
+
+Provides NROWS-seperated linear congruential RNG on the specified range of rows. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em rows}]range of rows to work on. \end{description}
+\end{Desc}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classcowichan__tbb_1_1_random_generator_2aaebcbedce6e0dcdc4d828bd57df467}{
+\index{cowichan\_\-tbb::RandomGenerator@{cowichan\_\-tbb::RandomGenerator}!\_\-matrix@{\_\-matrix}}
+\index{\_\-matrix@{\_\-matrix}!cowichan_tbb::RandomGenerator@{cowichan\_\-tbb::RandomGenerator}}
+\subsubsection[{\_\-matrix}]{\setlength{\rightskip}{0pt plus 5cm}{\bf IntMatrix} {\bf cowichan\_\-tbb::RandomGenerator::\_\-matrix}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_random_generator_2aaebcbedce6e0dcdc4d828bd57df467}
+
+
+Matrix to fill. \hypertarget{classcowichan__tbb_1_1_random_generator_7e3ba7b1498d53cdf9c8ea06065feefe}{
+\index{cowichan\_\-tbb::RandomGenerator@{cowichan\_\-tbb::RandomGenerator}!aPrime@{aPrime}}
+\index{aPrime@{aPrime}!cowichan_tbb::RandomGenerator@{cowichan\_\-tbb::RandomGenerator}}
+\subsubsection[{aPrime}]{\setlength{\rightskip}{0pt plus 5cm}{\bf INT\_\-TYPE} {\bf cowichan\_\-tbb::RandomGenerator::aPrime}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_random_generator_7e3ba7b1498d53cdf9c8ea06065feefe}
+
+
+Constant a prime. \hypertarget{classcowichan__tbb_1_1_random_generator_8c86d3cd7760c32dc80cfd2d221d6939}{
+\index{cowichan\_\-tbb::RandomGenerator@{cowichan\_\-tbb::RandomGenerator}!cPrime@{cPrime}}
+\index{cPrime@{cPrime}!cowichan_tbb::RandomGenerator@{cowichan\_\-tbb::RandomGenerator}}
+\subsubsection[{cPrime}]{\setlength{\rightskip}{0pt plus 5cm}{\bf INT\_\-TYPE} {\bf cowichan\_\-tbb::RandomGenerator::cPrime}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_random_generator_8c86d3cd7760c32dc80cfd2d221d6939}
+
+
+Constant c prime. \hypertarget{classcowichan__tbb_1_1_random_generator_c48e1ab81e657b238d19c72fa1f1bf0a}{
+\index{cowichan\_\-tbb::RandomGenerator@{cowichan\_\-tbb::RandomGenerator}!nc@{nc}}
+\index{nc@{nc}!cowichan_tbb::RandomGenerator@{cowichan\_\-tbb::RandomGenerator}}
+\subsubsection[{nc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} {\bf cowichan\_\-tbb::RandomGenerator::nc}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_random_generator_c48e1ab81e657b238d19c72fa1f1bf0a}
+
+
+Number of columns in the matrix. \hypertarget{classcowichan__tbb_1_1_random_generator_b7d617ee4c194eacc534df3589adce20}{
+\index{cowichan\_\-tbb::RandomGenerator@{cowichan\_\-tbb::RandomGenerator}!nr@{nr}}
+\index{nr@{nr}!cowichan_tbb::RandomGenerator@{cowichan\_\-tbb::RandomGenerator}}
+\subsubsection[{nr}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} {\bf cowichan\_\-tbb::RandomGenerator::nr}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_random_generator_b7d617ee4c194eacc534df3589adce20}
+
+
+Number of rows in the matrix. \hypertarget{classcowichan__tbb_1_1_random_generator_8347501a85a115b517854c95b4032044}{
+\index{cowichan\_\-tbb::RandomGenerator@{cowichan\_\-tbb::RandomGenerator}!state@{state}}
+\index{state@{state}!cowichan_tbb::RandomGenerator@{cowichan\_\-tbb::RandomGenerator}}
+\subsubsection[{state}]{\setlength{\rightskip}{0pt plus 5cm}{\bf IntVector} {\bf cowichan\_\-tbb::RandomGenerator::state}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_random_generator_8347501a85a115b517854c95b4032044}
+
+
+First element vector. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+cowichan\_\-tbb/\hyperlink{cowichan__tbb_2randmat_8cpp}{randmat.cpp}\end{CompactItemize}

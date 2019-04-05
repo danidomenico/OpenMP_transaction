@@ -1,0 +1,17 @@
+\hypertarget{cowichan__serial_2half_8cpp}{
+\section{cowichan\_\-serial/half.cpp File Reference}
+\label{cowichan__serial_2half_8cpp}\index{cowichan\_\-serial/half.cpp@{cowichan\_\-serial/half.cpp}}
+}
+Serial half implementation.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-serial.hpp\char`\"{}}\par
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+Serial half implementation. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_serial_c08a6b3e23ce26959bac12af077f924f}{CowichanSerial::half} \end{Desc}

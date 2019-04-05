@@ -1,0 +1,39 @@
+\subsection{{\tt{half}}: Two-Dimensional Shuffle\label{s:toys-half}}
+
+This module divides the values in a rectangular two-dimensional integer matrix into two halves along one axis,
+shuffles them,
+and then repeats this operation along the other axis.
+Values in odd-numbered locations are collected at the low end of each row or column,
+while values in even-numbered locations are moved to the high end.
+An example transformation is:
+
+\begin{eqnarray*}
+\begin{array}{cccc}
+a & b & c & d \\
+e & f & g & h \\
+i & j & k & l
+\end{array}
+& = &
+\begin{array}{cccc}
+a & c & b & d \\
+i & k & j & l \\
+e & g & f & h
+\end{array}
+\end{eqnarray*}
+
+Note that how an array element is moved depends only on whether its location index is odd or even,
+not on whether its value is odd or even.
+
+{\inputspec}
+
+\begin{description}
+\item[{\tt{matrix}}:]
+	an integer matrix.
+\end{description}
+
+{\outputspec}
+
+\begin{description}
+\item[{\tt{matrix}}:]
+	an integer matrix containing shuffled values.
+\end{description}

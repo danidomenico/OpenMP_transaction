@@ -1,0 +1,127 @@
+\hypertarget{class_l_t_sor}{
+\section{LTSor Class Reference}
+\label{class_l_t_sor}\index{LTSor@{LTSor}}
+}
+{\tt \#include $<$sor.hpp$>$}
+
+Inheritance diagram for LTSor::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{class_l_t_sor}
+\end{center}
+\end{figure}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{class_l_t_sor_4fc4f0f914fc08f57f2ef5ba346cef1d}{consumeInput} ()
+\item 
+void \hyperlink{class_l_t_sor_48363c30cbba1c5ca61ed86260db94af}{work} ()
+\item 
+void \hyperlink{class_l_t_sor_19e969a6ab342ee86d86721fbd37e7a6}{produceOutput} ()
+\item 
+\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{class_l_t_sor_c4a890faff8c1caeb6089b0b8b488e38}{solutionSum} (\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} row)
+\end{CompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{CompactItemize}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_sor_bc947063bba409b5b9a1a06e1ddb2070}{SYNCH\_\-LOCK} = \char`\"{}sor synch lock\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_sor_0276e790a83efc366011482c3e8597c4}{ROWS\_\-DONE} = \char`\"{}sor rows reporting\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_sor_913b683357eabbd90a363da6459c8794}{SOLUTION\_\-VECTOR} = \char`\"{}sor solution row\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_sor_b70b582671901d2b4680e82fd756cf1f}{SOLUTION\_\-SUM} = \char`\"{}sor inner sum\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_sor_2784b20dce735b35e3ac40b26b1df40a}{SOR\_\-FLAG} = \char`\"{}sor input consumed\char`\"{}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Performs a successive over-relaxation to solve a matrix problem Ax = b. The solution is approximate, but it can be made arbitrarily accurate. The computation is done in tuple space. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_l_t_sor_4fc4f0f914fc08f57f2ef5ba346cef1d}{
+\index{LTSor@{LTSor}!consumeInput@{consumeInput}}
+\index{consumeInput@{consumeInput}!LTSor@{LTSor}}
+\subsubsection[{consumeInput}]{\setlength{\rightskip}{0pt plus 5cm}void LTSor::consumeInput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_sor_4fc4f0f914fc08f57f2ef5ba346cef1d}
+
+
+The consume input process is spawned once and should distribute tasks to the worker processes. 
+
+Implements \hyperlink{class_tuple_application_e163c5a536de01c8b94b49528a17dab2}{TupleApplication}.\hypertarget{class_l_t_sor_19e969a6ab342ee86d86721fbd37e7a6}{
+\index{LTSor@{LTSor}!produceOutput@{produceOutput}}
+\index{produceOutput@{produceOutput}!LTSor@{LTSor}}
+\subsubsection[{produceOutput}]{\setlength{\rightskip}{0pt plus 5cm}void LTSor::produceOutput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_sor_19e969a6ab342ee86d86721fbd37e7a6}
+
+
+The output producer decides when the tuple application is finished; once this function returns, the tuple application is complete. 
+
+Implements \hyperlink{class_tuple_application_8743dfcf17dedd52887c0b2ab170d8dc}{TupleApplication}.\hypertarget{class_l_t_sor_c4a890faff8c1caeb6089b0b8b488e38}{
+\index{LTSor@{LTSor}!solutionSum@{solutionSum}}
+\index{solutionSum@{solutionSum}!LTSor@{LTSor}}
+\subsubsection[{solutionSum}]{\setlength{\rightskip}{0pt plus 5cm}{\bf real} LTSor::solutionSum ({\bf index\_\-t} {\em row})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class_l_t_sor_c4a890faff8c1caeb6089b0b8b488e38}
+
+
+Performs the sum portion of the SOR processor. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em row}]the row to perform on. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the sum. \end{Desc}
+\hypertarget{class_l_t_sor_48363c30cbba1c5ca61ed86260db94af}{
+\index{LTSor@{LTSor}!work@{work}}
+\index{work@{work}!LTSor@{LTSor}}
+\subsubsection[{work}]{\setlength{\rightskip}{0pt plus 5cm}void LTSor::work ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_sor_48363c30cbba1c5ca61ed86260db94af}
+
+
+Worker processes are created and killed after the output process has finished. 
+
+Implements \hyperlink{class_tuple_application_ef6ae8bb1d697e4ed038b43320183c89}{TupleApplication}.
+
+\subsection{Member Data Documentation}
+\hypertarget{class_l_t_sor_0276e790a83efc366011482c3e8597c4}{
+\index{LTSor@{LTSor}!ROWS\_\-DONE@{ROWS\_\-DONE}}
+\index{ROWS\_\-DONE@{ROWS\_\-DONE}!LTSor@{LTSor}}
+\subsubsection[{ROWS\_\-DONE}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTSor::ROWS\_\-DONE} = \char`\"{}sor rows reporting\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_sor_0276e790a83efc366011482c3e8597c4}
+
+
+The number of rows done in the middle SOR section. \hypertarget{class_l_t_sor_b70b582671901d2b4680e82fd756cf1f}{
+\index{LTSor@{LTSor}!SOLUTION\_\-SUM@{SOLUTION\_\-SUM}}
+\index{SOLUTION\_\-SUM@{SOLUTION\_\-SUM}!LTSor@{LTSor}}
+\subsubsection[{SOLUTION\_\-SUM}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTSor::SOLUTION\_\-SUM} = \char`\"{}sor inner sum\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_sor_b70b582671901d2b4680e82fd756cf1f}
+
+
+The on-going sum of the solution. \hypertarget{class_l_t_sor_913b683357eabbd90a363da6459c8794}{
+\index{LTSor@{LTSor}!SOLUTION\_\-VECTOR@{SOLUTION\_\-VECTOR}}
+\index{SOLUTION\_\-VECTOR@{SOLUTION\_\-VECTOR}!LTSor@{LTSor}}
+\subsubsection[{SOLUTION\_\-VECTOR}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTSor::SOLUTION\_\-VECTOR} = \char`\"{}sor solution row\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_sor_913b683357eabbd90a363da6459c8794}
+
+
+The vector of the solution in tuple space \hypertarget{class_l_t_sor_2784b20dce735b35e3ac40b26b1df40a}{
+\index{LTSor@{LTSor}!SOR\_\-FLAG@{SOR\_\-FLAG}}
+\index{SOR\_\-FLAG@{SOR\_\-FLAG}!LTSor@{LTSor}}
+\subsubsection[{SOR\_\-FLAG}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTSor::SOR\_\-FLAG} = \char`\"{}sor input consumed\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_sor_2784b20dce735b35e3ac40b26b1df40a}
+
+
+Should we flag the output producer? \hypertarget{class_l_t_sor_bc947063bba409b5b9a1a06e1ddb2070}{
+\index{LTSor@{LTSor}!SYNCH\_\-LOCK@{SYNCH\_\-LOCK}}
+\index{SYNCH\_\-LOCK@{SYNCH\_\-LOCK}!LTSor@{LTSor}}
+\subsubsection[{SYNCH\_\-LOCK}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTSor::SYNCH\_\-LOCK} = \char`\"{}sor synch lock\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_sor_bc947063bba409b5b9a1a06e1ddb2070}
+
+
+Synchronization lock (critical section). 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+cowichan\_\-lt/src/\hyperlink{sor_8hpp}{sor.hpp}\item 
+cowichan\_\-lt/src/\hyperlink{cowichan__lt_2src_2sor_8cpp}{sor.cpp}\end{CompactItemize}

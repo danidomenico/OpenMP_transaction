@@ -1,0 +1,38 @@
+     1	/**
+     2	 * Serial implementation of matrix-vector product
+     3	 *
+     4	 * \file serial.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-02-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#include "serial.h"
+    11	
+    12	// public
+    13	
+    14	void
+    15	product(
+    16	  real2D*	matrix,			/* to multiply by */
+    17	  real1D*	vector,			/* to be multiplied */
+    18	  real1D*	result,			/* result of multiply */
+    19	  int		nr,			/* row size */
+    20	  int		nc			/* column size */
+    21	){
+    22	  int		r, c;			/* row/column indices */
+    23	#if GRAPHICS
+    24	  int		gfxCount = 0;
+    25	#endif
+    26	
+    27	  for (r=0; r<nr; r++){
+    28	    result[r] = matrix[r][0] * vector[0];
+    29	    for (c=1; c<nc; c++){
+    30	      result[r] += matrix[r][c] * vector[c];
+    31	    }
+    32	  }
+    33	#if GRAPHICS
+    34	  gfx_product(gfxCount++, matrix, vector, result, nr, nc);
+    35	#endif
+    36	
+    37	  /* return */
+    38	}

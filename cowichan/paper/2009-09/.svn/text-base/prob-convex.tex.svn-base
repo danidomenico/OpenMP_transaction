@@ -1,0 +1,25 @@
+\subsection{{\tt{convex}}: Convex Hull\label{s:toys-convex}}
+
+Given a set of $(x,y)$ points,
+this toy finds those that lie on the convex hull,
+removes them,
+then finds the convex hull of the remainder.
+This process continues until no points are left.
+The output is a list of points in the order in which they were removed,
+i.e.,
+the first section of the list is the points from the outermost convex hull,
+the second section is the points that lay on the next hull, and so on.
+
+{\inputspec}
+
+\begin{description}
+\item[{\tt{original}}:]
+	the vector of input points.
+\end{description}
+
+{\outputspec}
+
+\begin{description}
+\item[{\tt{ordered}}:]
+	the vector of output points (a permutation of the input).
+\end{description}

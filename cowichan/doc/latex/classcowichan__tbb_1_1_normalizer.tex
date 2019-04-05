@@ -1,0 +1,114 @@
+\hypertarget{classcowichan__tbb_1_1_normalizer}{
+\section{cowichan\_\-tbb::Normalizer Class Reference}
+\label{classcowichan__tbb_1_1_normalizer}\index{cowichan\_\-tbb::Normalizer@{cowichan\_\-tbb::Normalizer}}
+}
+Normalizes points.  
+
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classcowichan__tbb_1_1_normalizer_cb52a94c067ba2575798ad20ec8fba39}{Normalizer} (\hyperlink{class_point}{PointVector} \hyperlink{classcowichan__tbb_1_1_normalizer_95eb79497a2f62d3c5b84117d6078ca8}{pointsIn}, \hyperlink{class_point}{PointVector} \hyperlink{classcowichan__tbb_1_1_normalizer_129c4392ff469d70ede7f43d349adee4}{pointsOut}, \hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{classcowichan__tbb_1_1_normalizer_ca52ed14f4fe4e764a4c6fc29de1b2dd}{minX}, \hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{classcowichan__tbb_1_1_normalizer_e432c3916284f4685e76ed672d62521f}{minY}, \hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{classcowichan__tbb_1_1_normalizer_4b406119670a300351f7e994836fcf33}{xfactor}, \hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{classcowichan__tbb_1_1_normalizer_0f2e547284f054fc2bc8c677328c6a8f}{yfactor})
+\item 
+void \hyperlink{classcowichan__tbb_1_1_normalizer_2340f027ed4fae956ab2e0ec20d583df}{operator()} (const \hyperlink{cowichan__tbb_8hpp_8e2057f725b08f3a15513c378a453a47}{Range} \&range) const 
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_point}{PointVector} \hyperlink{classcowichan__tbb_1_1_normalizer_95eb79497a2f62d3c5b84117d6078ca8}{pointsIn}
+\item 
+\hyperlink{class_point}{PointVector} \hyperlink{classcowichan__tbb_1_1_normalizer_129c4392ff469d70ede7f43d349adee4}{pointsOut}
+\item 
+\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{classcowichan__tbb_1_1_normalizer_ca52ed14f4fe4e764a4c6fc29de1b2dd}{minX}
+\item 
+\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{classcowichan__tbb_1_1_normalizer_e432c3916284f4685e76ed672d62521f}{minY}
+\item 
+\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{classcowichan__tbb_1_1_normalizer_4b406119670a300351f7e994836fcf33}{xfactor}
+\item 
+\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{classcowichan__tbb_1_1_normalizer_0f2e547284f054fc2bc8c677328c6a8f}{yfactor}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Normalizes points. 
+
+This class performs point normalization -- points are put onto the unit square. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcowichan__tbb_1_1_normalizer_cb52a94c067ba2575798ad20ec8fba39}{
+\index{cowichan\_\-tbb::Normalizer@{cowichan\_\-tbb::Normalizer}!Normalizer@{Normalizer}}
+\index{Normalizer@{Normalizer}!cowichan_tbb::Normalizer@{cowichan\_\-tbb::Normalizer}}
+\subsubsection[{Normalizer}]{\setlength{\rightskip}{0pt plus 5cm}cowichan\_\-tbb::Normalizer::Normalizer ({\bf PointVector} {\em pointsIn}, \/  {\bf PointVector} {\em pointsOut}, \/  {\bf real} {\em minX}, \/  {\bf real} {\em minY}, \/  {\bf real} {\em xfactor}, \/  {\bf real} {\em yfactor})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_normalizer_cb52a94c067ba2575798ad20ec8fba39}
+
+
+Construct a normalizer object. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pointsIn}]input points. \item[{\em pointsOut}]output points. \item[{\em minX}]min x coordinate. \item[{\em minY}]min y coordinate. \item[{\em xfactor}]scaling x factor. \item[{\em yfactor}]scaling y factor. \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcowichan__tbb_1_1_normalizer_2340f027ed4fae956ab2e0ec20d583df}{
+\index{cowichan\_\-tbb::Normalizer@{cowichan\_\-tbb::Normalizer}!operator()@{operator()}}
+\index{operator()@{operator()}!cowichan_tbb::Normalizer@{cowichan\_\-tbb::Normalizer}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::Normalizer::operator() (const {\bf Range} \& {\em range}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_normalizer_2340f027ed4fae956ab2e0ec20d583df}
+
+
+Performs normalization over given range \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em range}]range of points. \end{description}
+\end{Desc}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classcowichan__tbb_1_1_normalizer_ca52ed14f4fe4e764a4c6fc29de1b2dd}{
+\index{cowichan\_\-tbb::Normalizer@{cowichan\_\-tbb::Normalizer}!minX@{minX}}
+\index{minX@{minX}!cowichan_tbb::Normalizer@{cowichan\_\-tbb::Normalizer}}
+\subsubsection[{minX}]{\setlength{\rightskip}{0pt plus 5cm}{\bf real} {\bf cowichan\_\-tbb::Normalizer::minX}}}
+\label{classcowichan__tbb_1_1_normalizer_ca52ed14f4fe4e764a4c6fc29de1b2dd}
+
+
+Min x coordinate. \hypertarget{classcowichan__tbb_1_1_normalizer_e432c3916284f4685e76ed672d62521f}{
+\index{cowichan\_\-tbb::Normalizer@{cowichan\_\-tbb::Normalizer}!minY@{minY}}
+\index{minY@{minY}!cowichan_tbb::Normalizer@{cowichan\_\-tbb::Normalizer}}
+\subsubsection[{minY}]{\setlength{\rightskip}{0pt plus 5cm}{\bf real} {\bf cowichan\_\-tbb::Normalizer::minY}}}
+\label{classcowichan__tbb_1_1_normalizer_e432c3916284f4685e76ed672d62521f}
+
+
+Min y coordinate. \hypertarget{classcowichan__tbb_1_1_normalizer_95eb79497a2f62d3c5b84117d6078ca8}{
+\index{cowichan\_\-tbb::Normalizer@{cowichan\_\-tbb::Normalizer}!pointsIn@{pointsIn}}
+\index{pointsIn@{pointsIn}!cowichan_tbb::Normalizer@{cowichan\_\-tbb::Normalizer}}
+\subsubsection[{pointsIn}]{\setlength{\rightskip}{0pt plus 5cm}{\bf PointVector} {\bf cowichan\_\-tbb::Normalizer::pointsIn}}}
+\label{classcowichan__tbb_1_1_normalizer_95eb79497a2f62d3c5b84117d6078ca8}
+
+
+Input points. \hypertarget{classcowichan__tbb_1_1_normalizer_129c4392ff469d70ede7f43d349adee4}{
+\index{cowichan\_\-tbb::Normalizer@{cowichan\_\-tbb::Normalizer}!pointsOut@{pointsOut}}
+\index{pointsOut@{pointsOut}!cowichan_tbb::Normalizer@{cowichan\_\-tbb::Normalizer}}
+\subsubsection[{pointsOut}]{\setlength{\rightskip}{0pt plus 5cm}{\bf PointVector} {\bf cowichan\_\-tbb::Normalizer::pointsOut}}}
+\label{classcowichan__tbb_1_1_normalizer_129c4392ff469d70ede7f43d349adee4}
+
+
+Output points. \hypertarget{classcowichan__tbb_1_1_normalizer_4b406119670a300351f7e994836fcf33}{
+\index{cowichan\_\-tbb::Normalizer@{cowichan\_\-tbb::Normalizer}!xfactor@{xfactor}}
+\index{xfactor@{xfactor}!cowichan_tbb::Normalizer@{cowichan\_\-tbb::Normalizer}}
+\subsubsection[{xfactor}]{\setlength{\rightskip}{0pt plus 5cm}{\bf real} {\bf cowichan\_\-tbb::Normalizer::xfactor}}}
+\label{classcowichan__tbb_1_1_normalizer_4b406119670a300351f7e994836fcf33}
+
+
+x scaling factor. \hypertarget{classcowichan__tbb_1_1_normalizer_0f2e547284f054fc2bc8c677328c6a8f}{
+\index{cowichan\_\-tbb::Normalizer@{cowichan\_\-tbb::Normalizer}!yfactor@{yfactor}}
+\index{yfactor@{yfactor}!cowichan_tbb::Normalizer@{cowichan\_\-tbb::Normalizer}}
+\subsubsection[{yfactor}]{\setlength{\rightskip}{0pt plus 5cm}{\bf real} {\bf cowichan\_\-tbb::Normalizer::yfactor}}}
+\label{classcowichan__tbb_1_1_normalizer_0f2e547284f054fc2bc8c677328c6a8f}
+
+
+y scaling factor. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+cowichan\_\-tbb/\hyperlink{cowichan__tbb_2norm_8cpp}{norm.cpp}\end{CompactItemize}

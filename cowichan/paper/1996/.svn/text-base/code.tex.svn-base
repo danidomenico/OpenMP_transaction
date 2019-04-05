@@ -1,0 +1,621 @@
+%
+% code.tex : documentation on Cowichan code (C/threaded version)
+%
+\documentstyle[alltt,epsf,11pt]{article}
+
+\author{Gregory V.\ Wilson}
+\title{The ANSI~C Implementation of\\the Cowichan Problems}
+\date{Version 1.0}
+
+\newenvironment{progtext}%
+{\begin{small}\begin{alltt}}%
+{\end{alltt}\end{small}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This document describes the implementation of the Cowichan Problems,
+a small suite of programs used to assess and compare parallel programming systems.
+\end{abstract}
+
+\section{Introduction\label{s:intro}}
+
+The Cowichan Problems are a set of 14 small applications
+designed to be used in assessing and comparing parallel programming systems.
+This document describes the ANSI~C implementation of these programs,
+which serves as a reference implementation.
+It also describes two multi-threaded implementations:
+one uses a repeated fork-and-join model,
+while the other creates a fixed number of threads
+at the start of the program,
+and then repeatedly synchronizes them using barriers.
+Throughout this document,
+the purely sequential implementation is referred to as the ``serial'' implementation,
+while the other two are referred to as the ``fork-join'' and ``barrier'' implementations
+respectively.
+
+Table~\ref{t:problem-codes} gives the name of each application,
+its single-character code,
+and a one-line description of it.
+For full descriptions of these problems,
+see the full paper which accompanies this documentation.
+
+\begin{table}
+\begin{small}\begin{center}\begin{tabular}{cll}
+Code	& Name			& Description	\\
+\hline
+C	& {\tt{chained}}	& chained version of all problems\\
+E	& {\tt{elastic}}	& elastic net approximation to the TSP\\
+G	& {\tt{gauss}}		& Gaussian elimination (without pivoting)\\
+H	& {\tt{half}}		& halving shuffle\\
+I	& {\tt{invperc}}	& invasion percolation\\
+\hline
+L	& {\tt{life}}		& simulation of the Game of Life\\
+M	& {\tt{mandel}}		& Mandelbrot Set generation\\
+N	& {\tt{norm}}		& co-ordinate normalization\\
+O	& {\tt{outer}}		& vector-vector outer product\\
+P	& {\tt{product}}	& matrix-vector product\\
+\hline
+R	& {\tt{randmat}}	& random matrix generation\\
+S	& {\tt{sor}}		& successive over-relaxation\\
+T	& {\tt{thresh}}		& histogram-based image thresholding\\
+V	& {\tt{vecdiff}}	& vector difference\\
+W	& {\tt{winnow}}		& masked point winnowing
+\end{tabular}\end{center}\end{small}
+\caption{Application Descriptions\label{t:problem-codes}}
+\end{table}
+
+\section{Organization\label{s:org}}
+
+In order to simplify automatic re-compilation and execution of these programs,
+the code for each implementation is contained in a fixed number of files,
+with fixed names,
+in fixed sub-directories.
+For an implementation {\tt{z}},
+these directories and files are organized as shown in Table~\ref{t:code-org}.
+
+\begin{table}
+\begin{small}\begin{tabbing}
+xxxx\=\kill
+{\tt{z/app}}: source for individual applications\\
+    \> {\tt{app.c}}: version-specific support routines\\
+    \> {\tt{elastic.c}}: source for elastic net application\\
+    \> \begin{math}\cdots\end{math}\\
+    \> {\tt{winnow.c}}: source for winnow application\\
+{\tt{z/bin}}: executables created during compilation\\
+    \> {\tt{chain}}: chained version of all applications\\
+    \> {\tt{elastic}}: stand-alone elastic net\\
+    \> \begin{math}\cdots\end{math}\\
+    \> {\tt{winnow}}: stand-alone winnowing\\
+{\tt{z/hdr}}: header files\\
+    \> {\tt{generic.h}}: generic definitions\\
+    \> {\tt{gfx.h}}: graphics interface definitions\\
+    \> {\tt{proto.h}}: function prototypes for individual applications\\
+    \> {\tt{specific.h}}: version-specific definitions\\
+    \> {\tt{type.h}}: type and constant definitions\\
+{\tt{z/lib}}: libraries\\
+    \> {\tt{libapp.a}}: support routines and individual applications\\
+{\tt{z/main}}: top-level drivers\\
+    \> {\tt{chain.c}}: driver for chained version of all applications\\
+    \> {\tt{elastic.c}}: driver for stand-alone elastic net\\
+    \> \begin{math}\cdots\end{math}\\
+    \> {\tt{winnow.c}}: driver for stand-alone point winnowing\\
+{\tt{z/test}}: \\
+    \> \begin{em}see Section~\ref{s:make-test}\end{em}
+\end{tabbing}\end{small}
+\caption{Code Organization\label{t:code-org}}
+\end{table}
+
+The directory {\tt{app}} is the most important.
+It holds the implementations of the individual applications,
+one per file,
+plus another file called {\tt{app.c}},
+which contains utility routines for doing such things as
+finding the minimum or maximum value in a matrix,
+copying one vector into another,
+and so on.
+In some implementations,
+one or more of the application implementation ``files''
+may actually be a link to the file containing standard sequential implementation.
+At present,
+for example,
+both the fork-join and barrier implementation
+use the sequential implementation of the {\tt{invperc}} application
+in this way.
+
+A separate directory,
+{\tt{main}},
+holds the main drivers for the individual applications.
+These drivers provide the top-level procedure {\tt{main}},
+parse command-line arguments,
+and do file input and output where appropriate.
+Drivers are separated from implementations because
+the chained version of the problem set
+incorporates all of the individual applications
+under the control of a single driver.
+In practice,
+some or all of these may be links to the standard sequential drivers;
+in fact,
+whether or not this can be done is one sign of
+how well a particular parallel programming system
+modularizes parallelism.
+
+A third directory,
+{\tt{hdr}},
+holds the definitions used in each version.
+The file {\tt{hdr/specific.h}} is the only one
+included by the source code in the {\tt{app}} and {\tt{main}} directories;
+it references all other header files which programs require.
+The {\tt{make}} control file ensures that
+the compiler looks in the right place to resolve these references
+(Section~\ref{s:make-cmpl}).
+The other four file in this directory are:
+{\tt{generic.h}},
+which contains version-independent definitions of various constants;
+{\tt{gfx.h}},
+which contains function prototypes for the graphics interface;
+{\tt{proto.h}},
+containing function prototypes for the application implementations themselves;
+and {\tt{type.h}},
+which contains definitions of the data types used in the version.
+Definitions are split up in this way for the following reasons:
+\begin{itemize}
+\item	Some programming systems of interest
+	require special type definitions to indicate parallel structures
+	(e.g.\ the {\tt{shape}} definition in C*).
+	Since an overriding design consideration was that
+	no piece of code should more than once,
+	type definitions had to be separated from other definitions.
+\item	The interface to a particular application
+	may require extra parameters,
+	depending on the type of parallelism used.
+	The barrier version described in this document,
+	for example,
+	requires a thread ID to be passed as an argument
+	to every parallelized routine.
+	Application function prototypes are therefore kept in a separate file
+	{\tt{proto.h}}
+	so that they can be changed without affecting other definitions.
+\item	The graphics utilities may eventually be dependent on
+	the style of parallelism used,
+	although they are not at present.
+	A separate prototype file {\tt{gfx.h}} was therefore created.
+\end{itemize}
+In the versions described in this document,
+{\tt{generic.h}},
+{\tt{gfx.h}},
+and {\tt{type.h}} are all links to
+the equivalent standard sequential files.
+Only {\tt{proto.h}} and {\tt{specific.h}} reflect
+the idiosyncracies of particular parallel implementations.
+
+\section{Data Structures and Associated Definitions\label{s:defs}}
+
+Four basic data types are used in these applications:
+Booleans ({\tt{logical}} variables to Fortran programmers),
+integers,
+real numbers,
+and weighted points consisting of real-valued $(x,y)$ coordinates
+and a non-negative integer weight $w$.
+Booleans are distinguished from integers,
+through a {\tt{typedef}} of the name {\tt{bool}},
+for the benefit of systems which support compact implementation of Booleans
+(such as C*).
+Real number are created using {\tt{typedef}} to define the name {\tt{real}}.
+At present,
+all real values are {\tt{double}},
+but this may be changed in other programming systems.
+Finally,
+a structure is defined to represent individual points using:
+\begin{progtext}
+    typedef struct \{
+      real  x, y;        /* location */
+      int   w;           /* weight */
+    \} pt;
+\end{progtext}
+With these four primitive types in place,
+vectors and arrays of them are defined.
+These definitions depend upon the compile-time constant {\tt{MAXEXT}},
+which is the maximum extent of any structure along a single axis.
+(For a discussion of the ``slushy'' data model this embodies,
+see the accompanying paper.)
+The suffix {\tt{1D}} is used to indicate a vector of size {\tt{MAXEXT}}
+of a particular type;
+thus,
+{\tt{int1D}} is {\tt{typedef}}'d to be a vector of integers,
+{\tt{pt1D}} a vector of points,
+and so on.
+The suffix {\tt{2D}} is used to indicate a square array of this size,
+so that {\tt{real2D}} is equivalent to {\tt{real[MAXEXT][MAXEXT]}}.
+Finally,
+the suffix {\tt{1DX}} is used to indicate an ``extended'' vector,
+which contains as many elements as a square array
+(i.e.\ ${\tt{MAXEXT}}^2$).
+Temporary structures of this shape and size are needed in the {\tt{winnow}} application.
+
+Two enumerated types are defined as part of this suite as well.
+The first is {\tt{gfxCtrl\_e}},
+and its values determine how the graphics interface behaves.
+The second,
+{\tt{dataDist\_e}},
+is more important for present purposes.
+Its values enumerate the data and work distribution strategies
+supported in this application suite.
+Currently,
+only single-axis block and cyclic distributions are available,
+but others may be added in future implementations.
+
+Finally,
+codes for individual applications,
+and miscellaneous parameters
+such as the maximum number of iterations to perform at a single point
+when generating the Mandelbrot Set,
+are defined in {\tt{generic.h}}.
+These should be self-explanatory.
+
+\section{Utilities\label{s:util}}
+
+The organization of the directory {\tt{generic}} is slightly different from
+that of the other directories.
+Like them,
+it contains {\tt{app}} and {\tt{main}} directories
+holding application implementations and main drivers,
+and a {\tt{hdr}} directory containing various definition files.
+The files in {\tt{app}} and {\tt{main}} are not used directly, however;
+instead,
+links to them are made from the directories containing other versions
+when the standard sequential implementation of an application or driver
+is to be recycled.
+For example,
+the serial, fork-join, and barrier versions all use
+the same code for {\tt{invperc}},
+and so all contain links to the generic version.
+Similarly,
+the main drivers in the fork-join version are identical with those used
+in the serial version,
+so both are implemented using links to the generic version.
+
+The {\tt{hdr}} directory contains one non-standard file,
+called {\tt{util.h}}.
+This is referenced by the utility code modules
+contained in the {\tt{util}} directory.
+These modules implement routines which are used
+in all versions of this problem suite
+for such things as
+command-line argument parsing and error handling.
+The files in this directory are:
+\begin{small}\begin{tabbing}
+{\tt{arg.c}}: command-line argument handling\\
+{\tt{gfx.c}}: standard graphics interface\\
+{\tt{io.c}}: file input and output\\
+{\tt{misc.c}}: miscellaneous (e.g.\ error handling)\\
+{\tt{sch.c}}: scheduling\\
+{\tt{str.c}}: string conversion
+\end{tabbing}\end{small}
+Of these,
+the graphics, I/O, and scheduling modules deserve further explanation.
+
+\subsection{Graphics\label{s:util-gfx}}
+
+The public-domain VOGLE graphics package is used as a basis for
+visualization of the Cowichan Problems.
+It is available by anonymous FTP from {\tt{gondwana.ecr.mu.oz.au::/pub}},
+and interested readers are referred there for documentation on its internals.
+Briefly,
+VOGLE provides routines for creating a window,
+defining a coordinate system for it,
+defining a viewing port (clipping window) within it,
+and for drawing points and simple two-dimensional figures such as
+lines, boxes, and circles.
+The details of drawing are all hidden
+by providing one routine named {\tt{gfx\_$x$}} for each application $x$.
+Each such routine takes as its first argument
+a count of the number of times it has been called;
+if this count is zero,
+it initializes the windowing system with appropriate values
+before invoking lower-level drawing routines.
+Two separate routines,
+{\tt{gfx\_open}} and {\tt{gfx\_close}},
+are used to open the graphic window initially,
+and to destroy it when the program terminates.
+Responsibility is divided in this way so that
+the same interface routines can be used in both
+the chained and stand-alone versions of these problems.
+In all cases,
+the main driver (either {\tt{chain.c}} or an application-specific main driver)
+is responsible only for creating and destroying the window;
+all other operations are carried out within particular applications.
+This allows the applications in the chained version
+to draw inside sub-windows of a single window,
+while drawing in the whole window when in stand-alone mode.
+
+\subsection{Input and Output\label{s:util-io}}
+
+The specification of the Cowichan Problems allows both formatted and unformatted I/O.
+Accordingly,
+the file {\tt{io.c}} defines two sets of input and output routines,
+one using formatted read and write operations {\tt{fprintf}} and {\tt{fscanf}},
+the other using their lower-level (but faster) unformatted equivalents
+{\tt{fwrite}} and {\tt{fread}}.
+The interfaces to the two sets of routines are isomorphic;
+a single initialization routine {\tt{io\_init}} is used
+to set a family of pointers to these functions,
+so that (for example)
+all application code can call {\tt{io\_wrReal2D}}
+to write a real two-dimensional matrix,
+without having to know whether this refers to
+{\tt{io\_wrReal2DFmt}} or {\tt{io\_wrReal2DUnFmt}}.
+For details on the file formats used,
+please see the accompanying paper.
+
+\subsection{Scheduling\label{s:util-sch}}
+
+The file {\tt{sch.c}} contains support routines to handle work scheduling.
+At present,
+the two options are single-axis block distribution,
+and single-axis cyclic distribution;
+others may be added in the future.
+For each scheduling type,
+a function is defined which takes as input arguments:
+\begin{itemize}
+\item	the number of worker processes participating in the operation;
+\item	the ID of the calling worker (in the range 0{\ldots}NW-1);
+\item	the index of the low end of the loop to be partitioned;
+	and
+\item	the upper bound on the index range of the loop to be partitioned.
+\end{itemize}
+The third and fourth parameters were chosen by analogy with the C clich\'{e}:
+\begin{progtext}
+    for (i=low; i<high; i+=increment)\{
+      loop body
+    \}
+\end{progtext}
+The fifth, sixth, and seventh parameters of each scheduling routine are
+pointers to integers,
+which are filled with:
+\begin{itemize}
+\item	the low index of this worker process's portion of the loop;
+\item	the upper limit on this worker process's portion of the loop;
+	and
+\item	the intra-loop stride this worker is to use.
+\end{itemize}
+The value returned by the function is a Boolean,
+which indicates whether or not there is any work for the calling process to do.
+If {\em{sched}} is the name of the scheduling function,
+its most common use is therefore:
+\begin{progtext}
+    if ({\em{sched}\/}(numThr, ownId, low, high, \&start, \&end, \&stride))\{
+      for (i=start; i<end; i+=stride)\{
+        loop body
+      \}
+    \}
+\end{progtext}
+As with I/O,
+scheduling functions are usually used indirectly.
+The initialization functio {\tt{sch\_init}} sets a global pointer {\tt{sch\_work}}
+to one or the other of the available scheduling functions,
+so that future calls to {\tt{sch\_work}} invoke the correct behavior.
+In some contexts,
+however,
+the lower-level scheduling functions may be used directly.
+For example,
+{\tt{randmat}} uses the cyclic scheduling function to ensure that
+the random values it generates are identical to those
+which are generated in the sequential case.
+
+\section{Drivers\label{s:main}}
+
+The main drivers for the stand-alone versions of these applications
+all follow the same pattern.
+Each contains definitions of the application-specific variables it requires,
+followed by argument-handling code.
+In this,
+the following flags always have the same meaning:
+\begin{small}\begin{center}\begin{tabular}{ll}
+{\tt{-g}} control		& graphics control	\\
+{\tt{-p}} scheduling number	& parallelism control	\\
+{\tt{-i}} name [name]		& input file name(s)	\\
+{\tt{-o}} name [name]		& output file name(s)	\\
+{\tt{-u}} 			& use unformatted files
+\end{tabular}\end{center}\end{small}
+The graphics control may be one of {\tt{off}}, {\tt{on}}, or {\tt{pause}},
+indicating that graphics is not to be used (the default),
+that it is to run at full speed,
+or that the system is to pause after each frame of output.
+The scheduling control may be one of {\tt{block}} or {\tt{cyclic}};
+the number given must be positive,
+and must be no larger than the compile-time parameter {\tt{MAXPAR}},
+which defines the maximum number of concurrent threads.
+If an input (output) filename is not given where one is needed,
+the application will read from standard input (output).
+
+The following application-specific flags are also supported:
+\begin{small}\begin{center}\begin{tabular}{lll}
+{\tt{-E}} iters relax	& {\tt{elastic}}:			& iterations and relaxation count\\
+{\tt{-F}} fraction	& {\tt{invperc}} and {\tt{thresh}}:	& fraction of matrix to fill\\
+{\tt{-L}} iters		& {\tt{life}}:				& iterations to simulate\\
+{\tt{-M}} x0 y0 xe ye	& {\tt{mandel}}:			& base point and extent of region\\
+{\tt{-N}} number	& {\tt{winnow}}:			& number of points to select\\
+{\tt{-R}} limit seed	& {\tt{randmat}}:			& value limit and RNG seed\\
+{\tt{-S}} nrows ncols	& {\tt{mandel}} and {\tt{randmat}}:	& matrix size\\
+{\tt{-T}} tolerance	& {\tt{sor}}:				& tolerance on result\\
+\end{tabular}\end{center}\end{small}
+These flags are also used in the chained version of the problem set
+to control the behavior of individual applications.
+Two additional flags are also required for this:
+\begin{small}\begin{center}\begin{tabular}{ll}
+{\tt{-c}} xy		& path through chained sequence\\
+{\tt{-d}} [stem]	& dump intermediate results
+\end{tabular}\end{center}\end{small}
+The first flag, {\tt{-c}},
+is used to select a path through the sequence of chained problems.
+It takes as its argument a two-character code.
+The right (second) character must be one of {\tt{'m'}} or {\tt{'r'}},
+to select {\tt{mandel}} or {\tt{randmat}},
+while the left (first) character must be one of {\tt{'i'}} or {\tt{'t'}},
+to select invasion percolation or histogram thresholding.
+
+The second flag, {\tt{-d}},
+determines whether or not intermediate results are saved to file or not.
+If it is not present,
+intermediate results are not written out;
+if it is,
+then files are created using the naming scheme shown in Table~\ref{t:file-names}.
+The optional argument to this flag specifies a stem,
+which is used as a prefix when creating file names.
+Its use is described in Section~\ref{s:make-test}.
+
+\begin{table}
+\begin{small}\begin{center}\begin{tabular}{ll}
+{\tt{m.i2}}		& {\tt{mandel}}						\\
+{\tt{r.i2}}		& {\tt{randmat}}					\\
+{\tt{hm.i2}}		& {\tt{half}} of {\tt{m.i2}}				\\
+{\tt{hr.i2}}		& {\tt{half}} of {\tt{r.i2}}				\\
+{\tt{im.b2}}, {\tt{ir.b2}}	& {\tt{invperc}} of {\tt{hm.i2}}, {\tt{hr.i2}}	\\
+{\tt{tm.b2}}, {\tt{tr.b2}}	& {\tt{thresh}} of {\tt{hm.i2}}, {\tt{hr.i2}}	\\
+{\tt{lim.b2}}		& {\tt{life}} of {\tt{im.b2}}				\\
+			& {\em{path for {\tt{ir.b2}}, {\tt{tm.b2}},
+			  and {\tt{tr.b2}} omitted}\/}				\\
+{\tt{wim.p1}}		& {\tt{winnow}} of {\tt{im.b2}} and {\tt{lim.b2}}	\\
+{\tt{nim.p1}}		& {\tt{norm}} of {\tt{wim.p1}}				\\
+{\tt{eim.p1}}		& {\tt{elastic}} of {\tt{nim.p1}}			\\
+{\tt{oim.r1}},{\tt{oim.r2}}	& {\tt{outer}} of {\tt{eim.p1}}			\\
+{\tt{gim.r1}}		& {\tt{gauss}} of {\tt{oim.r2}} and {\tt{oim.r1}}	\\
+{\tt{pgim.r1}}		& {\tt{product}} of {\tt{oim.r2}} and {\tt{gim.r1}}	\\
+{\tt{sim.r1}}		& {\tt{sor}} of {\tt{oim.r2}} and {\tt{oim.r1}}		\\
+{\tt{psim.r1}}		& {\tt{product}} of {\tt{oim.r2}} and {\tt{sim.r1}}	\\
+{\tt{vim.r1}}		& {\tt{vecdiff}} of {\tt{gim.r1}} and {\tt{sim.r1}}
+\end{tabular}\end{center}\end{small}
+\caption{Standard Output File Names\label{t:file-names}}
+\end{table}
+
+\section{Applications\label{s:app}}
+
+Descriptions of the inputs, outputs, and actions of individual applications
+can be found in the accompanying paper.
+
+\section{Multi-Threaded Implementations\label{s:thread}}
+
+Two threaded implementations are provided
+as a basis for other control-parallel implementations;
+a C* implementation,
+which can serve as a basis for other data-parallel implementations,
+is under construction.
+
+The files {\tt{fj/app/app.c}} and {\tt{bar/app/app.c}} contain support routines
+for creating and synchronizing families of threads,
+and for marshalling and unmarshalling parameters to these threads.
+Both sets of routines give each thread in a group of $W$ threads
+a unique integer identifier in the range $0{\ldots}W-1$.
+
+\subsection{Repeated Fork-and-Join Implementation\label{s:thread-fj}}
+
+The fork-join implementation uses threads in a fine-grained manner.
+The ``normal'' mode of operation is single-threaded and sequential;
+when a significant piece of work is encountered,
+the main thread creates a group of threads to do the work co-operatively,
+and blocks until they have completed.
+Since the POSIX threads standard requires a function pointer
+as an entry point for each thread,
+each chore to be parallelized must be implemented in a separate function.
+The extra code required to do this
+accounts for most of the code expansion in this version.
+To keep parameter marshalling to a minimum,
+some data structures which are defined within procedures in the serial implementation
+are re-defined to have file scope in the fork-join version
+(e.g.\ the accumulators used in {\tt{elastic}}).
+
+\subsection{Barrier-Based Implementation\label{s:thread-bar}}
+
+The barrier implementation uses threads in a coarse-grained manner.
+The ``normal'' mode of operation is multi-threaded:
+a fixed number of threads are created in the main driver,
+and these repeatedly synchronize using a global barrier as the application executes.
+The drivers and application implementations are all modified to pass
+a unique integer thread ID (called {\tt{tid}})
+to each routine.
+As in the fork-join version,
+some data structures which are defined within procedures in the serial implementation
+are re-defined to have file scope in the fork-join version.
+
+\section{Support Programs\label{s:support}}
+
+The directory {\tt{aux}} contains the source for several support programs,
+whose executables are placed in the directory {\tt{bin}}.
+These programs do the following:
+\begin{small}\begin{center}\begin{tabular}{ll}
+{\tt{chk}}	& compare two data files\\
+{\tt{gen}}	& generate a data file\\
+{\tt{sdu}}	& count disk usage (skipping symbolic links)\\
+{\tt{slc}}	& count lines (skipping symbolic links)\\
+{\tt{view}}	& display a data file graphically
+\end{tabular}\end{center}\end{small}
+
+\section{Compilation and Testing\label{s:make}}
+
+This section describes how to re-build the current implementation,
+how to generate test output for a single version,
+and how to compare the output of different versions.
+
+\subsection{{\tt{make}} options\label{s:make-cmpl}}
+
+The command {\tt{make}} on its own will re-generate
+executables for all implementations.
+It does this by calling itself recursively,
+specifying the following flags:
+\begin{small}\begin{center}\begin{tabular}{ll}
+{\tt{root\_d}}	& the root directory for the whole problem set	\\
+{\tt{plat\_d}}	& the directory containing code for a particular platform (version)\\
+{\tt{plat\_f}}	& flags specific to that platform \\
+{\tt{plat\_l}}	& auxiliary libraries specific to that platform \\
+{\tt{gfx\_f}}	& graphics flags \\
+{\tt{gfx\_l}}	& graphics libraries \\
+{\tt{app\_lf}}	& the flag specifying the application library for that platform\\
+{\tt{cmpl}}	& the compiler to use \\
+{\tt{obj\_f}}	& the compiler flag to generate an object file \\
+{\tt{exe\_f}}	& the compiler flag to generate an executable \\
+{\tt{A}}	& the suffix used for object archives (usually {\tt{.a}}) \\
+{\tt{C}}	& the suffix used for source code (usually {\tt{.c}}) \\
+{\tt{O}}	& the suffix used for object files (usually {\tt{.o}})
+\end{tabular}\end{center}\end{small}
+It may seem unnecessarily pedantic to specify such things as file suffices,
+but some systems require non-standard file identifiers
+(e.g.\ {\tt{.cs}} for C*).
+
+The commands {\tt{make tidy}} and {\tt{make clean}} can also be given.
+Respectively,
+these delete files that might have been created during work on this code
+(such as editor backup versions of source files),
+and delete all files created when building the code
+(such as libraries and executables).
+
+\subsection{Testing and Comparing Implementations\label{s:make-test}}
+
+The command:
+\begin{progtext}
+    make tests dir={\em{x}\/}
+\end{progtext}
+runs all sequences of the Cowichan Problems in both stand-alone and chained form,
+using a set of small default parameters.
+The output files are put in the directory {\em{x}\/}/test.
+Their names following the scheme given in Table~\ref{t:file-names},
+with the prefix {\tt{A}} being used to indicate stand-alone output,
+and one of {\tt{IM}}, {\tt{IR}}, {\tt{TM}}, or {\tt{TR}} being used
+to indicate the output of the chained version along different paths.
+
+The command:
+\begin{progtext}
+    make test_cmp d_a={\em{x}\/} d_b={\em{y}\/}
+\end{progtext}
+uses the auxiliary program {\tt{chk}} to compare the stand-alone files
+in the directories {\em{x}\/}/test and {\em{y}\/}/test.
+The output shows the differences between the files,
+where the ``difference'' between vectors and matrices of Booleans, integers or reals
+is defined as the maximum pairwise difference,
+and the difference between two vectors of points is their greatest pairwise distance.
+If any of these values is significantly greater than
+the tolerance value used in the {\tt{sor}} application,
+it is very probable that the implementation in question contains a bug.
+
+\end{document}

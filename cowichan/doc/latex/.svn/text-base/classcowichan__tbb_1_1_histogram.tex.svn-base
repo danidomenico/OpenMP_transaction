@@ -1,0 +1,147 @@
+\hypertarget{classcowichan__tbb_1_1_histogram}{
+\section{cowichan\_\-tbb::Histogram Class Reference}
+\label{classcowichan__tbb_1_1_histogram}\index{cowichan\_\-tbb::Histogram@{cowichan\_\-tbb::Histogram}}
+}
+This class calculates the histogram of a matrix.  
+
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classcowichan__tbb_1_1_histogram_2a8e6b95c2a1ec48465550dbba3cabde}{Histogram} (\hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} image, \hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} maxValue, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_histogram_aceebcf710541cd82d3d9d8fcef243cc}{nr}, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_histogram_20345a7d3c1bc558e4b892681549bfda}{nc})
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_histogram_0eb04715e3b5fb8b18fe73220aad5f34}{getValue} (\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} cutoff) const 
+\item 
+void \hyperlink{classcowichan__tbb_1_1_histogram_eafa033db597cbe0e7d23f49ca628c85}{operator()} (const \hyperlink{cowichan__tbb_8hpp_e591b8e6980ddc5982ee22655da2ab8e}{Range2D} \&range) const 
+\item 
+\hyperlink{classcowichan__tbb_1_1_histogram_67d7da06d8e4390c3a1189f6e437513d}{Histogram} (\hyperlink{classcowichan__tbb_1_1_histogram}{Histogram} \&other, split)
+\item 
+void \hyperlink{classcowichan__tbb_1_1_histogram_6be59f34ceb9be23e8f8f9e952a5bfc5}{join} (const \hyperlink{classcowichan__tbb_1_1_histogram}{Histogram} \&other)
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} \hyperlink{classcowichan__tbb_1_1_histogram_61380a3024f267b7774c5be8866c4d24}{\_\-image}
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$ \hyperlink{classcowichan__tbb_1_1_histogram_6b904f84e79ce3a05178df4fbaf60beb}{histogram}
+\item 
+const \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_histogram_6cfc91c005e0a2e66da9d7a630c4892c}{bins}
+\item 
+const \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_histogram_aceebcf710541cd82d3d9d8fcef243cc}{nr}
+\item 
+const \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_histogram_20345a7d3c1bc558e4b892681549bfda}{nc}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+This class calculates the histogram of a matrix. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcowichan__tbb_1_1_histogram_2a8e6b95c2a1ec48465550dbba3cabde}{
+\index{cowichan\_\-tbb::Histogram@{cowichan\_\-tbb::Histogram}!Histogram@{Histogram}}
+\index{Histogram@{Histogram}!cowichan_tbb::Histogram@{cowichan\_\-tbb::Histogram}}
+\subsubsection[{Histogram}]{\setlength{\rightskip}{0pt plus 5cm}cowichan\_\-tbb::Histogram::Histogram ({\bf IntMatrix} {\em image}, \/  {\bf INT\_\-TYPE} {\em maxValue}, \/  {\bf index\_\-t} {\em nr}, \/  {\bf index\_\-t} {\em nc})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_histogram_2a8e6b95c2a1ec48465550dbba3cabde}
+
+
+Construct a histogram object. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em image}]image matrix. \item[{\em maxValue}]number of bins to use. \item[{\em nr}]number of rows in the matrix. \item[{\em nc}]number of columns in the matrix. \end{description}
+\end{Desc}
+\hypertarget{classcowichan__tbb_1_1_histogram_67d7da06d8e4390c3a1189f6e437513d}{
+\index{cowichan\_\-tbb::Histogram@{cowichan\_\-tbb::Histogram}!Histogram@{Histogram}}
+\index{Histogram@{Histogram}!cowichan_tbb::Histogram@{cowichan\_\-tbb::Histogram}}
+\subsubsection[{Histogram}]{\setlength{\rightskip}{0pt plus 5cm}cowichan\_\-tbb::Histogram::Histogram ({\bf Histogram} \& {\em other}, \/  split)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_histogram_67d7da06d8e4390c3a1189f6e437513d}
+
+
+Splitting (TBB) constructor. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em other}]object to split. \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcowichan__tbb_1_1_histogram_0eb04715e3b5fb8b18fe73220aad5f34}{
+\index{cowichan\_\-tbb::Histogram@{cowichan\_\-tbb::Histogram}!getValue@{getValue}}
+\index{getValue@{getValue}!cowichan_tbb::Histogram@{cowichan\_\-tbb::Histogram}}
+\subsubsection[{getValue}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} cowichan\_\-tbb::Histogram::getValue ({\bf real} {\em cutoff}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_histogram_0eb04715e3b5fb8b18fe73220aad5f34}
+
+
+Get retention value. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em cutoff}]percentage of values to retain. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Retention value. \end{Desc}
+\hypertarget{classcowichan__tbb_1_1_histogram_6be59f34ceb9be23e8f8f9e952a5bfc5}{
+\index{cowichan\_\-tbb::Histogram@{cowichan\_\-tbb::Histogram}!join@{join}}
+\index{join@{join}!cowichan_tbb::Histogram@{cowichan\_\-tbb::Histogram}}
+\subsubsection[{join}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::Histogram::join (const {\bf Histogram} \& {\em other})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_histogram_6be59f34ceb9be23e8f8f9e952a5bfc5}
+
+
+Joiner (TBB). \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em other}]object to join. \end{description}
+\end{Desc}
+\hypertarget{classcowichan__tbb_1_1_histogram_eafa033db597cbe0e7d23f49ca628c85}{
+\index{cowichan\_\-tbb::Histogram@{cowichan\_\-tbb::Histogram}!operator()@{operator()}}
+\index{operator()@{operator()}!cowichan_tbb::Histogram@{cowichan\_\-tbb::Histogram}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::Histogram::operator() (const {\bf Range2D} \& {\em range}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_histogram_eafa033db597cbe0e7d23f49ca628c85}
+
+
+\hyperlink{classcowichan__tbb_1_1_histogram}{Histogram} calculation. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em range}]row/column range to work on. \end{description}
+\end{Desc}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classcowichan__tbb_1_1_histogram_61380a3024f267b7774c5be8866c4d24}{
+\index{cowichan\_\-tbb::Histogram@{cowichan\_\-tbb::Histogram}!\_\-image@{\_\-image}}
+\index{\_\-image@{\_\-image}!cowichan_tbb::Histogram@{cowichan\_\-tbb::Histogram}}
+\subsubsection[{\_\-image}]{\setlength{\rightskip}{0pt plus 5cm}{\bf IntMatrix} {\bf cowichan\_\-tbb::Histogram::\_\-image}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_histogram_61380a3024f267b7774c5be8866c4d24}
+
+
+Image matrix. \hypertarget{classcowichan__tbb_1_1_histogram_6cfc91c005e0a2e66da9d7a630c4892c}{
+\index{cowichan\_\-tbb::Histogram@{cowichan\_\-tbb::Histogram}!bins@{bins}}
+\index{bins@{bins}!cowichan_tbb::Histogram@{cowichan\_\-tbb::Histogram}}
+\subsubsection[{bins}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf index\_\-t} {\bf cowichan\_\-tbb::Histogram::bins}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_histogram_6cfc91c005e0a2e66da9d7a630c4892c}
+
+
+Number of bins in the histogram. \hypertarget{classcowichan__tbb_1_1_histogram_6b904f84e79ce3a05178df4fbaf60beb}{
+\index{cowichan\_\-tbb::Histogram@{cowichan\_\-tbb::Histogram}!histogram@{histogram}}
+\index{histogram@{histogram}!cowichan_tbb::Histogram@{cowichan\_\-tbb::Histogram}}
+\subsubsection[{histogram}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t}$\ast$ {\bf cowichan\_\-tbb::Histogram::histogram}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_histogram_6b904f84e79ce3a05178df4fbaf60beb}
+
+
+\hyperlink{classcowichan__tbb_1_1_histogram}{Histogram} values. \hypertarget{classcowichan__tbb_1_1_histogram_20345a7d3c1bc558e4b892681549bfda}{
+\index{cowichan\_\-tbb::Histogram@{cowichan\_\-tbb::Histogram}!nc@{nc}}
+\index{nc@{nc}!cowichan_tbb::Histogram@{cowichan\_\-tbb::Histogram}}
+\subsubsection[{nc}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf index\_\-t} {\bf cowichan\_\-tbb::Histogram::nc}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_histogram_20345a7d3c1bc558e4b892681549bfda}
+
+
+Number of columns in the matrix. \hypertarget{classcowichan__tbb_1_1_histogram_aceebcf710541cd82d3d9d8fcef243cc}{
+\index{cowichan\_\-tbb::Histogram@{cowichan\_\-tbb::Histogram}!nr@{nr}}
+\index{nr@{nr}!cowichan_tbb::Histogram@{cowichan\_\-tbb::Histogram}}
+\subsubsection[{nr}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf index\_\-t} {\bf cowichan\_\-tbb::Histogram::nr}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_histogram_aceebcf710541cd82d3d9d8fcef243cc}
+
+
+Number of rows in the matrix. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+cowichan\_\-tbb/\hyperlink{cowichan__tbb_2thresh_8cpp}{thresh.cpp}\end{CompactItemize}

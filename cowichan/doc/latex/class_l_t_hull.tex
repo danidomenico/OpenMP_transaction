@@ -1,0 +1,318 @@
+\hypertarget{class_l_t_hull}{
+\section{LTHull Class Reference}
+\label{class_l_t_hull}\index{LTHull@{LTHull}}
+}
+{\tt \#include $<$hull.hpp$>$}
+
+Inheritance diagram for LTHull::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{class_l_t_hull}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+int \hyperlink{class_l_t_hull_73fa6d736d7caddc8ca45f1a50caded7}{getNumPoints} ()
+\item 
+\hyperlink{class_l_t_hull_b24a27789641c70a18de07cfec88f98a}{LTHull} (size\_\-t \hyperlink{class_l_t_hull_f0ebad39bb2bacecce2567da14aafb65}{numLeft})
+\end{CompactItemize}
+\subsection*{Static Public Attributes}
+\begin{CompactItemize}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_hull_07fb6b812c7950a5634f3d412baab762}{MASKED\_\-POINT} = \char`\"{}hull masked point\char`\"{}
+\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{class_l_t_hull_e726f7fe6b16d8aa393045d4233a8447}{consumeInput} ()
+\item 
+void \hyperlink{class_l_t_hull_829b19b354bbe61d7cd5250819bd7b63}{work} ()
+\item 
+void \hyperlink{class_l_t_hull_14a3bf005173aa79d0c7259579229f12}{produceOutput} ()
+\item 
+void \hyperlink{class_l_t_hull_e18239f0a1a7f6504bc958b68a9b21fe}{split} (const \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} p1, const \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} p2, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$order)
+\item 
+void \hyperlink{class_l_t_hull_9ba0913fac23bcf3fb42cc6bb212837f}{computeCross} (\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} p1, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} p2, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$maxPoint, \hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} $\ast$maxCross)
+\item 
+void \hyperlink{class_l_t_hull_0e932559e27a7cef73b76c22243e6c47}{computeMinMax} (\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$minPoint, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$maxPoint)
+\item 
+void \hyperlink{class_l_t_hull_8f08515a49e5faf2d3808a623160767c}{serviceMinMaxRequest} (tuple $\ast$gotten)
+\item 
+void \hyperlink{class_l_t_hull_b803340b9529f56397ef7de752ad10cd}{serviceCrossRequest} (tuple $\ast$gotten)
+\item 
+bool \hyperlink{class_l_t_hull_b257bd2114c8726084351c4d1722cca1}{isMasked} (\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} position)
+\item 
+void \hyperlink{class_l_t_hull_dc8df756ca767aef32450342c61d20e4}{mask} (\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} position)
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+size\_\-t \hyperlink{class_l_t_hull_f0ebad39bb2bacecce2567da14aafb65}{numLeft}
+\end{CompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{CompactItemize}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_hull_8ae87eb50cafb7fb26c3fe9fa33d8b1a}{REQUEST} = \char`\"{}hull request\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_hull_4ac83a42baf632e37b12c27f3a8b9dae}{REQUEST\_\-MINMAX} = \char`\"{}hull request min/max\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_hull_cb0b6736668d6ca4a71d69a739b3da9c}{REQUEST\_\-CROSS} = \char`\"{}hull request cross-product\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_hull_0f5e7a0b036d18043f0b44c272a1f0f9}{SYNCH\_\-LOCK} = \char`\"{}hull synch lock\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_hull_17e2355a00301575f9d862d562459c3c}{POINTS\_\-DONE} = \char`\"{}hull points reporting\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_hull_b11b8a2223da908c7cbe796373090fe3}{MIN\_\-X\_\-POINT} = \char`\"{}hull minPoint\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_hull_c73d8aee2d8caa920f085b5f097a518a}{MAX\_\-X\_\-POINT} = \char`\"{}hull maxPoint\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_hull_c6b22ab53b74e4f651275b1cab27b3de}{MAX\_\-CROSS} = \char`\"{}hull max cross-product\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_hull_7bcf7aface28e6ca262e98a9a8b8edf1}{MAX\_\-POINT} = \char`\"{}hull furthest point\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_hull_e37ce27c8cd468ba8b535d05dfae6909}{HULL\_\-POINT} = \char`\"{}hull point\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_hull_34e412ea0207b809b05c52be3d057a11}{NUM\_\-POINTS} = \char`\"{}hull \# of points in convex hull\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_hull_4472a744a8960ba0848fffd9be4c5130}{FLAG\_\-OUTPUT} = \char`\"{}hull flag output\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_hull_325452ed05b85f9ea185574d958635f9}{FINISHED\_\-MINMAX} = \char`\"{}hull finshed min/max\char`\"{}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Performs an iterative convex hull in tuple space. Iterative convex hull means that the output contains the convex hull of all points, followed by the convex hull of those points not on the first convex hull, followed by the convex hull of those points not on the first or second, etc. etc. until no points remain. Thus the iterative convex hull can be seen as a spiralling shape, or a permutation of the input points. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_l_t_hull_b24a27789641c70a18de07cfec88f98a}{
+\index{LTHull@{LTHull}!LTHull@{LTHull}}
+\index{LTHull@{LTHull}!LTHull@{LTHull}}
+\subsubsection[{LTHull}]{\setlength{\rightskip}{0pt plus 5cm}LTHull::LTHull (size\_\-t {\em numLeft})}}
+\label{class_l_t_hull_b24a27789641c70a18de07cfec88f98a}
+
+
+Constructor. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em numLeft}]the number of points left unmasked in the input. \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_l_t_hull_9ba0913fac23bcf3fb42cc6bb212837f}{
+\index{LTHull@{LTHull}!computeCross@{computeCross}}
+\index{computeCross@{computeCross}!LTHull@{LTHull}}
+\subsubsection[{computeCross}]{\setlength{\rightskip}{0pt plus 5cm}void LTHull::computeCross ({\bf index\_\-t} {\em p1}, \/  {\bf index\_\-t} {\em p2}, \/  {\bf index\_\-t} $\ast$ {\em maxPoint}, \/  {\bf real} $\ast$ {\em maxCross})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class_l_t_hull_9ba0913fac23bcf3fb42cc6bb212837f}
+
+
+Initiate a tuple-space cross-product over multiple points. \hypertarget{class_l_t_hull_0e932559e27a7cef73b76c22243e6c47}{
+\index{LTHull@{LTHull}!computeMinMax@{computeMinMax}}
+\index{computeMinMax@{computeMinMax}!LTHull@{LTHull}}
+\subsubsection[{computeMinMax}]{\setlength{\rightskip}{0pt plus 5cm}void LTHull::computeMinMax ({\bf index\_\-t} $\ast$ {\em minPoint}, \/  {\bf index\_\-t} $\ast$ {\em maxPoint})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class_l_t_hull_0e932559e27a7cef73b76c22243e6c47}
+
+
+Initiate a tuple-space min/max routine over multiple points. \hypertarget{class_l_t_hull_e726f7fe6b16d8aa393045d4233a8447}{
+\index{LTHull@{LTHull}!consumeInput@{consumeInput}}
+\index{consumeInput@{consumeInput}!LTHull@{LTHull}}
+\subsubsection[{consumeInput}]{\setlength{\rightskip}{0pt plus 5cm}void LTHull::consumeInput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_hull_e726f7fe6b16d8aa393045d4233a8447}
+
+
+The consume input process is spawned once and should distribute tasks to the worker processes. 
+
+Implements \hyperlink{class_tuple_application_e163c5a536de01c8b94b49528a17dab2}{TupleApplication}.\hypertarget{class_l_t_hull_73fa6d736d7caddc8ca45f1a50caded7}{
+\index{LTHull@{LTHull}!getNumPoints@{getNumPoints}}
+\index{getNumPoints@{getNumPoints}!LTHull@{LTHull}}
+\subsubsection[{getNumPoints}]{\setlength{\rightskip}{0pt plus 5cm}int LTHull::getNumPoints ()}}
+\label{class_l_t_hull_73fa6d736d7caddc8ca45f1a50caded7}
+
+
+Returns the number of points in the convex hull. \hypertarget{class_l_t_hull_b257bd2114c8726084351c4d1722cca1}{
+\index{LTHull@{LTHull}!isMasked@{isMasked}}
+\index{isMasked@{isMasked}!LTHull@{LTHull}}
+\subsubsection[{isMasked}]{\setlength{\rightskip}{0pt plus 5cm}bool LTHull::isMasked ({\bf index\_\-t} {\em position})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class_l_t_hull_b257bd2114c8726084351c4d1722cca1}
+
+
+Is the given point \char`\"{}masked\char`\"{}, i.e., should we skip it? \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em position}]the point to check. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true if the point is to be skipped, false otherwise. \end{Desc}
+\hypertarget{class_l_t_hull_dc8df756ca767aef32450342c61d20e4}{
+\index{LTHull@{LTHull}!mask@{mask}}
+\index{mask@{mask}!LTHull@{LTHull}}
+\subsubsection[{mask}]{\setlength{\rightskip}{0pt plus 5cm}void LTHull::mask ({\bf index\_\-t} {\em position})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class_l_t_hull_dc8df756ca767aef32450342c61d20e4}
+
+
+Mask the given point (make sure we skip it next time we do a convex hull computation). \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em position}]the point to mask. \end{description}
+\end{Desc}
+\hypertarget{class_l_t_hull_14a3bf005173aa79d0c7259579229f12}{
+\index{LTHull@{LTHull}!produceOutput@{produceOutput}}
+\index{produceOutput@{produceOutput}!LTHull@{LTHull}}
+\subsubsection[{produceOutput}]{\setlength{\rightskip}{0pt plus 5cm}void LTHull::produceOutput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_hull_14a3bf005173aa79d0c7259579229f12}
+
+
+The output producer decides when the tuple application is finished; once this function returns, the tuple application is complete. 
+
+Implements \hyperlink{class_tuple_application_8743dfcf17dedd52887c0b2ab170d8dc}{TupleApplication}.\hypertarget{class_l_t_hull_b803340b9529f56397ef7de752ad10cd}{
+\index{LTHull@{LTHull}!serviceCrossRequest@{serviceCrossRequest}}
+\index{serviceCrossRequest@{serviceCrossRequest}!LTHull@{LTHull}}
+\subsubsection[{serviceCrossRequest}]{\setlength{\rightskip}{0pt plus 5cm}void LTHull::serviceCrossRequest (tuple $\ast$ {\em gotten})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class_l_t_hull_b803340b9529f56397ef7de752ad10cd}
+
+
+Worker helper to server a cross-product request. \hypertarget{class_l_t_hull_8f08515a49e5faf2d3808a623160767c}{
+\index{LTHull@{LTHull}!serviceMinMaxRequest@{serviceMinMaxRequest}}
+\index{serviceMinMaxRequest@{serviceMinMaxRequest}!LTHull@{LTHull}}
+\subsubsection[{serviceMinMaxRequest}]{\setlength{\rightskip}{0pt plus 5cm}void LTHull::serviceMinMaxRequest (tuple $\ast$ {\em gotten})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class_l_t_hull_8f08515a49e5faf2d3808a623160767c}
+
+
+Worker helper to service a min/max request. \hypertarget{class_l_t_hull_e18239f0a1a7f6504bc958b68a9b21fe}{
+\index{LTHull@{LTHull}!split@{split}}
+\index{split@{split}!LTHull@{LTHull}}
+\subsubsection[{split}]{\setlength{\rightskip}{0pt plus 5cm}void LTHull::split (const {\bf index\_\-t} {\em p1}, \/  const {\bf index\_\-t} {\em p2}, \/  {\bf index\_\-t} $\ast$ {\em order})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class_l_t_hull_e18239f0a1a7f6504bc958b68a9b21fe}
+
+
+Analogous to split in other versions of quickhull. split again based on the furthest point from the line denoted by the two points given (p1 and p2).
+
+Compute hull on one side of the splitting line. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em p1}]boundary point \#1. \item[{\em p2}]boundary point \#2. \item[{\em order}]the ordering number of the next hull point to emit. \end{description}
+\end{Desc}
+\hypertarget{class_l_t_hull_829b19b354bbe61d7cd5250819bd7b63}{
+\index{LTHull@{LTHull}!work@{work}}
+\index{work@{work}!LTHull@{LTHull}}
+\subsubsection[{work}]{\setlength{\rightskip}{0pt plus 5cm}void LTHull::work ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_hull_829b19b354bbe61d7cd5250819bd7b63}
+
+
+Worker processes are created and killed after the output process has finished. 
+
+Implements \hyperlink{class_tuple_application_ef6ae8bb1d697e4ed038b43320183c89}{TupleApplication}.
+
+\subsection{Member Data Documentation}
+\hypertarget{class_l_t_hull_325452ed05b85f9ea185574d958635f9}{
+\index{LTHull@{LTHull}!FINISHED\_\-MINMAX@{FINISHED\_\-MINMAX}}
+\index{FINISHED\_\-MINMAX@{FINISHED\_\-MINMAX}!LTHull@{LTHull}}
+\subsubsection[{FINISHED\_\-MINMAX}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTHull::FINISHED\_\-MINMAX} = \char`\"{}hull finshed min/max\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_hull_325452ed05b85f9ea185574d958635f9}
+
+
+The min-max process mandated has been finished. \hypertarget{class_l_t_hull_4472a744a8960ba0848fffd9be4c5130}{
+\index{LTHull@{LTHull}!FLAG\_\-OUTPUT@{FLAG\_\-OUTPUT}}
+\index{FLAG\_\-OUTPUT@{FLAG\_\-OUTPUT}!LTHull@{LTHull}}
+\subsubsection[{FLAG\_\-OUTPUT}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTHull::FLAG\_\-OUTPUT} = \char`\"{}hull flag output\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_hull_4472a744a8960ba0848fffd9be4c5130}
+
+
+Should the output producer run now? \hypertarget{class_l_t_hull_e37ce27c8cd468ba8b535d05dfae6909}{
+\index{LTHull@{LTHull}!HULL\_\-POINT@{HULL\_\-POINT}}
+\index{HULL\_\-POINT@{HULL\_\-POINT}!LTHull@{LTHull}}
+\subsubsection[{HULL\_\-POINT}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTHull::HULL\_\-POINT} = \char`\"{}hull point\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_hull_e37ce27c8cd468ba8b535d05dfae6909}
+
+
+A point on the hull, ordered. \hypertarget{class_l_t_hull_07fb6b812c7950a5634f3d412baab762}{
+\index{LTHull@{LTHull}!MASKED\_\-POINT@{MASKED\_\-POINT}}
+\index{MASKED\_\-POINT@{MASKED\_\-POINT}!LTHull@{LTHull}}
+\subsubsection[{MASKED\_\-POINT}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTHull::MASKED\_\-POINT} = \char`\"{}hull masked point\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{class_l_t_hull_07fb6b812c7950a5634f3d412baab762}
+
+
+The index of a point that is masked off (i.e. already selected) in the input. This is public so we can access it from \hyperlink{class_cowichan_linux_tuples_501f87594d62af261ff0b1954a60ddc4}{CowichanLinuxTuples::hull}(...). \hypertarget{class_l_t_hull_c6b22ab53b74e4f651275b1cab27b3de}{
+\index{LTHull@{LTHull}!MAX\_\-CROSS@{MAX\_\-CROSS}}
+\index{MAX\_\-CROSS@{MAX\_\-CROSS}!LTHull@{LTHull}}
+\subsubsection[{MAX\_\-CROSS}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTHull::MAX\_\-CROSS} = \char`\"{}hull max cross-product\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_hull_c6b22ab53b74e4f651275b1cab27b3de}
+
+
+The cross product value of the \char`\"{}furthest\char`\"{} point. \hypertarget{class_l_t_hull_7bcf7aface28e6ca262e98a9a8b8edf1}{
+\index{LTHull@{LTHull}!MAX\_\-POINT@{MAX\_\-POINT}}
+\index{MAX\_\-POINT@{MAX\_\-POINT}!LTHull@{LTHull}}
+\subsubsection[{MAX\_\-POINT}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTHull::MAX\_\-POINT} = \char`\"{}hull furthest point\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_hull_7bcf7aface28e6ca262e98a9a8b8edf1}
+
+
+The \char`\"{}furthest\char`\"{} point found. \hypertarget{class_l_t_hull_c73d8aee2d8caa920f085b5f097a518a}{
+\index{LTHull@{LTHull}!MAX\_\-X\_\-POINT@{MAX\_\-X\_\-POINT}}
+\index{MAX\_\-X\_\-POINT@{MAX\_\-X\_\-POINT}!LTHull@{LTHull}}
+\subsubsection[{MAX\_\-X\_\-POINT}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTHull::MAX\_\-X\_\-POINT} = \char`\"{}hull maxPoint\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_hull_c73d8aee2d8caa920f085b5f097a518a}
+
+
+The point with highest x value, unmasked. \hypertarget{class_l_t_hull_b11b8a2223da908c7cbe796373090fe3}{
+\index{LTHull@{LTHull}!MIN\_\-X\_\-POINT@{MIN\_\-X\_\-POINT}}
+\index{MIN\_\-X\_\-POINT@{MIN\_\-X\_\-POINT}!LTHull@{LTHull}}
+\subsubsection[{MIN\_\-X\_\-POINT}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTHull::MIN\_\-X\_\-POINT} = \char`\"{}hull minPoint\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_hull_b11b8a2223da908c7cbe796373090fe3}
+
+
+The point with lowest x value, unmasked. \hypertarget{class_l_t_hull_34e412ea0207b809b05c52be3d057a11}{
+\index{LTHull@{LTHull}!NUM\_\-POINTS@{NUM\_\-POINTS}}
+\index{NUM\_\-POINTS@{NUM\_\-POINTS}!LTHull@{LTHull}}
+\subsubsection[{NUM\_\-POINTS}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTHull::NUM\_\-POINTS} = \char`\"{}hull \# of points in convex hull\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_hull_34e412ea0207b809b05c52be3d057a11}
+
+
+The number of points in this convex hull. \hypertarget{class_l_t_hull_f0ebad39bb2bacecce2567da14aafb65}{
+\index{LTHull@{LTHull}!numLeft@{numLeft}}
+\index{numLeft@{numLeft}!LTHull@{LTHull}}
+\subsubsection[{numLeft}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t {\bf LTHull::numLeft}\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class_l_t_hull_f0ebad39bb2bacecce2567da14aafb65}
+
+
+The number of points left unmasked in the input. \hypertarget{class_l_t_hull_17e2355a00301575f9d862d562459c3c}{
+\index{LTHull@{LTHull}!POINTS\_\-DONE@{POINTS\_\-DONE}}
+\index{POINTS\_\-DONE@{POINTS\_\-DONE}!LTHull@{LTHull}}
+\subsubsection[{POINTS\_\-DONE}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTHull::POINTS\_\-DONE} = \char`\"{}hull points reporting\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_hull_17e2355a00301575f9d862d562459c3c}
+
+
+The number of points that have been computed for. \hypertarget{class_l_t_hull_8ae87eb50cafb7fb26c3fe9fa33d8b1a}{
+\index{LTHull@{LTHull}!REQUEST@{REQUEST}}
+\index{REQUEST@{REQUEST}!LTHull@{LTHull}}
+\subsubsection[{REQUEST}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTHull::REQUEST} = \char`\"{}hull request\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_hull_8ae87eb50cafb7fb26c3fe9fa33d8b1a}
+
+
+Generic request for work to be done. \hypertarget{class_l_t_hull_cb0b6736668d6ca4a71d69a739b3da9c}{
+\index{LTHull@{LTHull}!REQUEST\_\-CROSS@{REQUEST\_\-CROSS}}
+\index{REQUEST\_\-CROSS@{REQUEST\_\-CROSS}!LTHull@{LTHull}}
+\subsubsection[{REQUEST\_\-CROSS}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTHull::REQUEST\_\-CROSS} = \char`\"{}hull request cross-product\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_hull_cb0b6736668d6ca4a71d69a739b3da9c}
+
+
+Specific work: cross-product request over a length of points. \hypertarget{class_l_t_hull_4ac83a42baf632e37b12c27f3a8b9dae}{
+\index{LTHull@{LTHull}!REQUEST\_\-MINMAX@{REQUEST\_\-MINMAX}}
+\index{REQUEST\_\-MINMAX@{REQUEST\_\-MINMAX}!LTHull@{LTHull}}
+\subsubsection[{REQUEST\_\-MINMAX}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTHull::REQUEST\_\-MINMAX} = \char`\"{}hull request min/max\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_hull_4ac83a42baf632e37b12c27f3a8b9dae}
+
+
+Specific work: min-max request over a length of points. \hypertarget{class_l_t_hull_0f5e7a0b036d18043f0b44c272a1f0f9}{
+\index{LTHull@{LTHull}!SYNCH\_\-LOCK@{SYNCH\_\-LOCK}}
+\index{SYNCH\_\-LOCK@{SYNCH\_\-LOCK}!LTHull@{LTHull}}
+\subsubsection[{SYNCH\_\-LOCK}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTHull::SYNCH\_\-LOCK} = \char`\"{}hull synch lock\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_hull_0f5e7a0b036d18043f0b44c272a1f0f9}
+
+
+Synchronization lock (critical section). 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+cowichan\_\-lt/src/\hyperlink{hull_8hpp}{hull.hpp}\item 
+cowichan\_\-lt/src/\hyperlink{cowichan__lt_2src_2hull_8cpp}{hull.cpp}\end{CompactItemize}

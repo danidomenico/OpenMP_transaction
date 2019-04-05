@@ -1,0 +1,154 @@
+     1	/**
+     2	 * Parallel implementation of conway's game of life
+     3	 *
+     4	 * \file parallel.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 01-26-09
+     7	 */
+     8	
+     9	#if NUMA
+    10	EXTERN_ENV
+    11	#endif
+    12	
+    13	#include "../include/main.h"
+    14	#include "parallel.h"
+    15	
+    16	// public
+    17	
+    18	void
+    19	life_mpi(
+    20	  mpi::communicator world,
+    21	  bool2D*	matrix,			/* world to evolve */
+    22	  int		nr,			/* row size */
+    23	  int		nc,			/* column size */
+    24	  int		iters			/* number of iterations */
+    25	){
+    26	  int2D*		count;			/* neighborhood counts */
+    27	  int		i;			/* iteration index */
+    28	  int		r, c;			/* row/column indices */
+    29	  int		alive = nr * nc;	/* number alive */
+    30	#if GRAPHICS
+    31	  int		gfxCount = 0;
+    32	#endif
+    33	
+    34	#if GRAPHICS
+    35	  gfx_life(gfxCount++, matrix, nr, nc);
+    36	#endif
+    37	
+    38	  int		lo, hi;		/* work controls */
+    39	  bool		work;			/* useful work to do? */ 
+    40	  int is_alive = 1;
+    41	  int rank;
+    42	
+
+You should provide a statement of the high-level flow of this parallel
+implementation, e.g. get the counts of all the neighbours, reconstruct
+the boolean array.
+
+    43	  count = new int2D[MAXEXT];
+    44	
+    45	  // work
+    46	  work = get_block_rows_mpi (world, 0, nr, &lo, &hi);
+    47	  for (i=0; (i<iters) && is_alive; i++){
+    48	    // fill neighborhood counts
+    49	    if (work) {
+    50	      for (r = lo; r < hi; r++) {
+    51	        life_row_mpi(matrix, count, nr, nc, r,
+    52	          (nr + r - 1) % nr, (nr + r + 1) % nr);
+    53	      }
+    54	    }
+    55	    // broadcast counts
+    56	    for (r = 0; r < nr; r++) {
+    57	      rank = get_block_rank_mpi (world, 0, nr, r);
+    58	      broadcast (world, count[r], nc, rank);
+    59	    }
+    60	    // update cells
+    61	    alive = 0;
+    62	    if (work) {
+    63	      for (r = lo; r < hi; r++) {
+    64	        for (c=0; c<nc; c++) {
+    65	          if ((count[r][c] == 3) || ((count[r][c] == 2) && matrix[r][c])){ 
+    66	            matrix[r][c] = TRUE;
+    67	            alive++;
+    68	          }
+    69	          else {
+    70	            matrix[r][c] = FALSE;
+    71	          }
+    72	        }
+    73	      }
+    74	    }
+    75	    // broadcast matrix
+    76	    for (r = 0; r < nr; r++) {
+    77	      rank = get_block_rank_mpi (world, 0, nr, r);
+    78	      broadcast (world, matrix[r], nc, rank);
+    79	    }
+    80	    // is_alive is maximum of local alive's
+    81	    if (world.rank () == 0) {
+    82	      reduce (world, alive, is_alive, mpi::maximum<int>(), 0);
+    83	    }
+    84	    else {
+    85	      reduce (world, alive, mpi::maximum<int>(), 0);
+    86	    }
+    87	    broadcast (world, is_alive, 0);
+    88	    is_alive = 1;
+    89	
+    90	#if GRAPHICS
+    91	    gfx_life(gfxCount++, matrix, nr, nc);
+    92	#endif
+    93	  }
+    94	
+    95	  delete [] count;
+    96	
+    97	  /* check */
+    98	  if (is_alive == 0){
+    99	    fail("life", "no cells left alive", "iteration", "%d", i, NULL);
+   100	  }
+   101	
+   102	  /* return */
+   103	}
+   104	
+   105	// private
+   106	
+   107	void
+   108	life_one_mpi(
+   109	  bool2D*	matrix,			/* world to evolve */
+   110	  int2D*		count,			/* neighborhood counts */
+   111	  int		r,			/* this row */
+   112	  int		r_lo,			/* lower row */
+   113	  int		r_hi,			/* higher row */
+   114	  int		c,			/* this column */
+   115	  int		c_lo,			/* lower column */
+   116	  int		c_hi			/* higher column */
+   117	){
+   118	  count[r][c] = matrix[r_lo][c_lo] + matrix[r_lo][c] + matrix[r_lo][c_hi]
+   119		      + matrix[r][c_lo]            +          matrix[r][c_hi]
+   120		      + matrix[r_hi][c_lo] + matrix[r_hi][c] + matrix[r_hi][c_hi];
+   121	  /* return */
+   122	}
+   123	
+   124	void
+   125	life_row_mpi(
+   126	  bool2D*	matrix,			/* world to evolve */
+   127	  int2D*		count,			/* neighborhood counts */
+   128	  int		nr,			/* row size */
+   129	  int		nc,			/* column size */
+   130	  int		r,			/* this row */
+   131	  int		r_lo,			/* lower row */
+   132	  int		r_hi			/* higher row */
+   133	){
+   134	  int		c;			/* column index */
+   135	
+   
+This reconstructs the life array from the neighbourhood counts. This
+could be done with possibly less efficiency but better readability if
+the neighbour counting function above (life_one_mpi) incorporated the
+necessary if statements for border conditions.
+   
+   136	  life_one_mpi(matrix, count, r, r_lo, r_hi, 0, nc-1, 1);
+   137	  for (c=1; c<(nc-1); c++){
+   138	    life_one_mpi(matrix, count, r, r_lo, r_hi, c, c-1, c+1);
+   139	  }
+   140	  life_one_mpi(matrix, count, r, r_lo, r_hi, nc-1, nc-2, 0);
+   141	
+   142	  /* return */
+   143	}

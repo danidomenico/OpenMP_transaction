@@ -1,0 +1,23 @@
+\hypertarget{life_8hpp}{
+\section{cowichan\_\-lt/src/life.hpp File Reference}
+\label{life_8hpp}\index{cowichan\_\-lt/src/life.hpp@{cowichan\_\-lt/src/life.hpp}}
+}
+LinuxTuples conway's game of life header file.  
+
+
+{\tt \#include \char`\"{}tuple\_\-common.hpp\char`\"{}}\par
+{\tt \#include \char`\"{}cowichan\_\-lt.hpp\char`\"{}}\par
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{class_l_t_life}{LTLife}
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+LinuxTuples conway's game of life header file. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_linux_tuples_967138bbdead76eec50f31465dd9d5f1}{CowichanLinuxTuples::life} \end{Desc}

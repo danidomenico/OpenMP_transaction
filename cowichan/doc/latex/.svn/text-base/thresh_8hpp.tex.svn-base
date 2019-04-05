@@ -1,0 +1,25 @@
+\hypertarget{thresh_8hpp}{
+\section{cowichan\_\-lt/src/thresh.hpp File Reference}
+\label{thresh_8hpp}\index{cowichan\_\-lt/src/thresh.hpp@{cowichan\_\-lt/src/thresh.hpp}}
+}
+LinuxTuples histogram thresholding header file.  
+
+
+{\tt \#include \char`\"{}tuple\_\-common.hpp\char`\"{}}\par
+{\tt \#include \char`\"{}cowichan\_\-lt.hpp\char`\"{}}\par
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{class_l_t_frequency}{LTFrequency}
+\item 
+class \hyperlink{class_l_t_thresh}{LTThresh}
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+LinuxTuples histogram thresholding header file. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_linux_tuples_b8cf055ec3d42a1ccde6d818c5a43a74}{CowichanLinuxTuples::thresh} \end{Desc}

@@ -1,0 +1,32 @@
+\documentstyle[epsf,11pt]{article}
+
+\begin{document}
+
+\newcommand{\bibea}{{\em{et~al.}}}
+\newcommand{\inputspec}{\noindent \bf{Inputs:}}
+\newcommand{\outputspec}{\noindent \bf{Outputs:}}
+
+\newenvironment{itemlist}{\begin{list}{\labelitemi}{\leftmargin=1em}}{\end{list}}
+
+\input{titlepage}
+
+\vspace{\baselineskip}
+
+\input{abstract}
+\input{intro}
+\input{quant}
+\input{method}
+\input{problems}
+\input{issues}
+\input{concl}
+
+\bibliographystyle{plain}
+\bibliography{paper}
+
+\appendix
+
+\input{formats}
+\input{ops}
+\input{memory}
+
+\end{document}

@@ -1,0 +1,100 @@
+     1	/**
+     2	 * Parallel implementation of convex hull
+     3	 *
+     4	 * \file parallel.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 03-06-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#include "parallel.h"
+    11	
+    12	// public
+    13	
+    14	void hull_mpi (mpi::communicator world,
+    15	               pt1D* points,     // list of points
+    16	               int n,            // number of points
+    17	               pt1D* hullPoints, // list of points in convex hull
+    18	               int* hn)          // number of points in convex hull
+    19	{
+    20	  int i;
+    21	  pt min_p;
+    22	  pt max_p;
+    23	  pt min_p_local;
+    24	  pt max_p_local;
+    25	  int lo, hi;
+    26	
+    27	  min_p_local = points[0];
+    28	  max_p_local = points[0];
+    29	  *hn = 0;
+    30	
+    31	  // figure out the points with minimum and maximum x values
+    32	  get_block_rows_mpi (world, 1, n, &lo, &hi);
+    33	  for (i = lo; i < hi; i++) {
+    34	    if (min_p_local.x > points[i].x) {
+    35	      min_p_local = points[i];
+    36	    }
+    37	    if (max_p_local.x < points[i].x) {
+    38	      max_p_local = points[i];
+    39	    }
+    40	  }
+    41	  // reduce to min_p and max_p
+    42	  all_reduce (world, min_p_local, min_p, minimum_x_pt ());
+    43	  all_reduce (world, max_p_local, max_p, maximum_x_pt ());
+    44	
+    45	  // use these as initial pivots
+    46	  split_mpi (world, points, n, hullPoints, hn, min_p, max_p);
+    47	  split_mpi (world, points, n, hullPoints, hn, max_p, min_p);
+    48	}
+    49	
+    50	// private
+    51	
+    52	void split_mpi (mpi::communicator world,
+    53	                pt1D* points,     // list of points
+    54	                int n,            // number of points
+    55	                pt1D* hullPoints, // list of points in convex hull
+    56	                int* hn,          // number of points in convex hull
+    57	                pt p1,            // boundary point #1
+    58	                pt p2)            // boundary point #2
+    59	{
+    60	  pt_cross max_cp;
+    61	  pt_cross max_cp_local;
+    62	  max_cp_local.cross = -std::numeric_limits<real>::infinity ();
+    63	  int lo, hi;
+    64	  int i;
+    65	
+    66	  // compute the signed distances from the line for each point
+    67	  get_block_rows_mpi (world, 0, n, &lo, &hi);
+    68	  for (i = lo; i < hi; i++) {
+    69	    real currentCross = cross_mpi (p1, p2, points[i]);
+    70	    if (currentCross > max_cp_local.cross) {
+    71	      max_cp_local.p = points[i];
+    72	      max_cp_local.cross = currentCross;
+    73	    }
+    74	  }
+    75	
+    76	  // reduce max_cp
+    77	  all_reduce (world, max_cp_local, max_cp, maximum_cp ());
+    78	
+    79	  // is there a point in the positive half-space?
+    80	  // if so, it has maximal distance, and we must recurse based on that point.
+    81	  if (max_cp.cross > 0.0) {
+    82	    // recurse on the new set with the given far point
+    83	    split_mpi (world, points, n, hullPoints, hn, p1, max_cp.p);
+    84	    split_mpi (world, points, n, hullPoints, hn, max_cp.p, p2);
+    85	    return;
+    86	  } 
+    87	
+    88	  // otherwise, it's not on the right side; we don't need to split anymore.
+    89	  // this is because all points are inside the hull when we use this half-space.
+    90	  // add the first point and return.
+    91	  hullPoints[(*hn)++] = p1;
+    92	}
+    93	
+    94	/**
+    95	 * Computes the cross product of the vectors (l1,l2) and (l1,p).
+    96	 */
+    97	inline real cross_mpi (pt l1, pt l2, pt p)
+    98	{
+    99	  return (l1.x - p.x) * (l2.y - p.y) - (l1.y - p.y) * (l2.x - p.x);
+   100	}

@@ -1,0 +1,39 @@
+\hypertarget{structcowichan__mpi_1_1sum}{
+\section{cowichan\_\-mpi::sum$<$ T $>$ Struct Template Reference}
+\label{structcowichan__mpi_1_1sum}\index{cowichan\_\-mpi::sum@{cowichan\_\-mpi::sum}}
+}
+Calculates \hyperlink{structcowichan__mpi_1_1sum}{sum} of two elements.  
+
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+T \hyperlink{structcowichan__mpi_1_1sum_4706467782728750b319384c5d357c73}{operator()} (T a, T b)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$ struct cowichan\_\-mpi::sum$<$ T $>$}
+
+Calculates \hyperlink{structcowichan__mpi_1_1sum}{sum} of two elements. 
+
+\subsection{Member Function Documentation}
+\hypertarget{structcowichan__mpi_1_1sum_4706467782728750b319384c5d357c73}{
+\index{cowichan\_\-mpi::sum@{cowichan\_\-mpi::sum}!operator()@{operator()}}
+\index{operator()@{operator()}!cowichan_mpi::sum@{cowichan\_\-mpi::sum}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T {\bf cowichan\_\-mpi::sum}$<$ T $>$::operator() (T {\em a}, \/  T {\em b})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{structcowichan__mpi_1_1sum_4706467782728750b319384c5d357c73}
+
+
+Add two elements. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em a}]element 1. \item[{\em b}]element 2. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The \hyperlink{structcowichan__mpi_1_1sum}{sum} of element 1 and 2. \end{Desc}
+
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+cowichan\_\-mpi/\hyperlink{cowichan__mpi_2thresh_8cpp}{thresh.cpp}\end{CompactItemize}

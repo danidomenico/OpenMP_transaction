@@ -1,0 +1,31 @@
+     1	/**
+     2	 * Serial implementation of generic gauss
+     3	 *
+     4	 * \file serial.h
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-03-09
+     7	 */
+     8	
+     9	#pragma once
+    10	#ifndef GAUSS_SERIAL_H
+    11	#define GAUSS_SERIAL_H
+    12	
+    13	/*--------------------------------------------------------------*/
+    14	/* public functions						*/
+    15	/*--------------------------------------------------------------*/
+    16	
+    17	/*
+    18	 * @ gauss : do Gaussian elimination
+    19	 * > none
+    20	 * + decompose matrix and fill in answer vector
+    21	 */
+    22	
+    23	void
+    24	gauss(
+    25	  real2D*	matrix,			/* to solve */
+    26	  real1D*	vector,			/* target vector */
+    27	  real1D*	answer,			/* solution found */
+    28	  int		n			/* size */
+    29	);
+    30	
+    31	#endif /* GAUSS_SERIAL_H */

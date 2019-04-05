@@ -1,0 +1,38 @@
+TO BUILD:
+
+1. check out also the folders linuxtuples-1.03/ and cowichan/
+
+2. make sure all three folders (the two above and cowichan_lt) are in the same folder
+     $ ls
+     cowichan cowichan_lt linuxtuples-1.03
+
+3. Execute the following in linuxtuples-1.03.
+     $ pushd linuxtuples-1.03; make all; popd
+
+4. rename linuxtuples.so to liblinuxtuples.so and place it somewhere in the LD_LIBRARY_PATH.
+   placing it in the cowichan_lt folder should be sufficient.
+     $ mv linuxtuples-1.03/linuxtuples.so cowichan_lt/liblinuxtuples.so
+     or
+     $ sudo mv linuxtuples-1.03/linuxtuples.so /usr/lib/liblinuxtuples.so
+
+5. execute the correct build script in cowichan_lt, e.g.
+     $ pushd cowichan_lt
+     $ chmod +x comp32.sh
+     $ ./comp32.sh
+     $ popd
+
+TO RUN:
+
+1. in a terminal, execute the tuple server by using the command:
+     $ linuxtuples-1.03/tuple_server 25000
+   this will run the server on port 25000, on the local host.
+   
+2. CowichanLT is hard-coded to connect to localhost:25000, so the program should
+   run at this point. Note that at this time chaining does not work correctly, due
+   to bugs in the LinuxTuples code. See cowichan_lt/src/cowichan_lt.hpp and
+   cowichan_lt/src/cowichan_lt.cpp to change the server hostname and port.
+   
+3. To execute the program, use the command:
+     $ cowichan_lt/cowichan_lt
+   after building.
+   

@@ -1,0 +1,119 @@
+\hypertarget{class_weighted_point}{
+\section{WeightedPoint Class Reference}
+\label{class_weighted_point}\index{WeightedPoint@{WeightedPoint}}
+}
+Two-dimensional point with an integer weight.  
+
+
+{\tt \#include $<$cowichan.hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_weighted_point_1fc45412653300484ff917c0df7716c7}{WeightedPoint} (\hyperlink{class_point}{Point} \hyperlink{class_weighted_point_ab8d1b3ff0e79d5b479e5f61eee1be23}{point}, \hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} \hyperlink{class_weighted_point_e41e421882ec4d21e70379120c2eab61}{weight})
+\item 
+\hyperlink{class_weighted_point_2a40faca74cd70475c325148056be842}{WeightedPoint} ()
+\item 
+\hyperlink{class_weighted_point_7e3ace28b58144f273b7d178b6fb0a06}{WeightedPoint} (\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} x, \hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} y, \hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} \hyperlink{class_weighted_point_e41e421882ec4d21e70379120c2eab61}{weight})
+\item 
+bool \hyperlink{class_weighted_point_714944b15d891557a47a69b4d425da58}{operator$<$} (const \hyperlink{class_weighted_point}{WeightedPoint} \&rhs) const 
+\item 
+bool \hyperlink{class_weighted_point_f88df27a98c5849233572da3b504564c}{operator$<$=} (const \hyperlink{class_weighted_point}{WeightedPoint} \&rhs) const 
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_point}{Point} \hyperlink{class_weighted_point_ab8d1b3ff0e79d5b479e5f61eee1be23}{point}
+\item 
+\hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} \hyperlink{class_weighted_point_e41e421882ec4d21e70379120c2eab61}{weight}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Two-dimensional point with an integer weight. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_weighted_point_1fc45412653300484ff917c0df7716c7}{
+\index{WeightedPoint@{WeightedPoint}!WeightedPoint@{WeightedPoint}}
+\index{WeightedPoint@{WeightedPoint}!WeightedPoint@{WeightedPoint}}
+\subsubsection[{WeightedPoint}]{\setlength{\rightskip}{0pt plus 5cm}WeightedPoint::WeightedPoint ({\bf Point} {\em point}, \/  {\bf INT\_\-TYPE} {\em weight})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_weighted_point_1fc45412653300484ff917c0df7716c7}
+
+
+Construct a weighted point. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em point}]point to copy. \item[{\em weight}]weight. \end{description}
+\end{Desc}
+\hypertarget{class_weighted_point_2a40faca74cd70475c325148056be842}{
+\index{WeightedPoint@{WeightedPoint}!WeightedPoint@{WeightedPoint}}
+\index{WeightedPoint@{WeightedPoint}!WeightedPoint@{WeightedPoint}}
+\subsubsection[{WeightedPoint}]{\setlength{\rightskip}{0pt plus 5cm}WeightedPoint::WeightedPoint ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_weighted_point_2a40faca74cd70475c325148056be842}
+
+
+Default constructor. \hypertarget{class_weighted_point_7e3ace28b58144f273b7d178b6fb0a06}{
+\index{WeightedPoint@{WeightedPoint}!WeightedPoint@{WeightedPoint}}
+\index{WeightedPoint@{WeightedPoint}!WeightedPoint@{WeightedPoint}}
+\subsubsection[{WeightedPoint}]{\setlength{\rightskip}{0pt plus 5cm}WeightedPoint::WeightedPoint ({\bf real} {\em x}, \/  {\bf real} {\em y}, \/  {\bf INT\_\-TYPE} {\em weight})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_weighted_point_7e3ace28b58144f273b7d178b6fb0a06}
+
+
+Construct a weighted point. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em x}]x-coordinate. \item[{\em y}]y-coordinate. \item[{\em weight}]weight. \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_weighted_point_714944b15d891557a47a69b4d425da58}{
+\index{WeightedPoint@{WeightedPoint}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!WeightedPoint@{WeightedPoint}}
+\subsubsection[{operator$<$}]{\setlength{\rightskip}{0pt plus 5cm}bool WeightedPoint::operator$<$ (const {\bf WeightedPoint} \& {\em rhs}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_weighted_point_714944b15d891557a47a69b4d425da58}
+
+
+Less than comparison by weight. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em rhs}]right hand side weighted point. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Whether lhs $<$ rhs. \end{Desc}
+\hypertarget{class_weighted_point_f88df27a98c5849233572da3b504564c}{
+\index{WeightedPoint@{WeightedPoint}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!WeightedPoint@{WeightedPoint}}
+\subsubsection[{operator$<$=}]{\setlength{\rightskip}{0pt plus 5cm}bool WeightedPoint::operator$<$= (const {\bf WeightedPoint} \& {\em rhs}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_weighted_point_f88df27a98c5849233572da3b504564c}
+
+
+Less than or equal comparison by weight. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em rhs}]right hand side weighted point. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Whether lhs $<$= rhs. \end{Desc}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_weighted_point_ab8d1b3ff0e79d5b479e5f61eee1be23}{
+\index{WeightedPoint@{WeightedPoint}!point@{point}}
+\index{point@{point}!WeightedPoint@{WeightedPoint}}
+\subsubsection[{point}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point} {\bf WeightedPoint::point}}}
+\label{class_weighted_point_ab8d1b3ff0e79d5b479e5f61eee1be23}
+
+
+Two-dimensional point. \hypertarget{class_weighted_point_e41e421882ec4d21e70379120c2eab61}{
+\index{WeightedPoint@{WeightedPoint}!weight@{weight}}
+\index{weight@{weight}!WeightedPoint@{WeightedPoint}}
+\subsubsection[{weight}]{\setlength{\rightskip}{0pt plus 5cm}{\bf INT\_\-TYPE} {\bf WeightedPoint::weight}}}
+\label{class_weighted_point_e41e421882ec4d21e70379120c2eab61}
+
+
+Weight. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+cowichan/\hyperlink{cowichan_8hpp}{cowichan.hpp}\end{CompactItemize}

@@ -1,0 +1,695 @@
+     1	/**
+     2	 * Utility functions
+     3	 *
+     4	 * \file util.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 01-26-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	
+    11	
+    12	#define SWAP_I_2(w_, l_, h_, t_)				\
+    13	t_ = w_[l_], w_[l_] = w_[h_], w_[h_] = t_
+    14	
+    15	#define SWAP_I_3(w_, a_, b_, c_, t_)				\
+    16	t_ = w_[a_], w_[a_] = w_[b_], w_[b_] = w_[c_], w_[c_] = t_ 
+    17	
+    18	#define SWAP_PT_2(p_, l_, h_, t_)				\
+    19	t_ = p_[l_], p_[l_] = p_[h_], p_[h_] = t_
+    20	
+    21	#define SWAP_PT_3(p_, a_, b_, c_, t_)				\
+    22	t_ = p_[a_], p_[a_] = p_[b_], p_[b_] = p_[c_], p_[c_] = t_ 
+    23	
+    24	
+    25	/*
+    26	 * @ fail : generic failure handler
+    27	 * > none (never returns)
+    28	 */
+    29	
+    30	void
+    31	fail(
+    32	  char	      * caller,			/* calling function */
+    33	  char	      * descrip,		/* error description */
+    34	  ...					/* other things to print */
+    35	){
+    36	  va_list	stackPtr;		/* stack pointer */
+    37	  char	      * msg;			/* error string */
+    38	  char	      * fmt;			/* error format */
+    39	  int		i_val;			/* integer value */
+    40	  real		r_val;			/* real value (NOTE TYPE) */
+    41	  char	      * s_val;			/* string value */
+    42	
+    43	  ASSERT(caller  != NULL);
+    44	  ASSERT(descrip != NULL);
+    45	
+    46	  fflush(stdout);
+    47	  fflush(stderr);
+    48	  fprintf(stderr, "ERROR (%s): %s\n", caller, descrip);
+    49	
+    50	  va_start(stackPtr, descrip);
+    51	  while ((msg = va_arg(stackPtr, char*)) != NULL){
+    52	    if ((fmt = va_arg(stackPtr, char*)) == NULL){
+    53	      fprintf(stderr, "fail: null format for %s\n", msg);
+    54	      exit(1);
+    55	    } else if ((fmt[0] != '%') || (fmt[1] == '\0')){
+    56	      fprintf(stderr, "fail: bad format string \"%s\" for %s\n", fmt, msg);
+    57	      exit(1);
+    58	    } else {
+    59	      switch(fmt[1]){
+    60		case 'd' :
+    61		  i_val = va_arg(stackPtr, int);
+    62		  fprintf(stderr, "%s: %d\n", msg, i_val);
+    63		  break;
+    64		case 'r' :
+    65		  r_val = va_arg(stackPtr, real);
+    66		  fprintf(stderr, "%s: ", msg);
+    67		  fprintf(stderr, FMT_REAL_WR, r_val);
+    68		  break;
+    69		case 's' :
+    70		  s_val = va_arg(stackPtr, char*);
+    71		  if (s_val == NULL){
+    72		    fprintf(stderr, "%s: <<NULL>>\n", msg);
+    73		  } else {
+    74		    fprintf(stderr, "%s: \"%s\"\n", msg, s_val);
+    75		  }
+    76		  break;
+    77		case 'x' :
+    78		  i_val = va_arg(stackPtr, int);
+    79		  fprintf(stderr, "%s: %08x\n", msg, i_val);
+    80		  break;
+    81		default :
+    82		  fprintf(stderr, "fail: unrecognized format \"%s\"\n", fmt);
+    83		  exit(1);
+    84	      }
+    85	      fflush(stderr);
+    86	    }
+    87	  }
+    88	  va_end(stackPtr);
+    89	  fflush(stderr);
+    90	
+    91	  exit(1);
+    92	
+    93	  /* return */
+    94	}
+    95	
+    96	void print_matrix (bool2D* matrix, int nr, int nc)
+    97	{
+    98	  int i, j;
+    99	  for (i = 0; i < nr; i++)
+   100	  {
+   101	    for (j = 0; j < nc; j++)
+   102	    {
+   103	      if (matrix[i][j] == 0) {
+   104	        printf ("0");
+   105	      }
+   106	      else {
+   107	        printf ("1");
+   108	      }
+   109	    }
+   110	    printf ("\n");
+   111	  }
+   112	}
+   113	
+   114	void print_matrix (int2D* matrix, int nr, int nc)
+   115	{
+   116	  int i, j;
+   117	  for (i = 0; i < nr; i++)
+   118	  {
+   119	    for (j = 0; j < nc; j++)
+   120	    {
+   121	      printf ("%d\t", matrix[i][j]);
+   122	    }
+   123	    printf ("\n");
+   124	  }
+   125	}
+   126	
+   127	void print_matrix (real2D* matrix, int nr, int nc)
+   128	{
+   129	  int i, j;
+   130	  for (i = 0; i < nr; i++)
+   131	  {
+   132	    for (j = 0; j < nc; j++)
+   133	    {
+   134	      printf ("%lg\t", matrix[i][j]);
+   135	    }
+   136	    printf ("\n");
+   137	  }
+   138	}
+   139	
+   140	void print_matrix (bool1DX* matrix, int nr, int nc)
+   141	{
+   142	  int i, j;
+   143	  for (i = 0; i < nr; i++)
+   144	  {
+   145	    for (j = 0; j < nc; j++)
+   146	    {
+   147	      if (matrix[i * nc + j] == 0) {
+   148	        printf ("0");
+   149	      }
+   150	      else {
+   151	        printf ("1");
+   152	      }
+   153	    }
+   154	    printf ("\n");
+   155	  }
+   156	}
+   157	
+   158	void print_matrix (int1DX* matrix, int nr, int nc)
+   159	{
+   160	  int i, j;
+   161	  for (i = 0; i < nr; i++)
+   162	  {
+   163	    for (j = 0; j < nc; j++)
+   164	    {
+   165	      printf ("%d\t", matrix[i * nc + j]);
+   166	    }
+   167	    printf ("\n");
+   168	  }
+   169	}
+   170	
+   171	void print_matrix (real1DX* matrix, int nr, int nc)
+   172	{
+   173	  int i, j;
+   174	  for (i = 0; i < nr; i++)
+   175	  {
+   176	    for (j = 0; j < nc; j++)
+   177	    {
+   178	      printf ("%lg\t", matrix[i * nc + j]);
+   179	    }
+   180	    printf ("\n");
+   181	  }
+   182	}
+   183	
+   184	void print_vector (bool1D* vector, int nr)
+   185	{
+   186	  int i;
+   187	  for (i = 0; i < nr; i++)
+   188	  {
+   189	    if (vector[i] == 0) {
+   190	      printf ("0\n");
+   191	    }
+   192	    else {
+   193	      printf ("1\n");
+   194	    }
+   195	  }
+   196	}
+   197	
+   198	void print_vector (int1D* vector, int nr)
+   199	{
+   200	  int i;
+   201	  for (i = 0; i < nr; i++)
+   202	  {
+   203	    printf ("%d\n", vector[i]);
+   204	  }
+   205	}
+   206	
+   207	void print_vector (real1D* vector, int nr)
+   208	{
+   209	  int i;
+   210	  for (i = 0; i < nr; i++)
+   211	  {
+   212	    printf ("%lg\n", vector[i]);
+   213	  }
+   214	}
+   215	
+   216	void print_vector (pt1D* vector, int nr)
+   217	{
+   218	  int i;
+   219	  for (i = 0; i < nr; i++)
+   220	  {
+   221	    printf ("(%lg, %lg) = %d\n", vector[i].x, vector[i].y, vector[i].w);
+   222	  }
+   223	}
+   224	
+   225	void print_points (pt1D* vector, int nr, int limit)
+   226	{
+   227	  int x, y, i;
+   228	  for (x = 0; x < limit; x++) {
+   229	    for (y = 0; y < limit; y++) {
+   230	      for (i = 0; i < nr; i++) {
+   231	        if ((vector[i].x == x) && (vector[i].y == y)) {
+   232	          printf ("%d\t", vector[i].w);
+   233	          break;
+   234	        }
+   235	      }
+   236	      if (i == nr) {
+   237	        printf ("-\t");
+   238	      }
+   239	    }
+   240	    printf ("\n");
+   241	  }
+   242	}
+   243	
+   244	/**
+   245	 * Assign elements to this process
+   246	 *
+   247	 * \param world [in] Communicator
+   248	 * \param lo [in] Low element
+   249	 * \param hi [in] High element
+   250	 * \param start [out] Start element
+   251	 * \param end [out] End element
+   252	 * \return Returns whether at least one element is assigned
+   253	 */
+   254	bool get_block_rows_mpi (mpi::communicator world, int lo, int hi,
+   255	                         int* start, int* end)
+   
+Could save a lot of code by delegating to
+get_block_rows_mpi(world, lo, hi, start, end, world.rank()).
+   
+   256	{
+   257	  int size = world.size ();
+   258	  int rank = world.rank ();
+   259	  
+   260	  int nl;	   /* number of elements */
+   261	  int num;	 /* number to do */
+   262	  int extra; /* spillage */
+   263	
+   264	  nl    = hi - lo;
+   265	  num   = nl / size;
+   266	  extra = nl % size;
+   267	
+   268	  if ((nl <= 0) || (rank >= nl)) {
+   269	    /* do nothing */
+   270	    *start = 0;
+   271	    *end = -1;
+   272	  }
+   273	  else {
+   274	    /* do share of work */
+   275	    if (rank < extra){
+   276	      num += 1;
+   277	      *start = lo + rank * num;
+   278	    } else {
+   279	      *start = lo + (extra * (num + 1)) + ((rank - extra) * num);
+   280	    }
+   281	    *end = *start + num;
+   282	  }
+   283	
+   284	  return (*end != -1);
+   285	}
+   286	
+   287	/**
+   288	 * Assign elements to this process
+   289	 *
+   290	 * \param world [in] Communicator
+   291	 * \param lo [in] Low element
+   292	 * \param hi [in] High element
+   293	 * \param start [out] Start element
+   294	 * \param end [out] End element
+   295	 * \param rank [in] Process rank
+   296	 * \return Returns whether at least one element is assigned
+   297	 */
+   298	bool get_block_rows_mpi (mpi::communicator world, int lo, int hi,
+   299	                         int* start, int* end, int rank)
+   300	{
+   301	  int size = world.size ();
+   302	  
+   303	  int nl;	   /* number of elements */
+   304	  int num;	 /* number to do */
+   305	  int extra; /* spillage */
+   306	
+   307	  nl    = hi - lo;
+   308	  num   = nl / size;
+   309	  extra = nl % size;
+   310	
+   311	  if ((nl <= 0) || (rank >= nl)) {
+   312	    /* do nothing */
+   313	    *start = 0;
+   314	    *end = -1;
+   315	  }
+   316	  else {
+   317	    /* do share of work */
+   318	    if (rank < extra){
+   319	      num += 1;
+   320	      *start = lo + rank * num;
+   321	    } else {
+   322	      *start = lo + (extra * (num + 1)) + ((rank - extra) * num);
+   323	    }
+   324	    *end = *start + num;
+   325	  }
+   326	
+   327	  return (*end != -1);
+   328	}
+   329	
+   330	/**
+   331	 * Return which process is working on element
+   332	 *
+   333	 * \param world [in] Communicator
+   334	 * \param lo [in] Low element
+   335	 * \param hi [in] High element
+   336	 * \param element [in] Element
+   337	 * \return Returns process number assigned to element
+   338	 */
+   339	int get_block_rank_mpi (mpi::communicator world, int lo, int hi,
+   340	                        int element)
+   341	{
+   342	  int size = world.size ();
+   343	  int rank;
+   344	
+   345	  int nl;	   /* number of elements */
+   346	  int num;	 /* number to do */
+   347	  int extra; /* spillage */
+   348	
+   349	  nl    = hi - lo;
+   350	  num   = nl / size;
+   351	  extra = nl % size;
+   352	
+   353	  if (element < lo + extra * (num + 1)) {
+   354	    rank = (element - lo) / (num + 1);
+   355	  }
+   356	  else {
+   357	    rank = (element - lo - extra * (num + 1)) / num + extra;
+   358	  }
+   359	
+   360	  return rank;
+   361	}
+   362	
+   363	/**
+   364	 * Assign elements to this process
+   365	 *
+   366	 * \param world [in] Communicator
+   367	 * \param lo [in] Low element
+   368	 * \param hi [in] High element
+   369	 * \param start [out] Start element
+   370	 * \param end [out] End element
+   371	 * \param stride [out] Element stride
+   372	 * \return Returns whether at least one element is assigned
+   373	 */
+   374	bool get_cyclic_rows_mpi(mpi::communicator world, int lo, int hi,
+   375	                         int* start, int* end, int* stride)
+   376	{
+   377	  int size = world.size ();
+   378	  int rank = world.rank ();
+   379	  
+   380	  int		nl;			/* number of loops */
+   381	
+   382	  nl = hi - lo;
+   383	
+   384	  if ((nl <= 0) || (rank >= nl)){		/* do nothing */
+   385	    *start = 0;
+   386	    *end = -1;
+   387	    *stride = 1;
+   388	  } else {				/* do share of work */
+   389	    *start  = lo + rank;
+   390	    *end    = hi;
+   391	    *stride = size;
+   392	  }
+   393	
+   394	  return (*end != -1);
+   395	}
+   396	
+   397	/**
+   398	 * Return which process is working on element
+   399	 *
+   400	 * \param world [in] Communicator
+   401	 * \param lo [in] Low element
+   402	 * \param hi [in] High element
+   403	 * \param element [in] Element
+   404	 * \return Returns process number assigned to element
+   405	 */
+   406	int get_cyclic_rank_mpi (mpi::communicator world, int lo, int hi,
+   407	                        int element)
+   408	{
+   409	  int size = world.size ();
+   410	  int rank;
+   411	
+   412	  int nl;	   /* number of rows */
+   413	
+   414	  nl    = hi - lo;
+   415	  rank = (element - lo) % size;
+   416	
+   417	  return rank;
+   418	}
+   419	
+   420	/*
+   421	 * @ randStateInit : initialize parallel random state vector
+   422	 * > none
+   423	 * + fill vector and calculate constants
+   424	 */
+   425	
+   426	void
+   427	randStateInit(
+   428	  unsigned int		seed,			/* RNG seed */
+   429	  int		width,			/* number of participants */
+   430	  unsigned int	      * state,			/* per-thread state vector */
+   431	  unsigned int	      * aPrime,			/* new multiplicative */
+   432	  unsigned int	      * cPrime			/* new additive value */
+   433	){
+
+Is there any way you could put this with the rest of the randmat stuff?
+
+   434	  int		i;			/* loop index */
+   435	
+   436	  state[0] = seed % RAND_M;
+   437	  *aPrime = RAND_A;
+   438	  *cPrime = 1;
+   439	  for (i=1; i<width; i++){
+   440	    state[i] = (RAND_A * state[i-1] + RAND_C) % RAND_M;
+   441	    *cPrime = (*cPrime + *aPrime) % RAND_M;
+   442	    *aPrime = (*aPrime * RAND_A) % RAND_M;
+   443	  }
+   444	  *cPrime = (*cPrime * RAND_C) % RAND_M;
+   445	
+   446	  /* return */
+   447	}
+   448	
+   449	/*
+   450	 * @ redPt1DPos : find min/max point positions
+   451	 * > none
+   452	 * + fill arguments
+   453	 */
+   454	
+   455	void
+   456	redPt1DPos(
+   457	  pt1D*		vec,			/* vector of points */
+   458	  int		n,			/* number of points */
+   459	  pt	      * ptMin,			/* minimum location */
+   460	  pt	      * ptMax			/* maximum location */
+   461	){
+   462	  int		i;
+   463	
+   464	  ASSERT(ptMin != NULL);
+   465	  ASSERT(ptMax != NULL);
+   466	
+   467	  ptMin->x = vec[0].x; ptMin->y = vec[0].y;
+   468	  ptMax->x = vec[0].x; ptMax->y = vec[0].y;
+   469	  for (i=1; i<n; i++){
+   470	    if (vec[i].x < ptMin->x) ptMin->x = vec[i].x;
+   471	    if (vec[i].x > ptMax->x) ptMax->x = vec[i].x;
+   472	    if (vec[i].y < ptMin->y) ptMin->y = vec[i].y;
+   473	    if (vec[i].y > ptMax->y) ptMax->y = vec[i].y;
+   474	  }
+   475	  ptMin->w = 0; ptMax->w = 0;
+   476	
+   477	  /* return */
+   478	}
+   479	
+   480	/*
+   481	 @ ptSort : sort points by weight
+   482	 > none
+   483	 + sort points
+   484	 */
+   485	
+   486	void
+   487	ptSort(
+   488	  pt	      * ptVec,			/* points to sort */
+   489	  int		len			/* length of vectors */
+   490	){
+   491	  int		i, j;			/* indices into vectors */
+   492	  int		loop;			/* partitioning control */
+   493	  pt		pivot;			/* partitioning value (can't be pointer!) */
+   494	  pt		tmp;			/* swapping temporary */
+   495	
+   496	  if (len <= 1){
+   497	    /* skip */
+   498	  } else if (len == 2){
+   499	    if (ptCmp(&(ptVec[1]), &(ptVec[0])) < 0){
+   500	      SWAP_PT_2(ptVec, 0, 1, tmp);
+   501	    }
+   502	  } else if (len == 3){
+   503	    if (ptCmp(&(ptVec[1]), &(ptVec[0])) < 0){
+   504	      if (ptCmp(&(ptVec[0]), &(ptVec[2])) < 0){
+   505		SWAP_PT_2(ptVec, 0, 1, tmp);
+   506	      } else if (ptCmp(&(ptVec[1]), &(ptVec[2])) < 0){
+   507		SWAP_PT_3(ptVec, 0, 1, 2, tmp);
+   508	      } else {
+   509		SWAP_PT_2(ptVec, 0, 2, tmp);
+   510	      }
+   511	    } else if (ptCmp(&(ptVec[2]), &(ptVec[0])) < 0){
+   512	      SWAP_PT_3(ptVec, 2, 1, 0, tmp);
+   513	    } else if (ptCmp(&(ptVec[2]), &(ptVec[1])) < 0){
+   514	      SWAP_PT_2(ptVec, 1, 2, tmp);
+   515	    }
+   516	  } else {
+   517	    i = 0;
+   518	    j = len - 1;
+   519	    pivot = ptVec[(i+j)/2];
+   520	    loop = TRUE;
+   521	    while (loop){
+   522	      while (ptCmp(&(ptVec[i]), &pivot) < 0) i++;
+   523	      while (ptCmp(&pivot, &(ptVec[j])) < 0) j--;
+   524	      if (i <= j){
+   525		SWAP_PT_2(ptVec, i, j, tmp);
+   526		i++; j--;
+   527	      }
+   528	      loop = (i <= j);
+   529	    }
+   530	    if (1 <= j){
+   531	      ptSort(ptVec, j+1);
+   532	    }
+   533	    if (i < len-1){
+   534	      ptSort(ptVec+i, len-i);
+   535	    }
+   536	  }
+   537	
+   538	  /* return */
+   539	}
+   540	
+   541	/*
+   542	 * @ ptCmp : compare two points (weight, then x, then y)
+   543	 * > -1, 0, or 1 (a<b, a==b, a>b)
+   544	 */
+   545	
+   546	int
+   547	ptCmp(
+   548	  pt	      * left,			/* left point */
+   549	  pt	      * right			/* right point */
+   550	){
+   551	  ASSERT(left != NULL);
+   552	  ASSERT(right != NULL);
+   553	  if		(left->w < right->w)	return -1;
+   554	  else if	(left->w > right->w)	return  1;
+   555	  else if	(left->x < right->x)	return -1;
+   556	  else if	(left->x > right->x)	return  1;
+   557	  else if	(left->y < right->y)	return -1;
+   558	  else if	(left->y > right->y)	return  1;
+   559	  else					return  0;
+   560	}
+   561	
+   562	/*
+   563	 * @ intSort : sort integers
+   564	 * > none
+   565	 * + sort vector of integers
+   566	 */
+   567	
+   568	void
+   569	intSort(
+   570	  int	      * vec,			/* to sort */
+   571	  int		len			/* length */
+   572	){
+   573	  int		tmp;			/* for swapping */
+   574	  int		pivot;			/* pivot value */
+   575	  int		i, j;			/* indices */
+   576	  int		loop;			/* loop control */
+   577	
+   578	  if (len <= 1){
+   579	    /* skip */
+   580	  } else if (len == 2){
+   581	    if (vec[1] < vec[0]){
+   582	      SWAP_I_2(vec, 0, 1, tmp);
+   583	    }
+   584	  } else if (len == 3){
+   585	    if (vec[1] < vec[0]){
+   586	      if (vec[0] < vec[2]){
+   587		SWAP_I_2(vec, 0, 1, tmp);
+   588	      } else if (vec[1] < vec[2]){
+   589		SWAP_I_3(vec, 0, 1, 2, tmp);
+   590	      } else {
+   591		SWAP_I_2(vec, 0, 2, tmp);
+   592	      }
+   593	    } else if (vec[2] < vec[0]){
+   594	      SWAP_I_3(vec, 2, 1, 0, tmp);
+   595	    } else if (vec[2] < vec[1]){
+   596	      SWAP_I_2(vec, 1, 2, tmp);
+   597	    }
+   598	  } else {
+   599	    i = 0;
+   600	    j = len - 1;
+   601	    pivot = vec[(i+j)/2];
+   602	    loop = TRUE;
+   603	    while (loop){
+   604	      while (vec[i] < pivot) i++;
+   605	      while (vec[j] > pivot) j--;
+   606	      if (i <= j){
+   607		SWAP_I_2(vec, i, j, tmp);
+   608		i++; j--;
+   609	      }
+   610	      loop = (i <= j);
+   611	    }
+   612	    if (1 <= j){
+   613	      intSort(vec, j+1);
+   614	    }
+   615	    if (i < len-1){
+   616	      intSort(vec+i, len-i);
+   617	    }
+   618	  }
+   619	
+   620	  /* return */
+   621	}
+   622	
+   623	/*
+   624	 * @ ptDist : Euclidean distance between two points
+   625	 * > distance
+   626	 */
+   627	
+   628	real
+   629	ptDist(
+   630	  pt	      * left,			/* left point */
+   631	  pt	      * right			/* right point */
+   632	){
+   633	  double	dx, dy;			/* components */
+   634	
+   635	  ASSERT(left != NULL);
+   636	  ASSERT(right != NULL);
+   637	
+   638	  dx = (double)(left->x - right->x);
+   639	  dy = (double)(left->y - right->y);
+   640	
+   641	  return (real)sqrt(dx*dx + dy*dy);
+   642	}
+   643	
+   644	/*
+   645	 * @ ptMag : distance of point from origin
+   646	 * > distance
+   647	 */
+   648	
+   649	real
+   650	ptMag(
+   651	  pt	      * p			/* point */
+   652	){
+   653	  return (real)sqrt((double)((p->x*p->x) + (p->y*p->y)));
+   654	}
+   655	
+   656	INT64 get_ticks ()
+   657	{
+   658	  INT64 count;
+   659	#if defined(WIN32)   // Windows
+   660	  if (! QueryPerformanceCounter((LARGE_INTEGER *) &count)) {
+   661	    count = GetTickCount (); // ms
+   662	  }
+   663	#else                // Linux
+   664	  tms tm;
+   665	  count = times (&tm);
+   666	#endif               // end of WIN32/Linux definitions
+   667	  return count;
+   668	}
+   669	
+   670	INT64 get_freq ()
+   671	{
+   672	  INT64 freq;
+   673	#if defined(WIN32)   // Windows
+   674	  if (! QueryPerformanceFrequency((LARGE_INTEGER *) &freq)) {
+   675	    freq = 1000; // ms
+   676	  }
+   677	#else                // Linux
+   678	  freq = sysconf (_SC_CLK_TCK);
+   679	#endif               // end of WIN32/Linux definitions
+   680	  return freq;
+   681	}
+   682	
+   683	void print_elapsed_time (INT64 start, INT64 end)
+   684	{
+   685	  INT64 freq = get_freq ();
+   686	  printf ("Elapsed time: %lg seconds\n", ((double) (end - start)) /
+   687	                                         ((double) freq));
+   688	}

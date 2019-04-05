@@ -1,0 +1,59 @@
+     1	/**
+     2	 * Serial implementation of outer product matrix
+     3	 *
+     4	 * \file serial.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-27-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#include "serial.h"
+    11	
+    12	// public
+    13	
+    14	/*
+    15	 * @ outer : calculate outer product matrix
+    16	 * > none
+    17	 * + fill matrix
+    18	 */
+    19	
+    20	void
+    21	outer(
+    22	  pt1D*		ptVec,			/* vector of points */
+    23	  real2D*	matrix,			/* matrix to fill */
+    24	  real1D*	realVec,		/* vector to fill */
+    25	  int		n			/* size */
+    26	){
+    27	  real		d;			/* distance between points */
+    28	  real		dMax = -1.0;		/* maximum distance */
+    29	  int		r, c;			/* loop indices */
+    30	#if GRAPHICS
+    31	  int		gfxCount = 0;
+    32	#endif
+    33	
+    34	  /* all elements except matrix diagonal */
+    35	  for (r=0; r<n; r++){
+    36	    realVec[r] = ptMag(&(ptVec[r]));
+    37	    for (c=0; c<r; c++){
+    38	      d = ptDist(&(ptVec[r]), &(ptVec[c]));
+    39	      if (d > dMax){
+    40		dMax = d;
+    41	      }
+    42	      matrix[r][c] = matrix[c][r] = d;
+    43	    }
+    44	#if GRAPHICS
+    45	    gfx_outer(gfxCount++, ptVec, matrix, realVec, n);
+    46	#endif
+    47	  }
+    48	
+    49	  /* matrix diagonal */
+    50	  dMax *= n;
+    51	  for (r=0; r<n; r++){
+    52	    matrix[r][r] = dMax;
+    53	  }
+    54	#if GRAPHICS
+    55	    gfx_outer(gfxCount++, ptVec, matrix, realVec, n);
+    56	#endif
+    57	
+    58	  /* return */
+    59	}

@@ -1,0 +1,94 @@
+\hypertarget{classcowichan__tbb_1_1_threshold}{
+\section{cowichan\_\-tbb::Threshold Class Reference}
+\label{classcowichan__tbb_1_1_threshold}\index{cowichan\_\-tbb::Threshold@{cowichan\_\-tbb::Threshold}}
+}
+Creates a boolean array based on a cut-off value.  
+
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{classcowichan__tbb_1_1_threshold_db1e4ab23dd9fc13681bffc969ace277}{operator()} (const \hyperlink{cowichan__tbb_8hpp_e591b8e6980ddc5982ee22655da2ab8e}{Range2D} \&range) const 
+\item 
+\hyperlink{classcowichan__tbb_1_1_threshold_bee12956ebe8ea1af3e4148d749ae4f5}{Threshold} (\hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} image, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_threshold_d89a13406409fa5496b5ca32eed3827a}{retain}, \hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix} result, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_threshold_62669fc165069a247bd0d977edcd508e}{nc})
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} \hyperlink{classcowichan__tbb_1_1_threshold_a53900b19e60c3e913108ce553ac8a1e}{\_\-image}
+\item 
+\hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix} \hyperlink{classcowichan__tbb_1_1_threshold_c0398b9c0619d5effec694c44c57b2e2}{\_\-result}
+\item 
+const \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_threshold_d89a13406409fa5496b5ca32eed3827a}{retain}
+\item 
+const \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_threshold_62669fc165069a247bd0d977edcd508e}{nc}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Creates a boolean array based on a cut-off value. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcowichan__tbb_1_1_threshold_bee12956ebe8ea1af3e4148d749ae4f5}{
+\index{cowichan\_\-tbb::Threshold@{cowichan\_\-tbb::Threshold}!Threshold@{Threshold}}
+\index{Threshold@{Threshold}!cowichan_tbb::Threshold@{cowichan\_\-tbb::Threshold}}
+\subsubsection[{Threshold}]{\setlength{\rightskip}{0pt plus 5cm}cowichan\_\-tbb::Threshold::Threshold ({\bf IntMatrix} {\em image}, \/  {\bf index\_\-t} {\em retain}, \/  {\bf BoolMatrix} {\em result}, \/  {\bf index\_\-t} {\em nc})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_threshold_bee12956ebe8ea1af3e4148d749ae4f5}
+
+
+Construct a threshold object. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em image}]image matrix. \item[{\em retain}]retention value. \item[{\em result}]result matrix to fill. \item[{\em nc}]number of columns in the matrix. \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcowichan__tbb_1_1_threshold_db1e4ab23dd9fc13681bffc969ace277}{
+\index{cowichan\_\-tbb::Threshold@{cowichan\_\-tbb::Threshold}!operator()@{operator()}}
+\index{operator()@{operator()}!cowichan_tbb::Threshold@{cowichan\_\-tbb::Threshold}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::Threshold::operator() (const {\bf Range2D} \& {\em range}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_threshold_db1e4ab23dd9fc13681bffc969ace277}
+
+
+Perform thresholding. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em range}]row/column range to operate on. \end{description}
+\end{Desc}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classcowichan__tbb_1_1_threshold_a53900b19e60c3e913108ce553ac8a1e}{
+\index{cowichan\_\-tbb::Threshold@{cowichan\_\-tbb::Threshold}!\_\-image@{\_\-image}}
+\index{\_\-image@{\_\-image}!cowichan_tbb::Threshold@{cowichan\_\-tbb::Threshold}}
+\subsubsection[{\_\-image}]{\setlength{\rightskip}{0pt plus 5cm}{\bf IntMatrix} {\bf cowichan\_\-tbb::Threshold::\_\-image}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_threshold_a53900b19e60c3e913108ce553ac8a1e}
+
+
+Image matrix. \hypertarget{classcowichan__tbb_1_1_threshold_c0398b9c0619d5effec694c44c57b2e2}{
+\index{cowichan\_\-tbb::Threshold@{cowichan\_\-tbb::Threshold}!\_\-result@{\_\-result}}
+\index{\_\-result@{\_\-result}!cowichan_tbb::Threshold@{cowichan\_\-tbb::Threshold}}
+\subsubsection[{\_\-result}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BoolMatrix} {\bf cowichan\_\-tbb::Threshold::\_\-result}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_threshold_c0398b9c0619d5effec694c44c57b2e2}
+
+
+Resulting boolean matrix. \hypertarget{classcowichan__tbb_1_1_threshold_62669fc165069a247bd0d977edcd508e}{
+\index{cowichan\_\-tbb::Threshold@{cowichan\_\-tbb::Threshold}!nc@{nc}}
+\index{nc@{nc}!cowichan_tbb::Threshold@{cowichan\_\-tbb::Threshold}}
+\subsubsection[{nc}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf index\_\-t} {\bf cowichan\_\-tbb::Threshold::nc}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_threshold_62669fc165069a247bd0d977edcd508e}
+
+
+Number of columns in the matrix. \hypertarget{classcowichan__tbb_1_1_threshold_d89a13406409fa5496b5ca32eed3827a}{
+\index{cowichan\_\-tbb::Threshold@{cowichan\_\-tbb::Threshold}!retain@{retain}}
+\index{retain@{retain}!cowichan_tbb::Threshold@{cowichan\_\-tbb::Threshold}}
+\subsubsection[{retain}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf index\_\-t} {\bf cowichan\_\-tbb::Threshold::retain}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_threshold_d89a13406409fa5496b5ca32eed3827a}
+
+
+Retention value. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+cowichan\_\-tbb/\hyperlink{cowichan__tbb_2thresh_8cpp}{thresh.cpp}\end{CompactItemize}

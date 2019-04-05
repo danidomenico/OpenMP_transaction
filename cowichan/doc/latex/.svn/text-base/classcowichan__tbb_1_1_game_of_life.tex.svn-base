@@ -1,0 +1,172 @@
+\hypertarget{classcowichan__tbb_1_1_game_of_life}{
+\section{cowichan\_\-tbb::GameOfLife Class Reference}
+\label{classcowichan__tbb_1_1_game_of_life}\index{cowichan\_\-tbb::GameOfLife@{cowichan\_\-tbb::GameOfLife}}
+}
+Ping-pong solution to game of life.  
+
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+bool \hyperlink{classcowichan__tbb_1_1_game_of_life_38dced5f2712fe6c42c1299084461f0d}{isAlive} ()
+\item 
+\hyperlink{classcowichan__tbb_1_1_game_of_life_4793e3b09cc0c43cdb3d5bff8c002a3f}{GameOfLife} (\hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix} first, \hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix} second, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_game_of_life_570da56c471fa8c5f2c83e572775f75e}{nr}, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_game_of_life_e7584561d427c5f4922853deda9b402f}{nc})
+\item 
+void \hyperlink{classcowichan__tbb_1_1_game_of_life_36367ee9491f53e457b6c3f728046f3b}{swap} ()
+\item 
+void \hyperlink{classcowichan__tbb_1_1_game_of_life_f6bab39a7e2ab18a6a5834b914d0cc9c}{operator()} (const \hyperlink{cowichan__tbb_8hpp_e591b8e6980ddc5982ee22655da2ab8e}{Range2D} \&range)
+\item 
+\hyperlink{classcowichan__tbb_1_1_game_of_life_074fbeb388fc5d5f5a33d25e0bfe1845}{GameOfLife} (\hyperlink{classcowichan__tbb_1_1_game_of_life}{GameOfLife} \&other, split)
+\item 
+void \hyperlink{classcowichan__tbb_1_1_game_of_life_c69b9fbc57f35d86238020436b2eb5bb}{join} (const \hyperlink{classcowichan__tbb_1_1_game_of_life}{GameOfLife} \&other)
+\end{CompactItemize}
+\subsection*{Private Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_game_of_life_cfdc8525672ceaf09c57f0e302320de7}{sumNeighbours} (\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} x, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} y) const 
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix} \hyperlink{classcowichan__tbb_1_1_game_of_life_2a78cdb68396003c0963ac3ef5526370}{\_\-first}
+\item 
+\hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix} \hyperlink{classcowichan__tbb_1_1_game_of_life_4b7e727ef2859168cafc1fa144e5255e}{\_\-second}
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_game_of_life_570da56c471fa8c5f2c83e572775f75e}{nr}
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_game_of_life_e7584561d427c5f4922853deda9b402f}{nc}
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_game_of_life_ad536d79679edcb0c5946bb9b0464e4a}{aliveCount}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Ping-pong solution to game of life. 
+
+This class does the game of life, and facilitates a ping-pong memory model. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcowichan__tbb_1_1_game_of_life_4793e3b09cc0c43cdb3d5bff8c002a3f}{
+\index{cowichan\_\-tbb::GameOfLife@{cowichan\_\-tbb::GameOfLife}!GameOfLife@{GameOfLife}}
+\index{GameOfLife@{GameOfLife}!cowichan_tbb::GameOfLife@{cowichan\_\-tbb::GameOfLife}}
+\subsubsection[{GameOfLife}]{\setlength{\rightskip}{0pt plus 5cm}cowichan\_\-tbb::GameOfLife::GameOfLife ({\bf BoolMatrix} {\em first}, \/  {\bf BoolMatrix} {\em second}, \/  {\bf index\_\-t} {\em nr}, \/  {\bf index\_\-t} {\em nc})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_game_of_life_4793e3b09cc0c43cdb3d5bff8c002a3f}
+
+
+Construct a game of life object. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em first}]matrix to read from initially. \item[{\em second}]matrix to write to initially. \item[{\em nr}]number of rows in matrices. \item[{\em nc}]number of columns in matrices. \end{description}
+\end{Desc}
+\hypertarget{classcowichan__tbb_1_1_game_of_life_074fbeb388fc5d5f5a33d25e0bfe1845}{
+\index{cowichan\_\-tbb::GameOfLife@{cowichan\_\-tbb::GameOfLife}!GameOfLife@{GameOfLife}}
+\index{GameOfLife@{GameOfLife}!cowichan_tbb::GameOfLife@{cowichan\_\-tbb::GameOfLife}}
+\subsubsection[{GameOfLife}]{\setlength{\rightskip}{0pt plus 5cm}cowichan\_\-tbb::GameOfLife::GameOfLife ({\bf GameOfLife} \& {\em other}, \/  split)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_game_of_life_074fbeb388fc5d5f5a33d25e0bfe1845}
+
+
+Splitting (TBB) constructor. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em other}]object to split. \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcowichan__tbb_1_1_game_of_life_38dced5f2712fe6c42c1299084461f0d}{
+\index{cowichan\_\-tbb::GameOfLife@{cowichan\_\-tbb::GameOfLife}!isAlive@{isAlive}}
+\index{isAlive@{isAlive}!cowichan_tbb::GameOfLife@{cowichan\_\-tbb::GameOfLife}}
+\subsubsection[{isAlive}]{\setlength{\rightskip}{0pt plus 5cm}bool cowichan\_\-tbb::GameOfLife::isAlive ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_game_of_life_38dced5f2712fe6c42c1299084461f0d}
+
+
+Check if there are alive cells. \begin{Desc}
+\item[Returns:]whether alive. \end{Desc}
+\hypertarget{classcowichan__tbb_1_1_game_of_life_c69b9fbc57f35d86238020436b2eb5bb}{
+\index{cowichan\_\-tbb::GameOfLife@{cowichan\_\-tbb::GameOfLife}!join@{join}}
+\index{join@{join}!cowichan_tbb::GameOfLife@{cowichan\_\-tbb::GameOfLife}}
+\subsubsection[{join}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::GameOfLife::join (const {\bf GameOfLife} \& {\em other})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_game_of_life_c69b9fbc57f35d86238020436b2eb5bb}
+
+
+Joiner (TBB). \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em other}]object to join. \end{description}
+\end{Desc}
+\hypertarget{classcowichan__tbb_1_1_game_of_life_f6bab39a7e2ab18a6a5834b914d0cc9c}{
+\index{cowichan\_\-tbb::GameOfLife@{cowichan\_\-tbb::GameOfLife}!operator()@{operator()}}
+\index{operator()@{operator()}!cowichan_tbb::GameOfLife@{cowichan\_\-tbb::GameOfLife}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::GameOfLife::operator() (const {\bf Range2D} \& {\em range})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_game_of_life_f6bab39a7e2ab18a6a5834b914d0cc9c}
+
+
+Performs the game of life operation over the given range. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em range}]row/column range. \end{description}
+\end{Desc}
+\hypertarget{classcowichan__tbb_1_1_game_of_life_cfdc8525672ceaf09c57f0e302320de7}{
+\index{cowichan\_\-tbb::GameOfLife@{cowichan\_\-tbb::GameOfLife}!sumNeighbours@{sumNeighbours}}
+\index{sumNeighbours@{sumNeighbours}!cowichan_tbb::GameOfLife@{cowichan\_\-tbb::GameOfLife}}
+\subsubsection[{sumNeighbours}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} cowichan\_\-tbb::GameOfLife::sumNeighbours ({\bf index\_\-t} {\em x}, \/  {\bf index\_\-t} {\em y}) const\hspace{0.3cm}{\tt  \mbox{[}inline, private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_game_of_life_cfdc8525672ceaf09c57f0e302320de7}
+
+
+Calculate number of peers. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em x}]x-coordinate. \item[{\em y}]y-coordinate. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Number of peers. \end{Desc}
+\hypertarget{classcowichan__tbb_1_1_game_of_life_36367ee9491f53e457b6c3f728046f3b}{
+\index{cowichan\_\-tbb::GameOfLife@{cowichan\_\-tbb::GameOfLife}!swap@{swap}}
+\index{swap@{swap}!cowichan_tbb::GameOfLife@{cowichan\_\-tbb::GameOfLife}}
+\subsubsection[{swap}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::GameOfLife::swap ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_game_of_life_36367ee9491f53e457b6c3f728046f3b}
+
+
+Swap the matrices. 
+
+\subsection{Member Data Documentation}
+\hypertarget{classcowichan__tbb_1_1_game_of_life_2a78cdb68396003c0963ac3ef5526370}{
+\index{cowichan\_\-tbb::GameOfLife@{cowichan\_\-tbb::GameOfLife}!\_\-first@{\_\-first}}
+\index{\_\-first@{\_\-first}!cowichan_tbb::GameOfLife@{cowichan\_\-tbb::GameOfLife}}
+\subsubsection[{\_\-first}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BoolMatrix} {\bf cowichan\_\-tbb::GameOfLife::\_\-first}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_game_of_life_2a78cdb68396003c0963ac3ef5526370}
+
+
+First matrix (read from). \hypertarget{classcowichan__tbb_1_1_game_of_life_4b7e727ef2859168cafc1fa144e5255e}{
+\index{cowichan\_\-tbb::GameOfLife@{cowichan\_\-tbb::GameOfLife}!\_\-second@{\_\-second}}
+\index{\_\-second@{\_\-second}!cowichan_tbb::GameOfLife@{cowichan\_\-tbb::GameOfLife}}
+\subsubsection[{\_\-second}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BoolMatrix} {\bf cowichan\_\-tbb::GameOfLife::\_\-second}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_game_of_life_4b7e727ef2859168cafc1fa144e5255e}
+
+
+Second matrix (write to). \hypertarget{classcowichan__tbb_1_1_game_of_life_ad536d79679edcb0c5946bb9b0464e4a}{
+\index{cowichan\_\-tbb::GameOfLife@{cowichan\_\-tbb::GameOfLife}!aliveCount@{aliveCount}}
+\index{aliveCount@{aliveCount}!cowichan_tbb::GameOfLife@{cowichan\_\-tbb::GameOfLife}}
+\subsubsection[{aliveCount}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} {\bf cowichan\_\-tbb::GameOfLife::aliveCount}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_game_of_life_ad536d79679edcb0c5946bb9b0464e4a}
+
+
+Number of alive cells. \hypertarget{classcowichan__tbb_1_1_game_of_life_e7584561d427c5f4922853deda9b402f}{
+\index{cowichan\_\-tbb::GameOfLife@{cowichan\_\-tbb::GameOfLife}!nc@{nc}}
+\index{nc@{nc}!cowichan_tbb::GameOfLife@{cowichan\_\-tbb::GameOfLife}}
+\subsubsection[{nc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} {\bf cowichan\_\-tbb::GameOfLife::nc}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_game_of_life_e7584561d427c5f4922853deda9b402f}
+
+
+Number of column in matrices. \hypertarget{classcowichan__tbb_1_1_game_of_life_570da56c471fa8c5f2c83e572775f75e}{
+\index{cowichan\_\-tbb::GameOfLife@{cowichan\_\-tbb::GameOfLife}!nr@{nr}}
+\index{nr@{nr}!cowichan_tbb::GameOfLife@{cowichan\_\-tbb::GameOfLife}}
+\subsubsection[{nr}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} {\bf cowichan\_\-tbb::GameOfLife::nr}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_game_of_life_570da56c471fa8c5f2c83e572775f75e}
+
+
+Number of rows in matrices. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+cowichan\_\-tbb/\hyperlink{cowichan__tbb_2life_8cpp}{life.cpp}\end{CompactItemize}

@@ -1,0 +1,1700 @@
+%
+% paper.tex : current draft of paper describing the Cowichan Problems
+%
+\documentstyle[epsf,11pt]{article}
+
+\newenvironment{toylist}{%
+\begin{list}{\begin{math}\circ\end{math}}{\setlength{\leftmargin}{2em}\setlength{\itemsep}{0em}}}{%
+\end{list}}
+
+\begin{document}
+
+\begin{Large}\begin{center}
+Assessing and Comparing the Usability of Parallel Programming Systems
+\end{center}\end{Large}
+
+\vspace{\baselineskip}
+
+\begin{large}\begin{center}
+Gregory V.~Wilson\footnote{Dept.\ of Computer Science,
+	University of Toronto,
+	Toronto, Ontario,
+	Canada M5S 1A4
+	\verb`gvw@cs.toronto.edu`}
+~
+R.~Bruce Irvin\footnote{Dept.\ of Computer Science,
+	University of Wisconsin,
+	Madison, Wisconsin,
+	USA 53706
+	\verb`rbi@cs.wisc.edu`}
+\end{center}\end{large}
+
+\vspace{\baselineskip}
+
+\begin{abstract}
+Parallel programming is widely acknowledged to be more difficult than sequential programming.
+One reason for this is that parallel programming systems are more difficult to use
+than their sequential counterparts.
+In particular,
+few parallel programming systems can support
+the software engineering requirements of large applications.
+We intend to assess and compare the usability of a variety of parallel programming systems
+using a small suite of chained applications called the Cowichan Problems.
+\end{abstract}
+
+\section{Introduction\label{s:intro}}
+
+In their 1989 survey paper,
+Bal {\em{et~al.}\/} listed more than 300 parallel programming systems \cite{b:par-lang-survey}.
+A similar survey today could well uncover twice as many,
+but a poll of application programmers would probably find that
+the only ones in general use are
+data-parallel extensions to Fortran and procedural message-passing libraries of various flavours.
+It is therefore interesting to ask:
+why have so many parallel programming systems been developed,
+and why are most of them used so little?
+
+The first question is the easiest to answer: parallelism has become a hot topic.
+All modern high-performance computers use parallelism to some degree,
+and the most cost-effective in any class use it a lot.
+Many of these machines require programmers to deal explicitly with
+communication and synchronization issues which pre-existing languages could ignore.
+There is also increasing interest in using networks of workstations as distributed supercomputers,
+so programming tools capable of handling both parallel and distributed systems are sorely needed.
+
+At the same time,
+language research during the past two decades has led to
+the notions of declarative programming and interacting agents.
+Languages based on these ideas,
+such as SISAL \cite{b:sisal-overview} and Concurrent Aggregates \cite{b:concurrent-aggregates},
+seem naturally parallel,
+which is more than can be said for today's memory-overwriting languages.
+For those worried about dusty decks,
+hybrids such as Fortran-M \cite{b:fortran-m},
+CC++ \cite{b:verified-ccpp},
+and pC++ \cite{b:pc-plusplus-distrib}
+hold out the hope that the transition from sequential to parallel programming
+might not have to be all that painful.
+
+Finally,
+many parallel programming systems (PPSs) have been developed because
+they had to be\footnote{Note that
+	we use the term ``PPS'' to include both languages and programming libraries.}.
+In less than a decade,
+one of the authors has worked on
+two different bit-parallel SIMD arrays (the ICL DAP and Thinking Machines CM-200),
+a transputer-based Meiko Computing Surface,
+a Fujitsu AP1000 with three different sets of communication and synchronization hardware,
+and networks of workstations using message passing (PVM) and distributed shared memory (Orca).
+Each of these machines has created a niche for at least one idiosyncratic programming system.
+
+The reasons why so many of these PPSs are only used by their developers (if at all) are murkier.
+Part of the blame undoubtedly lies with the diversity of hardware,
+and the attendant lack of portability,
+alluded to above.
+A second reason is that an academic researcher's principal interest is developing new languages,
+not supporting existing ones.
+By the time a system is 90\% complete,
+its author is already thinking about its successor.
+Few application programmers are willing to invest effort porting codes
+to systems which are not properly supported,
+and liable to change or evaporate without notice.
+Third,
+many research groups have chosen to explore the potential of parallelism
+without consideration for compatibility with older languages.
+Application programmers must therefore face the prospect of completely re-writing their programs,
+rather than simply porting them.
+As the next section argues,
+this can obviate any performance that might be gained from parallelization.
+Finally,
+many PPSs simply cannot support the software engineering load of large applications.
+Many provide only a single global namespace,
+do not include I/O capabilities,
+require users to marshal and unmarshal data explicitly,
+or do not permit hardware to be timeshared.
+
+The net result is that many PPSs are never used for anything more complicated than
+generating the Mandelbrot Set,
+simulating the Game of Life,
+multiplying dense matrices,
+or finding all solutions to the $N$-queens problem for some small $N$.
+Lacking the feedback that comes from more demanding use,
+few systems are improvements over their predecessors
+in the way that successive versions of operating systems have improved on one another,
+or the languages in the Algol$\rightarrow$Modula-$n$ family
+have become both more powerful and more secure.
+Most applications programmers therefore choose to play it safe
+and stick to parallel programming's lowest common denominators:
+data-parallel Fortran,
+and message-passing libraries.
+
+The historical reasons for tolerating this situation are becoming less valid with each passing year.
+When only a few parallel computers existed,
+and these were of widely different types,
+software standardization simply didn't make sense.
+Similarly,
+when supercomputers were very expensive,
+the cost of software development seemed relatively smaller,
+and the requirement for maximum performance relatively greater,
+than in sequential computing.
+As \cite{b:social-limits-speed} points out,
+however, these arguments are losing force.
+Now,
+as in sequential computing,
+the first question is not ``How do I write programs for this machine?'',
+but ``Will this machine run my programs?''
+As microprocessor-based MIMD hardware comes to dominate massively-parallel computing,
+we see increasing emphasis on standards such as High-Performance Fortran (HPF) \cite{b:hpf-overview},
+and the Message-Passing Interface (MPI) \cite{b:mpi-overview}.
+
+But herein lies a danger.
+History shows that it is extremely difficult
+to displace a programming language or system once it becomes established.
+Cobol and MS-DOS are the most frequently cited examples,
+but many systems which should have been superceded long ago have managed
+not only to cling to life,
+but to grow in influence.
+(The fact that the mail signature
+``The last good thing written in C was Schubert's Ninth Symphony''
+can elicit smiles simply proves that even the truth can be funny.)
+Established systems evolve slowly, if at all.
+It would therefore seem that the best time to guarantee ourselves
+a good parallel programming paradigm is right now,
+before a large number of large applications are created and take on lives of their own.
+
+We therefore propose to use a set of simple programming problems to compare
+the usability of parallel programming systems.
+Competent programmers, fluent in a specific system,
+will implement solutions to these problems and report their experiences
+in terms of development time, code size and clarity, and runtime efficiency.
+These problems are on the scale of the toy applications described several paragraphs ago
+both to keep implementation time low
+and because we feel that any PPS produced today ought to be able to support such simple programs.
+As the second author put it,
+``We're all sick of seeing these,
+but maybe if we all catch the disease at the same time we'll finally build up some immunity to it.''
+One significant innovation in this work is that
+we also require implementations of our suite to chain problems together,
+so that the output of one problem is the input to another.
+This will allow us to assess how well each PPS supports modularization and code re-use
+(or, more realistically, how much extra effort programmers must invest
+to achieve these goals when using a particular PPS).
+
+Section~\ref{s:corollary} motivates this work by showing
+how poor usability can limit the realizable parallelism in a program.
+Section~\ref{s:previous} surveys previous work on the comparison of parallel programming systems,
+while Section~\ref{s:method} outlines our choice of methods, and the constraints on our work.
+Section~\ref{s:toys} then presents the suite of problems we intend to use.
+In recognition of the original work done by Feo and others on
+the Salishan Problems~\cite{b:salishan}, this suite is called
+the Cowichan Problems\footnote{\noindent Pronounced {\em{Cow}\/}-i-chun.
+	Like Salishan, the word is a Northwest Coast Indian place name.}.
+
+The authors wish to acknowledge contributions from the participants in
+the IFIP Working Conference on Programming Environments for Massively Parallel Distributed Systems,
+particularly Alain Fagot, Frederic Guidec, Thomas Kunz, Jan Prins, and Julie Vachon.
+Help was also given by Peter Bailey, Henri Bal, Bruce Boghosian, Paul Lu,
+Neil MacDonald, Steve Moyer, Jonathan Schaeffer, and David Sitsky,
+who made many comments and improvements.
+The first author was supported by a grant from
+the European Commission's Human Capital and Mobility Programme,
+and later by the Computer Systems Research Institute at the University of Toronto.
+He is grateful to Henri Bal and the Vrije Universiteit,
+and to Ken Sevcik and the Universityr of Toronto,
+for their hospitality.
+
+\section{Quantifying the Importance of Usability\label{s:corollary}}
+
+According to Amdahl's Law,
+the time $t$ required to execute a program has two components:
+$t_{seq}$, representing sequential operations that cannot be parallelized,
+and $t_{par}$, representing those operations which can.
+If we let $\sigma$ be the ``serial fraction'' of the program,
+so that $t_{seq} = {\sigma}t$ and $t_{par} = (1-{\sigma})t$,
+then the speedup which can be achieved using $P$ processors is:
+\begin{eqnarray*}
+s(P)	& =	& \frac{t(1)}{t(P)}	\\
+	& =	& \frac{t}{{{\sigma}t} + {{(1-{\sigma})t}}/{P}}
+\end{eqnarray*}
+As $P{\rightarrow}{\infty}$,
+the potential speedup is bounded by $1/{\sigma}$.
+
+What is not usually acknowledged is
+the influence of programming system usability on
+the potential speedup of sequential programs.
+As stated above, Amdahl's Law applies only to a single run of a program.
+In the real world, programs are first developed, and then run many times.
+If we let $T$ be the total running time of a program over its lifetime,
+$D_{seq}$ be the time required to develop the sequential components of a program,
+and $D_{par}$ be the time required to develop the parallel components
+(or parallelize the sequential components),
+then the lifetime speedup we can achieve is given by:
+\begin{eqnarray*}
+S(P)	& =	& \frac{D_{seq} + T(1)}{D_{seq} + D_{par} + T(P)}	\\
+	& =	& \frac{D_{seq} + T}{D_{seq} + D_{par} + {{\sigma}T} + {{(1-{\sigma})T}}/{P}}
+\end{eqnarray*}
+Assume that we are parallelizing a ``dusty deck'',
+i.e.\ that the time $D_{seq}$ has already been invested.
+If we let $\phi = D_{par}/T$ be the ratio of parallelization time to total program runtime,
+then achievable speedup is limited by:
+\begin{eqnarray*}
+S_{legacy}(P)	& =	& \frac{T}{D_{par} + {\sigma}T}		\\
+		& =	& \frac{1}{{\phi} + {\sigma}}
+\end{eqnarray*}
+The time required to parallelize a program can therefore be seen
+as increasing that program's effective serial fraction.
+Unless parallelization time can be substantially reduced,
+massively-parallel computing is likely to remain attractive only in those cases in which:
+\begin{itemize}
+\item	the application is trivially parallel (e.g.\ task-farming a rendering calculation);
+\item	the expected total program runtime is very large
+	(i.e.\ the program is a package used extensively in a field
+	such as computational chemistry or vehicle crash simulation);
+	or
+\item	cost is not an obstacle (i.e.\ the customer is the NSA).
+\end{itemize}
+
+\section{Previous Work\label{s:previous}}
+
+In a 1981 survey article \cite{b:psych-prog-survey}, B.~A.\ Sheil observed that:
+\begin{quote}
+As practiced by computer science,
+the study of programming is an unholy mixture of mathematics,
+literary criticism,
+and folklore.
+\end{quote}
+Little has changed since.
+Computer scientists pay lip service to the importance of usability,
+but are strangely reluctant to try to quantify it,
+particularly with respect to the tools they use themselves.
+Religious debates about the ``right'' first-year teaching language
+or the ``best'' GUI toolkit are common;
+systematic use of the experimental method is not.
+
+Most of the experiments which have been done have concentrated on ``programming in the small'' issues,
+such as readability and code-pattern recognition
+\cite{b:reverse-parsing-2,b:cloze-program-1,b:prog-comprehension-1}.
+The little work that has been done on ``programming in the large'' has been anecdotal,
+such as \cite{b:compare-ada-c-pascal}.
+This book presented various authors' impressions of Pascal, C, and Ada
+(before any complete Ada implementations existed).
+Its editors formulated a list of questions to use in comparing languages,
+but did not use it themselves.
+A modified version of this questionnaire,
+tailored for parallel programming languages,
+is given in Appendix~\ref{s:questions},
+and will be used as a guideline in our work.
+
+Two comparative efforts in parallel programming are \cite{b:babb-cases} and \cite{b:salishan}.
+The first presented implementations of a simple numerical quadrature program
+in more than a dozen different parallel languages
+in use on mid-1980s hardware.
+The second presented implementations of
+the Salishan Problems---Hamming number generation,
+isomer enumeration,
+skyline matrix reduction,
+and a simple discrete event simulator---in
+C* \cite{b:dataparallel-c}, Occam~\cite{b:occam}, Ada~\cite{b:ada},
+and a variety of dataflow and functional languages.
+Both of these books convey the flavor of the languages they describe,
+but neither made any effort to compare languages or problem implementations directly.
+
+Inspired by the Salishan Problems,
+the first author developed a suite of seven problems \cite{b:cowichan-1}
+in order to test the limits of parallel programming systems.
+Individual problems were badly load-balanced,
+manipulated irregular pointer-based structures,
+and so on.
+Our experience implementing them was extremely valuable,
+as it uncovered many bugs in the programming system used,
+and revealed several shortcomings of the system's design.
+However,
+we also discovered that implementing each problem takes six to eight weeks,
+which we feel is prohibitive at this exploratory stage.
+
+\section{Methodology\label{s:method}}
+
+The main aim of this work is to assess and compare
+the ease with which programs can be developed and/or ported
+using different parallel programming systems.
+Here,
+we discuss issues related to choosing the problems that make up the suite,
+assessing the complexity of particular implementations,
+and other purposes which implementations of these might serve.
+Recognizing that these problems are extremely simple,
+and easy to parallelize,
+we refer to them as ``toys''.
+
+\subsection{Criteria for Selection\label{s:method-criteria}}
+
+Our criteria for including problems in this suite are as follows:
+\begin{enumerate}
+\item	Each toy should require no more than an afternoon
+	to write and test in a well-supported sequential language.
+	We feel that making individual problems more complicated will only discourage implementation.
+\item	The correctness of each implementation must be relatively easy to verify.
+	Toys whose output is easily visualized are therefore to be preferred,
+	as are toys whose results are insensitive to floating-point discretization effects.
+\item	Each toy application should be amenable to
+	an analysis of speedup or isoefficiency \cite{b:isoefficiency-tutorial}
+	to allow a comparison of theory and practice.
+\item	At least some toys should not be ``infinitely scalable''.
+	Many real-world applications are not,
+	and this suite should reflect such limitations.
+\item	At least some toys should require I/O,
+	since this important aspect of real-world programming is often neglected by PPS designers.
+\item	There should be some potential redundancy in the type of parallelization done,
+	so that re-use of software can be demonstrated.
+\item	Together,
+	the toys in the suite must exercise a wide range of common parallel operations
+	(Appendix~\ref{s:cliche-ops})
+	and memory reference patterns
+	(Appendix~\ref{s:cliche-memref}).
+\item	The ``obvious'' implementations of these toys should span
+	a wide range of parallel programming paradigms,
+	such as task farming,
+	geometric and functional decomposition,
+	and speculative parallelism.
+\item	Parallelizations for several (if not all) of
+	the types of programming systems shown in Figure~\ref{f:taxonomy} should be known.
+	This suite is not intended to be a collection of research problems;
+	reasonably simple and efficient implementations in most environments
+	should be straightforward to produce.
+\end{enumerate}
+
+\begin{figure}
+\epsfysize=0.5\textheight
+\begin{center}\mbox{\epsffile{fig/taxonomy.eps}}\end{center}
+\caption{A Taxonomy of Parallel Programming Systems\label{f:taxonomy}}
+\end{figure}
+
+\subsection{Specification\label{s:method-spec}}
+
+Toys should be specified in terms of inputs and outputs,
+rather than algorithmically.
+For example,
+``sort $N$ integers in the range $1{\ldots}R$,
+where $R$ is not known in advance and there may be multiple instances of a given value''
+is to be preferred over
+``parallelize quicksort''.
+As \cite{b:slalom} argued,
+which parallel algorithm is best in a particular programming system
+depends critically on the architectural assumptions made by that system.
+Implementors should be free to employ those methods which they find natural and convenient.
+The only exception we make to this rule is in the two matrix equation solvers,
+where we require Gaussian elimination and successive over-relaxation.
+Given the enormous number of matrix solution algorithms in use,
+we felt we had to specify these particular algorithms in order to ensure that
+different implementations of this suite would be comparable.
+
+\subsection{Software Engineering Issues\label{s:method-softeng}}
+
+These toys will exercise many different aspects of parallel systems.
+However,
+their ``single algorithm per program'' model is not representative of real applications.
+These usually contain several discrete (and sometimes overlapping) phases,
+each of which is qualitatively different.
+A full implementation of this suite will therefore have two parts.
+In the first,
+each toy will be implemented as a stand-alone program.
+In the second,
+toys will be chained together to create the kind of phase behaviour seen in real applications
+(Figure~\ref{f:chaining}).
+This will test the ease with which heterogeneous parallelism can be mixed within a single program.
+It will also show how well the system supports code re-use and information hiding,
+which are crucial to the development of large programs.
+
+\begin{figure}
+\epsfxsize=12cm
+\begin{center}\mbox{\epsffile{fig/chain.eps}}\end{center}
+\caption{Chaining\label{f:chaining}}
+\end{figure}
+
+A second reason for chaining toys is that
+many groups are now using algorithmic skeletons to structure parallel programs
+\cite{b:cole-skel,b:p3l-overview,b:enterprise}.
+Such skeletons encapsulate the details of a particular style of parallelism,
+and hide low-level or platform-dependent issues.
+We hope that chaining will show the strengths and weaknesses of such systems.
+
+Finally,
+chaining should be designed so that some toys can be executed concurrently.
+Many PPSs impose extraneous constraints on programs,
+e.g.\ require all processes to participate in every barrier synchronization,
+or require the same executable to be loaded onto each processor.
+These constraints can limit the exploitation of potential concurrency.
+Permitting, but not requiring, concurrent execution of several toys should uncover such limitations.
+
+\subsection{Sizing\label{s:method-size}}
+
+One crucial aspect of the specification of toys is
+the way in which the sizes of problems are determined.
+In a completely frozen model, the actual size of each problem would be compiled into each toy.
+A fluid implementation, by contrast, would allow sizes to be specified at run-time,
+and would only then allocate and partition data structures.
+We have chosen to use an intermediate model (which might be called ``slushy''),
+in which the maximum size of individual problems is specified during compilation,
+but the actual size of a problem is only determined when the toy begins to execute.
+We hope that the use of this model will force implementors to deal with
+at least some of the software engineering issues
+involved in building flexible large-scale applications,
+without making implementation prohibitively difficult.
+
+\subsection{Assessing Complexity\label{s:method-complex}}
+
+There are at least two different ways in which usability might be compared.
+One would be to measure the performance achieved by an ``average'' programmer
+as a function of time on each of a range of problems.
+This would lead to graphs of the kind shown in Figure~\ref{f:perf},
+where the left graph shows a particular result
+and the right graph a simplified abstraction of it.
+By analogy with Hockney's $n_{1/2}$ measure \cite{b:hockney-perfparam},
+which is the length of vector on which a pipelined architecture achieves
+half its theoretical peak performance,
+we could in principle find the value of $p_{1/2}$---the programming time required to achieve
+half of a machine's peak performance\footnote{Note that
+	if performance was measured as a fraction of the figures quoted by manufacturers for their machines,
+	it is unlikely that the halfway mark would ever be reached.}
+for a particular combination of programming system and problem type.
+
+\begin{figure}
+\epsfxsize=12cm
+\begin{center}\mbox{\epsffile{fig/perf-time.eps}}\end{center}
+\caption{Performance vs.\ Time\label{f:perf}}
+\end{figure}
+
+A second option would be to measure the complexities of
+implementations of a single application using different programming systems.
+With this approach,
+comparative performance or speedup figures would be supplemented by complexity measures,
+as shown in Figure~\ref{f:complex}.
+
+\begin{figure}
+\epsfxsize=6cm
+\begin{center}\mbox{\epsffile{fig/perf-complex.eps}}\end{center}
+\caption{Comparative Code Complexity\label{f:complex}}
+\end{figure}
+
+The drawback of the first approach is that there are no ``typical'' problems,
+or ``average'' programmers.
+Meaningful measurement of  $p_{1/2}$ would therefore require
+measurement of a large number of programmers working on many problems.
+Since this is too expensive to be practical,
+the second approach is the one we have chosen to adopt.
+It has drawbacks as well,
+most notably the fact that no-one has ever demonstrated any better measure of program complexity
+than a simple count of the number of lines in a program \cite{b:fenton-metrics}.
+Since we anticipate a wide variation in the types of progamming systems that will be used in this work
+(ranging from declarative dataflow languages
+through functional languages with Lisp-like syntax
+to parallel dialects of Fortran and C),
+and in the indentation, commenting, and layout styles of particular programmers,
+we may measure complexity by counting the number of tokens in the source code which are
+keywords,
+intrinsic operators,
+user-defined functions,
+type or variable declarations,
+and miscellaneous punctuation.
+
+\subsection{Other Uses for Implementations\label{s:method-uses}}
+
+This suite is intended for assessing PPS usability,
+but we envisage at least three other uses for implementations of it:
+\begin{description}
+\item[Related Research:]
+	We hope that the existence of this suite will indicate
+	to the developers of new parallel programming systems
+	what a mature tool should be able to support.
+	If sufficiently diverse,
+	the suite could also be used to help test the correctness of new or improved systems.
+	Finally,
+	this suite could complement existing performance benchmarks,
+	since performance figures for individual toys could be compared.
+\item[Tool Development:]
+	Requests from tool developers for existing parallel programs,
+	or for event traces from them,
+	are common on newsgroups such as {\tt{comp.parallel}}.
+	We hope that traces from implementations of this suite
+	will be used to compare different debugging and performance monitoring tools,
+	that their source code will be used to test
+	new parallelizing compilation techniques or mapping and scheduling algorithms,
+	and so on.
+\item[Teaching:]
+	Implementations will be suitable for use as classroom examples,
+	since they will be small enough to be understood quickly.
+	The toys themselves should also be suitable as classroom exercises
+	in a senior undergraduate course on parallel computing.
+\end{description}
+
+\subsection{Some Criticisms\label{s:method-criticism}}
+
+\noindent {\em{Why not use an existing benchmark suite for this purpose?}\/}
+
+Implementations of benchmark suites have usually been coded for absolute speed.
+They are not representative of ``normal'' practice,
+in which reasonable performance is the usual goal,
+and so are inappropriate for this work.
+In addition,
+most existing benchmark suites are too large to be implemented or ported quickly
+(e.g.\ SPEC~\cite{b:bench-over}),
+over-specified (e.g.\ the Livermore Loops~\cite{b:livermore-loops}),
+or concerned with a limited range of applications
+(e.g.\ the NAS Parallel Benchmarks~\cite{b:nas-results}).
+Finally,
+most exist only in C or Fortran (or both);
+many interesting parallel programming systems are built on top of other languages,
+including Modula-2, Scheme, Prolog, and various dataflow languages.
+We do not want the effort required to translate several large programs
+to discourage researchers from participating in this exercise.
+
+\vspace{\baselineskip}
+
+\noindent {\em{Won't the results depend primarily on programmer ability?}\/}
+
+The short answer to this question is yes,
+but no more than the results from performance benchmarks.
+A longer answer is that	since we intend to measure the combination of code complexity and performance achieved,
+rather than performance as a function of development time,
+programmers will be allowed to revise and improve their implementations when and as desired.
+
+\section{The Cowichan Problems\label{s:toys}}
+
+This section describes the problems making up the full problem suite.
+As discussed above,
+the implementation of each is to be used both as a stand-alone program
+and as a module in the chained problem sequence described in Section~\ref{s:issues-chain}.
+Table~\ref{t:toy-codes} lists the one-character codes sometimes used to identify toys.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{cl|cl}
+Code	& Toy				& Code	& Toy				\\
+\hline
+E	& elastic net			& O	& outer product			\\
+G	& Gaussian elimination		& P	& matrix-vector product		\\
+H	& halving shuffle		& R	& random matrix generation	\\
+I	& invasion percolation		& S	& successive over-relaxation	\\
+L	& Game of Life			& T	& image thresholding		\\
+M	& Mandelbrot Set		& V	& vector difference		\\
+N	& point normalization		& W	& point value winnowing
+\end{tabular}
+\caption{Single-Character Codes for Toys\label{t:toy-codes}}
+\end{center}
+\end{table}
+
+\subsection{{\tt{mandel}}:
+	Mandelbrot Set Generation
+	\label{s:toys-mandel}}
+
+\begin{figure}
+\begin{center}\framebox{\epsffile{fig/mandel.ps}}\end{center}
+\caption{The Mandelbrot Set\label{f:mandel}}
+\end{figure}
+
+This module generates the Mandelbrot Set
+for a specified region of the complex plane
+(Figure~\ref{f:mandel}).
+The inputs to this module are:
+\begin{description}
+\item[{\tt{nrows, ncols}}:]
+	the number of rows and columns in the matrix.
+\item[{\tt{x0, y0}}:]
+	the real coordinates of the lower-left corner
+	of the region to be generated.
+\item[{\tt{dx, dy}}:]
+	the extent of the region to be generated.
+\end{description}
+Its output is:
+\begin{description}
+\item[{\tt{matrix}}:]
+	an integer matrix containing the iteration count at each point in the region.
+\end{description}
+
+Given initial coordinates $(x_0, y_0)$,
+the Mandelbrot Set is generated by iterating the equation
+\begin{eqnarray*}
+x^{\prime}	& =	& x^2 - y^2 + y_0	\\
+y^{\prime}	& =	& 2{x}{y} + x_0
+\end{eqnarray*}
+until either an iteration limit is reached,
+or the values diverge.
+The iteration limit used in this module is 150 steps;
+divergence occurs when $x^2 + y^2$ becomes 2.0 or greater.
+The integer value of each element of the matrix is
+the number of iterations done.
+Note that,
+as in all problems,
+the output is required to be
+independent of the number of processors used.
+This requires programmers to be careful about
+floating-point roundoff effects.
+
+\subsection{{\tt{randmat}}:
+	Random Number Generation
+	\label{s:toys-rng}}
+
+This module fills a matrix with pseudo-random integers.
+The inputs to this module are:
+\begin{description}
+\item[{\tt{nrows, ncols}}:]
+	the number of rows and columns in the matrix.
+\item[{\tt{s}}:]
+	the random number generation seed.
+\end{description}
+Its output is:
+\begin{description}
+\item[{\tt{matrix}}:]
+	an integer matrix filled with random values.
+\end{description}
+Note that,
+as in all problems,
+the output is required to be independent of the number of processors used.
+Generating new seed values from the given seed,
+and running one copy of the random number generator
+on each processor,
+is therefore unlikely to qualify as a solution.
+
+\subsection{{\tt{half}}:
+	Two-Dimensional Shuffle
+	\label{s:toys-half}}
+
+This module divides the values in a rectangular two-dimensional integer matrix into two halves along one axis,
+shuffles them,
+and then repeats this operation along the other axis.
+Values in odd-numbered locations are collected at the low end of each row or column,
+while values in even-numbered locations are moved to the high end.
+An example transformation is:
+\begin{small}
+\begin{eqnarray*}
+\begin{array}{cccc}
+a & b & c & d \\
+e & f & g & h \\
+i & j & k & l
+\end{array}
+& = &
+\begin{array}{cccc}
+a & c & b & d \\
+i & k & j & l \\
+e & g & f & h
+\end{array}
+\end{eqnarray*}
+\end{small}
+Note that how an array element is moved depends only on whether its location index is odd or even,
+not on whether its value is odd or even.
+
+The inputs to this module are:
+\begin{description}
+\item[{\tt{matrix}}:]
+	an integer matrix.
+\item[{\tt{nrows, ncols}}:]
+	the number of rows and columns in the matrix.
+\end{description}
+Its output is:
+\begin{description}
+\item[{\tt{matrix}}:]
+	an integer matrix containing shuffled values.
+\end{description}
+
+\subsection{{\tt{invperc}}:
+	Invasion Percolation
+	\label{s:toys-invperc}}
+
+Invasion percolation models the displacement of one fluid
+(such as oil)
+by another
+(such as water)
+in fractured rock \cite{b:percolation-theory,b:invasion-percolation}.
+In two dimensions,
+this can be simulated by generating
+an $N{\times}N$ grid of random numbers in the range $[1{\ldots}R]$,
+and then marking the center cell of the grid as filled.
+In each iteration,
+one examines the four orthogonal neighbors of all filled cells,
+chooses the one with the lowest value
+(i.e.\ the one with the least resistance to filling),
+and fills it in.
+Figure~\ref{f:invperc1} shows the first few steps in this process,
+while Figure~\ref{f:invperc2} shows the evolution of the final fractal shape.
+
+\begin{figure}
+\begin{footnotesize}
+\begin{math}
+\begin{array}{ccc}
+\begin{array}{|c|c|c|c|c|}
+\hline
+26 & 12 & 72 & 45 & 38 \\
+\hline
+10 & 38 & 39 & 92 & 38 \\
+\hline
+44 & 29 & \circ & 29 & 77 \\
+\hline
+61 & 26 & 90 & 35 & 11 \\
+\hline
+83 & 84 & 18 & 56 & 52 \\
+\hline
+\end{array}
+&
+\begin{array}{|c|c|c|c|c|}
+\hline
+26 & 12 & 72 & 45 & 38 \\
+\hline
+10 & 38 & 39 & 92 & 38 \\
+\hline
+44 & \star & \circ & 29 & 77 \\
+\hline
+61 & 26 & 90 & 35 & 11 \\
+\hline
+83 & 84 & 18 & 56 & 52 \\
+\hline
+\end{array}
+&
+\begin{array}{|c|c|c|c|c|}
+\hline
+26 & 12 & 72 & 45 & 38 \\
+\hline
+10 & 38 & 39 & 92 & 38 \\
+\hline
+44 & \circ & \circ & 29 & 77 \\
+\hline
+61 & \star & 90 & 35 & 11 \\
+\hline
+83 & 84 & 18 & 56 & 52 \\
+\hline
+\end{array}
+\\
+ & & \\
+\begin{array}{|c|c|c|c|c|}
+\hline
+26 & 12 & 72 & 45 & 38 \\
+\hline
+10 & 38 & 39 & 92 & 38 \\
+\hline
+44 & \circ & \circ & \star & 77 \\
+\hline
+61 & \circ & 90 & 35 & 11 \\
+\hline
+83 & 84 & 18 & 56 & 52 \\
+\hline
+\end{array}
+&
+\begin{array}{|c|c|c|c|c|}
+\hline
+26 & 12 & 72 & 45 & 38 \\
+\hline
+10 & 38 & 39 & 92 & 38 \\
+\hline
+44 & \circ & \circ & \circ & 77 \\
+\hline
+61 & \circ & 90 & \star & 11 \\
+\hline
+83 & 84 & 18 & 56 & 52 \\
+\hline
+\end{array}
+&
+\begin{array}{|c|c|c|c|c|}
+\hline
+26 & 12 & 72 & 45 & 38 \\
+\hline
+10 & 38 & 39 & 92 & 38 \\
+\hline
+44 & \circ & \circ & \circ & 77 \\
+\hline
+61 & \circ & 90 & \circ & \star \\
+\hline
+83 & 84 & 18 & 56 & 52 \\
+\hline
+\end{array}
+\\
+ & & \\
+\begin{array}{|c|c|c|c|c|}
+\hline
+26 & 12 & 72 & 45 & 38 \\
+\hline
+10 & \star & 39 & 92 & 38 \\
+\hline
+44 & \circ & \circ & \circ & 77 \\
+\hline
+61 & \circ & 90 & 35 & 11 \\
+\hline
+83 & 84 & 18 & 56 & 52 \\
+\hline
+\end{array}
+&
+\begin{array}{|c|c|c|c|c|}
+\hline
+26 & 12 & 72 & 45 & 38 \\
+\hline
+\star & \circ & 39 & 92 & 38 \\
+\hline
+44 & \circ & \circ & \circ & 77 \\
+\hline
+61 & \circ & 90 & \circ & 11 \\
+\hline
+83 & 84 & 18 & 56 & 52 \\
+\hline
+\end{array}
+&
+\begin{array}{|c|c|c|c|c|}
+\hline
+26 & \star & 72 & 45 & 38 \\
+\hline
+\circ & \circ & 39 & 92 & 38 \\
+\hline
+44 & \circ & \circ & \circ & 77 \\
+\hline
+61 & \circ & 90 & \circ & \circ \\
+\hline
+83 & 84 & 18 & 56 & 52 \\
+\hline
+\end{array}
+\end{array}
+\end{math}
+\end{footnotesize}
+\caption{Invasion Percolation\label{f:invperc1}}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+{\epsfxsize=0.2\textwidth\framebox{\epsffile{fig/invperc1.ps}}}
+{\epsfxsize=0.2\textwidth\framebox{\epsffile{fig/invperc2.ps}}}
+{\epsfxsize=0.2\textwidth\framebox{\epsffile{fig/invperc3.ps}}}
+{\epsfxsize=0.2\textwidth\framebox{\epsffile{fig/invperc4.ps}}}
+\end{center}
+\caption{Fractal Generated by Invasion Percolation\label{f:invperc2}}
+\end{figure}
+
+The simulation continues until
+some fixed percentage of cells have been filled,
+or until some other condition
+(such as the presence of trapped regions)
+is achieved.
+The fractal structure of the filled and unfilled regions
+is then examined to determine how much oil could be recovered.
+The na\"{\i}ve way to implement this is to repeatedly scan the array;
+a more sophisticated, and much faster, sequential technique
+is to maintain a priority queue of unfilled cells
+which are neighbors of filled cells.
+This latter technique is similar to the list-based methods used in some cellular automaton programs,
+and is very difficult to parallelize effectively.
+
+The inputs to this module are:
+\begin{description}
+\item[{\tt{matrix}}:]
+	an integer matrix.
+\item[{\tt{nrows, ncols}}:]
+	the number of rows and columns in the matrix and mask.
+\item[{\tt{nfill}}:]
+	the number of points to fill.
+\end{description}
+Its output is:
+\begin{description}
+\item[{\tt{mask}}:]
+	a Boolean matrix filled with {\tt{true}} (showing a filled cell) or {\tt{false}} (showing an unfilled cell).
+\end{description}
+Filling begins at the central cell of the matrix
+(rounding down for even-sized axes).
+
+\subsection{{\tt{thresh}}:
+	Histogram Thresholding
+	\label{s:toys-thresh}}
+
+This module performs histogram thresholding on an image.
+Given an integer image $I$ and a target percentage $p$,
+it constructs a binary image $B$
+such that $B_{i,j}$ is set
+if no more than $p$ percent of the pixels in $I$ are brighter than $I_{i,j}$.
+The general idea is that an image's histogram should have 2 peaks,
+one centered around the average foreground intensity,
+and one centered around the average background intensity.
+This program attempts to set
+a threshold between the two peaks in the histogram
+and select the pixels above the threshold.
+This module's inputs are:
+\begin{description}
+\item[{\tt{matrix}}:]
+	the integer matrix to be thresholded.
+\item[{\tt{nrows, ncols}}:]
+	the number of rows and columns in the matrix and mask.
+\item[{\tt{percent}}:]
+	the minimum percentage of cells to retain.
+\end{description}
+Its output is:
+\begin{description}
+\item[{\tt{mask}}:]
+	a Boolean matrix filled with {\tt{true}} (showing a cell that is kept) or {\tt{false}} (showing a cell that is discarded).
+\end{description}
+
+\subsection{{\tt{life}}:
+	Game of Life
+	\label{s:toys-life}}
+
+\begin{figure}
+\begin{center}
+{\epsfxsize=0.2\textwidth\framebox{\epsffile{fig/life1.ps}}}
+{\epsfxsize=0.2\textwidth\framebox{\epsffile{fig/life2.ps}}}
+{\epsfxsize=0.2\textwidth\framebox{\epsffile{fig/life3.ps}}}
+{\epsfxsize=0.2\textwidth\framebox{\epsffile{fig/life4.ps}}}
+\end{center}
+\caption{Snapshots from the Game of Life\label{f:life}}
+\end{figure}
+
+This module simulates the evolution of Conway's Game of Life,
+a two-dimensional cellular automaton (Figure~\ref{f:life}).
+Its inputs are:
+\begin{description}
+\item[{\tt{matrix}}:]
+	a Boolean matrix representing the Life world.
+\item[{\tt{nrows, ncols}}:]
+	the number of rows and columns in the matrix.
+\item[{\tt{numgen}}:]
+	the number of generations to simulate.
+\end{description}
+Its output is:
+\begin{description}
+\item[{\tt{matrix}}:]
+	a Boolean matrix representing the world after simulation.
+\end{description}
+At each time step,
+this module must count the number of live ({\tt{true}}) neighbors
+of each cell,
+using both orthogonal and diagonal connectivity
+and circular boundary conditions.
+The update rule is simple:
+if a cell has 3 live neighbors,
+or has 2 live neighbors and is already alive,
+it is alive in the next generation.
+In any other situation,
+the cell becomes, or stays, dead.
+
+\subsection{{\tt{winnow}}:
+	Weighted Point Selection
+	\label{s:toys-winnow}}
+
+This module converts a matrix of integer values
+to a vector of points,
+represented as $x$ and $y$ coordinates.
+Its inputs are:
+\begin{description}
+\item[{\tt{matrix}}:]
+	an integer matrix, whose values are used as masses.
+\item[{\tt{mask}}:]
+	a Boolean matrix showing which points are eligible for consideration.
+\item[{\tt{nrows, ncols}}:]
+	the number of rows and columns in the matrix.
+\item[{\tt{nelts}}:]
+	the number of points to select.
+\end{description}
+Its output is:
+\begin{description}
+\item[{\tt{points}}:]
+	a vector of $(x,y)$ points.
+\end{description}
+Each location where {\tt{mask}} is {\tt{true}}
+becomes a candidate point,
+with a weight equal to the integer value in {\tt{matrix}} at that location
+and $x$ and $y$ coordinates
+equal to its row and column indices.
+These candidate points are then sorted into increasing order by weight,
+and {\tt{nelts}} evenly-spaced points selected to create the result vector.
+
+\subsection{{\tt{norm}}:
+	Point Location Normalization
+	\label{s:toys-norm}}
+
+This module normalizes point coordinates so that all points lie within the unit square $[0{\ldots}1]{\times}[0{\ldots}1]$.
+Its inputs are:
+\begin{description}
+\item[{\tt{points}}:]
+	a vector of point locations.
+\item[{\tt{nelts}}:]
+	the number of elements in the point vector.
+\end{description}
+Its output is:
+\begin{description}
+\item[{\tt{points}}:]
+	a vector of normalized point locations.
+\end{description}
+If $x_{min}$ and $x_{max}$ are the minimum and maximum $x$ coordinate values in the input vector,
+then the normalization equation is:
+\[	x_{i}^{\prime} = \frac{x_i - x_{min}}{x_{max} - x_{min}}	\]
+$y$ coordinates are normalized in the same fashion.
+
+\subsection{{\tt{elastic}}:
+	Elastic Net Simulation
+	\label{s:toys-elastic}}
+
+This module uses the elastic net algorithm \cite{b:elastic-net} to find an approximate solution to the travelling salesentity problem (TSP).
+A closed, circular loop, modelled by a large number of doubly-connected points, is placed in the plane.
+This path is slowly deformed until it connects the points representing the cities to be visited (Figure~\ref{f:elastic}).
+The rate at which the loop is deformed determines the quality of the final path.
+
+\begin{figure}
+\begin{center}
+\framebox{\epsffile{fig/elastic1.ps}}
+\framebox{\epsffile{fig/elastic2.ps}}
+\framebox{\epsffile{fig/elastic3.ps}}
+\end{center}
+\caption{Relaxation of an Elastic Net\label{f:elastic}}
+\end{figure}
+
+Let the (fixed) location of city $i$ be $c_i$, and the (changeable) location of point $j$ on the elastic net be $p_j$.
+The change in the location of point $j$ during each iteration of the algorithm is given by:
+\begin{equation}
+{\delta}{p_j} = {\alpha}\sum_{i}{w_{ij}(c_i - p_j)} ~+~ K{\beta}(p_{j+1} - 2p_j + p_{j-1})
+\end{equation}
+$\alpha$ and $\beta$ are time-invariant factors relating the strengths of the city-to-point and point-to-point forces,
+and $K$ is a time-dependent factor which controls the rate of annealing.
+The strength of the force $w_{ij}$ between city $c_i$ and point $p_j$ is given by:
+\begin{equation}
+w_{ij} = {\phi}({\mid}c_i - p_j{\mid}, K) / \sum_{\ell}\phi({\mid}c_i - p_{\ell}{\mid}, K)
+\end{equation}
+where $\phi(d, K)$ is the Gaussian function $e^{-{d^2}/{K^2}}$.
+Note the normalization of each $w_{ij}$; in order for this algorithm to work properly, the total force being exerted by each city must be the same.
+This is accomplished by summing the forces exerted by each city, and then normalizing the city's forces by that total.
+
+The inputs to this module are:
+\begin{description}
+\item[{\tt{cities}}:]
+	a vector of points representing the locations of the cities to be toured.
+	The $(x,y)$ coordinates of these cities must be scaled to lie in the unit square $[0{\ldots}1]{\times}[0{\ldots}1]$.
+\item[{\tt{n\_cities}}:]
+	the number of cities in {\tt{cities}}.
+\item[{\tt{n\_net}}:]
+	the number of elastic net points to use.
+\item[{\tt{n\_iters}}:]
+	the total number of iterations to perform.
+\item[{\tt{n\_relax}}:]
+	the number of iterations to perform with each discrete value of $K$.
+	After each {\tt{n\_relax}} iterations, $K$ is reduced by a (constant) pre-defined scaling factor.
+\end{description}
+Its output is:
+\begin{description}
+\item[{\tt{net}}:]
+	a vector of {\tt{n\_net}} points representing the tour found.
+\end{description}
+
+\subsection{{\tt{outer}}:
+	Outer Product
+	\label{s:toys-outer}}
+
+This module turns a vector containing point positions
+into a dense, symmetric, diagonally dominant matrix
+by calculating the distances between each pair of points.
+It also constructs a real vector whose values are
+the distance of each point from the origin.
+Inputs are:
+\begin{description}
+\item[{\tt{points}}:]
+	a vector of $(x,y)$ points, where $x$ and $y$ are the point's position.
+\item[{\tt{nelts}}:]
+	the number of points in the vector, and the size of the matrix along each axis.
+\end{description}
+Its outputs are:
+\begin{description}
+\item[{\tt{matrix}}:]
+	a real matrix, whose values are filled with inter-point distances.
+\item[{\tt{vector}}:]
+	a real vector, whose values are filled with origin-to-point distances.
+\end{description}
+Each matrix element $M_{i,j}$ such that $i \neq j$
+is given the value $d_{i, j}$,
+the Euclidean distance between point $i$ and point $j$.
+The diagonal values $M_{i, i}$ are then set to
+{\tt{nelts}} times the maximum off-diagonal value
+to ensure that the matrix is diagonally dominant.
+The value of the vector element $v_i$ is set to
+the distance of point $i$ from the origin,
+which is given by $\sqrt{{x_i}^2 + {y_i}^2}$.
+
+\subsection{{\tt{gauss}}:
+	Gaussian Elimination
+	\label{s:toys-gauss}}
+
+This module solves a matrix equation $AX=V$ for
+a dense, symmetric, diagonally dominant matrix $A$
+and an arbitrary vector non-zero $V$
+using explicit reduction.
+(Matrices are required to be symmetric and diagonally dominant in order to guarantee that
+there is a well-formed solution to the equation.)
+Inputs are:
+\begin{description}
+\item[{\tt{matrix}}:]
+	the real matrix $A$.
+\item[{\tt{target}}:]
+	the real vector $V$.
+\item[{\tt{nelts}}:]
+	the number of values in each vector, and the size of the matrix along each axis.
+\end{description}
+Its output is:
+\begin{description}
+\item[{\tt{solution}}:]
+	a real vector containing the solution $X$.
+\end{description}
+
+\subsection{{\tt{sor}}:
+	Successive Over-Relaxation
+	\label{s:toys-sor}}
+
+This module solves a matrix equation $AX=V$ for
+a dense, symmetric, diagonally dominant matrix $A$
+and an arbitrary vector non-zero $V$
+using successive over-relaxation.
+Its inputs are:
+\begin{description}
+\item[{\tt{matrix}}:]
+	the real matrix $A$.
+\item[{\tt{target}}:]
+	the real vector $V$.
+\item[{\tt{nelts}}:]
+	the number of values in each vector, and the size of the matrix along each axis.
+\item[{\tt{tolerance}}:]
+	the solution tolerance, e.g.\ $10^{-6}$.
+\end{description}
+Its output is:
+\begin{description}
+\item[{\tt{solution}}:]
+	a real vector containing the solution $X$.
+\end{description}
+
+\subsection{{\tt{product}}:
+	Matrix-Vector Product
+	\label{s:toys-product}}
+
+Given a matrix $A$,
+a vector $V$,
+and an assumed solution $X$ to the equation $AX=V$,
+this module calculates the actual product $AX={V^{\prime}}$,
+and then finds the magnitude of the error.
+Inputs are:
+\begin{description}
+\item[{\tt{matrix}}:]
+	the real matrix $A$.
+\item[{\tt{actual}}:]
+	the real vector $V$.
+\item[{\tt{candidate}}:]
+	a real vector containing the supposed solution.
+\item[{\tt{nelts}}:]
+	the number of values in each vector, and the size of the matrix along each axis.
+\end{description}
+The output of this function is:
+\begin{description}
+\item[{\tt{e}}:]
+	the largest absolute value in the element-wise difference of $V$ and $V^{\prime}$.
+\end{description}
+
+\section{Other Issues\label{s:issues}}
+
+As described in Section~\ref{s:method-softeng},
+implementors are required to chain modules together in the manner shown in Figure~\ref{f:chaining}.
+This section describes the flow of control and data between these chained problems,
+and discusses several other important aspects of this suite,
+including I/O and visualization.
+
+\subsection{Chained Problem Sequences\label{s:issues-chain}}
+
+The chained implementation of these problems
+executes individual toys in the following order:
+\begin{enumerate}
+\item	An integer matrix $I$ with $r$ rows and $c$ columns is created
+	either by using the Mandelbrot Set algorithm (Section~\ref{s:toys-mandel}) or by filling locations with random values (Section~\ref{s:toys-rng}).
+	\label{e:chain-choice-1}
+\item	The integer matrix $I$ is shuffled in both dimensions (Section~\ref{s:toys-half}).
+\item	Either invasion percolation (Section~\ref{s:toys-invperc}) or histogram thresholding (Section~\ref{s:toys-thresh}) is used
+	to generate a Boolean mask $B$ from $I$ in which the (minimum) percentage of {\tt{true}} locations is $P$.
+	Like $I$, $B$ has $r$ rows and $c$ columns.
+	\label{e:chain-choice-2}
+\item	The Game of Life (Section~\ref{s:toys-life}) is simulated for $G$ generations, using $B$ as an initial configuration.
+	This step overwrites the Boolean matrix $B$.
+\item	A vector of $L$ $(m,x,y)$ points is created using the integer matrix $I$ and the Boolean matrix $B$ as described in Section~\ref{s:toys-winnow}.
+\item	The elastic net algorithm is simulated using the points created in the previous step as cities.
+\item	The final locations of the net points from the prevoius step are normalized, as described in Section~\ref{s:toys-norm}.
+\item	An $L{\times}L$ matrix $A$ and an $L$ vector $V$ are created using the normalized point locations from the previous step,
+	as described in Section~\ref{s:toys-outer}.
+\item	The matrix equation $AX=V$ is solved using Gaussian elimination and using successive over-relaxation
+	to generate two solution vectors $X_{gauss}$ and $X_{sor}$.
+	In a parallel system, these two problems should if possible be executed concurrently.
+\item	The checking vectors $V_{gauss} = A X_{gauss}$ and $V_{sor} = A X_{sor}$ are calculated.
+	In a parallel system, these two problems should if possible be executed concurrently.
+\item	The norm-1 distance between $V_{gauss}$ and $V_{sor}$, i.e.\ the greatest element-wise absolute difference, is calculated.
+	This measures the agreement between the solutions found by the two methods.
+\end{enumerate}
+Because of choices in steps~\ref{e:chain-choice-1} and~\ref{e:chain-choice-2},
+there are four possible chained sequences.
+A minimal implementation will provide one of these,
+while a full implementation will be a single program which can execute any of the four sequences.
+Intermediate implementations providing all four sequences as separate programs are also acceptable.
+
+\subsection{Input and Output\label{s:issues-io}}
+
+I/O is an important part of programming,
+but is often treated as being of secondary importance by language designers.
+This suite requires all stand-alone toys to read input values from files, and write results back;
+the chained version must be able to checkpoint intermediate results between toys.
+Finally,
+implementors are strongly encouraged to include some means of visualizing the output or evolution of individual toys.
+
+The file formats used in the Cowichan problems are shown in Figure~\ref{f:io-formats}.
+A file containing a vector begins with 1 positive integer,
+which specifies the number of elements in the vector;
+a file containing a matrix begins with 2 positive integers,
+which specify the number of rows and columns in the matrix respectively.
+Elements of the vector or matrix then appear one per line,
+from least-indexed to greatest-indexed
+(and in row-major order for matrices).
+
+The formats described above are required to be human-readable.
+Implementations may also include I/O using ``raw'' files, i.e.\ binary data dumps rather than formatted ASCII,
+using whatever file formats are convenient.
+This will allow programmers to demonstrate the ``natural'' I/O capabilities of particular systems
+which most probably be used for checkpointing intermediate results in real programs.
+
+\begin{figure}
+\epsfxsize=0.75\textwidth
+\begin{center}\mbox{\epsffile{fig/file-formats.eps}}\end{center}
+\caption{Cowichan File Formats\label{f:io-formats}}
+\end{figure}
+
+\subsection{Visualization\label{s:issues-vis}}
+
+Visualization is an increasingly important part of scientific and numerical computing.
+Including it as an optional part of this problem set is also a good way to exercise both
+the use of libraries within a parallel programming system,
+and the ease with which a programming system can support variant versions of a program.
+
+Our requirements for the graphics interface are:
+\begin{enumerate}
+\item	Visualization for individual toys should be as simple as possible,
+	and should require as few changes to the basic toy code as possible.
+\item	The same code should be used for both the stand-alone versions of the toys and for the chained versions.
+	The latter should create all images in a single window.
+\item	A single source file should implement both the graphical and non-graphical versions of each toy.
+\end{enumerate}
+The first two points require the system to distinguish between the actual drawing code
+(e.g.\ drawing a vector of points as circles)
+and the place where the drawing has to be done in the window (called the {\em{viewport}\/}).
+While the stand-alone toys use a whole window for drawing,
+the chained versions may only draw in some portion of the window, e.g.\ the upper left corner.
+At present,
+this is implemented by using a call counter
+in the interfaces for the individual toys and in the chained module.
+The actual drawing routines called from within each toy could then be the same.
+
+The present visualization routines were originally written by Anil Sukul,
+a student at the Vrije Universiteit, Amsterdam.
+The package uses the public domain graphics library VOGLE,
+available by anonymous FTP from {\tt{gondwana.ecr.mu.oz.au::/pub}}.
+VOGLE includes functions for drawing points, lines, polygons, and text in a device-independent fashion, 
+as well as screen control routines (such as double buffering).
+VOGLE was chosen because of its simplicity,
+and because it includes Pascal and Fortran interfaces.
+
+\subsection{Reproducibility\label{s:issues-reproduce}}
+
+Reproducibility is an important issue for parallel programming systems.
+While constraining the order of operations in a parallel system to guarantee reproducibility makes programs in that system easier to debug,
+it can also reduce the expressiveness or performance of the system.
+
+In this problem set, irreproducibility can appear in two forms: numerical and algorithmic.
+The first arises in toys such as {\tt{gauss}}, {\tt{sor}}, and {\tt{elastic}}, which use floating-point numbers.
+Precisely how round-off errors occur in these calculations can depend on the distribution of work among processors,
+or the order in which those processors carry out particular operations.
+
+Irreproducibility also arises in toys which only use exact numbers, such as {\tt{invperc}} and {\tt{randmat}}.
+In the former, the percolation region is grown by repeatedly filling the lowest-valued cell on its perimeter.
+If several cells have this value, implementations may choose one arbitrarily.
+Thus, different implementations may produce very different fractal shapes.
+In the case of random number generation, the simplest thing to do is to run the same generator independently on each processor,
+although the values in the resulting matrix then depend on the number of processors used.
+
+\section{Conclusion\label{s:conclude}}
+
+A full ANSI~C version of this problem suite has been written, and is available by anonymous FTP from:
+\begin{center}
+{\tt{ftp.cs.toronto.edu :: pub/gvw/cowichan/src.tar.gz}}
+\end{center}
+This release includes two parallel versions,
+both based on the POSIX threads package.
+The first uses repeated fork-and-join parallelism,
+while the second creates a fixed number of threads at the beginning of the program,
+then synchronizes them repeatedly using barriers.
+
+We would like to invite interested groups to participate in this project by parallelizing the problem suite using their favourite language or tool.
+Our aim is to make both the implementations and their descriptions available as a hypertext document through the World-Wide Web,
+and, if there is sufficient interest, to publish this material in book form.
+If you would like to contribute to this effort, please contact either of the first two authors.
+
+\bibliographystyle{plain}
+\newcommand{\bibea}{{\em{et~al.}}}
+\begin{small}
+\bibliography{paper}
+\end{small}
+
+\appendix
+
+\newpage
+\section{Parallel Clich\'{e}s\label{s:cliche}}
+
+\subsection{Operations\label{s:cliche-ops}}
+
+This list details some operations which are supported by many parallel programming systems.
+The toys described in Section~\ref{s:toys} provide opportunities for exercising many of these,
+and implementors are encouraged to phrase discussion of their work in terms of these operations where appropriate.
+
+\begin{small}
+\begin{toylist}
+\item	elementwise operations on arrays (unary, binary, and scalar promotion)
+\item	cumulative operations on arrays (reduction and parallel prefix)
+\item	array re-shaping and re-sizing (e.g.\ sub-array extraction)
+\item	partial (conditionally masked) versions of all of the above
+\item	regular data motion (e.g.\ circular and planar shifting)
+\item	irregular data motion (e.g.\ 1-to-1, 1-to-many, and many-to-1 permutation)
+\item	scalar and non-scalar value location (e.g.\ finding a scalar or record value in an array)
+\item	differential local addressing (i.e.\ subscripting an array with an array)
+\item	full or partial replication of shared read-only values
+\item	full or partial replication of shared read-mostly values with automatic consistency management
+\item	structures with rotating ownership, suitable for migration
+\item	producer-consumer structures
+\item	partitionable structures
+\item	pre-determined run-time re-partitioning (i.e.\ re-distributing an array)
+\item	dynamic re-partitioning (e.g.\ for load balancing)
+\item	committed mutual exclusion (e.g.\ waiting on a semaphore)
+\item	uncommitted mutual exclusion (e.g.\ lock or fail)
+\item	barrier synchronization
+\item	multiple concurrent barriers used by non-overlapping groups of processes
+\item	fetch-and-add, and other fetch-and-operate functions
+\item	pre-scheduled receipt of messages of known composition
+\item	variable-length message receipt
+\item	message selection by type
+\item	message selection by source
+\item	message selection by contents
+\item	guarded message selection (e.g.\ CSP's {\tt{alt}} construct)
+\item	broadcast and partial broadcast
+\item	split-phase (non-blocking) operations
+\item	data marshalling and unmarshalling of ``flat'' structures (e.g.\ arrays of scalars)
+\item	data marshalling and unmarshalling of nested or linked structures
+\item	heterogeneous parallelism (i.e.\ running different applications concurrently in one machine)
+\item	pipelining
+\item	distributed linked structures in systems without physically-shared memory
+\item	indexing of distributed shared arrays
+\item	collective I/O
+\item	uniform-size interleaved I/O
+\item	heterogeneous-size interleaved I/O
+\item	independent I/O operations on a single shared file
+\end{toylist}
+\end{small}
+
+\subsection{Memory Reference Patterns\label{s:cliche-memref}}
+
+These are inspired by the categorization used in the Munin system \cite{b:munin-overview}.
+Again, implementors are encouraged to phrase discussion of their work in these terms where appropriate.
+
+\begin{small}
+\begin{toylist}
+\item	Write-once:
+	variables which are assigned a value once, and only read thereafter.
+	These can be supported through replication.
+\item	Write-many:
+	variables which are written and read many times.
+	If several processes write to the variable concurrently, they typically write to different portions of it.
+\item	Producer-consumer:
+	variables which are written to by one or more objects, and read by one or more other objects.
+	Entries in a shared queue, or a mailbox used for communication between two processes, are examples.
+\item	Private:
+	variables which are potentially shared, but actually private.
+	The interior points of a mesh in a program which uses geometric decomposition fall into this category,
+	while boundary points belong to the previous class.
+\item	Migratory:
+	variables which are read and written many times in succession by a single process before ownership passes to another process.
+	The structures representing particles in an $N$-body simulation are the clearest example of this category.
+\item	Result:
+	Accumulators which are updated many times by different processes, but thereafter read.
+\item	Read-mostly:
+	Any variable which is read much more often than it is written to.
+	The best score so far in a search problem is a typical instance of this class:
+	while any process might update it, in practice processes read its value much more often than they change it.
+\item	Synchronization:
+	Variables used to force explicit synchronization in a program, such as semaphores and locks.
+	These are typically ignored for long periods, and then the subject of intense bursts of access activity.
+\item	General read-write:
+	Any variable which cannot be put in one of the above categories.
+\end{toylist}
+\end{small}
+
+\newpage
+\section{Comparing Parallel Programming Systems\label{s:questions}}
+
+This list of questions is a modified version of the one presented in \cite{b:compare-ada-c-pascal}.
+It is presented here as an organizational aid;
+when describing the PPS they have used,
+implementors are encouraged to use the order and terminology of this list where appropriate.
+We acknowledge that many of these questions will not apply to particular systems,
+and encourage implementors to ask questions which we have left out.
+
+\begin{small}
+\begin{enumerate}
+\item History and Philosophy
+  \begin{enumerate}
+  \item For whom and for what purpose was the language designed?
+  \end{enumerate}
+\item Syntax
+  \begin{enumerate}
+  \item Model implemented (Figure~\ref{f:taxonomy})
+  \item Class
+    \begin{enumerate}
+    \item library called from existing sequential language?
+    \item syntactic extensions to existing sequential language?
+    \item new language in Backus (Fortran/Algol/C) tradition?
+    \item new (non-Backus) language?
+    \end{enumerate}
+  \item Concurrency mechanisms adhere to same philosophy as original
+	language (where appropriate)?
+  \item Readability?  Syntactic consistency?  Conciseness?
+	(on an APL-to-Modula scale)
+  \item Common errors (e.g.\ confusing {\tt{=}} and {\tt{==}} in C)?
+  \end{enumerate}
+\item Type Philosophy and Data Types
+  \begin{enumerate}
+  \item What primitive types does the language support?
+  \item How are new types created?
+  \item What intrinsic operations are defined on user-defined types?
+  \item How strict is typing?
+	How is type conversion done?
+  \item Can type information be inspected at run-time?
+  \item What concurrent operations on aggregates
+	(such as lists and arrays) are intrinsic?
+	What kinds of concurrent aggregate operations can users define?
+  \item How are aggregates defined (e.g.\ by index set, by shape)?
+	Can new kinds of aggregates (e.g.\ templates for arrays)
+	be defined?
+  \item How strict is typing during communication?
+  \item What support is there for communication or manipulation
+	of data of non-scalar or non-intrinsic types?
+  \item Can structural information about aggregates
+	(e.g.\ number of elements in a set, dimension of an array)
+	be inspected at run-time?
+  \item What built-in support is there for object classes and inheritance?
+	For polymorphism?
+	For class (as opposed to instance) data?
+  \item Are functions first-class?
+  \item Are continuations supported?  Are they first-class?
+  \item Is dynamically-allocated memory supported?
+	Is it done automatically?
+	Is garbage-collection done automatically?
+	Can a program ever create a dangling pointer?
+	An alias?
+  \end{enumerate}
+\item Operators
+  \begin{enumerate}
+  \item What intrinsic operators are provided (brief list)?
+	How strongly do these type-check their arguments?
+  \item How are new operators defined?
+  \item Are the precedence rules straightforward?
+  \item Are side-effects/mutation allowed inside non-call expressions
+	(e.g.\ C's side-effecting \verb`i++` construct)?
+  \item Are their results platform-independent?
+  \item Are the results of intrinsic parallel operations reproducible?
+	Are they platform-independent?
+  \item Are heterogeneous operations on aggregates allowed
+	(e.g.\ every element of a list of polygons calculates its
+	center of mass)?
+	If so, how are these described, and how are they implemented?
+  \item Which of the operators in Section~\ref{s:cliche-ops} are supported?
+  \end{enumerate}
+\item Control Flow
+  \begin{enumerate}
+  \item What synchronization is automatically imposed during execution
+	(i.e.\ at what points can definite assertions about the state
+	of the running program be made)?
+  \item What control constructs does the language support?  Encourage?
+  \item How is concurrency expressed?  How structured is this mechanism?
+  \item Can the degree of concurrency be throttled (limited)?
+	Is this done by the system, or by the user?
+  \item How are exceptions handled/reported?
+	Is it different for intrinsic operations and user-defined operations?
+  \end{enumerate}
+\item Subroutines, Scope, and Modularization
+  \begin{enumerate}
+  \item How efficient is subroutine call compared to in-line execution
+	(i.e.\ how expensive are parameter passing and non-local control flow)?
+  \item How much information about parameters is available (required)
+	inside called subroutine
+	(e.g.\ whether object is shared with other processes or private
+	to executing process)?
+  \item Are side-effecting procedures allowed?
+  \item Can generic routines be written
+	(e.g.\ to work on different types or array shapes)?
+  \item Is there a restriction on return values (e.g.\ can a function return
+	any object which could be declared)?
+  \item Are there levels of scope?
+	If multiple levels are permitted, how are references to stale scopes
+	handled or prevented?
+	Can information for declarations (such as size) be inherited (dynamically)
+	from higher scopes?
+  \item What synchronization requirements (if any) are imposed during calls
+	(i.e.\ do all processes (in a group?) have to enter/exit the same subroutine
+	at the same time)?
+  \item What support is there for modularization?
+	For hiding implementation details?
+	For sharing such information?
+	For detecting and resolving name clashes?
+  \end{enumerate}
+\item Concurrent Programming Facilities
+  \begin{enumerate}
+  \item At what level(s) is the system concurrent?
+    \begin{enumerate}
+    \item implicit (the user shouldn't ask such things)
+    \item operational (e.g.\ data-parallel addition)
+    \item program counter (single executable, multiple states)
+    \item procedural (heterogeneous control parallelism)
+      \begin{enumerate}
+      \item one execution thread per address space
+      \item multiple threads per address space
+      \end{enumerate}
+    \end{enumerate}
+  \item What mutual exclusion and synchronization primitives are provided?
+  \item At what level(s) is data sharing visible to the programmer?
+    \begin{enumerate}
+    \item sequential consistency
+    \item sequential consistency within processor clusters
+    \item object-level consistency
+    \item there is no sharing
+    \end{enumerate}
+  \item What is the conceptual granularity of operations?
+    \begin{enumerate}
+    \item synchronization after atomic instruction
+    \item homogeneous operations with large-grain synchronization
+    \item heterogeneous operations with large-grain synchronization
+    \item completely asynchronous execution
+    \end{enumerate}
+  \item How do processes communicate data values?
+	How do they synchronize?
+	Are non-blocking operations (ones in which buffers might be
+	in a visibly volatile state) allowed?
+	How are they checked for termination?
+  \item If data are communicated explicitly,
+	how does the receiver choose what to accept?
+    \begin{enumerate}
+    \item by address (e.g.\ channel or port)
+    \item by pattern matching on contents
+    \item by explicit message tagging
+    \item by provision of a typed buffer
+    \item by provision of an untyped (byte-block) buffer
+    \item in FIFO order
+    \end{enumerate}
+  \item How do users specify the number of processors on which to run?
+	Must this be built into the program,
+	or can it be decided at run-time?
+	Is there support for executing on heterogeneous processors?
+  \item Can the user specify the mapping of processes to processors?
+	If so, how?
+	How tightly coupled are the mapping of processes to processors,
+	and the mapping of distributed data structures (if supported)?
+  \item Can the user specify the mapping of data structures to processors?
+        Can data structures be decomposed or partitioned?
+  \item What support is there for operations on groups of processes, such as:
+    \begin{enumerate}
+    \item broadcast
+    \item multicast (partial broadcast)
+    \item barrier synchronization
+    \end{enumerate}
+  \item Can arbitrary process groups be created,
+	or must they be structured in some way
+	(e.g.\ as logical mesh)?
+	Can operations involving disjoint groups be executed concurrently
+	(e.g.\ a broadcast within one group,
+	and a barrier within another)?
+  \end{enumerate}
+\item Input/Output
+  \begin{enumerate}
+  \item Is simple sequential (single-process) I/O simple to write?
+  \item Is concurrent I/O supported?  If so, which flavours:
+    \begin{enumerate}
+    \item single-reader-broadcast/collect-single-writer
+    \item homogeneously-sized or -strided segments
+    \item heterogeneously-sized or -strided segments
+    \item arbitrary independent operations
+    \end{enumerate}
+  \item What types can be read/written intrinsically?
+	E.g.\ can an entire record (or array, or list)
+	be read or written in a single operation?
+  \end{enumerate}
+\item Access to Routines in Other Languages and to the Hardware
+  \begin{enumerate}
+  \item Can subroutines written in other languages be called?
+        Can subroutines in this language be called from other languages?
+  \item Are there ways to access the run-time system directly,
+	or similar low-level facilities?
+  \item Is there high-level access to physical addresses and devices?
+  \end{enumerate}
+\item Practical Considerations
+  \begin{enumerate}
+  \item Are both batch and interactive processing supported?
+  \item How reliable and efficient are existing implementations?
+	How fast is it (i.e.\ how quickly does code compile and load)?
+	Is it supported (who fixes it if it breaks)?
+  \item Is there a standard for the system (from some standards organization)?
+  \item Is the documentation adequate? For whom (CS graduates, computer-literate
+	users, the general population)? Is training available?	Consulting?
+  \item How much code has been written (lines of code or weeks of effort)?
+        By whom (computer science undergraduates, professional engineers, etc.)?
+  \item How long does it take the compiler to generate a ``small'' executable
+        (such as {\tt{"hello, world"}})?
+  \item How large is a ``small'' executable?
+        How long does it take to load such an executable?
+  \end{enumerate}
+\item Supporting Tools
+  \begin{enumerate}
+  \item What is the development environment like?
+        Can code be developed on a workstation and then moved to a parallel platform?
+  \item Are there debugging aids, performance analysers, and management tools?
+  \item How much help do these really provide?
+  \end{enumerate}
+\end{enumerate}
+\end{small}
+
+\newpage
+\section{A Critique of the C Implementation\label{s:critique}}
+
+This section is a critique of the ANSI~C reference implementation of the problem suite.
+It is intended to serve as a model for (self-)criticism of other programming systems.
+
+\begin{itemize}
+\item	C's support for multi-dimensional arrays (MDAs) is very weak.
+	There is no way to dynamically allocate an MDA in a single go---one must either
+	allocate a block of the same size as the desired array,
+	and then do indexing calculations by hand,
+	or allocate a vector of pointers to allocated vectors of pointers to{\ldots}to vectors holding data.
+	MDAs do not carry dimension information with them,
+	so it is impossible to determine the size of an array parameter within a function.
+	Finally,
+	C does not treat all axes of an array equally:
+	while it is trivial to take a slice out of a 2-dimensional array along the most-significant axis,
+	it is impossible to slice it along the other axis.
+\item	C does not distinguish between Boolean and integer types.
+	As a result,
+	the {\tt{matrix}} and {\tt{mask}} arguments to the invasion percolation problem
+	can be passed in reverse order without a type error.
+	Using {\tt{typedef}} to create a Boolean type name does not solve this
+	(at least, not in {\tt{gcc}} V2.5.8).
+\item	Union types cannot be safely initialized.
+	This complicated the implementation of the graphics interface,
+	where it would have been much more elegant to define a union type,
+	each of whose variants held parameter specifications for a single toy.
+	The code in the graphics module {\tt{gfx.c}} relies instead on arrays of {\tt{int}}s and {\tt{float}}s,
+	initializing some and filling other with don't-care values.
+	This is neither safe nor elegant.
+\item	Parameter values cannot be used in the initialization of local variables inside functions.
+	In particular,
+	it is not possible to create a local vector with a length specified by an input parameter.
+	Such a facility would be useful in the {\tt{winnow}} toy,
+	where we have instead allocated local temporaries of the maximum possible size.
+\item	The automatic conversion of floats to doubles across function calls can quite often be a nuisance.
+	For example, the ``fail()'' error-handling routine was buggy because
+	all \verb`real` arguments were being automatically converted to doubles,
+	but were being taken off the stack as floats.
+\item	no intrinsic notion of group ID/self ID in threads
+\item	packaging parameters for threads
+\item	pointers to array vs.\ arrays themselves (semantics of definition depends upon context)
+\end{itemize}
+
+\end{document}

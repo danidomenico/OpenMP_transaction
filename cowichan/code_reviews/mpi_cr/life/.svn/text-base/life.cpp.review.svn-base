@@ -1,0 +1,79 @@
+     1	/**
+     2	 * Conway's game of life
+     3	 *
+     4	 * \file life.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 01-26-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#ifdef IS_PARALLEL
+    11	  #include "parallel.h"
+    12	#else
+    13	  #include "serial.h"
+    14	#endif
+    15	
+    16	int main(int argc, char* argv[])
+    17	{
+    18	#ifdef IS_PARALLEL
+    19	  mpi::environment env(argc, argv);
+    20	  mpi::communicator world;
+    21	
+    22	#ifdef TEST_OUTPUT
+    23	  printf ("I am process %d\n", world.rank ());
+    24	#endif
+    25	#endif
+    26	
+    27	  bool2D* matrix; /* world to evolve */
+    28	  int    nr;    /* row size */
+    29	  int    nc;    /* column size */
+    30	  int    iters; /* number of iterations */
+    31	
+    32	  int i, j;
+    33	
+    34	  srand (222);
+    35	
+    36	  nr = MAXEXT;
+    37	  nc = MAXEXT;
+    38	  iters = 10;
+    
+Can we set iterations outside of this hard-coded value?
+    
+    39	
+    40	  matrix = new bool2D[MAXEXT];
+    41	  for (i = 0; i < nr; i++)
+    42	  {
+    43	    for (j = 0; j < nc; j++)
+    44	    {
+    45	      matrix[i][j] = rand () % 2;
+    46	    }
+    47	  }
+    48	
+    49	#ifdef TEST_OUTPUT
+    50	  print_matrix (matrix, nr, nc);
+    51	#endif
+    52	
+    53	#ifdef TEST_TIME
+    54	  INT64 start, end;
+    55	  start = get_ticks ();
+    56	#endif
+    57	
+    58	#ifdef IS_PARALLEL
+    59	  life_mpi (world, matrix, nr, nc, iters);
+    60	#else
+    61	  life (matrix, nr, nc, iters);
+    62	#endif
+    63	
+    64	#ifdef TEST_TIME
+    65	  end = get_ticks ();
+    66	  print_elapsed_time (start, end);
+    67	#endif
+    68	
+    69	#ifdef TEST_OUTPUT
+    70	  print_matrix (matrix, nr, nc);
+    71	#endif
+    72	
+    73	  delete [] matrix;
+    74	
+    75	  return 0;
+    76	}

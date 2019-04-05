@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 22
+/svn/!svn/ver/268/test
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/svn/!svn/ver/268/test/Makefile
+END
+test.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/svn/!svn/ver/268/test/test.cpp
+END
+cowichan.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/268/test/cowichan.hpp
+END
+test.sh
+K 25
+svn:wc:ra_dav:version-url
+V 30
+/svn/!svn/ver/268/test/test.sh
+END
+cowichan_defaults.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/268/test/cowichan_defaults.hpp
+END

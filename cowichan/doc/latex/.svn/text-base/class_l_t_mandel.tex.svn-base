@@ -1,0 +1,76 @@
+\hypertarget{class_l_t_mandel}{
+\section{LTMandel Class Reference}
+\label{class_l_t_mandel}\index{LTMandel@{LTMandel}}
+}
+{\tt \#include $<$mandel.hpp$>$}
+
+Inheritance diagram for LTMandel::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{class_l_t_mandel}
+\end{center}
+\end{figure}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{class_l_t_mandel_15fb4ee93967f8717db22056f666f723}{consumeInput} ()
+\item 
+void \hyperlink{class_l_t_mandel_5ea4d32e6d16f64148bddbb940d732da}{work} ()
+\item 
+void \hyperlink{class_l_t_mandel_31cacf747914e03e6a87bb9af7dff67e}{produceOutput} ()
+\item 
+int \hyperlink{class_l_t_mandel_c7b6459667c66226cc5745309493cdef}{mandelCalc} (\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} x, \hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} y)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Calculates the mandelbrot set on a row-by-row basis. Uses LinuxTuples to do the heavy lifting. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_l_t_mandel_15fb4ee93967f8717db22056f666f723}{
+\index{LTMandel@{LTMandel}!consumeInput@{consumeInput}}
+\index{consumeInput@{consumeInput}!LTMandel@{LTMandel}}
+\subsubsection[{consumeInput}]{\setlength{\rightskip}{0pt plus 5cm}void LTMandel::consumeInput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_mandel_15fb4ee93967f8717db22056f666f723}
+
+
+The consume input process is spawned once and should distribute tasks to the worker processes. 
+
+Implements \hyperlink{class_tuple_application_e163c5a536de01c8b94b49528a17dab2}{TupleApplication}.\hypertarget{class_l_t_mandel_c7b6459667c66226cc5745309493cdef}{
+\index{LTMandel@{LTMandel}!mandelCalc@{mandelCalc}}
+\index{mandelCalc@{mandelCalc}!LTMandel@{LTMandel}}
+\subsubsection[{mandelCalc}]{\setlength{\rightskip}{0pt plus 5cm}int LTMandel::mandelCalc ({\bf real} {\em x}, \/  {\bf real} {\em y})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class_l_t_mandel_c7b6459667c66226cc5745309493cdef}
+
+
+Computes a part of the mandelbrot set. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em x}]x co-ordinate to compute for. \item[{\em y}]y co-ordinate to compute for. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the computed value at (x,y) on the mandelbrot set. \end{Desc}
+\hypertarget{class_l_t_mandel_31cacf747914e03e6a87bb9af7dff67e}{
+\index{LTMandel@{LTMandel}!produceOutput@{produceOutput}}
+\index{produceOutput@{produceOutput}!LTMandel@{LTMandel}}
+\subsubsection[{produceOutput}]{\setlength{\rightskip}{0pt plus 5cm}void LTMandel::produceOutput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_mandel_31cacf747914e03e6a87bb9af7dff67e}
+
+
+The output producer decides when the tuple application is finished; once this function returns, the tuple application is complete. 
+
+Implements \hyperlink{class_tuple_application_8743dfcf17dedd52887c0b2ab170d8dc}{TupleApplication}.\hypertarget{class_l_t_mandel_5ea4d32e6d16f64148bddbb940d732da}{
+\index{LTMandel@{LTMandel}!work@{work}}
+\index{work@{work}!LTMandel@{LTMandel}}
+\subsubsection[{work}]{\setlength{\rightskip}{0pt plus 5cm}void LTMandel::work ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_mandel_5ea4d32e6d16f64148bddbb940d732da}
+
+
+Worker processes are created and killed after the output process has finished. 
+
+Implements \hyperlink{class_tuple_application_ef6ae8bb1d697e4ed038b43320183c89}{TupleApplication}.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+cowichan\_\-lt/src/\hyperlink{mandel_8hpp}{mandel.hpp}\item 
+cowichan\_\-lt/src/\hyperlink{cowichan__lt_2src_2mandel_8cpp}{mandel.cpp}\end{CompactItemize}

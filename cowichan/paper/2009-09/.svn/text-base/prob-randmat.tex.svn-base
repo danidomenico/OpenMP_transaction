@@ -1,0 +1,23 @@
+\subsection{{\tt{randmat}}: Random Number Generation\label{s:toys-rng}}
+
+This module fills a matrix with pseudo-random integers.
+
+{\inputspec}
+
+\begin{description}
+\item[{\tt{nrows, ncols}}:]
+	the number of rows and columns in the output matrix.
+\item[{\tt{s}}:]
+	the random number generation seed.
+\end{description}
+
+{\outputspec}
+
+\begin{description}
+\item[{\tt{matrix}}:]
+	an integer matrix filled with random values.
+\end{description}
+
+If possible,
+the values produced should depend only on the size of the matrix and the seed,
+\emph{not} on the number of processors or threads used.

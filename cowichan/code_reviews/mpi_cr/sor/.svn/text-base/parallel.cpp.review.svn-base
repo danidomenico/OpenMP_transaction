@@ -1,0 +1,81 @@
+     1	/**
+     2	 * Parallel implementation of successive over-relaxation
+     3	 *
+     4	 * \file parallel.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 03-02-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#include "parallel.h"
+    11	
+    12	/*
+    13	 * @ sor : do body of successive over-relaxation
+    14	 * > none
+    15	 * + relax matrix to find solution
+    16	 */
+    17	
+    18	void sor_mpi (mpi::communicator world,
+    19	              real2D*	matrix,			/* to solve */
+    20	              real1D*	vector,			/* target vector */
+    21	              real1D*	answer,			/* solution found */
+    22	              int		n,			/* size */
+    23	              real		tol)			/* tolerance on answer */
+    24	{
+    25	  int lo, hi;
+    26	  int i, blo, bhi;
+    27	  int r, c, t;
+    28	  real sum, old, dmax, dmax_local, d;
+    29	  bool work;
+    30	
+    31	  // initialize
+    32	  for (r = 0; r < n; r++){
+    33	    answer[r] = 1.0;
+    34	  }
+    35	  dmax = 2 * tol; // to forestall early exit
+    36	
+    37	  // work
+    38	  work = get_block_rows_mpi (world, 0, n, &lo, &hi);
+    39	  for (t = 0; (t < SOR_MAX_ITERS) && (dmax >= tol); t++) {
+    40	    dmax_local = 0.0;
+    41	    if (work) {
+    42	      // compute sum_local
+    43	      for (r = lo; r < hi; r++) {
+    44	        sum = 0.0;
+    
+Could use one for loop and a check that c != r.
+    
+    45	        for (c = 0; c < r; c++) {
+    46	          sum += matrix[r][c] * answer[c];
+    47	        }
+    48	        for (c = r + 1; c < n; c++) {
+    49	          sum += matrix[r][c] * answer[c];
+    50	        }
+    51	
+    52	        // compute difference
+    53	        old = answer[r];
+    
+Some comments would help me see exactly what's going on here.
+    
+    54	        answer[r] = (1.0 - SOR_OMEGA) * old
+    55	          + SOR_OMEGA * (vector[r] - sum) / matrix[r][r];
+    56	        d = (real)fabs((double)(old - answer[r]));
+    57	        if (d > dmax_local) {
+    58	          dmax_local = d;
+    59	        }
+    60	      }
+    61	    }
+    62	    // broadcast next answer
+    63	    for (i = 0; i < world.size (); i++) {
+    64	      if (get_block_rows_mpi (world, 0, n, &blo, &bhi, i)) {
+    65	        broadcast (world, &answer[blo], bhi - blo, i);
+    66	      }
+    67	    }
+    68	
+    69	    // compute maximum difference
+    70	    all_reduce (world, dmax_local, dmax, mpi::maximum<real>());
+    71	
+    72	  }
+    73	
+    74	  /* return */
+    75	}

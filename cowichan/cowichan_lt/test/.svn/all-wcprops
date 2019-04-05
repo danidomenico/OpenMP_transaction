@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/svn/!svn/ver/153/cowichan_lt/test
+END
+mandel_client.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/128/cowichan_lt/test/mandel_client.cpp
+END
+comp.sh
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/153/cowichan_lt/test/comp.sh
+END
+mandel_worker.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/153/cowichan_lt/test/mandel_worker.cpp
+END

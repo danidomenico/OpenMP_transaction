@@ -1,0 +1,154 @@
+Comments in parallel.cpp.
+
+     1	/**
+     2	 * Serial implementation of invasion percolation
+     3	 *
+     4	 * \file serial.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-28-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#include "serial.h"
+    11	
+    12	// public
+    13	
+    14	/*
+    15	 * @ invperc : do invasion percolation
+    16	 * > none
+    17	 * + fill mask
+    18	 */
+    19	
+    20	void
+    21	invperc(
+    22	  int2D*		matrix,			/* matrix to invade */
+    23	  bool2D*	mask,			/* mask to fill */
+    24	  int		nr,			/* row size */
+    25	  int		nc,			/* column size */
+    26	  real		fraction		/* how much to fill */
+    27	){
+    28	  int		r, c;			/* row and column indices */
+    29	  int		num, i;			/* filling index */
+    30	
+    31	  /* initialize */
+    32	  num = (int) (fraction * nr * nc);
+    33	  mapNodesType nodes;
+    34	  inv_enq (&nodes, inv_node (matrix[nr/2][nc/2], nr/2, nc/2));
+    35	
+    36	  /* fill */
+    37	  for (i = 0; i < num; i++) {
+    38	    inv_deq (&nodes, &r, &c);
+    39	    mask[r][c] = TRUE;
+    40	    inv_enqPt (&nodes, matrix, mask, nr, nc, r, c);
+    41	  }
+    42	
+    43	  /* return */
+    44	}
+    45	
+    46	// private
+    47	
+    48	/*
+    49	 * @ inv_deq : take item out of priority queue
+    50	 * > queue after dequeueing
+    51	 * + fill row and column indices
+    52	 */
+    53	
+    54	void inv_deq(mapNodesType* nodes,
+    55	  int	      * r,			/* row index */
+    56	  int	      * c			/* column index */
+    57	){
+    58	  // remove the first element in Nodes
+    59	  mapNodesType::iterator iter = nodes->begin ();
+    60	
+    61	  *r = iter->second->r;
+    62	  *c = iter->second->c;
+    63	  delete iter->second;
+    64	
+    65	  nodes->erase (iter);
+    66	}
+    67	
+    68	/*
+    69	 * @ inv_enq : add item to priority queue
+    70	 * > queue after dequeueing
+    71	 * + enqueue item in given tree
+    72	 */
+    73	
+    74	void inv_enq(mapNodesType* nodes,
+    75	  node_p	node			/* what to enqueue */
+    76	){
+    77	  // insert new element in Nodes
+    78	  nodes->insert (std::pair<int, node_p> (node->val, node));
+    79	}
+    80	
+    81	/*
+    82	 * @ inv_node : allocate and fill queue node
+    83	 * > new node
+    84	 */
+    85	
+    86	node_p inv_node(
+    87	  int		val,			/* location value */
+    88	  int		r,			/* row index */
+    89	  int		c			/* column index */
+    90	){
+    91	  node_p node;
+    92	
+    93	  node = new node_t;
+    94	  node->val  = val;
+    95	  node->r    = r;
+    96	  node->c    = c;
+    97	
+    98	  return node;
+    99	}
+   100	
+   101	/*
+   102	 * @ inv_enqPt : possibly add point to priority queue
+   103	 * > new queue
+   104	 * + possibly add point to priority queue
+   105	 */
+   106	
+   107	void inv_enqPt(mapNodesType* nodes,
+   108	  int2D*		matrix,			/* matrix of values */
+   109	  bool2D*	mask,			/* mask to be filled */
+   110	  int		nr,			/* number of rows */
+   111	  int		nc,			/* number of columns */
+   112	  int		r,			/* point row */
+   113	  int		c			/* point column */
+   114	){
+   115	  bool		e[8];			/* empty neighbors */
+   116	  bool		r_lo = r > 0,
+   117			r_hi = r < (nr-1),
+   118			c_lo = c > 0,
+   119			c_hi = c < (nc-1);
+   120	
+   121	  /*   0   */
+   122	  /*  1A2  */
+   123	  /* 3BXC4 */
+   124	  /*  5D6  */
+   125	  /*   7   */
+   126	  if (r_lo){
+   127	    e[0] = ((r > 1) && !mask[r-2][c]) || (r - 2 < 0);
+   128	    e[1] = (c_lo && !mask[r-1][c-1]) || (r - 1 < 0) || (c - 1 < 0);
+   129	    e[2] = (c_hi && !mask[r-1][c+1]) || (r - 1 < 0) || (c + 1 > nc - 1);
+   130	  }
+   131	  e[3] = ((c > 1) && !mask[r][c-2]) || (c - 2 < 0);
+   132	  e[4] = ((c < (nc-2)) && !mask[r][c+2]) || (c + 2 > nc - 1);
+   133	  if (r_hi){
+   134	    e[5] = (c_lo && !mask[r+1][c-1]) || (r + 1 > nr - 1) || (c - 1 < 0);
+   135	    e[6] = (c_hi && !mask[r+1][c+1]) || (r + 1 > nr - 1) || (c + 1 > nc - 1);
+   136	    e[7] = ((r < (nr-2)) && !mask[r+2][c]) || (r + 2 > nr - 2);
+   137	  }
+   138	
+   139	  if (r_lo && (!mask[r-1][c]) && e[0] && e[1] && e[2]){	/* A */
+   140	    inv_enq (nodes, inv_node (matrix[r-1][c], r-1, c));
+   141	  }
+   142	  if (c_lo && (!mask[r][c-1]) && e[1] && e[3] && e[5]){	/* B */
+   143	    inv_enq (nodes, inv_node (matrix[r][c-1], r, c-1));
+   144	  }
+   145	  if (c_hi && (!mask[r][c+1]) && e[2] && e[4] && e[6]){	/* C */
+   146	    inv_enq (nodes, inv_node (matrix[r][c+1], r, c+1));
+   147	  }
+   148	  if (r_hi && (!mask[r+1][c]) && e[5] && e[6] && e[7]){	/* D */
+   149	    inv_enq (nodes, inv_node (matrix[r+1][c], r+1, c));
+   150	  }
+   151	
+   152	}

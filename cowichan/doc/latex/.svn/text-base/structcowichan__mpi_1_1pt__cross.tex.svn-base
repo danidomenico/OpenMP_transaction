@@ -1,0 +1,56 @@
+\hypertarget{structcowichan__mpi_1_1pt__cross}{
+\section{cowichan\_\-mpi::pt\_\-cross Struct Reference}
+\label{structcowichan__mpi_1_1pt__cross}\index{cowichan\_\-mpi::pt\_\-cross@{cowichan\_\-mpi::pt\_\-cross}}
+}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\footnotesize template$<$class Archive $>$ }\\void \hyperlink{structcowichan__mpi_1_1pt__cross_03901561c311eec5612eb0b0cd6fa336}{serialize} (Archive \&ar, const unsigned int version)
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_point}{Point} \hyperlink{structcowichan__mpi_1_1pt__cross_b829b3769c8e6c61221d1f9a41e18a83}{p}
+\item 
+\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{structcowichan__mpi_1_1pt__cross_33466b2228b7e4bb94efb8d04ca19f81}{cross}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Cross point. 
+
+\subsection{Member Function Documentation}
+\hypertarget{structcowichan__mpi_1_1pt__cross_03901561c311eec5612eb0b0cd6fa336}{
+\index{cowichan\_\-mpi::pt\_\-cross@{cowichan\_\-mpi::pt\_\-cross}!serialize@{serialize}}
+\index{serialize@{serialize}!cowichan_mpi::pt_cross@{cowichan\_\-mpi::pt\_\-cross}}
+\subsubsection[{serialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Archive $>$ void cowichan\_\-mpi::pt\_\-cross::serialize (Archive \& {\em ar}, \/  const unsigned int {\em version})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{structcowichan__mpi_1_1pt__cross_03901561c311eec5612eb0b0cd6fa336}
+
+
+Serialization method for \hyperlink{structcowichan__mpi_1_1pt__cross}{pt\_\-cross} class. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em ar}]archive to use. \item[{\em version}]\hyperlink{structcowichan__mpi_1_1pt__cross}{pt\_\-cross} class version. \end{description}
+\end{Desc}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{structcowichan__mpi_1_1pt__cross_33466b2228b7e4bb94efb8d04ca19f81}{
+\index{cowichan\_\-mpi::pt\_\-cross@{cowichan\_\-mpi::pt\_\-cross}!cross@{cross}}
+\index{cross@{cross}!cowichan_mpi::pt_cross@{cowichan\_\-mpi::pt\_\-cross}}
+\subsubsection[{cross}]{\setlength{\rightskip}{0pt plus 5cm}{\bf real} {\bf cowichan\_\-mpi::pt\_\-cross::cross}}}
+\label{structcowichan__mpi_1_1pt__cross_33466b2228b7e4bb94efb8d04ca19f81}
+
+
+Cross value. \hypertarget{structcowichan__mpi_1_1pt__cross_b829b3769c8e6c61221d1f9a41e18a83}{
+\index{cowichan\_\-mpi::pt\_\-cross@{cowichan\_\-mpi::pt\_\-cross}!p@{p}}
+\index{p@{p}!cowichan_mpi::pt_cross@{cowichan\_\-mpi::pt\_\-cross}}
+\subsubsection[{p}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point} {\bf cowichan\_\-mpi::pt\_\-cross::p}}}
+\label{structcowichan__mpi_1_1pt__cross_b829b3769c8e6c61221d1f9a41e18a83}
+
+
+\hyperlink{class_point}{Point}. 
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+cowichan\_\-mpi/\hyperlink{cowichan__mpi_2hull_8cpp}{hull.cpp}\end{CompactItemize}

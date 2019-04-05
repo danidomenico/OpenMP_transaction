@@ -1,0 +1,23 @@
+\hypertarget{product_8hpp}{
+\section{cowichan\_\-lt/src/product.hpp File Reference}
+\label{product_8hpp}\index{cowichan\_\-lt/src/product.hpp@{cowichan\_\-lt/src/product.hpp}}
+}
+LinuxTuples product header file.  
+
+
+{\tt \#include \char`\"{}tuple\_\-common.hpp\char`\"{}}\par
+{\tt \#include \char`\"{}cowichan\_\-lt.hpp\char`\"{}}\par
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{class_l_t_product}{LTProduct}
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+LinuxTuples product header file. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_linux_tuples_c4874f09c54056ac94d00f9e341a94f4}{CowichanLinuxTuples::product} \end{Desc}

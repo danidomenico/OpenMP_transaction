@@ -1,0 +1,25 @@
+     1	/**
+     2	 * Serial implementation of vector norm
+     3	 *
+     4	 * \file serial.h
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-10-09
+     7	 */
+     8	
+     9	#pragma once
+    10	#ifndef NORM_SERIAL_H
+    11	#define NORM_SERIAL_H
+    12	
+    13	/*
+    14	 * @ norm : do coordinate normalization
+    15	 * > none
+    16	 * + normalize point coordinates
+    17	 */
+    18	
+    19	void
+    20	norm(
+    21	  pt1D*		vec,			/* points to normalize */
+    22	  int		n			/* length of vector */
+    23	);
+    24	
+    25	#endif /* NORM_SERIAL_H */

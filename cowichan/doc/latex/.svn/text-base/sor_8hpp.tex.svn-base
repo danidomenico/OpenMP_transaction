@@ -1,0 +1,23 @@
+\hypertarget{sor_8hpp}{
+\section{cowichan\_\-lt/src/sor.hpp File Reference}
+\label{sor_8hpp}\index{cowichan\_\-lt/src/sor.hpp@{cowichan\_\-lt/src/sor.hpp}}
+}
+LinuxTuples successive over-relaxation header file.  
+
+
+{\tt \#include \char`\"{}tuple\_\-common.hpp\char`\"{}}\par
+{\tt \#include \char`\"{}cowichan\_\-lt.hpp\char`\"{}}\par
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{class_l_t_sor}{LTSor}
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+LinuxTuples successive over-relaxation header file. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_linux_tuples_aa2c469c3f520a5a56c5ec1ac9a5a6c6}{CowichanLinuxTuples::sor} \end{Desc}

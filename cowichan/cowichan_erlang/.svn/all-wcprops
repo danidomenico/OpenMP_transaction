@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/svn/!svn/ver/299/cowichan_erlang
+END
+array2d.erl
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/293/cowichan_erlang/array2d.erl
+END
+multilists.erl
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/297/cowichan_erlang/multilists.erl
+END
+lifeworker.erl
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/299/cowichan_erlang/lifeworker.erl
+END
+benchmark.erl
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/295/cowichan_erlang/benchmark.erl
+END
+mandelfaulttol.erl
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/294/cowichan_erlang/mandelfaulttol.erl
+END
+lifemaster.erl
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/299/cowichan_erlang/lifemaster.erl
+END
+lifeparallel.erl
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/299/cowichan_erlang/lifeparallel.erl
+END
+distributedcompute.erl
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/296/cowichan_erlang/distributedcompute.erl
+END
+utils.erl
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/299/cowichan_erlang/utils.erl
+END
+mandel.erl
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/297/cowichan_erlang/mandel.erl
+END
+distribmandel.erl
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/296/cowichan_erlang/distribmandel.erl
+END

@@ -1,0 +1,32 @@
+     1	/**
+     2	 * Serial implementation of random matrix generation
+     3	 *
+     4	 * \file serial.h
+     5	 * \author Andrew Borzenko
+     6	 * \date 01-26-09
+     7	 */
+     8	
+     9	#pragma once
+    10	#ifndef RANDMAT_SERIAL_H
+    11	#define RANDMAT_SERIAL_H
+    12	
+    13	/*--------------------------------------------------------------*/
+    14	/* public functions						*/
+    15	/*--------------------------------------------------------------*/
+    16	
+    17	/*
+    18	 * @ randmat : do random matrix generation
+    19	 * > none
+    20	 * + fill matrix
+    21	 */
+    22	
+    23	void
+    24	randmat(
+    25	  int2D*		matrix,			/* to fill */
+    26	  int		nr,			/* row size */
+    27	  int		nc,			/* column size */
+    28	  int		limit,			/* value limit */
+    29	  int		seed			/* RNG seed */
+    30	);
+    31	
+    32	#endif /* RANDMAT_SERIAL_H */

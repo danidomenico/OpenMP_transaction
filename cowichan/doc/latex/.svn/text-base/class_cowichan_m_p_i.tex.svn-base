@@ -1,0 +1,307 @@
+\hypertarget{class_cowichan_m_p_i}{
+\section{CowichanMPI Class Reference}
+\label{class_cowichan_m_p_i}\index{CowichanMPI@{CowichanMPI}}
+}
+Boost Message Passing Interface (MPI) implementation.  
+
+
+{\tt \#include $<$cowichan\_\-mpi.hpp$>$}
+
+Inheritance diagram for CowichanMPI::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{class_cowichan_m_p_i}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_cowichan_m_p_i_ba4175b1aadbab75285b47819477dedf}{CowichanMPI} (const mpi::communicator \&\hyperlink{class_cowichan_m_p_i_cf8ae701dfbb7c17dcec165800c16969}{world})
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+const mpi::communicator \& \hyperlink{class_cowichan_m_p_i_cf8ae701dfbb7c17dcec165800c16969}{world}
+\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{class_cowichan_m_p_i_58274fc55ed8a352a8924b130f3b5d2e}{mandel} (\hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} matrix)
+\item 
+void \hyperlink{class_cowichan_m_p_i_6805f21144aeaeddc4549e1b2b42bca8}{randmat} (\hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} matrix)
+\item 
+void \hyperlink{class_cowichan_m_p_i_154bbd1a400ee4571f761bff1cdf67cd}{half} (\hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} matrixIn, \hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} matrixOut)
+\item 
+void \hyperlink{class_cowichan_m_p_i_bcd0f18fcccc8973ddaacf4dda190b53}{invperc} (\hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} matrix, \hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix} mask)
+\item 
+void \hyperlink{class_cowichan_m_p_i_49ff96b091a61e9cfd9aad8824e7fbbd}{thresh} (\hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} matrix, \hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix} mask)
+\item 
+void \hyperlink{class_cowichan_m_p_i_9c739951d036ef7905bda7cb896e0edf}{life} (\hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix} matrixIn, \hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix} matrixOut)
+\item 
+void \hyperlink{class_cowichan_m_p_i_9be48d86fc51ce13ef79d5fe2c8a16e0}{winnow} (\hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} matrix, \hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix} mask, \hyperlink{class_point}{PointVector} points)
+\item 
+void \hyperlink{class_cowichan_m_p_i_11df49e804427d4a0d085f4cff9302d0}{norm} (\hyperlink{class_point}{PointVector} pointsIn, \hyperlink{class_point}{PointVector} pointsOut)
+\item 
+void \hyperlink{class_cowichan_m_p_i_22b3dce35fd93635bd4c1596e7fb839c}{hull} (\hyperlink{class_point}{PointVector} pointsIn, \hyperlink{class_point}{PointVector} pointsOut)
+\item 
+void \hyperlink{class_cowichan_m_p_i_39fcc8a331b0e26438fbf43fa01cf7c1}{outer} (\hyperlink{class_point}{PointVector} points, \hyperlink{cowichan_8hpp_3fb46f939e55c239fbc95656fc0f3399}{Matrix} matrix, \hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} vector)
+\item 
+void \hyperlink{class_cowichan_m_p_i_975f8da6c166fe1db3cf9341eeaab000}{gauss} (\hyperlink{cowichan_8hpp_3fb46f939e55c239fbc95656fc0f3399}{Matrix} matrix, \hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} target, \hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} solution)
+\item 
+void \hyperlink{class_cowichan_m_p_i_7388c844e8aa73ab0923443a3a7ef069}{sor} (\hyperlink{cowichan_8hpp_3fb46f939e55c239fbc95656fc0f3399}{Matrix} matrix, \hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} target, \hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} solution)
+\item 
+void \hyperlink{class_cowichan_m_p_i_1b7dccf774caccb26839cd29fe0a5cb0}{product} (\hyperlink{cowichan_8hpp_3fb46f939e55c239fbc95656fc0f3399}{Matrix} matrix, \hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} candidate, \hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} solution)
+\item 
+\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{class_cowichan_m_p_i_c5470a2876efecf843b19c37c21ecf19}{vecdiff} (\hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} actual, \hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} computed)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Boost Message Passing Interface (MPI) implementation. 
+
+Boost MPI is a C++ interface that works with many MPI implementations. For example: MPICH1, MPICH2, OpenMPI.
+
+Tags: distributed memory, message passing, mpi wrapper. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_cowichan_m_p_i_ba4175b1aadbab75285b47819477dedf}{
+\index{CowichanMPI@{CowichanMPI}!CowichanMPI@{CowichanMPI}}
+\index{CowichanMPI@{CowichanMPI}!CowichanMPI@{CowichanMPI}}
+\subsubsection[{CowichanMPI}]{\setlength{\rightskip}{0pt plus 5cm}CowichanMPI::CowichanMPI (const mpi::communicator \& {\em world})}}
+\label{class_cowichan_m_p_i_ba4175b1aadbab75285b47819477dedf}
+
+
+Constructs a cowichan mpi object. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em world}]global communicator. \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_cowichan_m_p_i_975f8da6c166fe1db3cf9341eeaab000}{
+\index{CowichanMPI@{CowichanMPI}!gauss@{gauss}}
+\index{gauss@{gauss}!CowichanMPI@{CowichanMPI}}
+\subsubsection[{gauss}]{\setlength{\rightskip}{0pt plus 5cm}void CowichanMPI::gauss ({\bf Matrix} {\em matrix}, \/  {\bf Vector} {\em target}, \/  {\bf Vector} {\em solution})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_m_p_i_975f8da6c166fe1db3cf9341eeaab000}
+
+
+For description see \hyperlink{index_gauss_sec}{11. Gaussian Elimination} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em matrix}]matrix A in AX = V. \item[{\em target}]vector V in AX = V. \item[{\em solution}]vector X in AX = V. \end{description}
+\end{Desc}
+
+
+Implements \hyperlink{class_cowichan_aa9aac74b96dc5ed33e821d94649d1b2}{Cowichan}.\hypertarget{class_cowichan_m_p_i_154bbd1a400ee4571f761bff1cdf67cd}{
+\index{CowichanMPI@{CowichanMPI}!half@{half}}
+\index{half@{half}!CowichanMPI@{CowichanMPI}}
+\subsubsection[{half}]{\setlength{\rightskip}{0pt plus 5cm}void CowichanMPI::half ({\bf IntMatrix} {\em matrixIn}, \/  {\bf IntMatrix} {\em matrixOut})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_m_p_i_154bbd1a400ee4571f761bff1cdf67cd}
+
+
+For description see \hyperlink{index_half_sec}{3. Two-Dimensional Shuffle} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em matrixIn}]matrix to shuffle. \item[{\em matrixOut}]shuffled matrix. \end{description}
+\end{Desc}
+
+
+Implements \hyperlink{class_cowichan_308603053675bccbe631f04af921f57c}{Cowichan}.\hypertarget{class_cowichan_m_p_i_22b3dce35fd93635bd4c1596e7fb839c}{
+\index{CowichanMPI@{CowichanMPI}!hull@{hull}}
+\index{hull@{hull}!CowichanMPI@{CowichanMPI}}
+\subsubsection[{hull}]{\setlength{\rightskip}{0pt plus 5cm}void CowichanMPI::hull ({\bf PointVector} {\em pointsIn}, \/  {\bf PointVector} {\em pointsOut})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_m_p_i_22b3dce35fd93635bd4c1596e7fb839c}
+
+
+For description see \hyperlink{index_hull_sec}{9. Convex Hull} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pointsIn}]points to run convex hull on. \item[{\em pointsOut}]reordered points from pointsIn. \end{description}
+\end{Desc}
+
+
+Implements \hyperlink{class_cowichan_0c6b68ae3c059b66893405f8530a2e0a}{Cowichan}.\hypertarget{class_cowichan_m_p_i_bcd0f18fcccc8973ddaacf4dda190b53}{
+\index{CowichanMPI@{CowichanMPI}!invperc@{invperc}}
+\index{invperc@{invperc}!CowichanMPI@{CowichanMPI}}
+\subsubsection[{invperc}]{\setlength{\rightskip}{0pt plus 5cm}void CowichanMPI::invperc ({\bf IntMatrix} {\em matrix}, \/  {\bf BoolMatrix} {\em mask})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_m_p_i_bcd0f18fcccc8973ddaacf4dda190b53}
+
+
+For description see \hyperlink{index_invperc_sec}{4. Invasion Percolation} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em matrix}]filling resistance matrix. \item[{\em mask}]filled cells. \end{description}
+\end{Desc}
+
+
+Implements \hyperlink{class_cowichan_ea126792a31e54a8722663b7ea768955}{Cowichan}.\hypertarget{class_cowichan_m_p_i_9c739951d036ef7905bda7cb896e0edf}{
+\index{CowichanMPI@{CowichanMPI}!life@{life}}
+\index{life@{life}!CowichanMPI@{CowichanMPI}}
+\subsubsection[{life}]{\setlength{\rightskip}{0pt plus 5cm}void CowichanMPI::life ({\bf BoolMatrix} {\em matrixIn}, \/  {\bf BoolMatrix} {\em matrixOut})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_m_p_i_9c739951d036ef7905bda7cb896e0edf}
+
+
+For description see \hyperlink{index_life_sec}{6. Game of Life} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em matrixIn}]initial world. \item[{\em matrixOut}]final world. \end{description}
+\end{Desc}
+
+
+Implements \hyperlink{class_cowichan_d449595ef2fe934bdd128ac8b1f51d07}{Cowichan}.\hypertarget{class_cowichan_m_p_i_58274fc55ed8a352a8924b130f3b5d2e}{
+\index{CowichanMPI@{CowichanMPI}!mandel@{mandel}}
+\index{mandel@{mandel}!CowichanMPI@{CowichanMPI}}
+\subsubsection[{mandel}]{\setlength{\rightskip}{0pt plus 5cm}void CowichanMPI::mandel ({\bf IntMatrix} {\em matrix})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_m_p_i_58274fc55ed8a352a8924b130f3b5d2e}
+
+
+For description see \hyperlink{index_mandel_sec}{1. Mandelbrot Set Generation} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em matrix}]matrix to fill. \end{description}
+\end{Desc}
+
+
+Implements \hyperlink{class_cowichan_ec6cc4eb2ad444474b923532167e98a2}{Cowichan}.\hypertarget{class_cowichan_m_p_i_11df49e804427d4a0d085f4cff9302d0}{
+\index{CowichanMPI@{CowichanMPI}!norm@{norm}}
+\index{norm@{norm}!CowichanMPI@{CowichanMPI}}
+\subsubsection[{norm}]{\setlength{\rightskip}{0pt plus 5cm}void CowichanMPI::norm ({\bf PointVector} {\em pointsIn}, \/  {\bf PointVector} {\em pointsOut})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_m_p_i_11df49e804427d4a0d085f4cff9302d0}
+
+
+For description see \hyperlink{index_norm_sec}{8. Point Location Normalization} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pointsIn}]points to normalize. \item[{\em pointsOut}]normalized points. \end{description}
+\end{Desc}
+
+
+Implements \hyperlink{class_cowichan_3df21e3c627958114e045c3559a29f30}{Cowichan}.\hypertarget{class_cowichan_m_p_i_39fcc8a331b0e26438fbf43fa01cf7c1}{
+\index{CowichanMPI@{CowichanMPI}!outer@{outer}}
+\index{outer@{outer}!CowichanMPI@{CowichanMPI}}
+\subsubsection[{outer}]{\setlength{\rightskip}{0pt plus 5cm}void CowichanMPI::outer ({\bf PointVector} {\em points}, \/  {\bf Matrix} {\em matrix}, \/  {\bf Vector} {\em vector})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_m_p_i_39fcc8a331b0e26438fbf43fa01cf7c1}
+
+
+For description see \hyperlink{index_outer_sec}{10. Outer Product} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em points}]vector of points. \item[{\em matrix}]resulting distance matrix. \item[{\em vector}]resulting distance vector. \end{description}
+\end{Desc}
+
+
+Implements \hyperlink{class_cowichan_52f17221019290b88334b0ca7f3bcdb9}{Cowichan}.\hypertarget{class_cowichan_m_p_i_1b7dccf774caccb26839cd29fe0a5cb0}{
+\index{CowichanMPI@{CowichanMPI}!product@{product}}
+\index{product@{product}!CowichanMPI@{CowichanMPI}}
+\subsubsection[{product}]{\setlength{\rightskip}{0pt plus 5cm}void CowichanMPI::product ({\bf Matrix} {\em matrix}, \/  {\bf Vector} {\em candidate}, \/  {\bf Vector} {\em solution})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_m_p_i_1b7dccf774caccb26839cd29fe0a5cb0}
+
+
+For description see \hyperlink{index_product_sec}{13. Matrix-Vector Product} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em matrix}]matrix A in AX = V. \item[{\em candidate}]vector X in AX = V. \item[{\em solution}]vector V in AX = V. \end{description}
+\end{Desc}
+
+
+Implements \hyperlink{class_cowichan_3d7d4b581a1d6f0392dc452830fb3b03}{Cowichan}.\hypertarget{class_cowichan_m_p_i_6805f21144aeaeddc4549e1b2b42bca8}{
+\index{CowichanMPI@{CowichanMPI}!randmat@{randmat}}
+\index{randmat@{randmat}!CowichanMPI@{CowichanMPI}}
+\subsubsection[{randmat}]{\setlength{\rightskip}{0pt plus 5cm}void CowichanMPI::randmat ({\bf IntMatrix} {\em matrix})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_m_p_i_6805f21144aeaeddc4549e1b2b42bca8}
+
+
+For description see \hyperlink{index_randmat_sec}{2. Random Number Generation} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em matrix}]matrix to fill. \end{description}
+\end{Desc}
+
+
+Implements \hyperlink{class_cowichan_c44cacf9d9e363a5b076bcee8b9a7a73}{Cowichan}.\hypertarget{class_cowichan_m_p_i_7388c844e8aa73ab0923443a3a7ef069}{
+\index{CowichanMPI@{CowichanMPI}!sor@{sor}}
+\index{sor@{sor}!CowichanMPI@{CowichanMPI}}
+\subsubsection[{sor}]{\setlength{\rightskip}{0pt plus 5cm}void CowichanMPI::sor ({\bf Matrix} {\em matrix}, \/  {\bf Vector} {\em target}, \/  {\bf Vector} {\em solution})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_m_p_i_7388c844e8aa73ab0923443a3a7ef069}
+
+
+For description see \hyperlink{index_sor_sec}{12. Successive Over-Relaxation} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em matrix}]matrix A in AX = V. \item[{\em target}]vector V in AX = V. \item[{\em solution}]vector X in AX = V. \end{description}
+\end{Desc}
+
+
+Implements \hyperlink{class_cowichan_92d8d9ae77208115fdfe69e1174f601c}{Cowichan}.\hypertarget{class_cowichan_m_p_i_49ff96b091a61e9cfd9aad8824e7fbbd}{
+\index{CowichanMPI@{CowichanMPI}!thresh@{thresh}}
+\index{thresh@{thresh}!CowichanMPI@{CowichanMPI}}
+\subsubsection[{thresh}]{\setlength{\rightskip}{0pt plus 5cm}void CowichanMPI::thresh ({\bf IntMatrix} {\em matrix}, \/  {\bf BoolMatrix} {\em mask})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_m_p_i_49ff96b091a61e9cfd9aad8824e7fbbd}
+
+
+For description see \hyperlink{index_thresh_sec}{5. Histogram Thresholding} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em matrix}]image. \item[{\em mask}]image after thresholding. \end{description}
+\end{Desc}
+
+
+Implements \hyperlink{class_cowichan_a0b633b8c1f21884e0998a9c7020c08c}{Cowichan}.\hypertarget{class_cowichan_m_p_i_c5470a2876efecf843b19c37c21ecf19}{
+\index{CowichanMPI@{CowichanMPI}!vecdiff@{vecdiff}}
+\index{vecdiff@{vecdiff}!CowichanMPI@{CowichanMPI}}
+\subsubsection[{vecdiff}]{\setlength{\rightskip}{0pt plus 5cm}{\bf real} CowichanMPI::vecdiff ({\bf Vector} {\em actual}, \/  {\bf Vector} {\em computed})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_m_p_i_c5470a2876efecf843b19c37c21ecf19}
+
+
+For description see \hyperlink{index_vecdiff_sec}{14. 1-Norm Vector Difference} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em actual}]first vector. \item[{\em computed}]second vector. \end{description}
+\end{Desc}
+
+
+Implements \hyperlink{class_cowichan_775d72b5e7d122f9f32555352278250e}{Cowichan}.\hypertarget{class_cowichan_m_p_i_9be48d86fc51ce13ef79d5fe2c8a16e0}{
+\index{CowichanMPI@{CowichanMPI}!winnow@{winnow}}
+\index{winnow@{winnow}!CowichanMPI@{CowichanMPI}}
+\subsubsection[{winnow}]{\setlength{\rightskip}{0pt plus 5cm}void CowichanMPI::winnow ({\bf IntMatrix} {\em matrix}, \/  {\bf BoolMatrix} {\em mask}, \/  {\bf PointVector} {\em points})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_m_p_i_9be48d86fc51ce13ef79d5fe2c8a16e0}
+
+
+For description see \hyperlink{index_winnow_sec}{7. Weighted Point Selection} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em matrix}]integer matrix. \item[{\em mask}]boolean matrix. \item[{\em points}]evenly selected points. \end{description}
+\end{Desc}
+
+
+Implements \hyperlink{class_cowichan_13d60e06ced3b5da79d62c133ce82337}{Cowichan}.
+
+\subsection{Member Data Documentation}
+\hypertarget{class_cowichan_m_p_i_cf8ae701dfbb7c17dcec165800c16969}{
+\index{CowichanMPI@{CowichanMPI}!world@{world}}
+\index{world@{world}!CowichanMPI@{CowichanMPI}}
+\subsubsection[{world}]{\setlength{\rightskip}{0pt plus 5cm}const mpi::communicator\& {\bf CowichanMPI::world}}}
+\label{class_cowichan_m_p_i_cf8ae701dfbb7c17dcec165800c16969}
+
+
+Global communicator. 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+cowichan\_\-mpi/\hyperlink{cowichan__mpi_8hpp}{cowichan\_\-mpi.hpp}\item 
+cowichan\_\-mpi/\hyperlink{cowichan__mpi_8cpp}{cowichan\_\-mpi.cpp}\item 
+cowichan\_\-mpi/\hyperlink{cowichan__mpi_2gauss_8cpp}{gauss.cpp}\item 
+cowichan\_\-mpi/\hyperlink{cowichan__mpi_2half_8cpp}{half.cpp}\item 
+cowichan\_\-mpi/\hyperlink{cowichan__mpi_2hull_8cpp}{hull.cpp}\item 
+cowichan\_\-mpi/\hyperlink{cowichan__mpi_2invperc_8cpp}{invperc.cpp}\item 
+cowichan\_\-mpi/\hyperlink{cowichan__mpi_2life_8cpp}{life.cpp}\item 
+cowichan\_\-mpi/\hyperlink{cowichan__mpi_2mandel_8cpp}{mandel.cpp}\item 
+cowichan\_\-mpi/\hyperlink{cowichan__mpi_2norm_8cpp}{norm.cpp}\item 
+cowichan\_\-mpi/\hyperlink{cowichan__mpi_2outer_8cpp}{outer.cpp}\item 
+cowichan\_\-mpi/\hyperlink{cowichan__mpi_2product_8cpp}{product.cpp}\item 
+cowichan\_\-mpi/\hyperlink{cowichan__mpi_2randmat_8cpp}{randmat.cpp}\item 
+cowichan\_\-mpi/\hyperlink{cowichan__mpi_2sor_8cpp}{sor.cpp}\item 
+cowichan\_\-mpi/\hyperlink{cowichan__mpi_2thresh_8cpp}{thresh.cpp}\item 
+cowichan\_\-mpi/\hyperlink{cowichan__mpi_2vecdiff_8cpp}{vecdiff.cpp}\item 
+cowichan\_\-mpi/\hyperlink{cowichan__mpi_2winnow_8cpp}{winnow.cpp}\end{CompactItemize}

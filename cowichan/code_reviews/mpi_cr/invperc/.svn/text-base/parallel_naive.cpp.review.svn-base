@@ -1,0 +1,80 @@
+     1	/**
+     2	 * Parallel implementation of invasion percolation
+     3	 *
+     4	 * \file parallel.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-28-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#include "parallel.h"
+    11	
+    12	// public
+    13	
+    14	void
+    15	invperc_mpi (mpi::communicator world,
+    16	  int2D*		matrix,			/* matrix to invade */
+    17	  bool2D*	mask,			/* mask to fill */
+    18	  int		nr,			/* row size */
+    19	  int		nc,			/* column size */
+    20	  real		fraction		/* how much to fill */
+    21	){
+    22	  int		r, c;			/* row and column indices */
+    23	  int		num, i;			/* filling index */
+    24	  int min_r, min_c; // row and column of minimum value
+    25	  int min_v; // minimum value
+    26	
+    27	  // init
+    28	  num = (int)(fraction * nr * nc);
+    29	
+    30	  mask[nr / 2][nc / 2] = TRUE;
+    31	
+    32	  // fill
+    33	  for (i = 0; i < num; i++) {
+    
+    34	    min_v = -1;
+    
+    35	    for (r = 0; r < nr; r++) {
+    36	      for (c = 0; c < nc; c++) {
+    
+For each connected grid cell, find the one of least resistance.
+    
+    37	        if ((mask[r][c] != TRUE) && (is_connected (mask, r, c, nr, nc))) {
+    38	          if ((matrix[r][c] < min_v) || (min_v == -1)) {
+    39	            min_r = r;
+    40	            min_c = c;
+    41	            min_v = matrix[r][c];
+    42	          }
+    43	        }
+    
+    44	      }
+    45	    }
+    
+Fill in that cell.
+    
+    46	    if (min_v != -1) {
+    47	      mask[min_r][min_c] = TRUE;
+    48	    }
+    49	  }
+    50	
+    51	  /* return */
+    52	}
+    53	
+    54	// private
+    55	 
+    56	bool is_connected (bool2D* mask, int r, int c, int nr, int nc)
+    57	{
+    58	  if ((r - 1 >= 0) && (mask[r - 1][c])) {
+    59	    return true;
+    60	  }
+    61	  else if ((r + 1 < nr) && (mask[r + 1][c])) {
+    62	    return true;
+    63	  }
+    64	  else if ((c - 1 >= 0) && (mask[r][c - 1])) {
+    65	    return true;
+    66	  }
+    67	  else if ((c + 1 < nc) && (mask[r][c + 1])) {
+    68	    return true;
+    69	  }
+    70	  return false;
+    71	}

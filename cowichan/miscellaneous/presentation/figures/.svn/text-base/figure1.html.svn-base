@@ -1,0 +1,319 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>figure 1</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<script src="js/prototype.js" type="text/javascript"></script>
+	<script src="js/scriptaculous.js" type="text/javascript"></script>
+	<style type="text/css">
+	
+		table {
+			border-collapse: collapse;
+		}
+		
+		td.outer {
+			border: 2px solid black;
+		}
+		
+		td.inner {
+			border: 1px dotted #aaa;
+			width: 50px;
+			height: 50px;
+		}
+		
+		#morph5 {
+			border-bottom: 2px solid black;
+		}
+		
+		#morph6 {
+			border-top: 2px solid black;
+		}
+		
+		#morph7 {
+			border-bottom: 2px solid black;
+		}
+		
+		#morph8 {
+			border-top: 2px solid black;
+		}		
+		
+		table.finished td {
+			background-color: #aaa !important;
+		}
+		
+		td.yellow {
+			background-color: #ffa !important;
+		}
+		
+		td.red {
+			background-color: #faa !important;
+		}	
+		
+		td.green {
+			background-color: #afa !important;
+		}
+		
+		td.aqua {
+			background-color: #aff !important;		
+		}
+		
+	</style>
+	<script type="text/javascript">
+		
+		function fillNext(obj, col, dur, continu) {
+
+			// get the next object to change.
+			changeObject = obj.down("td.notdone");
+			if (!changeObject) {
+			
+				obj.addClassName("finished");			
+			
+				// run "done" program.
+				if (!!continu) {
+					continu();
+				}
+				return;
+			
+			}
+			
+			// Morph it.
+			new Effect.Morph(changeObject, {
+				style:'background:' + col,
+				duration: dur
+			});
+			
+			// Set another one to morph, soon.
+			window.setTimeout(function() {
+				obj.down("td.notdone").removeClassName("notdone");
+				fillNext(obj, col, dur, continu);
+			}, dur * 1000);
+			
+		}
+		
+		function crazy() {
+
+			fillNext($('morph1'), "#afa", 0.6, function() {
+				$('morph5').show();
+				$('morph6').show();
+				$('morph3').hide();
+				fillNext($('morph5'), "#ffa", 2.0, false);	
+				fillNext($('morph6'), "#afa", 2.0, false);			
+			});
+			
+			
+			fillNext($('morph2'), "#faa", 0.8, function() {
+				$('morph7').show();
+				$('morph8').show();
+				$('morph4').hide();
+				fillNext($('morph7'), "#aff", 1.9, false);	
+				fillNext($('morph8'), "#faa", 1.5, false);				
+			});
+			
+			fillNext($('morph3'), "#ffa", 1.9);
+
+			fillNext($('morph4'), "#aff", 2.1);
+			
+					
+		}
+		
+	</script>
+</head>
+<body>
+
+
+	<table>
+
+		<tr>
+			<td class="outer">
+				
+				<table id="morph1">
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>										
+				</table>
+				
+				
+			</td>
+			<td class="outer">
+			
+				<table id="morph2">
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>										
+				</table>						
+			
+			</td>
+			<td class="outer">
+			
+				<table id="morph3">
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>										
+				</table>
+
+				<table id="morph5" style="display:none">
+					<tr>
+						<td class="inner yellow"/>
+						<td class="inner yellow"/>
+					</tr>
+					<tr>
+						<td class="inner yellow"/>
+						<td class="inner notdone"/>
+					</tr>
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>	
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>															
+				</table>
+
+				<table id="morph6" style="display:none">
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>		
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>						
+				</table>				
+			
+			</td>
+			<td class="outer">
+			
+				<table id="morph4">
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>										
+				</table>
+				
+				
+
+				<table id="morph7" style="display:none">
+					<tr>
+						<td class="inner aqua"/>
+						<td class="inner aqua"/>
+					</tr>
+					<tr>
+						<td class="inner aqua"/>
+						<td class="inner aqua"/>
+					</tr>
+					<tr>
+						<td class="inner aqua"/>
+						<td class="inner notdone"/>
+					</tr>				
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>											
+				</table>
+
+				<table id="morph8" style="display:none">
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>
+					<tr>
+						<td class="inner notdone"/>
+						<td class="inner notdone"/>
+					</tr>		
+				</table>							
+			
+			</td>
+		</tr>
+
+	</table>
+
+	<input type="button" id="myButton" value="Start Simulation" onclick="crazy();" />
+
+</body>
+</html>
+

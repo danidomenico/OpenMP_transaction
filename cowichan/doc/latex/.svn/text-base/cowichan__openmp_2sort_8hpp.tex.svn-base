@@ -1,0 +1,58 @@
+\hypertarget{cowichan__openmp_2sort_8hpp}{
+\section{cowichan\_\-openmp/sort.hpp File Reference}
+\label{cowichan__openmp_2sort_8hpp}\index{cowichan\_\-openmp/sort.hpp@{cowichan\_\-openmp/sort.hpp}}
+}
+Sorting algorithms that use OpenMP.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-openmp.hpp\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{CompactItemize}
+\item 
+namespace \hyperlink{namespacecowichan__openmp}{cowichan\_\-openmp}
+\begin{CompactList}\small\item\em Additional classes and functions specific to openmp implementation. \item\end{CompactList}
+
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{cowichan__openmp_2sort_8hpp_b3aee1394b5864d458c40b7878acbe83}{QUICK\_\-SORT\_\-CUTOFF}~100
+\item 
+\#define \hyperlink{cowichan__openmp_2sort_8hpp_66832e055934d011da279261bcfafdd1}{QUICK\_\-SORT\_\-TASK\_\-CUTOFF}~1000
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{namespacecowichan__openmp_9cbb3540b84f4e051f072a08c2c1d5db}{cowichan\_\-openmp::histogram\_\-sort} (\hyperlink{class_weighted_point}{WeightedPointVector} vector, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} len)
+\item 
+void \hyperlink{namespacecowichan__openmp_64208258cab6e46db879b46b40581134}{cowichan\_\-openmp::quick\_\-sort} (\hyperlink{class_weighted_point}{WeightedPointVector} vector, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} len)
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{namespacecowichan__openmp_2733c307de545e237e020a1f166850c5}{cowichan\_\-openmp::quick\_\-sort\_\-partition} (\hyperlink{class_weighted_point}{WeightedPointVector} vector, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} len, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} pivotIndex)
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+Sorting algorithms that use OpenMP. 
+
+Two algorithms are included: \begin{enumerate}
+\item Parallel Histogram Sort - similar to bucket sort, but does not require additional space for buckets (in-place).  \item Parallel Quick Sort - requires OpenMP 3.0 \end{enumerate}
+
+
+\subsection{Define Documentation}
+\hypertarget{cowichan__openmp_2sort_8hpp_b3aee1394b5864d458c40b7878acbe83}{
+\index{cowichan\_\-openmp/sort.hpp@{cowichan\_\-openmp/sort.hpp}!QUICK\_\-SORT\_\-CUTOFF@{QUICK\_\-SORT\_\-CUTOFF}}
+\index{QUICK\_\-SORT\_\-CUTOFF@{QUICK\_\-SORT\_\-CUTOFF}!cowichan_openmp/sort.hpp@{cowichan\_\-openmp/sort.hpp}}
+\subsubsection[{QUICK\_\-SORT\_\-CUTOFF}]{\setlength{\rightskip}{0pt plus 5cm}\#define QUICK\_\-SORT\_\-CUTOFF~100}}
+\label{cowichan__openmp_2sort_8hpp_b3aee1394b5864d458c40b7878acbe83}
+
+
+Quick sort cutoff (becomes insertion sort) - must be $>$ 1 \hypertarget{cowichan__openmp_2sort_8hpp_66832e055934d011da279261bcfafdd1}{
+\index{cowichan\_\-openmp/sort.hpp@{cowichan\_\-openmp/sort.hpp}!QUICK\_\-SORT\_\-TASK\_\-CUTOFF@{QUICK\_\-SORT\_\-TASK\_\-CUTOFF}}
+\index{QUICK\_\-SORT\_\-TASK\_\-CUTOFF@{QUICK\_\-SORT\_\-TASK\_\-CUTOFF}!cowichan_openmp/sort.hpp@{cowichan\_\-openmp/sort.hpp}}
+\subsubsection[{QUICK\_\-SORT\_\-TASK\_\-CUTOFF}]{\setlength{\rightskip}{0pt plus 5cm}\#define QUICK\_\-SORT\_\-TASK\_\-CUTOFF~1000}}
+\label{cowichan__openmp_2sort_8hpp_66832e055934d011da279261bcfafdd1}
+
+
+Parallel sort cutoff (no more tasks generated). 

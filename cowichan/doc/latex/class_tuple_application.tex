@@ -1,0 +1,133 @@
+\hypertarget{class_tuple_application}{
+\section{TupleApplication Class Reference}
+\label{class_tuple_application}\index{TupleApplication@{TupleApplication}}
+}
+{\tt \#include $<$tuple\_\-common.hpp$>$}
+
+Inheritance diagram for TupleApplication::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=12cm]{class_tuple_application}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{class_tuple_application_892dbd783a1983228ac3865fb082f47a}{addInput} (int name, void $\ast$data)
+\item 
+void \hyperlink{class_tuple_application_985c26b37c8040ea51968af9caca9d3b}{addOutput} (int name, void $\ast$data)
+\item 
+int \hyperlink{class_tuple_application_9d0c51c481ef477787ffc2fd00116f4e}{start} (const char $\ast$host, int portNumber, int numWorkers)
+\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+virtual void \hyperlink{class_tuple_application_e163c5a536de01c8b94b49528a17dab2}{consumeInput} ()=0
+\item 
+virtual void \hyperlink{class_tuple_application_ef6ae8bb1d697e4ed038b43320183c89}{work} ()=0
+\item 
+virtual void \hyperlink{class_tuple_application_8743dfcf17dedd52887c0b2ab170d8dc}{produceOutput} ()=0
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+std::map$<$ int, void $\ast$ $>$ \hyperlink{class_tuple_application_92a57e83bfd67542ae58e6a78720a3ef}{inputs}
+\item 
+std::map$<$ int, void $\ast$ $>$ \hyperlink{class_tuple_application_8abaaa3ef053827d70b3948e6f855082}{outputs}
+\item 
+struct context \hyperlink{class_tuple_application_773a45a8a04a872fd9c42b9ec07c8ebd}{ctx}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+The common tuple application class allows LinuxTuples applications to be easily created. The class takes care of process creation and destruction, and makes sure outputs get carried onto the main process. Additionally, virtual functions are provided for workers and input/output processes. Things that need to be done in the tuple space should consider inheriting from this class. The class which all tuple applications should inherit from. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_tuple_application_892dbd783a1983228ac3865fb082f47a}{
+\index{TupleApplication@{TupleApplication}!addInput@{addInput}}
+\index{addInput@{addInput}!TupleApplication@{TupleApplication}}
+\subsubsection[{addInput}]{\setlength{\rightskip}{0pt plus 5cm}void TupleApplication::addInput (int {\em name}, \/  void $\ast$ {\em data})}}
+\label{class_tuple_application_892dbd783a1983228ac3865fb082f47a}
+
+
+Set up input pointers. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em name}]the \char`\"{}name\char`\"{} of the data \item[{\em data}]the pointer to passed to the tuple-space \end{description}
+\end{Desc}
+\hypertarget{class_tuple_application_985c26b37c8040ea51968af9caca9d3b}{
+\index{TupleApplication@{TupleApplication}!addOutput@{addOutput}}
+\index{addOutput@{addOutput}!TupleApplication@{TupleApplication}}
+\subsubsection[{addOutput}]{\setlength{\rightskip}{0pt plus 5cm}void TupleApplication::addOutput (int {\em name}, \/  void $\ast$ {\em data})}}
+\label{class_tuple_application_985c26b37c8040ea51968af9caca9d3b}
+
+
+Set up output pointers. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em name}]the \char`\"{}name\char`\"{} of the data \item[{\em data}]the pointer to passed to the tuple-space \end{description}
+\end{Desc}
+\hypertarget{class_tuple_application_e163c5a536de01c8b94b49528a17dab2}{
+\index{TupleApplication@{TupleApplication}!consumeInput@{consumeInput}}
+\index{consumeInput@{consumeInput}!TupleApplication@{TupleApplication}}
+\subsubsection[{consumeInput}]{\setlength{\rightskip}{0pt plus 5cm}virtual void TupleApplication::consumeInput ()\hspace{0.3cm}{\tt  \mbox{[}protected, pure virtual\mbox{]}}}}
+\label{class_tuple_application_e163c5a536de01c8b94b49528a17dab2}
+
+
+The consume input process is spawned once and should distribute tasks to the worker processes. 
+
+Implemented in \hyperlink{class_l_t_forward_6f3bbdf720e1899b0df8a8f222727086}{LTForward}, \hyperlink{class_l_t_half_fc07035f40f22a3f827504b13e8f99c9}{LTHalf}, \hyperlink{class_l_t_hull_e726f7fe6b16d8aa393045d4233a8447}{LTHull}, \hyperlink{class_l_t_life_da0a691f9bf8bb055a4fe953dd6eb809}{LTLife}, \hyperlink{class_l_t_mandel_15fb4ee93967f8717db22056f666f723}{LTMandel}, \hyperlink{class_l_t_bounds_ac6861a60c9a42ec8fc71025b481c380}{LTBounds}, \hyperlink{class_l_t_norm_58c0b2b050ac4e0fd5927fff451ae9ff}{LTNorm}, \hyperlink{class_l_t_outer_3e0493a0d06fbc86fe614edbd752eb8a}{LTOuter}, \hyperlink{class_l_t_product_377454ff007fa15f0bd378013bf1e6e6}{LTProduct}, \hyperlink{class_l_t_randmat_73181e409565b18c77d880dbf4123b26}{LTRandmat}, \hyperlink{class_l_t_sor_4fc4f0f914fc08f57f2ef5ba346cef1d}{LTSor}, \hyperlink{class_l_t_frequency_4ac4fa1a348246caf0d34506fcd09a64}{LTFrequency}, \hyperlink{class_l_t_thresh_b802b240b17b2c71cb758e1fe7585d72}{LTThresh}, \hyperlink{class_l_t_vecdiff_9daf31de467c9694e59b55936780dce8}{LTVecdiff}, and \hyperlink{class_l_t_winnow_ec961ab4e19c71b475903972111c20e9}{LTWinnow}.\hypertarget{class_tuple_application_8743dfcf17dedd52887c0b2ab170d8dc}{
+\index{TupleApplication@{TupleApplication}!produceOutput@{produceOutput}}
+\index{produceOutput@{produceOutput}!TupleApplication@{TupleApplication}}
+\subsubsection[{produceOutput}]{\setlength{\rightskip}{0pt plus 5cm}virtual void TupleApplication::produceOutput ()\hspace{0.3cm}{\tt  \mbox{[}protected, pure virtual\mbox{]}}}}
+\label{class_tuple_application_8743dfcf17dedd52887c0b2ab170d8dc}
+
+
+The output producer decides when the tuple application is finished; once this function returns, the tuple application is complete. 
+
+Implemented in \hyperlink{class_l_t_forward_56c27cd419407319f95afa4e7d43409a}{LTForward}, \hyperlink{class_l_t_half_bf36d89af87f94ff2aaff36338717f37}{LTHalf}, \hyperlink{class_l_t_hull_14a3bf005173aa79d0c7259579229f12}{LTHull}, \hyperlink{class_l_t_life_a0ac21131813f89a94c6ba7515e63c11}{LTLife}, \hyperlink{class_l_t_mandel_31cacf747914e03e6a87bb9af7dff67e}{LTMandel}, \hyperlink{class_l_t_bounds_028a451c099ee3377dc64a5a8ae9954f}{LTBounds}, \hyperlink{class_l_t_norm_2e142e5c7fabd218436f2abe99f4535b}{LTNorm}, \hyperlink{class_l_t_outer_2a12a006761b2e1132b84209d29fddac}{LTOuter}, \hyperlink{class_l_t_product_d03b068863d7b2febcbb7b11ebb819ca}{LTProduct}, \hyperlink{class_l_t_randmat_3adc0a50f5840dcc1228f4449e2b5da3}{LTRandmat}, \hyperlink{class_l_t_sor_19e969a6ab342ee86d86721fbd37e7a6}{LTSor}, \hyperlink{class_l_t_frequency_e80cd869c8935cb7fe553c6ad27e861b}{LTFrequency}, \hyperlink{class_l_t_thresh_41ce024f24320a5bd65239e98ac85587}{LTThresh}, \hyperlink{class_l_t_vecdiff_69d3c6e3c51052522d474cc75d11a2f2}{LTVecdiff}, and \hyperlink{class_l_t_winnow_865de8a240ae781c8cc5567082edc2ea}{LTWinnow}.\hypertarget{class_tuple_application_9d0c51c481ef477787ffc2fd00116f4e}{
+\index{TupleApplication@{TupleApplication}!start@{start}}
+\index{start@{start}!TupleApplication@{TupleApplication}}
+\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}int TupleApplication::start (const char $\ast$ {\em host}, \/  int {\em portNumber}, \/  int {\em numWorkers})}}
+\label{class_tuple_application_9d0c51c481ef477787ffc2fd00116f4e}
+
+
+Starts the tuple-space job. \hypertarget{class_tuple_application_ef6ae8bb1d697e4ed038b43320183c89}{
+\index{TupleApplication@{TupleApplication}!work@{work}}
+\index{work@{work}!TupleApplication@{TupleApplication}}
+\subsubsection[{work}]{\setlength{\rightskip}{0pt plus 5cm}virtual void TupleApplication::work ()\hspace{0.3cm}{\tt  \mbox{[}protected, pure virtual\mbox{]}}}}
+\label{class_tuple_application_ef6ae8bb1d697e4ed038b43320183c89}
+
+
+Worker processes are created and killed after the output process has finished. 
+
+Implemented in \hyperlink{class_l_t_forward_d98aff7a063bf6e8542046c6f2c097fa}{LTForward}, \hyperlink{class_l_t_half_e60dd430fb782498837492c0331e0dea}{LTHalf}, \hyperlink{class_l_t_hull_829b19b354bbe61d7cd5250819bd7b63}{LTHull}, \hyperlink{class_l_t_life_c0600864c1742c2a12e15992c539c2da}{LTLife}, \hyperlink{class_l_t_mandel_5ea4d32e6d16f64148bddbb940d732da}{LTMandel}, \hyperlink{class_l_t_bounds_877b72b63e19fbb7114bae270fe20c53}{LTBounds}, \hyperlink{class_l_t_norm_f0905a2c85b2e2713e98b9b22714a022}{LTNorm}, \hyperlink{class_l_t_outer_e0b1322b40271bb94c272b6117c8d16c}{LTOuter}, \hyperlink{class_l_t_product_1ba17b14e59b82c917f404cc9642bb09}{LTProduct}, \hyperlink{class_l_t_randmat_fffb75c16f2aaaa2f1bdb8a52f79234c}{LTRandmat}, \hyperlink{class_l_t_sor_48363c30cbba1c5ca61ed86260db94af}{LTSor}, \hyperlink{class_l_t_frequency_7c47cf36b228505f79225a3fe8a00f01}{LTFrequency}, \hyperlink{class_l_t_thresh_3cff6d04c7389a32e1dca924c7f93e23}{LTThresh}, \hyperlink{class_l_t_vecdiff_0117017e12284b1eb57532ca447684f6}{LTVecdiff}, and \hyperlink{class_l_t_winnow_472d0a232050f4674339029b1aa47531}{LTWinnow}.
+
+\subsection{Member Data Documentation}
+\hypertarget{class_tuple_application_773a45a8a04a872fd9c42b9ec07c8ebd}{
+\index{TupleApplication@{TupleApplication}!ctx@{ctx}}
+\index{ctx@{ctx}!TupleApplication@{TupleApplication}}
+\subsubsection[{ctx}]{\setlength{\rightskip}{0pt plus 5cm}struct context {\bf TupleApplication::ctx}\hspace{0.3cm}{\tt  \mbox{[}read, protected\mbox{]}}}}
+\label{class_tuple_application_773a45a8a04a872fd9c42b9ec07c8ebd}
+
+
+Tuple-space context (LinuxTuples-specific). \hypertarget{class_tuple_application_92a57e83bfd67542ae58e6a78720a3ef}{
+\index{TupleApplication@{TupleApplication}!inputs@{inputs}}
+\index{inputs@{inputs}!TupleApplication@{TupleApplication}}
+\subsubsection[{inputs}]{\setlength{\rightskip}{0pt plus 5cm}std::map$<$int, void$\ast$$>$ {\bf TupleApplication::inputs}\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class_tuple_application_92a57e83bfd67542ae58e6a78720a3ef}
+
+
+Inputs that should be available to all processes. \hypertarget{class_tuple_application_8abaaa3ef053827d70b3948e6f855082}{
+\index{TupleApplication@{TupleApplication}!outputs@{outputs}}
+\index{outputs@{outputs}!TupleApplication@{TupleApplication}}
+\subsubsection[{outputs}]{\setlength{\rightskip}{0pt plus 5cm}std::map$<$int, void$\ast$$>$ {\bf TupleApplication::outputs}\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class_tuple_application_8abaaa3ef053827d70b3948e6f855082}
+
+
+Outputs that should be available to all processes, and that should be writable by the outputProducer process. 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+cowichan\_\-lt/src/\hyperlink{tuple__common_8hpp}{tuple\_\-common.hpp}\item 
+cowichan\_\-lt/src/\hyperlink{tuple__common_8cpp}{tuple\_\-common.cpp}\end{CompactItemize}

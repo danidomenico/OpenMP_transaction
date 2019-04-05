@@ -1,0 +1,69 @@
+\hypertarget{class_l_t_life}{
+\section{LTLife Class Reference}
+\label{class_l_t_life}\index{LTLife@{LTLife}}
+}
+{\tt \#include $<$life.hpp$>$}
+
+Inheritance diagram for LTLife::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{class_l_t_life}
+\end{center}
+\end{figure}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{class_l_t_life_da0a691f9bf8bb055a4fe953dd6eb809}{consumeInput} ()
+\item 
+void \hyperlink{class_l_t_life_c0600864c1742c2a12e15992c539c2da}{work} ()
+\item 
+void \hyperlink{class_l_t_life_a0ac21131813f89a94c6ba7515e63c11}{produceOutput} ()
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{class_l_t_life_c63c1d93bcffbd2415d23a189c46bce7}{sumNeighbours} (\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} y, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} x)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Cellular automata done in LinuxTuples. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_l_t_life_da0a691f9bf8bb055a4fe953dd6eb809}{
+\index{LTLife@{LTLife}!consumeInput@{consumeInput}}
+\index{consumeInput@{consumeInput}!LTLife@{LTLife}}
+\subsubsection[{consumeInput}]{\setlength{\rightskip}{0pt plus 5cm}void LTLife::consumeInput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_life_da0a691f9bf8bb055a4fe953dd6eb809}
+
+
+The consume input process is spawned once and should distribute tasks to the worker processes. 
+
+Implements \hyperlink{class_tuple_application_e163c5a536de01c8b94b49528a17dab2}{TupleApplication}.\hypertarget{class_l_t_life_a0ac21131813f89a94c6ba7515e63c11}{
+\index{LTLife@{LTLife}!produceOutput@{produceOutput}}
+\index{produceOutput@{produceOutput}!LTLife@{LTLife}}
+\subsubsection[{produceOutput}]{\setlength{\rightskip}{0pt plus 5cm}void LTLife::produceOutput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_life_a0ac21131813f89a94c6ba7515e63c11}
+
+
+The output producer decides when the tuple application is finished; once this function returns, the tuple application is complete. 
+
+Implements \hyperlink{class_tuple_application_8743dfcf17dedd52887c0b2ab170d8dc}{TupleApplication}.\hypertarget{class_l_t_life_c63c1d93bcffbd2415d23a189c46bce7}{
+\index{LTLife@{LTLife}!sumNeighbours@{sumNeighbours}}
+\index{sumNeighbours@{sumNeighbours}!LTLife@{LTLife}}
+\subsubsection[{sumNeighbours}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} LTLife::sumNeighbours ({\bf index\_\-t} {\em y}, \/  {\bf index\_\-t} {\em x})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class_l_t_life_c63c1d93bcffbd2415d23a189c46bce7}
+
+
+Calculate number of peers. \hypertarget{class_l_t_life_c0600864c1742c2a12e15992c539c2da}{
+\index{LTLife@{LTLife}!work@{work}}
+\index{work@{work}!LTLife@{LTLife}}
+\subsubsection[{work}]{\setlength{\rightskip}{0pt plus 5cm}void LTLife::work ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_life_c0600864c1742c2a12e15992c539c2da}
+
+
+Worker processes are created and killed after the output process has finished. 
+
+Implements \hyperlink{class_tuple_application_ef6ae8bb1d697e4ed038b43320183c89}{TupleApplication}.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+cowichan\_\-lt/src/\hyperlink{life_8hpp}{life.hpp}\item 
+cowichan\_\-lt/src/\hyperlink{cowichan__lt_2src_2life_8cpp}{life.cpp}\end{CompactItemize}

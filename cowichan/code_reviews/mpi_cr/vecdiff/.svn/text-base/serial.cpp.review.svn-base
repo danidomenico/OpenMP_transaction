@@ -1,0 +1,45 @@
+     1	/**
+     2	 * Serial implementation of vector difference
+     3	 *
+     4	 * \file serial.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-27-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#include "serial.h"
+    11	
+    12	// public
+    13	
+    14	/*
+    15	 * @ vecdiff : do vector difference
+    16	 * > none
+    17	 * + find norm-1 vector difference
+    18	 */
+    19	
+    20	void
+    21	vecdiff(
+    22	  real1D*	left,			/* left vector */
+    23	  real1D*	right,			/* right vector */
+    24	  int		n,			/* vector lengths */
+    25	  real	      * diff			/* norm-1 difference */
+    26	){
+    27	  int		i;			/* loop index */
+    28	  real		d;			/* difference */
+    29	#if GRAPHICS
+    30	  int		gfxCount = 0;
+    31	#endif
+    32	
+    33	  *diff = (real)fabs((double)(left[0] - right[0]));
+    34	  for (i=1; i<n; i++){
+    35	    d = (real)fabs((double)(left[i] - right[i]));
+    36	    if (*diff < d){
+    37	      *diff = d;
+    38	    }
+    39	  }
+    40	#if GRAPHICS
+    41	  gfx_vecdiff(gfxCount++, left, right, n, *diff);
+    42	#endif
+    43	
+    44	  /* return */
+    45	}

@@ -1,0 +1,87 @@
+\hypertarget{classcowichan__tbb_1_1_make_dominant}{
+\section{cowichan\_\-tbb::MakeDominant Class Reference}
+\label{classcowichan__tbb_1_1_make_dominant}\index{cowichan\_\-tbb::MakeDominant@{cowichan\_\-tbb::MakeDominant}}
+}
+Makes a given matrix diagonally dominant.  
+
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classcowichan__tbb_1_1_make_dominant_aa60cc1c8e84d1adedf84c4195bd94e6}{MakeDominant} (\hyperlink{cowichan_8hpp_3fb46f939e55c239fbc95656fc0f3399}{Matrix} matrix, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_make_dominant_f329b8d7d34fe420ba91e124299629a5}{n}, \hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{classcowichan__tbb_1_1_make_dominant_f47a49461fbef3e69bdb3c3f8fce66f3}{value})
+\item 
+void \hyperlink{classcowichan__tbb_1_1_make_dominant_55f09191fc150a1570c3cc29d7181416}{operator()} (const \hyperlink{cowichan__tbb_8hpp_8e2057f725b08f3a15513c378a453a47}{Range} \&rows) const 
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{cowichan_8hpp_3fb46f939e55c239fbc95656fc0f3399}{Matrix} \hyperlink{classcowichan__tbb_1_1_make_dominant_1d0d71f5d927d434b36149a7b0f4938c}{\_\-matrix}
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_make_dominant_f329b8d7d34fe420ba91e124299629a5}{n}
+\item 
+const \hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{classcowichan__tbb_1_1_make_dominant_f47a49461fbef3e69bdb3c3f8fce66f3}{value}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Makes a given matrix diagonally dominant. 
+
+Modifies its diagonal elements. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcowichan__tbb_1_1_make_dominant_aa60cc1c8e84d1adedf84c4195bd94e6}{
+\index{cowichan\_\-tbb::MakeDominant@{cowichan\_\-tbb::MakeDominant}!MakeDominant@{MakeDominant}}
+\index{MakeDominant@{MakeDominant}!cowichan_tbb::MakeDominant@{cowichan\_\-tbb::MakeDominant}}
+\subsubsection[{MakeDominant}]{\setlength{\rightskip}{0pt plus 5cm}cowichan\_\-tbb::MakeDominant::MakeDominant ({\bf Matrix} {\em matrix}, \/  {\bf index\_\-t} {\em n}, \/  {\bf real} {\em value})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_make_dominant_aa60cc1c8e84d1adedf84c4195bd94e6}
+
+
+Construct a make dominant object. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em matrix}]matrix to modify. \item[{\em n}]matrix size. \item[{\em value}]value for diagonal. \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcowichan__tbb_1_1_make_dominant_55f09191fc150a1570c3cc29d7181416}{
+\index{cowichan\_\-tbb::MakeDominant@{cowichan\_\-tbb::MakeDominant}!operator()@{operator()}}
+\index{operator()@{operator()}!cowichan_tbb::MakeDominant@{cowichan\_\-tbb::MakeDominant}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::MakeDominant::operator() (const {\bf Range} \& {\em rows}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_make_dominant_55f09191fc150a1570c3cc29d7181416}
+
+
+Sets diagonal elements to a given constant. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em rows}]range of rows to work on. \end{description}
+\end{Desc}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classcowichan__tbb_1_1_make_dominant_1d0d71f5d927d434b36149a7b0f4938c}{
+\index{cowichan\_\-tbb::MakeDominant@{cowichan\_\-tbb::MakeDominant}!\_\-matrix@{\_\-matrix}}
+\index{\_\-matrix@{\_\-matrix}!cowichan_tbb::MakeDominant@{cowichan\_\-tbb::MakeDominant}}
+\subsubsection[{\_\-matrix}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} {\bf cowichan\_\-tbb::MakeDominant::\_\-matrix}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_make_dominant_1d0d71f5d927d434b36149a7b0f4938c}
+
+
+Matrix to modify. \hypertarget{classcowichan__tbb_1_1_make_dominant_f329b8d7d34fe420ba91e124299629a5}{
+\index{cowichan\_\-tbb::MakeDominant@{cowichan\_\-tbb::MakeDominant}!n@{n}}
+\index{n@{n}!cowichan_tbb::MakeDominant@{cowichan\_\-tbb::MakeDominant}}
+\subsubsection[{n}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} {\bf cowichan\_\-tbb::MakeDominant::n}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_make_dominant_f329b8d7d34fe420ba91e124299629a5}
+
+
+Matrix size. \hypertarget{classcowichan__tbb_1_1_make_dominant_f47a49461fbef3e69bdb3c3f8fce66f3}{
+\index{cowichan\_\-tbb::MakeDominant@{cowichan\_\-tbb::MakeDominant}!value@{value}}
+\index{value@{value}!cowichan_tbb::MakeDominant@{cowichan\_\-tbb::MakeDominant}}
+\subsubsection[{value}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf real} {\bf cowichan\_\-tbb::MakeDominant::value}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_make_dominant_f47a49461fbef3e69bdb3c3f8fce66f3}
+
+
+Value to use for diagonal. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+cowichan\_\-tbb/\hyperlink{cowichan__tbb_2outer_8cpp}{outer.cpp}\end{CompactItemize}

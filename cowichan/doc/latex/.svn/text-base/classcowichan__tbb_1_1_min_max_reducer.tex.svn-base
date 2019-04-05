@@ -1,0 +1,135 @@
+\hypertarget{classcowichan__tbb_1_1_min_max_reducer}{
+\section{cowichan\_\-tbb::MinMaxReducer Class Reference}
+\label{classcowichan__tbb_1_1_min_max_reducer}\index{cowichan\_\-tbb::MinMaxReducer@{cowichan\_\-tbb::MinMaxReducer}}
+}
+Performs the minimum and maximum reductions.  
+
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classcowichan__tbb_1_1_min_max_reducer_29bbea72ee03400fad8cc9db152fda11}{MinMaxReducer} (\hyperlink{class_point}{PointVector} \hyperlink{classcowichan__tbb_1_1_min_max_reducer_40d6051859ad295c7e713ceb8c5ebf32}{pointsIn})
+\item 
+\hyperlink{class_point}{Point} \hyperlink{classcowichan__tbb_1_1_min_max_reducer_111be26690582d53727d4e091a8d2aa5}{getMinimum} () const 
+\item 
+\hyperlink{class_point}{Point} \hyperlink{classcowichan__tbb_1_1_min_max_reducer_71664616ef2ae1cfbd0f7aa0bee6c60f}{getMaximum} () const 
+\item 
+void \hyperlink{classcowichan__tbb_1_1_min_max_reducer_cb23bd9de26da84eb679dd03d123083d}{operator()} (const \hyperlink{cowichan__tbb_8hpp_8e2057f725b08f3a15513c378a453a47}{Range} \&range)
+\item 
+\hyperlink{classcowichan__tbb_1_1_min_max_reducer_ed85c930182f104ddac11d4814038e2d}{MinMaxReducer} (\hyperlink{classcowichan__tbb_1_1_min_max_reducer}{MinMaxReducer} \&other, split)
+\item 
+void \hyperlink{classcowichan__tbb_1_1_min_max_reducer_62cc9f7c40fedcd7f7306004b62932ff}{join} (const \hyperlink{classcowichan__tbb_1_1_min_max_reducer}{MinMaxReducer} \&other)
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_point}{PointVector} \hyperlink{classcowichan__tbb_1_1_min_max_reducer_40d6051859ad295c7e713ceb8c5ebf32}{pointsIn}
+\item 
+\hyperlink{class_point}{Point} \hyperlink{classcowichan__tbb_1_1_min_max_reducer_6445a2879ca5b7ca9d3c30d188fa3d6f}{minPoint}
+\item 
+\hyperlink{class_point}{Point} \hyperlink{classcowichan__tbb_1_1_min_max_reducer_0714c4e137e6df5122245fe6230f0aee}{maxPoint}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Performs the minimum and maximum reductions. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcowichan__tbb_1_1_min_max_reducer_29bbea72ee03400fad8cc9db152fda11}{
+\index{cowichan\_\-tbb::MinMaxReducer@{cowichan\_\-tbb::MinMaxReducer}!MinMaxReducer@{MinMaxReducer}}
+\index{MinMaxReducer@{MinMaxReducer}!cowichan_tbb::MinMaxReducer@{cowichan\_\-tbb::MinMaxReducer}}
+\subsubsection[{MinMaxReducer}]{\setlength{\rightskip}{0pt plus 5cm}cowichan\_\-tbb::MinMaxReducer::MinMaxReducer ({\bf PointVector} {\em pointsIn})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_min_max_reducer_29bbea72ee03400fad8cc9db152fda11}
+
+
+Construct a min/max reducer. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pointsIn}]input points. \end{description}
+\end{Desc}
+\hypertarget{classcowichan__tbb_1_1_min_max_reducer_ed85c930182f104ddac11d4814038e2d}{
+\index{cowichan\_\-tbb::MinMaxReducer@{cowichan\_\-tbb::MinMaxReducer}!MinMaxReducer@{MinMaxReducer}}
+\index{MinMaxReducer@{MinMaxReducer}!cowichan_tbb::MinMaxReducer@{cowichan\_\-tbb::MinMaxReducer}}
+\subsubsection[{MinMaxReducer}]{\setlength{\rightskip}{0pt plus 5cm}cowichan\_\-tbb::MinMaxReducer::MinMaxReducer ({\bf MinMaxReducer} \& {\em other}, \/  split)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_min_max_reducer_ed85c930182f104ddac11d4814038e2d}
+
+
+Splitting (TBB) constructor. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em other}]object to split. \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcowichan__tbb_1_1_min_max_reducer_71664616ef2ae1cfbd0f7aa0bee6c60f}{
+\index{cowichan\_\-tbb::MinMaxReducer@{cowichan\_\-tbb::MinMaxReducer}!getMaximum@{getMaximum}}
+\index{getMaximum@{getMaximum}!cowichan_tbb::MinMaxReducer@{cowichan\_\-tbb::MinMaxReducer}}
+\subsubsection[{getMaximum}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point} cowichan\_\-tbb::MinMaxReducer::getMaximum () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_min_max_reducer_71664616ef2ae1cfbd0f7aa0bee6c60f}
+
+
+Get point of maximums. \begin{Desc}
+\item[Returns:]Max point. \end{Desc}
+\hypertarget{classcowichan__tbb_1_1_min_max_reducer_111be26690582d53727d4e091a8d2aa5}{
+\index{cowichan\_\-tbb::MinMaxReducer@{cowichan\_\-tbb::MinMaxReducer}!getMinimum@{getMinimum}}
+\index{getMinimum@{getMinimum}!cowichan_tbb::MinMaxReducer@{cowichan\_\-tbb::MinMaxReducer}}
+\subsubsection[{getMinimum}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point} cowichan\_\-tbb::MinMaxReducer::getMinimum () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_min_max_reducer_111be26690582d53727d4e091a8d2aa5}
+
+
+Get point of minimums. \begin{Desc}
+\item[Returns:]Min point. \end{Desc}
+\hypertarget{classcowichan__tbb_1_1_min_max_reducer_62cc9f7c40fedcd7f7306004b62932ff}{
+\index{cowichan\_\-tbb::MinMaxReducer@{cowichan\_\-tbb::MinMaxReducer}!join@{join}}
+\index{join@{join}!cowichan_tbb::MinMaxReducer@{cowichan\_\-tbb::MinMaxReducer}}
+\subsubsection[{join}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::MinMaxReducer::join (const {\bf MinMaxReducer} \& {\em other})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_min_max_reducer_62cc9f7c40fedcd7f7306004b62932ff}
+
+
+Joiner (TBB). \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em other}]object to join. \end{description}
+\end{Desc}
+\hypertarget{classcowichan__tbb_1_1_min_max_reducer_cb23bd9de26da84eb679dd03d123083d}{
+\index{cowichan\_\-tbb::MinMaxReducer@{cowichan\_\-tbb::MinMaxReducer}!operator()@{operator()}}
+\index{operator()@{operator()}!cowichan_tbb::MinMaxReducer@{cowichan\_\-tbb::MinMaxReducer}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::MinMaxReducer::operator() (const {\bf Range} \& {\em range})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_min_max_reducer_cb23bd9de26da84eb679dd03d123083d}
+
+
+Calculates the minimum and maximum co-ordinates over the given array range. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em range}]point range. \end{description}
+\end{Desc}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classcowichan__tbb_1_1_min_max_reducer_0714c4e137e6df5122245fe6230f0aee}{
+\index{cowichan\_\-tbb::MinMaxReducer@{cowichan\_\-tbb::MinMaxReducer}!maxPoint@{maxPoint}}
+\index{maxPoint@{maxPoint}!cowichan_tbb::MinMaxReducer@{cowichan\_\-tbb::MinMaxReducer}}
+\subsubsection[{maxPoint}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point} {\bf cowichan\_\-tbb::MinMaxReducer::maxPoint}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_min_max_reducer_0714c4e137e6df5122245fe6230f0aee}
+
+
+Max point. \hypertarget{classcowichan__tbb_1_1_min_max_reducer_6445a2879ca5b7ca9d3c30d188fa3d6f}{
+\index{cowichan\_\-tbb::MinMaxReducer@{cowichan\_\-tbb::MinMaxReducer}!minPoint@{minPoint}}
+\index{minPoint@{minPoint}!cowichan_tbb::MinMaxReducer@{cowichan\_\-tbb::MinMaxReducer}}
+\subsubsection[{minPoint}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point} {\bf cowichan\_\-tbb::MinMaxReducer::minPoint}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_min_max_reducer_6445a2879ca5b7ca9d3c30d188fa3d6f}
+
+
+Min point. \hypertarget{classcowichan__tbb_1_1_min_max_reducer_40d6051859ad295c7e713ceb8c5ebf32}{
+\index{cowichan\_\-tbb::MinMaxReducer@{cowichan\_\-tbb::MinMaxReducer}!pointsIn@{pointsIn}}
+\index{pointsIn@{pointsIn}!cowichan_tbb::MinMaxReducer@{cowichan\_\-tbb::MinMaxReducer}}
+\subsubsection[{pointsIn}]{\setlength{\rightskip}{0pt plus 5cm}{\bf PointVector} {\bf cowichan\_\-tbb::MinMaxReducer::pointsIn}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_min_max_reducer_40d6051859ad295c7e713ceb8c5ebf32}
+
+
+Input points. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+cowichan\_\-tbb/\hyperlink{cowichan__tbb_2norm_8cpp}{norm.cpp}\end{CompactItemize}

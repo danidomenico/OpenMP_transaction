@@ -1,0 +1,23 @@
+\hypertarget{cowichan__lt_2src_2invperc_8cpp}{
+\section{cowichan\_\-lt/src/invperc.cpp File Reference}
+\label{cowichan__lt_2src_2invperc_8cpp}\index{cowichan\_\-lt/src/invperc.cpp@{cowichan\_\-lt/src/invperc.cpp}}
+}
+LinuxTuples (actually serial) invperc implementation.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-lt.hpp\char`\"{}}\par
+{\tt \#include $<$queue$>$}\par
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{class_perc_point}{PercPoint}
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+LinuxTuples (actually serial) invperc implementation. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_linux_tuples_5497a17a63cc5faad7afa54d013ea741}{CowichanLinuxTuples::invperc} \end{Desc}

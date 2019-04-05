@@ -1,0 +1,34 @@
+\section{Memory Reference Patterns\label{s:memory}}
+
+These are inspired by the categorization originally used in the Munin system \cite{b:munin-overview}.
+Again, implementors are encouraged to phrase discussion of their work in these terms where appropriate.
+
+\begin{itemlist}
+\item	Write-once:
+	variables which are assigned a value once, and only read thereafter.
+	These can be supported through replication.
+\item	Write-many:
+	variables which are written and read many times.
+	If several processes write to the variable concurrently, they typically write to different portions of it.
+\item	Producer-consumer:
+	variables which are written to by one or more objects, and read by one or more other objects.
+	Entries in a shared queue, or a mailbox used for communication between two processes, are examples.
+\item	Private:
+	variables which are potentially shared, but actually private.
+	The interior points of a mesh in a program which uses geometric decomposition fall into this category,
+	while boundary points belong to the previous class.
+\item	Migratory:
+	variables which are read and written many times in succession by a single process before ownership passes to another process.
+	The structures representing particles in an $N$-body simulation are the clearest example of this category.
+\item	Result:
+	Accumulators which are updated many times by different processes, but thereafter read.
+\item	Read-mostly:
+	Any variable which is read much more often than it is written to.
+	The best score so far in a search problem is a typical instance of this class:
+	while any process might update it, in practice processes read its value much more often than they change it.
+\item	Synchronization:
+	Variables used to force explicit synchronization in a program, such as semaphores and locks.
+	These are typically ignored for long periods, and then the subject of intense bursts of access activity.
+\item	General read-write:
+	Any variable which cannot be put in one of the above categories.
+\end{itemlist}

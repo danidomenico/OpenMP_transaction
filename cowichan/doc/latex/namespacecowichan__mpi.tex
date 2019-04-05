@@ -1,0 +1,221 @@
+\hypertarget{namespacecowichan__mpi}{
+\section{cowichan\_\-mpi Namespace Reference}
+\label{namespacecowichan__mpi}\index{cowichan\_\-mpi@{cowichan\_\-mpi}}
+}
+Additional classes and functions specific to mpi implementation.  
+
+
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{structcowichan__mpi_1_1minimum__x__pt}{minimum\_\-x\_\-pt}
+\item 
+struct \hyperlink{structcowichan__mpi_1_1maximum__x__pt}{maximum\_\-x\_\-pt}
+\item 
+struct \hyperlink{structcowichan__mpi_1_1pt__cross}{pt\_\-cross}
+\item 
+struct \hyperlink{structcowichan__mpi_1_1maximum__cp}{maximum\_\-cp}
+\item 
+class \hyperlink{classcowichan__mpi_1_1_perc_point}{PercPoint}
+\begin{CompactList}\small\item\em Percolation point. \item\end{CompactList}\item 
+struct \hyperlink{structcowichan__mpi_1_1minimum__pt}{minimum\_\-pt}
+\item 
+struct \hyperlink{structcowichan__mpi_1_1maximum__pt}{maximum\_\-pt}
+\item 
+struct \hyperlink{structcowichan__mpi_1_1sum}{sum}
+\begin{CompactList}\small\item\em Calculates \hyperlink{structcowichan__mpi_1_1sum}{sum} of two elements. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+bool \hyperlink{namespacecowichan__mpi_bb7c07d8b23660efe06c7ee12d60bbdc}{get\_\-block} (const mpi::communicator \&world, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} lo, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} hi, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$start, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$end)
+\item 
+bool \hyperlink{namespacecowichan__mpi_413bf41c8bf73b560d1c16a8e5206e5f}{get\_\-block} (const mpi::communicator \&world, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} lo, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} hi, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$start, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$end, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} rank)
+\item 
+void \hyperlink{namespacecowichan__mpi_9a2d3b047e280fd12498b0ccd86c4677}{randStateInit} (\hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} seed, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} width, \hyperlink{cowichan_8hpp_9bab229b7d95f858be62c35cca6ff294}{IntVector} state, \hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} $\ast$aPrime, \hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} $\ast$cPrime)
+\item 
+\hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} \hyperlink{namespacecowichan__mpi_a2af23c28ab53e0577f4332936467475}{mandel\_\-calc} (\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} x, \hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} y)
+\item 
+void \hyperlink{namespacecowichan__mpi_c9ddfd8c08bb0f11a90abac20453dd2c}{split\_\-mpi} (mpi::communicator world, \hyperlink{class_point}{PointVector} points, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} n, \hyperlink{class_point}{PointVector} hullPoints, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$hn, \hyperlink{class_point}{Point} \&p1, \hyperlink{class_point}{Point} \&p2)
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{namespacecowichan__mpi_c244baae47084737f2274a270a24ad46}{sumNeighbours} (\hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix} first, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} r, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} c, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} nr, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} nc)
+\item 
+void \hyperlink{namespacecowichan__mpi_4dabc70bacdff24786cbd9fff3227457}{redPt1DPos} (\hyperlink{class_point}{PointVector} vec, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} n, \hyperlink{class_point}{Point} $\ast$ptMin, \hyperlink{class_point}{Point} $\ast$ptMax)
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{namespacecowichan__mpi_7f82c459ad086060228b2bd8100bf9c7}{getNumRemainingNodes} (const mpi::communicator \&world, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} level)
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{namespacecowichan__mpi_a7c14e0bec9c9da1d56a348c9a0cf1f8}{power2} (\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} n)
+\item 
+void \hyperlink{namespacecowichan__mpi_4ab537d0df99e9011b206c7259e82d35}{quick\_\-sort} (const mpi::communicator \&world, \hyperlink{class_weighted_point}{WeightedPointVector} vector, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} len, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} level, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} owner)
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{namespacecowichan__mpi_83904b95f448398ff15331182ee0c007}{quick\_\-sort\_\-partition} (\hyperlink{class_weighted_point}{WeightedPointVector} vector, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} len, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} pivotIndex)
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{namespacecowichan__mpi_a54004a105356573d4bac92e1b234aa2}{mask\_\-count} (\hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix} mask, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} nr, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} nc)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Additional classes and functions specific to mpi implementation. 
+
+
+
+\subsection{Function Documentation}
+\hypertarget{namespacecowichan__mpi_413bf41c8bf73b560d1c16a8e5206e5f}{
+\index{cowichan\_\-mpi@{cowichan\_\-mpi}!get\_\-block@{get\_\-block}}
+\index{get\_\-block@{get\_\-block}!cowichan_mpi@{cowichan\_\-mpi}}
+\subsubsection[{get\_\-block}]{\setlength{\rightskip}{0pt plus 5cm}bool cowichan\_\-mpi::get\_\-block (const mpi::communicator \& {\em world}, \/  {\bf index\_\-t} {\em lo}, \/  {\bf index\_\-t} {\em hi}, \/  {\bf index\_\-t} $\ast$ {\em start}, \/  {\bf index\_\-t} $\ast$ {\em end}, \/  {\bf index\_\-t} {\em rank})}}
+\label{namespacecowichan__mpi_413bf41c8bf73b560d1c16a8e5206e5f}
+
+
+Get a block (start, end) to work on in the range (lo, hi) for process rank. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em world}]communicator. \item[{\em lo}]lower end of the range. \item[{\em hi}]higher end of the range. \item[{\em start}]first index to work on. \item[{\em end}]last index to work on. \item[{\em rank}]process to get work for. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Whether any work is available for process rank. \end{Desc}
+\hypertarget{namespacecowichan__mpi_bb7c07d8b23660efe06c7ee12d60bbdc}{
+\index{cowichan\_\-mpi@{cowichan\_\-mpi}!get\_\-block@{get\_\-block}}
+\index{get\_\-block@{get\_\-block}!cowichan_mpi@{cowichan\_\-mpi}}
+\subsubsection[{get\_\-block}]{\setlength{\rightskip}{0pt plus 5cm}bool cowichan\_\-mpi::get\_\-block (const mpi::communicator \& {\em world}, \/  {\bf index\_\-t} {\em lo}, \/  {\bf index\_\-t} {\em hi}, \/  {\bf index\_\-t} $\ast$ {\em start}, \/  {\bf index\_\-t} $\ast$ {\em end})}}
+\label{namespacecowichan__mpi_bb7c07d8b23660efe06c7ee12d60bbdc}
+
+
+Get a block (start, end) to work on in the range (lo, hi) for the current process. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em world}]communicator. \item[{\em lo}]lower end of the range. \item[{\em hi}]higher end of the range. \item[{\em start}]first index to work on. \item[{\em end}]last index to work on. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Whether any work is available for the current process. \end{Desc}
+\hypertarget{namespacecowichan__mpi_7f82c459ad086060228b2bd8100bf9c7}{
+\index{cowichan\_\-mpi@{cowichan\_\-mpi}!getNumRemainingNodes@{getNumRemainingNodes}}
+\index{getNumRemainingNodes@{getNumRemainingNodes}!cowichan_mpi@{cowichan\_\-mpi}}
+\subsubsection[{getNumRemainingNodes}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} cowichan\_\-mpi::getNumRemainingNodes (const mpi::communicator \& {\em world}, \/  {\bf index\_\-t} {\em level})}}
+\label{namespacecowichan__mpi_7f82c459ad086060228b2bd8100bf9c7}
+
+
+Get number of remaining nodes, i.e. not doing useful work. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em world}]global communicator. \item[{\em level}]current recursion depth. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Number of remaining nodes. \end{Desc}
+\hypertarget{namespacecowichan__mpi_a2af23c28ab53e0577f4332936467475}{
+\index{cowichan\_\-mpi@{cowichan\_\-mpi}!mandel\_\-calc@{mandel\_\-calc}}
+\index{mandel\_\-calc@{mandel\_\-calc}!cowichan_mpi@{cowichan\_\-mpi}}
+\subsubsection[{mandel\_\-calc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf INT\_\-TYPE} cowichan\_\-mpi::mandel\_\-calc ({\bf real} {\em x}, \/  {\bf real} {\em y})}}
+\label{namespacecowichan__mpi_a2af23c28ab53e0577f4332936467475}
+
+
+Calculate a point in the mandelbrot set. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em x}]x co-ordinate in the mandelbrot set. \item[{\em y}]y co-ordinate in the mandelbrot set. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]lesser of number of iterations to diverge and maximum iterations. \end{Desc}
+\hypertarget{namespacecowichan__mpi_a54004a105356573d4bac92e1b234aa2}{
+\index{cowichan\_\-mpi@{cowichan\_\-mpi}!mask\_\-count@{mask\_\-count}}
+\index{mask\_\-count@{mask\_\-count}!cowichan_mpi@{cowichan\_\-mpi}}
+\subsubsection[{mask\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} cowichan\_\-mpi::mask\_\-count ({\bf BoolMatrix} {\em mask}, \/  {\bf index\_\-t} {\em nr}, \/  {\bf index\_\-t} {\em nc})}}
+\label{namespacecowichan__mpi_a54004a105356573d4bac92e1b234aa2}
+
+
+Count the number of set cells in the mask. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em mask}]boolean mask. \item[{\em nr}]number of rows. \item[{\em nc}]number of columns. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Number of set cells in the mask. \end{Desc}
+\hypertarget{namespacecowichan__mpi_a7c14e0bec9c9da1d56a348c9a0cf1f8}{
+\index{cowichan\_\-mpi@{cowichan\_\-mpi}!power2@{power2}}
+\index{power2@{power2}!cowichan_mpi@{cowichan\_\-mpi}}
+\subsubsection[{power2}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} cowichan\_\-mpi::power2 ({\bf index\_\-t} {\em n})}}
+\label{namespacecowichan__mpi_a7c14e0bec9c9da1d56a348c9a0cf1f8}
+
+
+Calculates a power of 2. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em n}]power is limited by sizeof(index\_\-t) $\ast$ 8 - 2 to prevent overflow. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]2$^\wedge$n. \end{Desc}
+\hypertarget{namespacecowichan__mpi_4ab537d0df99e9011b206c7259e82d35}{
+\index{cowichan\_\-mpi@{cowichan\_\-mpi}!quick\_\-sort@{quick\_\-sort}}
+\index{quick\_\-sort@{quick\_\-sort}!cowichan_mpi@{cowichan\_\-mpi}}
+\subsubsection[{quick\_\-sort}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-mpi::quick\_\-sort (const mpi::communicator \& {\em world}, \/  {\bf WeightedPointVector} {\em vector}, \/  {\bf index\_\-t} {\em len}, \/  {\bf index\_\-t} {\em level} = {\tt 0}, \/  {\bf index\_\-t} {\em owner} = {\tt 0})}}
+\label{namespacecowichan__mpi_4ab537d0df99e9011b206c7259e82d35}
+
+
+This performs parallel quick sort. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em world}]global communicator. \item[{\em vector}]vector to sort. \item[{\em len}]vector length. \item[{\em level}]depth of recursion. \item[{\em owner}]rank of the owner of this sort. \end{description}
+\end{Desc}
+\hypertarget{namespacecowichan__mpi_83904b95f448398ff15331182ee0c007}{
+\index{cowichan\_\-mpi@{cowichan\_\-mpi}!quick\_\-sort\_\-partition@{quick\_\-sort\_\-partition}}
+\index{quick\_\-sort\_\-partition@{quick\_\-sort\_\-partition}!cowichan_mpi@{cowichan\_\-mpi}}
+\subsubsection[{quick\_\-sort\_\-partition}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} cowichan\_\-mpi::quick\_\-sort\_\-partition ({\bf WeightedPointVector} {\em vector}, \/  {\bf index\_\-t} {\em len}, \/  {\bf index\_\-t} {\em pivotIndex})}}
+\label{namespacecowichan__mpi_83904b95f448398ff15331182ee0c007}
+
+
+Partitions vector into points less than and greater than the pivot. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em vector}]vector to partition. \item[{\em len}]vector length. \item[{\em pivotIndex}]index to partition around. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]New pivot index. \end{Desc}
+\hypertarget{namespacecowichan__mpi_9a2d3b047e280fd12498b0ccd86c4677}{
+\index{cowichan\_\-mpi@{cowichan\_\-mpi}!randStateInit@{randStateInit}}
+\index{randStateInit@{randStateInit}!cowichan_mpi@{cowichan\_\-mpi}}
+\subsubsection[{randStateInit}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-mpi::randStateInit ({\bf INT\_\-TYPE} {\em seed}, \/  {\bf index\_\-t} {\em width}, \/  {\bf IntVector} {\em state}, \/  {\bf INT\_\-TYPE} $\ast$ {\em aPrime}, \/  {\bf INT\_\-TYPE} $\ast$ {\em cPrime})}}
+\label{namespacecowichan__mpi_9a2d3b047e280fd12498b0ccd86c4677}
+
+
+Initialise the random state. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em seed}]seed value \item[{\em width}]number of participants \item[{\em state}]per-thread state vector \item[{\em aPrime}]new multiplicative \item[{\em cPrime}]new additive value \end{description}
+\end{Desc}
+\hypertarget{namespacecowichan__mpi_4dabc70bacdff24786cbd9fff3227457}{
+\index{cowichan\_\-mpi@{cowichan\_\-mpi}!redPt1DPos@{redPt1DPos}}
+\index{redPt1DPos@{redPt1DPos}!cowichan_mpi@{cowichan\_\-mpi}}
+\subsubsection[{redPt1DPos}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-mpi::redPt1DPos ({\bf PointVector} {\em vec}, \/  {\bf index\_\-t} {\em n}, \/  {\bf Point} $\ast$ {\em ptMin}, \/  {\bf Point} $\ast$ {\em ptMax})}}
+\label{namespacecowichan__mpi_4dabc70bacdff24786cbd9fff3227457}
+
+
+Find min/max point positions. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em vec}]vector of points. \item[{\em n}]number of points. \item[{\em ptMin}]minimum location. \item[{\em ptMax}]maximum location. \end{description}
+\end{Desc}
+\hypertarget{namespacecowichan__mpi_c9ddfd8c08bb0f11a90abac20453dd2c}{
+\index{cowichan\_\-mpi@{cowichan\_\-mpi}!split\_\-mpi@{split\_\-mpi}}
+\index{split\_\-mpi@{split\_\-mpi}!cowichan_mpi@{cowichan\_\-mpi}}
+\subsubsection[{split\_\-mpi}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-mpi::split\_\-mpi (mpi::communicator {\em world}, \/  {\bf PointVector} {\em points}, \/  {\bf index\_\-t} {\em n}, \/  {\bf PointVector} {\em hullPoints}, \/  {\bf index\_\-t} $\ast$ {\em hn}, \/  {\bf Point} \& {\em p1}, \/  {\bf Point} \& {\em p2})}}
+\label{namespacecowichan__mpi_c9ddfd8c08bb0f11a90abac20453dd2c}
+
+
+Do work (find highest cross-product among all points and split again). \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em world}]MPI world. \item[{\em points}]points to run hull on. \item[{\em n}]number of points. \item[{\em hullPoints}]list of points in convex hull. \item[{\em hn}]number of points currently in convex hull. \item[{\em p1}]boundary point \#1. \item[{\em p2}]boundary point \#2. \end{description}
+\end{Desc}
+\hypertarget{namespacecowichan__mpi_c244baae47084737f2274a270a24ad46}{
+\index{cowichan\_\-mpi@{cowichan\_\-mpi}!sumNeighbours@{sumNeighbours}}
+\index{sumNeighbours@{sumNeighbours}!cowichan_mpi@{cowichan\_\-mpi}}
+\subsubsection[{sumNeighbours}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} cowichan\_\-mpi::sumNeighbours ({\bf BoolMatrix} {\em first}, \/  {\bf index\_\-t} {\em r}, \/  {\bf index\_\-t} {\em c}, \/  {\bf index\_\-t} {\em nr}, \/  {\bf index\_\-t} {\em nc})}}
+\label{namespacecowichan__mpi_c244baae47084737f2274a270a24ad46}
+
+
+Calculate number of peers. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em first}]world matrix. \item[{\em r}]row. \item[{\em c}]column. \item[{\em nr}]number of rows in the matrix. \item[{\em nc}]number of columns in the matrix. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The number of peers. \end{Desc}

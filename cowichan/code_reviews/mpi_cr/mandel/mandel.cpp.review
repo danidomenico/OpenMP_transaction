@@ -1,0 +1,65 @@
+     1	/**
+     2	 * Mandelbrot set implementation
+     3	 *
+     4	 * \file mandel.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-09-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#ifdef IS_PARALLEL
+    11	  #include "parallel.h"
+    12	#else
+    13	  #include "serial.h"
+    14	#endif
+    15	
+    16	int main(int argc, char* argv[])
+    17	{
+    18	#ifdef IS_PARALLEL
+    19	  mpi::environment env(argc, argv);
+    20	  mpi::communicator world;
+    21	
+    22	#ifdef TEST_OUTPUT
+    23	  printf ("I am process %d\n", world.rank ());
+    24	#endif
+    25	#endif
+    26	
+    27	  int2D*	    matrix;			/* matrix to fill */
+    28	  int		nr, nc;			/* matrix size */
+    29	  real       base_x, base_y;
+    30	  real       ext_x, ext_y;
+    31	
+    32	  nr = MAXEXT;
+    33	  nc = MAXEXT;
+    34	  base_x = 0;
+    35	  base_y = 0;
+    36	  ext_x = 1.5;
+    37	  ext_y = 1.5;
+    38	
+    39	  matrix = new int2D[MAXEXT];
+    40	
+    41	#ifdef TEST_TIME
+    42	  INT64 start, end;
+    43	  start = get_ticks ();
+    44	#endif
+    45	
+    46	#ifdef IS_PARALLEL
+    47	  mandel_mpi (world, matrix, nr, nc, base_x, base_y, ext_x, ext_y);
+    48	#else
+    49	  mandel (matrix, nr, nc, base_x, base_y, ext_x, ext_y);
+    50	#endif
+    51	
+    52	#ifdef TEST_TIME
+    53	  end = get_ticks ();
+    54	  print_elapsed_time (start, end);
+    55	#endif
+    56	
+    57	#ifdef TEST_OUTPUT
+    58	  printf ("Mandelbrot set:\n");
+    59	  print_matrix (matrix, nr, nc);
+    60	#endif
+    61	
+    62	  delete [] matrix;
+    63	
+    64	  return 0;
+    65	}

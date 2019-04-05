@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/svn/!svn/ver/185/linuxtuples-1.03
+END
+.cproject
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/184/linuxtuples-1.03/.cproject
+END
+ChangeLog
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/182/linuxtuples-1.03/ChangeLog
+END
+SLAVES
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/182/linuxtuples-1.03/SLAVES
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/182/linuxtuples-1.03/README
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/182/linuxtuples-1.03/package.html
+END
+fft.c
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/182/linuxtuples-1.03/fft.c
+END
+tuple_server.c
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/182/linuxtuples-1.03/tuple_server.c
+END
+jobcontrol.py
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/182/linuxtuples-1.03/jobcontrol.py
+END
+liblinuxtuples.so
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/185/linuxtuples-1.03/liblinuxtuples.so
+END
+pingpong.py
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/182/linuxtuples-1.03/pingpong.py
+END
+tuple_client.c
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/182/linuxtuples-1.03/tuple_client.c
+END
+tuple.c
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/182/linuxtuples-1.03/tuple.c
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/182/linuxtuples-1.03/Makefile
+END
+endian_test.c
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/182/linuxtuples-1.03/endian_test.c
+END
+testCount.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/182/linuxtuples-1.03/testCount.py
+END
+tuple.h
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/183/linuxtuples-1.03/tuple.h
+END
+Doxyfile
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/182/linuxtuples-1.03/Doxyfile
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/184/linuxtuples-1.03/.project
+END
+py_linuxtuples.c
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/182/linuxtuples-1.03/py_linuxtuples.c
+END

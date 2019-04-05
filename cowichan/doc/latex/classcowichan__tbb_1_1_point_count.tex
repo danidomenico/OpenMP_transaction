@@ -1,0 +1,131 @@
+\hypertarget{classcowichan__tbb_1_1_point_count}{
+\section{cowichan\_\-tbb::PointCount Class Reference}
+\label{classcowichan__tbb_1_1_point_count}\index{cowichan\_\-tbb::PointCount@{cowichan\_\-tbb::PointCount}}
+}
+Calculates the number of points to sort for winnow.  
+
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_point_count_b54e359417219ce8eba57166225ccffb}{getCount} ()
+\item 
+\hyperlink{classcowichan__tbb_1_1_point_count_ef4895dd65f037c9766c6c666f6a78c0}{PointCount} (\hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} candidates, \hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix} mask, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_point_count_cbdd7257d55e79c55651acc1a9a37013}{nc})
+\item 
+void \hyperlink{classcowichan__tbb_1_1_point_count_a0f02d805204cf58af667b3883f82cea}{operator()} (const \hyperlink{cowichan__tbb_8hpp_e591b8e6980ddc5982ee22655da2ab8e}{Range2D} \&range)
+\item 
+\hyperlink{classcowichan__tbb_1_1_point_count_3d0926762c073801cc26b719914cf83f}{PointCount} (\hyperlink{classcowichan__tbb_1_1_point_count}{PointCount} \&other, split)
+\item 
+void \hyperlink{classcowichan__tbb_1_1_point_count_32ac955920097a6c565cfdaec0e36df5}{join} (const \hyperlink{classcowichan__tbb_1_1_point_count}{PointCount} \&other)
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} \hyperlink{classcowichan__tbb_1_1_point_count_fa1bc2b2c3dea0e1ba769c435d6a2a81}{\_\-candidates}
+\item 
+\hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix} \hyperlink{classcowichan__tbb_1_1_point_count_9214d6b6bad48077126328fd42774ece}{\_\-mask}
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_point_count_cbdd7257d55e79c55651acc1a9a37013}{nc}
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_point_count_068da33fabb7d0dc263892b815d92c7a}{count}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Calculates the number of points to sort for winnow. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcowichan__tbb_1_1_point_count_ef4895dd65f037c9766c6c666f6a78c0}{
+\index{cowichan\_\-tbb::PointCount@{cowichan\_\-tbb::PointCount}!PointCount@{PointCount}}
+\index{PointCount@{PointCount}!cowichan_tbb::PointCount@{cowichan\_\-tbb::PointCount}}
+\subsubsection[{PointCount}]{\setlength{\rightskip}{0pt plus 5cm}cowichan\_\-tbb::PointCount::PointCount ({\bf IntMatrix} {\em candidates}, \/  {\bf BoolMatrix} {\em mask}, \/  {\bf index\_\-t} {\em nc})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_point_count_ef4895dd65f037c9766c6c666f6a78c0}
+
+
+Construct a point count object. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em candidates}]candidate points matrix. \item[{\em mask}]mask. \item[{\em nc}]number of columns in the matrix. \end{description}
+\end{Desc}
+\hypertarget{classcowichan__tbb_1_1_point_count_3d0926762c073801cc26b719914cf83f}{
+\index{cowichan\_\-tbb::PointCount@{cowichan\_\-tbb::PointCount}!PointCount@{PointCount}}
+\index{PointCount@{PointCount}!cowichan_tbb::PointCount@{cowichan\_\-tbb::PointCount}}
+\subsubsection[{PointCount}]{\setlength{\rightskip}{0pt plus 5cm}cowichan\_\-tbb::PointCount::PointCount ({\bf PointCount} \& {\em other}, \/  split)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_point_count_3d0926762c073801cc26b719914cf83f}
+
+
+Splitting (TBB) constructor. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em other}]object to split. \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcowichan__tbb_1_1_point_count_b54e359417219ce8eba57166225ccffb}{
+\index{cowichan\_\-tbb::PointCount@{cowichan\_\-tbb::PointCount}!getCount@{getCount}}
+\index{getCount@{getCount}!cowichan_tbb::PointCount@{cowichan\_\-tbb::PointCount}}
+\subsubsection[{getCount}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} cowichan\_\-tbb::PointCount::getCount ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_point_count_b54e359417219ce8eba57166225ccffb}
+
+
+Return point count. \hypertarget{classcowichan__tbb_1_1_point_count_32ac955920097a6c565cfdaec0e36df5}{
+\index{cowichan\_\-tbb::PointCount@{cowichan\_\-tbb::PointCount}!join@{join}}
+\index{join@{join}!cowichan_tbb::PointCount@{cowichan\_\-tbb::PointCount}}
+\subsubsection[{join}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::PointCount::join (const {\bf PointCount} \& {\em other})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_point_count_32ac955920097a6c565cfdaec0e36df5}
+
+
+Joiner (TBB). \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em other}]object to join. \end{description}
+\end{Desc}
+\hypertarget{classcowichan__tbb_1_1_point_count_a0f02d805204cf58af667b3883f82cea}{
+\index{cowichan\_\-tbb::PointCount@{cowichan\_\-tbb::PointCount}!operator()@{operator()}}
+\index{operator()@{operator()}!cowichan_tbb::PointCount@{cowichan\_\-tbb::PointCount}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::PointCount::operator() (const {\bf Range2D} \& {\em range})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_point_count_a0f02d805204cf58af667b3883f82cea}
+
+
+Calculate number of points to sort (TBB). \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em range}]row/column range to work on. \end{description}
+\end{Desc}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classcowichan__tbb_1_1_point_count_fa1bc2b2c3dea0e1ba769c435d6a2a81}{
+\index{cowichan\_\-tbb::PointCount@{cowichan\_\-tbb::PointCount}!\_\-candidates@{\_\-candidates}}
+\index{\_\-candidates@{\_\-candidates}!cowichan_tbb::PointCount@{cowichan\_\-tbb::PointCount}}
+\subsubsection[{\_\-candidates}]{\setlength{\rightskip}{0pt plus 5cm}{\bf IntMatrix} {\bf cowichan\_\-tbb::PointCount::\_\-candidates}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_point_count_fa1bc2b2c3dea0e1ba769c435d6a2a81}
+
+
+Candidate points matrix. \hypertarget{classcowichan__tbb_1_1_point_count_9214d6b6bad48077126328fd42774ece}{
+\index{cowichan\_\-tbb::PointCount@{cowichan\_\-tbb::PointCount}!\_\-mask@{\_\-mask}}
+\index{\_\-mask@{\_\-mask}!cowichan_tbb::PointCount@{cowichan\_\-tbb::PointCount}}
+\subsubsection[{\_\-mask}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BoolMatrix} {\bf cowichan\_\-tbb::PointCount::\_\-mask}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_point_count_9214d6b6bad48077126328fd42774ece}
+
+
+Mask. \hypertarget{classcowichan__tbb_1_1_point_count_068da33fabb7d0dc263892b815d92c7a}{
+\index{cowichan\_\-tbb::PointCount@{cowichan\_\-tbb::PointCount}!count@{count}}
+\index{count@{count}!cowichan_tbb::PointCount@{cowichan\_\-tbb::PointCount}}
+\subsubsection[{count}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} {\bf cowichan\_\-tbb::PointCount::count}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_point_count_068da33fabb7d0dc263892b815d92c7a}
+
+
+Number of points to sort. \hypertarget{classcowichan__tbb_1_1_point_count_cbdd7257d55e79c55651acc1a9a37013}{
+\index{cowichan\_\-tbb::PointCount@{cowichan\_\-tbb::PointCount}!nc@{nc}}
+\index{nc@{nc}!cowichan_tbb::PointCount@{cowichan\_\-tbb::PointCount}}
+\subsubsection[{nc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} {\bf cowichan\_\-tbb::PointCount::nc}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_point_count_cbdd7257d55e79c55651acc1a9a37013}
+
+
+Number of columns in the matrix. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+cowichan\_\-tbb/\hyperlink{cowichan__tbb_2winnow_8cpp}{winnow.cpp}\end{CompactItemize}

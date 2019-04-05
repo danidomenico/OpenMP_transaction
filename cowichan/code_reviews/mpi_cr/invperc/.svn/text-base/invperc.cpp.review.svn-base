@@ -1,0 +1,84 @@
+     1	/**
+     2	 * Invasion percolation
+     3	 *
+     4	 * \file vecdiff.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-28-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#ifdef IS_PARALLEL
+    11	  #include "parallel.h"
+    12	#else
+    13	  #include "serial.h"
+    14	#endif
+    15	
+    16	int main(int argc, char* argv[])
+    17	{
+    18	#ifdef IS_PARALLEL
+    19	  mpi::environment env(argc, argv);
+    20	  mpi::communicator world;
+    21	
+    22	#ifdef TEST_OUTPUT
+    23	  printf ("I am process %d\n", world.rank ());
+    24	#endif
+    25	#endif
+    26	
+    27	  int2D* matrix;
+    28	  bool2D* mask;
+    29	  int nr, nc;
+    30	  int limit;
+    31	  real fraction;
+    32	  int i, j;
+    33	
+    34	  nr = MAXEXT;
+    35	  nc = MAXEXT;
+    36	  limit = 10;
+    37	  fraction = 0.75;
+    38	
+    39	  srand (222);
+    40	
+    41	  matrix = new int2D[MAXEXT];
+    42	  for (i = 0; i < nr; i++) {
+    43	    for (j = 0; j < nc; j++) {
+    44	      matrix[i][j] = rand () % limit;
+    45	    }
+    46	  }
+    47	
+    48	  mask = new bool2D[MAXEXT];
+    49	  memset (mask, 0, sizeof(boolean) * nr * nc);
+    50	
+    51	#ifdef TEST_OUTPUT
+    52	  printf ("Matrix:\n");
+    53	  print_matrix (matrix, nr, nc);
+    54	
+    55	  printf ("Mask before:\n");
+    56	  print_matrix (mask, nr, nc);
+    57	#endif
+    58	
+    59	#ifdef TEST_TIME
+    60	  INT64 start, end;
+    61	  start = get_ticks ();
+    62	#endif
+    63	
+    64	#ifdef IS_PARALLEL
+    65	  invperc_mpi (world, matrix, mask, nr, nc, fraction);
+    66	#else
+    67	  invperc (matrix, mask, nr, nc, fraction);
+    68	#endif
+    69	
+    70	#ifdef TEST_TIME
+    71	  end = get_ticks ();
+    72	  print_elapsed_time (start, end);
+    73	#endif
+    74	
+    75	#ifdef TEST_OUTPUT
+    76	  printf ("Mask after:\n");
+    77	  print_matrix (mask, nr, nc);
+    78	#endif
+    79	
+    80	  delete [] matrix;
+    81	  delete [] mask;
+    82	
+    83	  return 0;
+    84	}

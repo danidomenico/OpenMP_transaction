@@ -1,0 +1,155 @@
+\hypertarget{classcowichan__tbb_1_1_maximum_distance}{
+\section{cowichan\_\-tbb::MaximumDistance Class Reference}
+\label{classcowichan__tbb_1_1_maximum_distance}\index{cowichan\_\-tbb::MaximumDistance@{cowichan\_\-tbb::MaximumDistance}}
+}
+Compute maximum distance for hull.  
+
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classcowichan__tbb_1_1_maximum_distance_27951c45e963c82338b89c8ca5f537a3}{MaximumDistance} (const \hyperlink{class_point}{PointVector} \&\hyperlink{classcowichan__tbb_1_1_maximum_distance_bc32ff1a7f0690db7e2bb11553406beb}{points}, const \hyperlink{class_point}{Point} \&\hyperlink{classcowichan__tbb_1_1_maximum_distance_f293990c96bce9deb63554e072ee8a72}{p1}, const \hyperlink{class_point}{Point} \&\hyperlink{classcowichan__tbb_1_1_maximum_distance_96e9aa3e660176029adbedbb147ca738}{p2})
+\item 
+\hyperlink{class_point}{Point} $\ast$ \hyperlink{classcowichan__tbb_1_1_maximum_distance_6c5d5b1704546428f6e38d82b3f395e0}{getPoint} () const 
+\item 
+\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{classcowichan__tbb_1_1_maximum_distance_e64a1737647520c65d563d5e0f3edc0c}{getDistance} () const 
+\item 
+void \hyperlink{classcowichan__tbb_1_1_maximum_distance_0f75c7ecaf6ed283b6b1b13cb65ae93c}{operator()} (const \hyperlink{cowichan__tbb_8hpp_8e2057f725b08f3a15513c378a453a47}{Range} \&range)
+\item 
+\hyperlink{classcowichan__tbb_1_1_maximum_distance_15452a15119559f5ef47b81921cd415d}{MaximumDistance} (\hyperlink{classcowichan__tbb_1_1_maximum_distance}{MaximumDistance} \&other, split)
+\item 
+void \hyperlink{classcowichan__tbb_1_1_maximum_distance_a786214cf1ab00a7bef0c8d7814ea2cb}{join} (const \hyperlink{classcowichan__tbb_1_1_maximum_distance}{MaximumDistance} \&other)
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+const \hyperlink{class_point}{PointVector} \& \hyperlink{classcowichan__tbb_1_1_maximum_distance_bc32ff1a7f0690db7e2bb11553406beb}{points}
+\item 
+const \hyperlink{class_point}{Point} \& \hyperlink{classcowichan__tbb_1_1_maximum_distance_f293990c96bce9deb63554e072ee8a72}{p1}
+\item 
+const \hyperlink{class_point}{Point} \& \hyperlink{classcowichan__tbb_1_1_maximum_distance_96e9aa3e660176029adbedbb147ca738}{p2}
+\item 
+\hyperlink{class_point}{Point} $\ast$ \hyperlink{classcowichan__tbb_1_1_maximum_distance_b46579dadde304ad7fb7242076387e46}{maxPoint}
+\item 
+\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{classcowichan__tbb_1_1_maximum_distance_d5e6581f6e4956f9abf886d2dced0772}{maxCross}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Compute maximum distance for hull. 
+
+Computes the maximum signed distance from a point to a line, given the line and list of points. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcowichan__tbb_1_1_maximum_distance_27951c45e963c82338b89c8ca5f537a3}{
+\index{cowichan\_\-tbb::MaximumDistance@{cowichan\_\-tbb::MaximumDistance}!MaximumDistance@{MaximumDistance}}
+\index{MaximumDistance@{MaximumDistance}!cowichan_tbb::MaximumDistance@{cowichan\_\-tbb::MaximumDistance}}
+\subsubsection[{MaximumDistance}]{\setlength{\rightskip}{0pt plus 5cm}cowichan\_\-tbb::MaximumDistance::MaximumDistance (const {\bf PointVector} \& {\em points}, \/  const {\bf Point} \& {\em p1}, \/  const {\bf Point} \& {\em p2})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_maximum_distance_27951c45e963c82338b89c8ca5f537a3}
+
+
+Construct a maximum distance object. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em points}]points. \item[{\em p1}]first point forming the line. \item[{\em p2}]second point forming the line. \end{description}
+\end{Desc}
+\hypertarget{classcowichan__tbb_1_1_maximum_distance_15452a15119559f5ef47b81921cd415d}{
+\index{cowichan\_\-tbb::MaximumDistance@{cowichan\_\-tbb::MaximumDistance}!MaximumDistance@{MaximumDistance}}
+\index{MaximumDistance@{MaximumDistance}!cowichan_tbb::MaximumDistance@{cowichan\_\-tbb::MaximumDistance}}
+\subsubsection[{MaximumDistance}]{\setlength{\rightskip}{0pt plus 5cm}cowichan\_\-tbb::MaximumDistance::MaximumDistance ({\bf MaximumDistance} \& {\em other}, \/  split)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_maximum_distance_15452a15119559f5ef47b81921cd415d}
+
+
+Splitting (TBB) constructor. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em other}]object to split. \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcowichan__tbb_1_1_maximum_distance_e64a1737647520c65d563d5e0f3edc0c}{
+\index{cowichan\_\-tbb::MaximumDistance@{cowichan\_\-tbb::MaximumDistance}!getDistance@{getDistance}}
+\index{getDistance@{getDistance}!cowichan_tbb::MaximumDistance@{cowichan\_\-tbb::MaximumDistance}}
+\subsubsection[{getDistance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf real} cowichan\_\-tbb::MaximumDistance::getDistance () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_maximum_distance_e64a1737647520c65d563d5e0f3edc0c}
+
+
+Gets the signed cross product to that point. \begin{Desc}
+\item[Returns:]Max point cross product. \end{Desc}
+\hypertarget{classcowichan__tbb_1_1_maximum_distance_6c5d5b1704546428f6e38d82b3f395e0}{
+\index{cowichan\_\-tbb::MaximumDistance@{cowichan\_\-tbb::MaximumDistance}!getPoint@{getPoint}}
+\index{getPoint@{getPoint}!cowichan_tbb::MaximumDistance@{cowichan\_\-tbb::MaximumDistance}}
+\subsubsection[{getPoint}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point}$\ast$ cowichan\_\-tbb::MaximumDistance::getPoint () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_maximum_distance_6c5d5b1704546428f6e38d82b3f395e0}
+
+
+Gets the point with maximum signed distance (if it has already been calculated). \begin{Desc}
+\item[Returns:]Max distance point. \end{Desc}
+\hypertarget{classcowichan__tbb_1_1_maximum_distance_a786214cf1ab00a7bef0c8d7814ea2cb}{
+\index{cowichan\_\-tbb::MaximumDistance@{cowichan\_\-tbb::MaximumDistance}!join@{join}}
+\index{join@{join}!cowichan_tbb::MaximumDistance@{cowichan\_\-tbb::MaximumDistance}}
+\subsubsection[{join}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::MaximumDistance::join (const {\bf MaximumDistance} \& {\em other})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_maximum_distance_a786214cf1ab00a7bef0c8d7814ea2cb}
+
+
+Joiner (TBB). \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em other}]object to join. \end{description}
+\end{Desc}
+\hypertarget{classcowichan__tbb_1_1_maximum_distance_0f75c7ecaf6ed283b6b1b13cb65ae93c}{
+\index{cowichan\_\-tbb::MaximumDistance@{cowichan\_\-tbb::MaximumDistance}!operator()@{operator()}}
+\index{operator()@{operator()}!cowichan_tbb::MaximumDistance@{cowichan\_\-tbb::MaximumDistance}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::MaximumDistance::operator() (const {\bf Range} \& {\em range})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_maximum_distance_0f75c7ecaf6ed283b6b1b13cb65ae93c}
+
+
+Calculates the \hyperlink{class_point}{Point} with maximum signed distance. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em range}]range of points to work on. \end{description}
+\end{Desc}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classcowichan__tbb_1_1_maximum_distance_d5e6581f6e4956f9abf886d2dced0772}{
+\index{cowichan\_\-tbb::MaximumDistance@{cowichan\_\-tbb::MaximumDistance}!maxCross@{maxCross}}
+\index{maxCross@{maxCross}!cowichan_tbb::MaximumDistance@{cowichan\_\-tbb::MaximumDistance}}
+\subsubsection[{maxCross}]{\setlength{\rightskip}{0pt plus 5cm}{\bf real} {\bf cowichan\_\-tbb::MaximumDistance::maxCross}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_maximum_distance_d5e6581f6e4956f9abf886d2dced0772}
+
+
+Maximum cross product. \hypertarget{classcowichan__tbb_1_1_maximum_distance_b46579dadde304ad7fb7242076387e46}{
+\index{cowichan\_\-tbb::MaximumDistance@{cowichan\_\-tbb::MaximumDistance}!maxPoint@{maxPoint}}
+\index{maxPoint@{maxPoint}!cowichan_tbb::MaximumDistance@{cowichan\_\-tbb::MaximumDistance}}
+\subsubsection[{maxPoint}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point}$\ast$ {\bf cowichan\_\-tbb::MaximumDistance::maxPoint}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_maximum_distance_b46579dadde304ad7fb7242076387e46}
+
+
+\hyperlink{class_point}{Point} of maximum distance. \hypertarget{classcowichan__tbb_1_1_maximum_distance_f293990c96bce9deb63554e072ee8a72}{
+\index{cowichan\_\-tbb::MaximumDistance@{cowichan\_\-tbb::MaximumDistance}!p1@{p1}}
+\index{p1@{p1}!cowichan_tbb::MaximumDistance@{cowichan\_\-tbb::MaximumDistance}}
+\subsubsection[{p1}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Point}\& {\bf cowichan\_\-tbb::MaximumDistance::p1}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_maximum_distance_f293990c96bce9deb63554e072ee8a72}
+
+
+First point forming the line. \hypertarget{classcowichan__tbb_1_1_maximum_distance_96e9aa3e660176029adbedbb147ca738}{
+\index{cowichan\_\-tbb::MaximumDistance@{cowichan\_\-tbb::MaximumDistance}!p2@{p2}}
+\index{p2@{p2}!cowichan_tbb::MaximumDistance@{cowichan\_\-tbb::MaximumDistance}}
+\subsubsection[{p2}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Point}\& {\bf cowichan\_\-tbb::MaximumDistance::p2}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_maximum_distance_96e9aa3e660176029adbedbb147ca738}
+
+
+Second point forming the line. \hypertarget{classcowichan__tbb_1_1_maximum_distance_bc32ff1a7f0690db7e2bb11553406beb}{
+\index{cowichan\_\-tbb::MaximumDistance@{cowichan\_\-tbb::MaximumDistance}!points@{points}}
+\index{points@{points}!cowichan_tbb::MaximumDistance@{cowichan\_\-tbb::MaximumDistance}}
+\subsubsection[{points}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf PointVector}\& {\bf cowichan\_\-tbb::MaximumDistance::points}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_maximum_distance_bc32ff1a7f0690db7e2bb11553406beb}
+
+
+Points. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+cowichan\_\-tbb/\hyperlink{cowichan__tbb_2hull_8cpp}{hull.cpp}\end{CompactItemize}

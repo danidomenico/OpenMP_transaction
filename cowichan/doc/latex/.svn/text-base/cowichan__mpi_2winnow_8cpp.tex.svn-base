@@ -1,0 +1,30 @@
+\hypertarget{cowichan__mpi_2winnow_8cpp}{
+\section{cowichan\_\-mpi/winnow.cpp File Reference}
+\label{cowichan__mpi_2winnow_8cpp}\index{cowichan\_\-mpi/winnow.cpp@{cowichan\_\-mpi/winnow.cpp}}
+}
+MPI winnow implementation.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-mpi.hpp\char`\"{}}\par
+{\tt \#include \char`\"{}sort.hpp\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{CompactItemize}
+\item 
+namespace \hyperlink{namespacecowichan__mpi}{cowichan\_\-mpi}
+\begin{CompactList}\small\item\em Additional classes and functions specific to mpi implementation. \item\end{CompactList}
+
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{namespacecowichan__mpi_a54004a105356573d4bac92e1b234aa2}{cowichan\_\-mpi::mask\_\-count} (\hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix} mask, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} nr, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} nc)
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+MPI winnow implementation. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_m_p_i_9be48d86fc51ce13ef79d5fe2c8a16e0}{CowichanMPI::winnow} \end{Desc}

@@ -1,0 +1,65 @@
+     1	/**
+     2	 * Parallel implementation of invasion percolation
+     3	 *
+     4	 * \file parallel.h
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-28-09
+     7	 */
+     8	
+     9	#pragma once
+    10	#ifndef INVPERC_PARALLEL_H
+    11	#define INVPERC_PARALLEL_H
+    12	
+    13	/*--------------------------------------------------------------*/
+    14	/* private types						*/
+    15	/*--------------------------------------------------------------*/
+    16	
+    17	typedef struct node_struct  node_t;
+    18	typedef struct node_struct* node_p;
+    19	
+    20	struct node_struct {
+    21	  int		val;			/* matrix value */
+    22	  int		r, c;			/* location indices */
+    23	};
+    24	
+    25	typedef std::multimap<int, node_p> mapNodesType;
+    26	
+    27	/*--------------------------------------------------------------*/
+    28	/* public functions						*/
+    29	/*--------------------------------------------------------------*/
+    30	
+    31	void invperc_mpi (mpi::communicator world,
+    32	                  int2D*		matrix,			/* matrix to invade */
+    33	                  bool2D*	mask,			/* mask to fill */
+    34	                  int		nr,			/* row size */
+    35	                  int		nc,			/* column size */
+    36	                  real		fraction);		/* how much to fill */
+    37	
+    38	/*--------------------------------------------------------------*/
+    39	/* private functions 					*/
+    40	/*--------------------------------------------------------------*/
+    41	
+    42	void inv_deq_mpi (mpi::communicator world,
+    43	                  mapNodesType* nodes,
+    44	                  int	      * r,			/* row index */
+    45	                  int	      * c);			/* column index */
+    46	
+    47	void inv_enq_mpi (mpi::communicator world,
+    48	                  mapNodesType* nodes,
+    49	                  node_p	node);			/* what to enqueue */
+    50	
+    51	node_p inv_node_mpi (mpi::communicator world,
+    52	                     int		val,			/* location value */
+    53	                     int		r,			/* row index */
+    54	                     int		c);			/* column index */
+    55	
+    56	void inv_enqPt_mpi (mpi::communicator world,
+    57	                    mapNodesType* nodes,
+    58	                    int2D*		matrix,			/* matrix of values */
+    59	                    bool2D*	mask,			/* mask to be filled */
+    60	                    int		nr,			/* number of rows */
+    61	                    int		nc,			/* number of columns */
+    62	                    int		r,			/* point row */
+    63	                    int		c);			/* point column */
+    64	
+    65	#endif /* INVPERC_PARALLEL_H */

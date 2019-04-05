@@ -1,0 +1,270 @@
+4. Vector Normalization:
+
+Serial C++ version of norm:
+
+void
+norm(
+  pt1D*		vec,			/* points to normalize */
+  int		n			/* length of vector */
+){
+  pt		ptMin, ptMax;		/* pseudo-points */
+  real		sclX, sclY;		/* scaling factors */
+  int		i;			/* loop index */
+
+  /* scaling factors */
+  findMinMax(vec, n, &ptMin, &ptMax);
+  sclX = (ptMax.x == ptMin.x) ? 0.0 : 1/(ptMax.x - ptMin.x);
+  sclY = (ptMax.y == ptMin.y) ? 0.0 : 1/(ptMax.y - ptMin.y);
+
+  /* scale */
+  for (i=0; i<n; i++){
+    vec[i].x = sclX * (vec[i].x - ptMin.x);
+    vec[i].y = sclY * (vec[i].y - ptMin.y);
+  }
+
+  /* return */
+}
+
+void
+findMinMax(
+  pt1D*		vec,			/* vector of points */
+  int		n,			/* number of points */
+  pt	      * ptMin,			/* minimum location */
+  pt	      * ptMax			/* maximum location */
+){
+  int		i;
+
+  ASSERT(ptMin != NULL);
+  ASSERT(ptMax != NULL);
+
+  ptMin->x = vec[0].x; ptMin->y = vec[0].y;
+  ptMax->x = vec[0].x; ptMax->y = vec[0].y;
+  for (i=1; i<n; i++){
+    if (vec[i].x < ptMin->x) ptMin->x = vec[i].x;
+    if (vec[i].x > ptMax->x) ptMax->x = vec[i].x;
+    if (vec[i].y < ptMin->y) ptMin->y = vec[i].y;
+    if (vec[i].y > ptMax->y) ptMax->y = vec[i].y;
+  }
+  ptMin->w = 0; ptMax->w = 0;
+
+  /* return */
+}
+
+
+Norm using Thread Building Blocks:
+
+/**
+ * This class performs point normalization -- points are put onto the unit
+ * square.
+ */
+class Normalizer {
+public:
+
+  PointList& points;
+
+public:
+
+  // step 1: define a class to find minimum and maximum points in a vector
+  //         the reduction is very similar to Hull.
+  
+  /**
+   * Performs the minimum and maximum computations.
+   */
+  class MinMaxReducer {
+  private:
+
+    Normalizer* parent;
+    Point _min, _max;
+
+  public:
+
+    /**
+     * Initialise min and max with max and min, respectively, so that we
+     * don't have to "special-case" the first iteration.
+     */
+    MinMaxReducer(Normalizer* parent):
+        parent(parent), _min(Point::maximum), _max(Point::minimum) { }
+
+    Point getMinimum() const {
+      return _min;
+    }
+
+    Point getMaximum() const {
+      return _max;
+    }
+
+    /**
+     * Calculates the minimum and maximum co-ordinates over the given array
+     * range.
+     */
+    void operator()(const Range& range) {
+
+      // get pointers locally.
+      Point min = _min;
+      Point max = _max;
+
+      // calculate the minimum and maximum co-ordinates over the range.
+      for (size_t i = range.begin(); i != range.end(); ++i) {
+        min.x = std::min(parent->points[i].x, min.x);
+        min.y = std::min(parent->points[i].y, min.y);
+        max.x = std::max(parent->points[i].x, max.x);
+        max.y = std::max(parent->points[i].y, max.y);
+      }
+
+      // refresh member variables.
+      _min = min;
+      _max = max;
+
+    }
+
+    /**
+     * Splitting (TBB) constructor
+     */
+    MinMaxReducer(MinMaxReducer& other, split):
+        parent(other.parent), _min(Point::maximum), _max(Point::minimum) { }
+
+    /**
+     * Joiner (TBB).
+     */
+    void join(const MinMaxReducer& other) {
+      _min.x = std::min(other._min.x, _min.x);
+      _min.y = std::min(other._min.y, _min.y);
+      _max.x = std::max(other._max.x, _max.x);
+      _max.y = std::max(other._max.y, _max.y);
+    }
+
+  };
+
+
+  // step 2: define a class to normalize the vector
+  //         using min and max values calculated above.
+
+  /**
+   * Performs the re-normalization procedure.
+   */
+  class Computer {
+  public:
+
+    Normalizer* parent;
+    Point min, max;
+
+    Computer(Normalizer* parent, Point min, Point max):
+        parent(parent), min(min), max(max) { }
+
+    void operator()(const Range& range) const {
+
+      // normalize the points that lie in the given range.
+      real xfactor = 1.0 / (max.x - min.x);
+      real yfactor = 1.0 / (max.y - min.y);
+      for (size_t i = range.begin(); i != range.end(); ++i) {
+
+        parent->points[i].x = (parent->points[i].x - min.x) * xfactor;
+        parent->points[i].y = (parent->points[i].y - min.y) * yfactor;
+
+      }
+
+    }
+
+  };
+
+  MinMaxReducer minmax;
+  Computer* computer;
+
+public:
+
+  Normalizer(PointList& points):
+      minmax(this), computer(NULL), points(points) { }
+
+  ~Normalizer() {
+    if (computer != NULL) {
+    delete computer;
+  }
+}
+
+  /**
+   * In-place normalizes the incoming co-ordinates onto the unit square.
+   */
+  static void perform(PointList* points) {
+
+	  Normalizer norm(*points);
+
+	  // first compute the statistics, and then use the min/max to compute the new points.
+	  norm.computeStats(points->size());
+	  parallel_for(Range(0, points->size()), (*norm.computer), auto_partitioner());
+
+	  // the points and transformed in-place, so don't return anything.
+	  return;
+
+  }
+
+private:
+
+  /**
+   * Calls the stats-gathering reducer and creates a normalizer based on it.
+   */
+  void computeStats(size_t size) {
+
+    parallel_reduce(Range(0, size), minmax, auto_partitioner());
+    computer = new Computer(this, minmax.getMinimum(), minmax.getMaximum());
+
+  }
+
+};
+
+Normalizer::perform(points);
+
+
+Norm using Boost Message Passing Interface:
+
+void norm_mpi (mpi::communicator world,
+               pt1D* vec,    // points to normalize
+               int  n)       // length of vector
+{
+
+  // step 1: define local min/max variables
+
+  pt ptMin_local, ptMax_local; //pseudo-points
+  pt ptMin, ptMax; // pseudo-points
+  real sclX, sclY; // scaling factors
+  int i; // loop index
+  int lo, hi; // work controls
+  bool work; // useful work to do?
+
+  // initialize
+  ptMin_local = vec[0];
+  ptMax_local = vec[0];
+
+  work = get_block_rows_mpi (world, 0, n, &lo, &hi);
+  if (work) {
+    findMinMax(&vec[lo], hi - lo, &ptMin_local, &ptMax_local);
+  }
+
+  // step 2: perform reduction using minimum_pt and maximum_pt reduction
+  // functions.
+
+  all_reduce (world, ptMin_local, ptMin, minimum_pt ());
+  all_reduce (world, ptMax_local, ptMax, maximum_pt ());
+
+  if (work) {
+    // scaling factors
+    sclX = (ptMax.x == ptMin.x) ? 0.0 : 1/(ptMax.x - ptMin.x);
+    sclY = (ptMax.y == ptMin.y) ? 0.0 : 1/(ptMax.y - ptMin.y);
+    // scale
+    for (i = lo; i < hi; i++) {
+      vec[i].x = sclX * (vec[i].x - ptMin.x);
+      vec[i].y = sclY * (vec[i].y - ptMin.y);
+    }
+  }
+
+  // step 3: Broadcast the normalized vector.
+  //         Notice the transfer of entire vector.
+
+  // broadcast normalized values
+  for (i = 0; i < world.size (); i++) {
+    if (get_block_rows_mpi (world, 0, n, &lo, &hi, i)) {
+      broadcast (world, &vec[lo], hi - lo, i);
+    }
+  }
+
+  /* return */
+}

@@ -1,0 +1,65 @@
+     1	/**
+     2	 * Serial implementation of Mandelbrot set
+     3	 *
+     4	 * \file serial.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-09-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#include "serial.h"
+    11	
+    12	// public
+    13	
+    14	void
+    15	mandel(
+    16	  int2D*		matrix,			/* to fill */
+    17	  int		nr,			/* row size */
+    18	  int		nc,			/* column size */
+    19	  real		base_x,			/* lower left corner */
+    20	  real		base_y,			/* lower left corner */
+    21	  real		ext_x,			/* extent */
+    22	  real		ext_y			/* extent */
+    23	){
+    24	  int		r, c;			/* row and column indices */
+    25	  real		dx, dy;			/* per-step deltas */
+    26	#if GRAPHICS
+    27	  int		gfxCount = 0;		/* number of times graphics called */
+    28	#endif
+    29	
+    30	  dx = ext_x / (nr - 1);
+    31	  dy = ext_y / (nc - 1);
+    32	
+    33	  for (r = 0; r < nr; r++) {
+    34	    for (c = 0; c < nc; c++) {
+    35	      matrix[r][c] = mandel_calc (base_x + (r * dx), base_y + (c * dy));
+    36	    }
+    37	  }
+    38	#if GRAPHICS
+    39	  gfx_mandel(gfxCount++, matrix, nr, nc);
+    40	#endif
+    41	
+    42	  /* return */
+    43	}
+    44	
+    45	
+    46	// private
+    47	
+    48	int mandel_calc(
+    49	  real		x,			/* x coordinate */
+    50	  real		y			/* y coordinate */
+    51	){
+    52	  real		r    = 0.0, i  = 0.0;	/* real and imaginary parts */
+    53	  real		rs   = 0.0, is = 0.0; 	/* " ", squared */
+    54	  int		iter = 0;		/* number of iterations */
+    55	
+    56	  do {
+    57	    i = (2.0 * r * i) + x;
+    58	    r = (rs - is) + y;
+    59	    iter++;
+    60	    rs = r * r;
+    61	    is = i * i;
+    62	  } while ((iter < MANDEL_MAX_ITER) && ((rs + is) < MANDEL_INFINITY));
+    63	
+    64	  return iter;
+    65	}

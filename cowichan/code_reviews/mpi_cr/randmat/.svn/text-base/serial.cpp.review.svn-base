@@ -1,0 +1,40 @@
+     1	/**
+     2	 * Serial implementation of random matrix generation
+     3	 *
+     4	 * \file serial.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 01-26-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#include "serial.h"
+    11	
+    12	// public
+    13	
+    14	void
+    15	randmat(
+    16	  int2D*		matrix,			/* to fill */
+    17	  int		nr,			/* row size */
+    18	  int		nc,			/* column size */
+    19	  int		limit,			/* value limit */
+    20	  int		seed			/* RNG seed */
+    21	){
+    22	  int		r, c;			/* loop indices */
+    23	  int		v = seed % RAND_M;	/* random value */
+    24	#if GRAPHICS
+    25	  int		gfxCount = 0;
+    26	#endif
+    27	
+    28	  for (r=0; r<nr; r++){
+    29	    for (c=0; c<nc; c++){
+    30	      matrix[r][c] = v % limit;
+    31	      v = (RAND_A * v + RAND_C) % RAND_M;
+    32	    }
+    33	  }
+    34	
+    35	#if GRAPHICS
+    36	  gfx_randmat(gfxCount++, matrix, nr, nc);
+    37	#endif
+    38	
+    39	  /* return */
+    40	}

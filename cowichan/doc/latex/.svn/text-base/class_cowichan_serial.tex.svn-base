@@ -1,0 +1,259 @@
+\hypertarget{class_cowichan_serial}{
+\section{CowichanSerial Class Reference}
+\label{class_cowichan_serial}\index{CowichanSerial@{CowichanSerial}}
+}
+Serial implementation.  
+
+
+{\tt \#include $<$cowichan\_\-serial.hpp$>$}
+
+Inheritance diagram for CowichanSerial::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{class_cowichan_serial}
+\end{center}
+\end{figure}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{class_cowichan_serial_97a58b7901d8a7680cc28d42cb94d532}{mandel} (\hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} matrix)
+\item 
+void \hyperlink{class_cowichan_serial_2d24c0e562f7b109ec2ed916f38e5911}{randmat} (\hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} matrix)
+\item 
+void \hyperlink{class_cowichan_serial_c08a6b3e23ce26959bac12af077f924f}{half} (\hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} matrixIn, \hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} matrixOut)
+\item 
+void \hyperlink{class_cowichan_serial_9b1cf3fcbb40498609826433b8ea2f6a}{invperc} (\hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} matrix, \hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix} mask)
+\item 
+void \hyperlink{class_cowichan_serial_7c0f93b2099ce919f91b5d953ff76511}{thresh} (\hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} matrix, \hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix} mask)
+\item 
+void \hyperlink{class_cowichan_serial_ffd5b022c1d24226e11924094d8af349}{life} (\hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix} matrixIn, \hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix} matrixOut)
+\item 
+void \hyperlink{class_cowichan_serial_33daca65431f792c2f4f0e7f8d29fa01}{winnow} (\hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} matrix, \hyperlink{cowichan_8hpp_a64c8df2f1e9c8ea68a7bcc19aca683e}{BoolMatrix} mask, \hyperlink{class_point}{PointVector} points)
+\item 
+void \hyperlink{class_cowichan_serial_0eeb47447c6a6b94ff7c6999c96fda0e}{norm} (\hyperlink{class_point}{PointVector} pointsIn, \hyperlink{class_point}{PointVector} pointsOut)
+\item 
+void \hyperlink{class_cowichan_serial_e75cedf0a296dd7ad3dc41cadc51776f}{hull} (\hyperlink{class_point}{PointVector} pointsIn, \hyperlink{class_point}{PointVector} pointsOut)
+\item 
+void \hyperlink{class_cowichan_serial_05f6899081a457d58978e4f6bda2db6a}{outer} (\hyperlink{class_point}{PointVector} points, \hyperlink{cowichan_8hpp_3fb46f939e55c239fbc95656fc0f3399}{Matrix} matrix, \hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} vector)
+\item 
+void \hyperlink{class_cowichan_serial_b196d2384c2fe8b185e6269a050399eb}{gauss} (\hyperlink{cowichan_8hpp_3fb46f939e55c239fbc95656fc0f3399}{Matrix} matrix, \hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} target, \hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} solution)
+\item 
+void \hyperlink{class_cowichan_serial_6e8b06711d976de1adc1e4dc81e560e5}{sor} (\hyperlink{cowichan_8hpp_3fb46f939e55c239fbc95656fc0f3399}{Matrix} matrix, \hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} target, \hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} solution)
+\item 
+void \hyperlink{class_cowichan_serial_00411b35445d7d3038b96d53e43bdffa}{product} (\hyperlink{cowichan_8hpp_3fb46f939e55c239fbc95656fc0f3399}{Matrix} matrix, \hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} candidate, \hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} solution)
+\item 
+\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{class_cowichan_serial_34b75a2084051b3677071bb3c334d1f4}{vecdiff} (\hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} actual, \hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} computed)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Serial implementation. 
+
+This implementation can serve as a reference when comparing to parallel programming systems in terms of performance, code size, complexity, etc. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_cowichan_serial_b196d2384c2fe8b185e6269a050399eb}{
+\index{CowichanSerial@{CowichanSerial}!gauss@{gauss}}
+\index{gauss@{gauss}!CowichanSerial@{CowichanSerial}}
+\subsubsection[{gauss}]{\setlength{\rightskip}{0pt plus 5cm}void CowichanSerial::gauss ({\bf Matrix} {\em matrix}, \/  {\bf Vector} {\em target}, \/  {\bf Vector} {\em solution})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_serial_b196d2384c2fe8b185e6269a050399eb}
+
+
+For description see \hyperlink{index_gauss_sec}{11. Gaussian Elimination} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em matrix}]matrix A in AX = V. \item[{\em target}]vector V in AX = V. \item[{\em solution}]vector X in AX = V. \end{description}
+\end{Desc}
+
+
+Implements \hyperlink{class_cowichan_aa9aac74b96dc5ed33e821d94649d1b2}{Cowichan}.\hypertarget{class_cowichan_serial_c08a6b3e23ce26959bac12af077f924f}{
+\index{CowichanSerial@{CowichanSerial}!half@{half}}
+\index{half@{half}!CowichanSerial@{CowichanSerial}}
+\subsubsection[{half}]{\setlength{\rightskip}{0pt plus 5cm}void CowichanSerial::half ({\bf IntMatrix} {\em matrixIn}, \/  {\bf IntMatrix} {\em matrixOut})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_serial_c08a6b3e23ce26959bac12af077f924f}
+
+
+For description see \hyperlink{index_half_sec}{3. Two-Dimensional Shuffle} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em matrixIn}]matrix to shuffle. \item[{\em matrixOut}]shuffled matrix. \end{description}
+\end{Desc}
+
+
+Implements \hyperlink{class_cowichan_308603053675bccbe631f04af921f57c}{Cowichan}.\hypertarget{class_cowichan_serial_e75cedf0a296dd7ad3dc41cadc51776f}{
+\index{CowichanSerial@{CowichanSerial}!hull@{hull}}
+\index{hull@{hull}!CowichanSerial@{CowichanSerial}}
+\subsubsection[{hull}]{\setlength{\rightskip}{0pt plus 5cm}void CowichanSerial::hull ({\bf PointVector} {\em pointsIn}, \/  {\bf PointVector} {\em pointsOut})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_serial_e75cedf0a296dd7ad3dc41cadc51776f}
+
+
+Runs quickhull algorithm until all points have been used up from the original vector. At each step the hull points are marked as used and a new convex hull is computed on the rest of points. The points that have been used up are in the range (n - hn, n), i.e. at the end of pointsIn vector. NOTE: pointsIn vector gets modified by the algorithm. 
+
+Implements \hyperlink{class_cowichan_0c6b68ae3c059b66893405f8530a2e0a}{Cowichan}.\hypertarget{class_cowichan_serial_9b1cf3fcbb40498609826433b8ea2f6a}{
+\index{CowichanSerial@{CowichanSerial}!invperc@{invperc}}
+\index{invperc@{invperc}!CowichanSerial@{CowichanSerial}}
+\subsubsection[{invperc}]{\setlength{\rightskip}{0pt plus 5cm}void CowichanSerial::invperc ({\bf IntMatrix} {\em matrix}, \/  {\bf BoolMatrix} {\em mask})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_serial_9b1cf3fcbb40498609826433b8ea2f6a}
+
+
+For description see \hyperlink{index_invperc_sec}{4. Invasion Percolation} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em matrix}]filling resistance matrix. \item[{\em mask}]filled cells. \end{description}
+\end{Desc}
+
+
+Implements \hyperlink{class_cowichan_ea126792a31e54a8722663b7ea768955}{Cowichan}.\hypertarget{class_cowichan_serial_ffd5b022c1d24226e11924094d8af349}{
+\index{CowichanSerial@{CowichanSerial}!life@{life}}
+\index{life@{life}!CowichanSerial@{CowichanSerial}}
+\subsubsection[{life}]{\setlength{\rightskip}{0pt plus 5cm}void CowichanSerial::life ({\bf BoolMatrix} {\em matrixIn}, \/  {\bf BoolMatrix} {\em matrixOut})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_serial_ffd5b022c1d24226e11924094d8af349}
+
+
+For description see \hyperlink{index_life_sec}{6. Game of Life} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em matrixIn}]initial world. \item[{\em matrixOut}]final world. \end{description}
+\end{Desc}
+
+
+Implements \hyperlink{class_cowichan_d449595ef2fe934bdd128ac8b1f51d07}{Cowichan}.\hypertarget{class_cowichan_serial_97a58b7901d8a7680cc28d42cb94d532}{
+\index{CowichanSerial@{CowichanSerial}!mandel@{mandel}}
+\index{mandel@{mandel}!CowichanSerial@{CowichanSerial}}
+\subsubsection[{mandel}]{\setlength{\rightskip}{0pt plus 5cm}void CowichanSerial::mandel ({\bf IntMatrix} {\em matrix})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_serial_97a58b7901d8a7680cc28d42cb94d532}
+
+
+For description see \hyperlink{index_mandel_sec}{1. Mandelbrot Set Generation} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em matrix}]matrix to fill. \end{description}
+\end{Desc}
+
+
+Implements \hyperlink{class_cowichan_ec6cc4eb2ad444474b923532167e98a2}{Cowichan}.\hypertarget{class_cowichan_serial_0eeb47447c6a6b94ff7c6999c96fda0e}{
+\index{CowichanSerial@{CowichanSerial}!norm@{norm}}
+\index{norm@{norm}!CowichanSerial@{CowichanSerial}}
+\subsubsection[{norm}]{\setlength{\rightskip}{0pt plus 5cm}void CowichanSerial::norm ({\bf PointVector} {\em pointsIn}, \/  {\bf PointVector} {\em pointsOut})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_serial_0eeb47447c6a6b94ff7c6999c96fda0e}
+
+
+For description see \hyperlink{index_norm_sec}{8. Point Location Normalization} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pointsIn}]points to normalize. \item[{\em pointsOut}]normalized points. \end{description}
+\end{Desc}
+
+
+Implements \hyperlink{class_cowichan_3df21e3c627958114e045c3559a29f30}{Cowichan}.\hypertarget{class_cowichan_serial_05f6899081a457d58978e4f6bda2db6a}{
+\index{CowichanSerial@{CowichanSerial}!outer@{outer}}
+\index{outer@{outer}!CowichanSerial@{CowichanSerial}}
+\subsubsection[{outer}]{\setlength{\rightskip}{0pt plus 5cm}void CowichanSerial::outer ({\bf PointVector} {\em points}, \/  {\bf Matrix} {\em matrix}, \/  {\bf Vector} {\em vector})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_serial_05f6899081a457d58978e4f6bda2db6a}
+
+
+For description see \hyperlink{index_outer_sec}{10. Outer Product} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em points}]vector of points. \item[{\em matrix}]resulting distance matrix. \item[{\em vector}]resulting distance vector. \end{description}
+\end{Desc}
+
+
+Implements \hyperlink{class_cowichan_52f17221019290b88334b0ca7f3bcdb9}{Cowichan}.\hypertarget{class_cowichan_serial_00411b35445d7d3038b96d53e43bdffa}{
+\index{CowichanSerial@{CowichanSerial}!product@{product}}
+\index{product@{product}!CowichanSerial@{CowichanSerial}}
+\subsubsection[{product}]{\setlength{\rightskip}{0pt plus 5cm}void CowichanSerial::product ({\bf Matrix} {\em matrix}, \/  {\bf Vector} {\em candidate}, \/  {\bf Vector} {\em solution})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_serial_00411b35445d7d3038b96d53e43bdffa}
+
+
+For description see \hyperlink{index_product_sec}{13. Matrix-Vector Product} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em matrix}]matrix A in AX = V. \item[{\em candidate}]vector X in AX = V. \item[{\em solution}]vector V in AX = V. \end{description}
+\end{Desc}
+
+
+Implements \hyperlink{class_cowichan_3d7d4b581a1d6f0392dc452830fb3b03}{Cowichan}.\hypertarget{class_cowichan_serial_2d24c0e562f7b109ec2ed916f38e5911}{
+\index{CowichanSerial@{CowichanSerial}!randmat@{randmat}}
+\index{randmat@{randmat}!CowichanSerial@{CowichanSerial}}
+\subsubsection[{randmat}]{\setlength{\rightskip}{0pt plus 5cm}void CowichanSerial::randmat ({\bf IntMatrix} {\em matrix})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_serial_2d24c0e562f7b109ec2ed916f38e5911}
+
+
+For description see \hyperlink{index_randmat_sec}{2. Random Number Generation} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em matrix}]matrix to fill. \end{description}
+\end{Desc}
+
+
+Implements \hyperlink{class_cowichan_c44cacf9d9e363a5b076bcee8b9a7a73}{Cowichan}.\hypertarget{class_cowichan_serial_6e8b06711d976de1adc1e4dc81e560e5}{
+\index{CowichanSerial@{CowichanSerial}!sor@{sor}}
+\index{sor@{sor}!CowichanSerial@{CowichanSerial}}
+\subsubsection[{sor}]{\setlength{\rightskip}{0pt plus 5cm}void CowichanSerial::sor ({\bf Matrix} {\em matrix}, \/  {\bf Vector} {\em target}, \/  {\bf Vector} {\em solution})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_serial_6e8b06711d976de1adc1e4dc81e560e5}
+
+
+For description see \hyperlink{index_sor_sec}{12. Successive Over-Relaxation} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em matrix}]matrix A in AX = V. \item[{\em target}]vector V in AX = V. \item[{\em solution}]vector X in AX = V. \end{description}
+\end{Desc}
+
+
+Implements \hyperlink{class_cowichan_92d8d9ae77208115fdfe69e1174f601c}{Cowichan}.\hypertarget{class_cowichan_serial_7c0f93b2099ce919f91b5d953ff76511}{
+\index{CowichanSerial@{CowichanSerial}!thresh@{thresh}}
+\index{thresh@{thresh}!CowichanSerial@{CowichanSerial}}
+\subsubsection[{thresh}]{\setlength{\rightskip}{0pt plus 5cm}void CowichanSerial::thresh ({\bf IntMatrix} {\em matrix}, \/  {\bf BoolMatrix} {\em mask})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_serial_7c0f93b2099ce919f91b5d953ff76511}
+
+
+Works only on positive input. 
+
+Implements \hyperlink{class_cowichan_a0b633b8c1f21884e0998a9c7020c08c}{Cowichan}.\hypertarget{class_cowichan_serial_34b75a2084051b3677071bb3c334d1f4}{
+\index{CowichanSerial@{CowichanSerial}!vecdiff@{vecdiff}}
+\index{vecdiff@{vecdiff}!CowichanSerial@{CowichanSerial}}
+\subsubsection[{vecdiff}]{\setlength{\rightskip}{0pt plus 5cm}{\bf real} CowichanSerial::vecdiff ({\bf Vector} {\em actual}, \/  {\bf Vector} {\em computed})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_serial_34b75a2084051b3677071bb3c334d1f4}
+
+
+For description see \hyperlink{index_vecdiff_sec}{14. 1-Norm Vector Difference} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em actual}]first vector. \item[{\em computed}]second vector. \end{description}
+\end{Desc}
+
+
+Implements \hyperlink{class_cowichan_775d72b5e7d122f9f32555352278250e}{Cowichan}.\hypertarget{class_cowichan_serial_33daca65431f792c2f4f0e7f8d29fa01}{
+\index{CowichanSerial@{CowichanSerial}!winnow@{winnow}}
+\index{winnow@{winnow}!CowichanSerial@{CowichanSerial}}
+\subsubsection[{winnow}]{\setlength{\rightskip}{0pt plus 5cm}void CowichanSerial::winnow ({\bf IntMatrix} {\em matrix}, \/  {\bf BoolMatrix} {\em mask}, \/  {\bf PointVector} {\em points})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_cowichan_serial_33daca65431f792c2f4f0e7f8d29fa01}
+
+
+For description see \hyperlink{index_winnow_sec}{7. Weighted Point Selection} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em matrix}]integer matrix. \item[{\em mask}]boolean matrix. \item[{\em points}]evenly selected points. \end{description}
+\end{Desc}
+
+
+Implements \hyperlink{class_cowichan_13d60e06ced3b5da79d62c133ce82337}{Cowichan}.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+cowichan\_\-serial/\hyperlink{cowichan__serial_8hpp}{cowichan\_\-serial.hpp}\item 
+cowichan\_\-serial/\hyperlink{cowichan__serial_2gauss_8cpp}{gauss.cpp}\item 
+cowichan\_\-serial/\hyperlink{cowichan__serial_2half_8cpp}{half.cpp}\item 
+cowichan\_\-serial/\hyperlink{cowichan__serial_2hull_8cpp}{hull.cpp}\item 
+cowichan\_\-serial/\hyperlink{cowichan__serial_2invperc_8cpp}{invperc.cpp}\item 
+cowichan\_\-serial/\hyperlink{cowichan__serial_2life_8cpp}{life.cpp}\item 
+cowichan\_\-serial/\hyperlink{cowichan__serial_2mandel_8cpp}{mandel.cpp}\item 
+cowichan\_\-serial/\hyperlink{cowichan__serial_2norm_8cpp}{norm.cpp}\item 
+cowichan\_\-serial/\hyperlink{cowichan__serial_2outer_8cpp}{outer.cpp}\item 
+cowichan\_\-serial/\hyperlink{cowichan__serial_2product_8cpp}{product.cpp}\item 
+cowichan\_\-serial/\hyperlink{cowichan__serial_2randmat_8cpp}{randmat.cpp}\item 
+cowichan\_\-serial/\hyperlink{cowichan__serial_2sor_8cpp}{sor.cpp}\item 
+cowichan\_\-serial/\hyperlink{cowichan__serial_2thresh_8cpp}{thresh.cpp}\item 
+cowichan\_\-serial/\hyperlink{cowichan__serial_2vecdiff_8cpp}{vecdiff.cpp}\item 
+cowichan\_\-serial/\hyperlink{cowichan__serial_2winnow_8cpp}{winnow.cpp}\end{CompactItemize}

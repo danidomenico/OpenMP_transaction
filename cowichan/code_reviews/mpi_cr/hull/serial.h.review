@@ -1,0 +1,37 @@
+     1	/**
+     2	 * Serial implementation of convex hull
+     3	 *
+     4	 * \file serial.h
+     5	 * \author Andrew Borzenko
+     6	 * \date 03-06-09
+     7	 */
+     8	
+     9	#pragma once
+    10	#ifndef HULL_SERIAL_H
+    11	#define HULL_SERIAL_H
+    12	
+    13	/*--------------------------------------------------------------*/
+    14	/* public functions						*/
+    15	/*--------------------------------------------------------------*/
+    16	
+    17	void hull (pt1D* points,     // list of points
+    18	           int n,            // number of points
+    19	           pt1D* hullPoints, // list of points in convex hull
+    20	           int* hn);         // number of points in convex hull
+    21	
+    22	/*--------------------------------------------------------------*/
+    23	/* private functions						*/
+    24	/*--------------------------------------------------------------*/
+    25	
+    26	void split (pt1D* points,    // list of points
+    27	            int n,            // number of points
+    28	            pt1D* hullPoints, // list of points in convex hull
+    29	            int* hn,          // number of points in convex hull
+    30	            pt p1,            // boundary point #1
+    31	            pt p2);           // boundary point #2
+    32	
+    33	inline real cross (pt l1,    // cross product of
+    34	                   pt l2,    // (l1,l2) and (l1,p)
+    35	                   pt p);
+    36	
+    37	#endif /* HULL_SERIAL_H */

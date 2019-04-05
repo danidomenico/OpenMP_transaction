@@ -1,0 +1,143 @@
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/svn/!svn/ver/271/cowichan_openmp
+END
+randmat.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/235/cowichan_openmp/randmat.cpp
+END
+comp32.bat
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/242/cowichan_openmp/comp32.bat
+END
+sort.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/233/cowichan_openmp/sort.cpp
+END
+cowichan_openmp.vcproj
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/200/cowichan_openmp/cowichan_openmp.vcproj
+END
+comp32.sh
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/242/cowichan_openmp/comp32.sh
+END
+sort.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/244/cowichan_openmp/sort.hpp
+END
+comp64.bat
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/242/cowichan_openmp/comp64.bat
+END
+thresh.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/271/cowichan_openmp/thresh.cpp
+END
+outer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/235/cowichan_openmp/outer.cpp
+END
+mandel.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/233/cowichan_openmp/mandel.cpp
+END
+comp64.sh
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/192/cowichan_openmp/comp64.sh
+END
+sor.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/235/cowichan_openmp/sor.cpp
+END
+hull.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/233/cowichan_openmp/hull.cpp
+END
+vecdiff.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/238/cowichan_openmp/vecdiff.cpp
+END
+invperc.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/271/cowichan_openmp/invperc.cpp
+END
+cowichan_openmp.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/233/cowichan_openmp/cowichan_openmp.cpp
+END
+half.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/233/cowichan_openmp/half.cpp
+END
+norm.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/233/cowichan_openmp/norm.cpp
+END
+cowichan_openmp.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/240/cowichan_openmp/cowichan_openmp.hpp
+END
+life.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/233/cowichan_openmp/life.cpp
+END
+product.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/235/cowichan_openmp/product.cpp
+END
+winnow.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/238/cowichan_openmp/winnow.cpp
+END
+gauss.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/233/cowichan_openmp/gauss.cpp
+END

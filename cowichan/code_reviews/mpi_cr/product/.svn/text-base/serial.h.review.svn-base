@@ -1,0 +1,32 @@
+     1	/**
+     2	 * Serial implementation of matrix-vector product
+     3	 *
+     4	 * \file serial.h
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-02-09
+     7	 */
+     8	
+     9	#pragma once
+    10	#ifndef PRODUCT_SERIAL_H
+    11	#define PRODUCT_SERIAL_H
+    12	
+    13	/*--------------------------------------------------------------*/
+    14	/* public functions						*/
+    15	/*--------------------------------------------------------------*/
+    16	
+    17	/*
+    18	 * @ product : do matrix-vector product
+    19	 * > none
+    20	 * + fill result vector
+    21	 */
+    22	
+    23	void
+    24	product(
+    25	  real2D*	matrix,			/* to multiply by */
+    26	  real1D*	vector,			/* to be multiplied */
+    27	  real1D*	result,			/* result of multiply */
+    28	  int		nr,			/* row size */
+    29	  int		nc			/* column size */
+    30	);
+    31	
+    32	#endif /* PRODUCT_SERIAL_H */

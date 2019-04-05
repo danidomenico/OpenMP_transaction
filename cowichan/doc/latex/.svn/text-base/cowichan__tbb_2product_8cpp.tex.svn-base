@@ -1,0 +1,29 @@
+\hypertarget{cowichan__tbb_2product_8cpp}{
+\section{cowichan\_\-tbb/product.cpp File Reference}
+\label{cowichan__tbb_2product_8cpp}\index{cowichan\_\-tbb/product.cpp@{cowichan\_\-tbb/product.cpp}}
+}
+TBB product implementation.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-tbb.hpp\char`\"{}}\par
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{classcowichan__tbb_1_1_product}{cowichan\_\-tbb::Product}
+\begin{CompactList}\small\item\em Performs matrix vector product. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Namespaces}
+\begin{CompactItemize}
+\item 
+namespace \hyperlink{namespacecowichan__tbb}{cowichan\_\-tbb}
+\begin{CompactList}\small\item\em Additional classes and functions specific to tbb implementation. \item\end{CompactList}
+
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+TBB product implementation. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_t_b_b_f3144458520e2dff1f9fad5753f6fc3d}{CowichanTBB::product} \end{Desc}

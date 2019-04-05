@@ -1,0 +1,122 @@
+\hypertarget{classcowichan__tbb_1_1_norm_diff}{
+\section{cowichan\_\-tbb::NormDiff Class Reference}
+\label{classcowichan__tbb_1_1_norm_diff}\index{cowichan\_\-tbb::NormDiff@{cowichan\_\-tbb::NormDiff}}
+}
+This class takes the 1-norm of the difference between two vectors.  
+
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{classcowichan__tbb_1_1_norm_diff_6587c2fa87b2de95dcbfb20b730078f8}{getNormDiff} () const 
+\item 
+\hyperlink{classcowichan__tbb_1_1_norm_diff_b1208ef85ede51d4dc1ddc6138f7c5e7}{NormDiff} (\hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} actual, \hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} computed)
+\item 
+void \hyperlink{classcowichan__tbb_1_1_norm_diff_52e5ede1dfe631172eef7d9cc0b47da9}{operator()} (const \hyperlink{cowichan__tbb_8hpp_8e2057f725b08f3a15513c378a453a47}{Range} \&range)
+\item 
+\hyperlink{classcowichan__tbb_1_1_norm_diff_ad2ce848060d83748379dc699db1d11d}{NormDiff} (\hyperlink{classcowichan__tbb_1_1_norm_diff}{NormDiff} \&other, split)
+\item 
+void \hyperlink{classcowichan__tbb_1_1_norm_diff_72848190b1c3ce472db28dfb6e077770}{join} (const \hyperlink{classcowichan__tbb_1_1_norm_diff}{NormDiff} \&other)
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} \hyperlink{classcowichan__tbb_1_1_norm_diff_4437c2a7c02964c5beecfd0ddaa07e24}{\_\-actual}
+\item 
+\hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} \hyperlink{classcowichan__tbb_1_1_norm_diff_930b702a07a90791900d511baf983a69}{\_\-computed}
+\item 
+\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{classcowichan__tbb_1_1_norm_diff_371226aa91c54705be6071e6e6d97792}{normDiff}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+This class takes the 1-norm of the difference between two vectors. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcowichan__tbb_1_1_norm_diff_b1208ef85ede51d4dc1ddc6138f7c5e7}{
+\index{cowichan\_\-tbb::NormDiff@{cowichan\_\-tbb::NormDiff}!NormDiff@{NormDiff}}
+\index{NormDiff@{NormDiff}!cowichan_tbb::NormDiff@{cowichan\_\-tbb::NormDiff}}
+\subsubsection[{NormDiff}]{\setlength{\rightskip}{0pt plus 5cm}cowichan\_\-tbb::NormDiff::NormDiff ({\bf Vector} {\em actual}, \/  {\bf Vector} {\em computed})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_norm_diff_b1208ef85ede51d4dc1ddc6138f7c5e7}
+
+
+Construct a norm diff object. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em actual}]first (actual) vector. \item[{\em computed}]second (computed) vector. \end{description}
+\end{Desc}
+\hypertarget{classcowichan__tbb_1_1_norm_diff_ad2ce848060d83748379dc699db1d11d}{
+\index{cowichan\_\-tbb::NormDiff@{cowichan\_\-tbb::NormDiff}!NormDiff@{NormDiff}}
+\index{NormDiff@{NormDiff}!cowichan_tbb::NormDiff@{cowichan\_\-tbb::NormDiff}}
+\subsubsection[{NormDiff}]{\setlength{\rightskip}{0pt plus 5cm}cowichan\_\-tbb::NormDiff::NormDiff ({\bf NormDiff} \& {\em other}, \/  split)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_norm_diff_ad2ce848060d83748379dc699db1d11d}
+
+
+Splitting (TBB) constructor. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em other}]object to split. \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcowichan__tbb_1_1_norm_diff_6587c2fa87b2de95dcbfb20b730078f8}{
+\index{cowichan\_\-tbb::NormDiff@{cowichan\_\-tbb::NormDiff}!getNormDiff@{getNormDiff}}
+\index{getNormDiff@{getNormDiff}!cowichan_tbb::NormDiff@{cowichan\_\-tbb::NormDiff}}
+\subsubsection[{getNormDiff}]{\setlength{\rightskip}{0pt plus 5cm}{\bf real} cowichan\_\-tbb::NormDiff::getNormDiff () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_norm_diff_6587c2fa87b2de95dcbfb20b730078f8}
+
+
+Get 1-norm difference. \hypertarget{classcowichan__tbb_1_1_norm_diff_72848190b1c3ce472db28dfb6e077770}{
+\index{cowichan\_\-tbb::NormDiff@{cowichan\_\-tbb::NormDiff}!join@{join}}
+\index{join@{join}!cowichan_tbb::NormDiff@{cowichan\_\-tbb::NormDiff}}
+\subsubsection[{join}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::NormDiff::join (const {\bf NormDiff} \& {\em other})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_norm_diff_72848190b1c3ce472db28dfb6e077770}
+
+
+Joiner (TBB). \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em other}]object to join. \end{description}
+\end{Desc}
+\hypertarget{classcowichan__tbb_1_1_norm_diff_52e5ede1dfe631172eef7d9cc0b47da9}{
+\index{cowichan\_\-tbb::NormDiff@{cowichan\_\-tbb::NormDiff}!operator()@{operator()}}
+\index{operator()@{operator()}!cowichan_tbb::NormDiff@{cowichan\_\-tbb::NormDiff}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::NormDiff::operator() (const {\bf Range} \& {\em range})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_norm_diff_52e5ede1dfe631172eef7d9cc0b47da9}
+
+
+Perform the computation. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em range}]row range. \end{description}
+\end{Desc}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classcowichan__tbb_1_1_norm_diff_4437c2a7c02964c5beecfd0ddaa07e24}{
+\index{cowichan\_\-tbb::NormDiff@{cowichan\_\-tbb::NormDiff}!\_\-actual@{\_\-actual}}
+\index{\_\-actual@{\_\-actual}!cowichan_tbb::NormDiff@{cowichan\_\-tbb::NormDiff}}
+\subsubsection[{\_\-actual}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} {\bf cowichan\_\-tbb::NormDiff::\_\-actual}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_norm_diff_4437c2a7c02964c5beecfd0ddaa07e24}
+
+
+First (actual) vector. \hypertarget{classcowichan__tbb_1_1_norm_diff_930b702a07a90791900d511baf983a69}{
+\index{cowichan\_\-tbb::NormDiff@{cowichan\_\-tbb::NormDiff}!\_\-computed@{\_\-computed}}
+\index{\_\-computed@{\_\-computed}!cowichan_tbb::NormDiff@{cowichan\_\-tbb::NormDiff}}
+\subsubsection[{\_\-computed}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} {\bf cowichan\_\-tbb::NormDiff::\_\-computed}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_norm_diff_930b702a07a90791900d511baf983a69}
+
+
+Second (computed) vector. \hypertarget{classcowichan__tbb_1_1_norm_diff_371226aa91c54705be6071e6e6d97792}{
+\index{cowichan\_\-tbb::NormDiff@{cowichan\_\-tbb::NormDiff}!normDiff@{normDiff}}
+\index{normDiff@{normDiff}!cowichan_tbb::NormDiff@{cowichan\_\-tbb::NormDiff}}
+\subsubsection[{normDiff}]{\setlength{\rightskip}{0pt plus 5cm}{\bf real} {\bf cowichan\_\-tbb::NormDiff::normDiff}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_norm_diff_371226aa91c54705be6071e6e6d97792}
+
+
+1-norm difference. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+cowichan\_\-tbb/\hyperlink{cowichan__tbb_2vecdiff_8cpp}{vecdiff.cpp}\end{CompactItemize}

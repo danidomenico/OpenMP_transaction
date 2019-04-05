@@ -1,0 +1,84 @@
+     1	/**
+     2	 * Serial implementation of histogram thresholding
+     3	 *
+     4	 * \file serial.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 03-02-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#include "serial.h"
+    11	
+    12	// public
+    13	
+    14	/*
+    15	 * @ thresh : do histogram thresholding
+    16	 * > none
+    17	 * + create mask
+    18	 */
+    19	
+    20	void
+    21	thresh(
+    22	  int2D*		matrix,			/* to threshold */
+    23	  bool2D*	mask,			/* threshold mask */
+    24	  int		nr,			/* row size */
+    25	  int		nc,			/* column size */
+    26	  real		fraction		/* how much to keep */
+    27	){
+    28	  int         * hist;			/* histogram */
+    29	  int		i, r, c;		/* loop indices */
+    30	  int		vMax;			/* max value in matrix */
+    31	  int		retain;			/* selection */
+    32	#if GRAPHICS
+    33	  int		gfxCount = 0;		/* number of times graphics called */
+    34	#endif
+    35	
+    36	  /* find max value in matrix */
+    37	  vMax = 0;
+    38	  for (r=0; r<nr; r++){
+    39	    for (c=0; c<nc; c++){
+    40	      if (vMax < matrix[r][c]){
+    41		vMax = matrix[r][c];
+    42	      }
+    43	    }
+    44	  }
+    45	
+    46	  /* initialize histogram */
+    47	  hist = new int[vMax + 1];
+    48	  for (i=0; i<=vMax; i++){
+    49	    hist[i] = 0;
+    50	  }
+    51	
+    52	#if GRAPHICS
+    53	  gfx_thresh(gfxCount++, matrix, mask, nr, nc, hist, vMax);
+    54	#endif
+    55	
+    56	  /* count */
+    57	  for (r=0; r<nr; r++){
+    58	    for (c=0; c<nc; c++){
+    59	      hist[matrix[r][c]]++;
+    60	    }
+    61	  }
+    62	
+    63	  /* include */
+    64	  retain = (int)(fraction * nc * nr);
+    65	  for (i = vMax; ((i >= 0) && (retain > 0)); i--) {
+    66	    retain -= hist[i];
+    67	  }
+    68	  retain = i;
+    69	
+    70	  /* threshold */
+    71	  for (r=0; r<nr; r++){
+    72	    for (c=0; c<nc; c++){
+    73	      mask[r][c] = matrix[r][c] > retain;
+    74	    }
+    75	  }
+    76	
+    77	#if GRAPHICS
+    78	  gfx_thresh(gfxCount++, matrix, mask, nr, nc, hist, vMax);
+    79	#endif
+    80	
+    81	  delete [] hist;
+    82	
+    83	  /* return */
+    84	}

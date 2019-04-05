@@ -1,0 +1,102 @@
+     1	/**
+     2	 * Parallel implementation of generic gauss
+     3	 *
+     4	 * \file parallel.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-03-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#include "parallel.h"
+    11	
+    12	void gauss_mpi (mpi::communicator world,
+    13	                real2D*	matrix,			/* to solve */
+    14	                real1D*	vector,			/* target vector */
+    15	                real1D*	answer,			/* solution found */
+    16	                int		n)
+    17	{
+    18	  bool		work;			/* work control */
+    19	  int		lo, hi;		/* work controls */
+    20	  int		r, c, k;		/* indices */
+    21	#if GRAPHICS
+    22	  int		gfxCount = 0;
+    23	#endif
+    24	  int rank;
+    
+It might give these variables better context if they are declared closer to
+where they are used, rather than all in a block at the start of the function.
+    
+    25	
+    26	  // forward elimination
+    27	  for (k=0; k<n; k++){
+    28	#if GRAPHICS
+    29	    if (MASTER(tid)){
+    30	      gfx_gauss(gfxCount++, matrix, vector, answer, n);
+    31	    }
+    32	    thr_bar(tid);
+    33	#endif
+    34	
+    35	    // calculate pivots in k'th column
+    
+Is this calculating pivots? It looks like this is doing the first Gaussian
+elimination pass.
+    
+    36	    if ((work = get_block_rows_mpi (world, k + 1, n, &lo, &hi))) {
+    37	      for (r = lo; r < hi; r++) {
+    38	        matrix[r][k] = matrix[r][k] / matrix[k][k];
+    39	      }
+    40	    }
+    41	    // broadcast rows
+    42	    for (r = k + 1; r < n; r++) {
+    43	      rank = get_block_rank_mpi (world, k + 1, n, r);
+    44	      //printf ("k is %d, n is %d, lo is %d, hi is %d, r is %d, rank is %d\n", k, n, lo, hi, r, rank);
+    45	      broadcast (world, matrix[r], n, rank);
+    46	    }
+    47	
+    48	    // update elements below k'th row
+    49	    if (work) {
+    50	      for (r = lo; r < hi; r++) {
+    51	        for (c = k + 1; c < n; c++) {
+    52	          matrix[r][c] = matrix[r][c] - (matrix[r][k] * matrix[k][c]);
+    53	        }
+    54	      }
+    55	    }
+    56	    // broadcast rows
+    57	    for (r = k + 1; r < n; r++) {
+    58	      rank = get_block_rank_mpi (world, k + 1, n, r);
+    59	      broadcast (world, matrix[r], n, rank);
+    60	    }
+    61	
+    62	    // update element of solution vector
+    63	    if (work) {
+    64	      for (r = lo; r < hi; r++) {
+    65	        vector[r] = vector[r] - (matrix[r][k] * vector[k]);
+    66	      }
+    67	    }
+    68	    // broadcast solution vector
+    69	    for (r = k + 1; r < n; r++) {
+    70	      rank = get_block_rank_mpi (world, k + 1, n, r);
+    71	      broadcast (world, vector[r], rank);
+    72	    }
+    73	  }
+    74	
+    75	  // back substitution
+    76	  for (k=(n-1); k>=0; k--){
+    77	    // set this element
+    78	    answer[k] = vector[k] / matrix[k][k];
+    79	    
+    80	    // update other elements
+    81	    if (get_block_rows_mpi (world, 0, k, &lo, &hi)) {
+    82	      for (r = lo; r < hi; r++) {
+    83		    vector[r] = vector[r] - (matrix[r][k] * answer[k]);
+    84	      }
+    85	    }
+    86	    // broadcast solution vector
+    87	    for (r = 0; r < k; r++) {
+    88	      rank = get_block_rank_mpi (world, 0, k, r);
+    89	      broadcast (world, vector[r], rank);
+    90	    }
+    91	  }
+    92	
+    93	  /* return */
+    94	}

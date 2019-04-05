@@ -1,0 +1,96 @@
+\hypertarget{classcowichan__tbb_1_1_product}{
+\section{cowichan\_\-tbb::Product Class Reference}
+\label{classcowichan__tbb_1_1_product}\index{cowichan\_\-tbb::Product@{cowichan\_\-tbb::Product}}
+}
+Performs matrix vector product.  
+
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classcowichan__tbb_1_1_product_566372b282199bdad9a7c56401292c67}{Product} (\hyperlink{cowichan_8hpp_3fb46f939e55c239fbc95656fc0f3399}{Matrix} matrix, \hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} vector, \hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} result, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_product_9542e8c26664d42a4a4338bb724f25f5}{n})
+\item 
+void \hyperlink{classcowichan__tbb_1_1_product_acf07fd5664cf0060856cd375c7beb49}{operator()} (const \hyperlink{cowichan__tbb_8hpp_8e2057f725b08f3a15513c378a453a47}{Range} \&rows) const 
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{cowichan_8hpp_3fb46f939e55c239fbc95656fc0f3399}{Matrix} \hyperlink{classcowichan__tbb_1_1_product_4acc629bc25b75ea1aaddb3e1f70b562}{\_\-matrix}
+\item 
+\hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} \hyperlink{classcowichan__tbb_1_1_product_ed001666b8c4ab18c653277145874b54}{\_\-vector}
+\item 
+\hyperlink{cowichan_8hpp_02bc1553e241b9b33408482658b3c355}{Vector} \hyperlink{classcowichan__tbb_1_1_product_3adb1fe6a2b08b1b87ea63e6cb9fef46}{\_\-result}
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_product_9542e8c26664d42a4a4338bb724f25f5}{n}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Performs matrix vector product. 
+
+This class multiplies a matrix by a vector, producing a vector, a la: \mbox{[}x1 x2 x3\mbox{]} \mbox{[}y1\mbox{]} \mbox{[}(x1$\ast$y1 + x2$\ast$y2 + x3$\ast$y3)\mbox{]} \mbox{[}x4 x5 x6\mbox{]} $\ast$ \mbox{[}y2\mbox{]} = \mbox{[}(x4$\ast$y1 + x5$\ast$y2 + x6$\ast$y3)\mbox{]} \mbox{[}x7 x8 x9\mbox{]} \mbox{[}y3\mbox{]} \mbox{[}(x7$\ast$y1 + x8$\ast$y2 + x9$\ast$y3)\mbox{]} 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcowichan__tbb_1_1_product_566372b282199bdad9a7c56401292c67}{
+\index{cowichan\_\-tbb::Product@{cowichan\_\-tbb::Product}!Product@{Product}}
+\index{Product@{Product}!cowichan_tbb::Product@{cowichan\_\-tbb::Product}}
+\subsubsection[{Product}]{\setlength{\rightskip}{0pt plus 5cm}cowichan\_\-tbb::Product::Product ({\bf Matrix} {\em matrix}, \/  {\bf Vector} {\em vector}, \/  {\bf Vector} {\em result}, \/  {\bf index\_\-t} {\em n})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_product_566372b282199bdad9a7c56401292c67}
+
+
+Construct a product object. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em matrix}]given matrix. \item[{\em vector}]given vector. \item[{\em result}]solution vector. \item[{\em n}]matrix size. \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcowichan__tbb_1_1_product_acf07fd5664cf0060856cd375c7beb49}{
+\index{cowichan\_\-tbb::Product@{cowichan\_\-tbb::Product}!operator()@{operator()}}
+\index{operator()@{operator()}!cowichan_tbb::Product@{cowichan\_\-tbb::Product}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::Product::operator() (const {\bf Range} \& {\em rows}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_product_acf07fd5664cf0060856cd375c7beb49}
+
+
+Performs matrix-vector multiplication on the given row range. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em rows}]range of rows to use. \end{description}
+\end{Desc}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classcowichan__tbb_1_1_product_4acc629bc25b75ea1aaddb3e1f70b562}{
+\index{cowichan\_\-tbb::Product@{cowichan\_\-tbb::Product}!\_\-matrix@{\_\-matrix}}
+\index{\_\-matrix@{\_\-matrix}!cowichan_tbb::Product@{cowichan\_\-tbb::Product}}
+\subsubsection[{\_\-matrix}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} {\bf cowichan\_\-tbb::Product::\_\-matrix}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_product_4acc629bc25b75ea1aaddb3e1f70b562}
+
+
+Given matrix. \hypertarget{classcowichan__tbb_1_1_product_3adb1fe6a2b08b1b87ea63e6cb9fef46}{
+\index{cowichan\_\-tbb::Product@{cowichan\_\-tbb::Product}!\_\-result@{\_\-result}}
+\index{\_\-result@{\_\-result}!cowichan_tbb::Product@{cowichan\_\-tbb::Product}}
+\subsubsection[{\_\-result}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} {\bf cowichan\_\-tbb::Product::\_\-result}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_product_3adb1fe6a2b08b1b87ea63e6cb9fef46}
+
+
+Solution vector. \hypertarget{classcowichan__tbb_1_1_product_ed001666b8c4ab18c653277145874b54}{
+\index{cowichan\_\-tbb::Product@{cowichan\_\-tbb::Product}!\_\-vector@{\_\-vector}}
+\index{\_\-vector@{\_\-vector}!cowichan_tbb::Product@{cowichan\_\-tbb::Product}}
+\subsubsection[{\_\-vector}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} {\bf cowichan\_\-tbb::Product::\_\-vector}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_product_ed001666b8c4ab18c653277145874b54}
+
+
+Given vector. \hypertarget{classcowichan__tbb_1_1_product_9542e8c26664d42a4a4338bb724f25f5}{
+\index{cowichan\_\-tbb::Product@{cowichan\_\-tbb::Product}!n@{n}}
+\index{n@{n}!cowichan_tbb::Product@{cowichan\_\-tbb::Product}}
+\subsubsection[{n}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} {\bf cowichan\_\-tbb::Product::n}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_product_9542e8c26664d42a4a4338bb724f25f5}
+
+
+Matrix size. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+cowichan\_\-tbb/\hyperlink{cowichan__tbb_2product_8cpp}{product.cpp}\end{CompactItemize}

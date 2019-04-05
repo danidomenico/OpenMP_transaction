@@ -1,0 +1,435 @@
+\hypertarget{cowichan__defaults_8hpp}{
+\section{cowichan/cowichan\_\-defaults.hpp File Reference}
+\label{cowichan__defaults_8hpp}\index{cowichan/cowichan\_\-defaults.hpp@{cowichan/cowichan\_\-defaults.hpp}}
+}
+Defaults for \hyperlink{class_cowichan}{Cowichan} programs.  
+
+
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_30524c594b6941ca7822489d1794813b}{ALL\_\-NR}~15000
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_85076a3092aabd0bc4661e9184e2ddf3}{ALL\_\-NC}~15000
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_e36abbd26bf4ea979de0b63b1a37e349}{ALL\_\-N}~15000
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_0c6044d9326c14200929af66072b673a}{RAND\_\-MEAN}~0
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_40b63d443076ce61004bae3bf79a776b}{RAND\_\-RANGE}~20
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_32ee58f73d9de0d1d41ad46f7bff2719}{RAND\_\-SEED}~681304
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_d07476570307484eff173eedfbddd347}{RAND\_\-M}~56197
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_5f41a7e62c6e0138af5a65460416d6c7}{MANDEL\_\-NR}~ALL\_\-NR
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_d60d6cbcceef6bc7249b1480c829b7bb}{MANDEL\_\-NC}~ALL\_\-NC
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_5d8b0b1a78ed8a193734749178c248c1}{MANDEL\_\-X0}~0
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_47e550564bb994890b2ea6816155a0fe}{MANDEL\_\-Y0}~0
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_6fb2dcd18c6df1c377f613769d6314c3}{MANDEL\_\-DX}~1.5
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_b1759c852c10a8d03520a84beb5378fd}{MANDEL\_\-DY}~1.5
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_c911423783b8cba366d042acd8d062f3}{MANDEL\_\-INFINITY}~2.0
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_59c2aa73700269b6de563e60af48c6a3}{MANDEL\_\-MAX\_\-ITER}~150
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_6b2590531a8313fed76899a95ad3b625}{RANDMAT\_\-NR}~ALL\_\-NR
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_be3ee010372d99dfda2913d3d35a6a05}{RANDMAT\_\-NC}~ALL\_\-NC
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_7565d8f613d834da3b98134d4b564017}{RANDMAT\_\-A}~1291
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_cacc7f34c70c2ca998f0c1372ed1db83}{RANDMAT\_\-C}~917
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_3f8c101b36fa58d4d1d26cc4a77e1b51}{HALF\_\-NR}~ALL\_\-NR
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_d97fd174769938baa91d18ac273e1f93}{HALF\_\-NC}~ALL\_\-NC
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_966db6c2f5b3ed69daacad1d722b7071}{INVPERC\_\-NR}~ALL\_\-NR
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_3ae0f26f20ab30b6bbe513eff9a18291}{INVPERC\_\-NC}~ALL\_\-NC
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_cbaf3f96d8f75268024fb88255da23d9}{INVPERC\_\-NFILL}~1000000
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_4b80608f6c4617a66eba2f164afc4f3d}{THRESH\_\-NR}~ALL\_\-NR
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_7c356bfeab4913aa2e5dea26de44ebfc}{THRESH\_\-NC}~ALL\_\-NC
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_f85ccfff5fbed47416c64d4229d1234a}{THRESH\_\-PERCENT}~0.5
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_a597d047fbe34455bd7962e6e550adab}{LIFE\_\-NR}~ALL\_\-NR
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_9763036e0b951ebdb691f7336ecf0493}{LIFE\_\-NC}~ALL\_\-NC
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_02f3c90de37aa6314330a7e0cb68a1f5}{LIFE\_\-ITERATIONS}~3
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_cedd24970400253f48e19a285f8b8559}{WINNOW\_\-NR}~ALL\_\-NR
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_40f06800a12a97dde304a378d7d971cc}{WINNOW\_\-NC}~ALL\_\-NC
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_22c87347c9b1f8643a8b57e3d841303f}{WINNOW\_\-N}~ALL\_\-N
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_2ba93b0a30632568e28703c194c2345a}{NORM\_\-N}~ALL\_\-N
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_7f62220bbf93745fac5aa8e225f09126}{HULL\_\-N}~ALL\_\-N
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_113e7aa75d2b1403a5548913cd240cb4}{OUTER\_\-N}~ALL\_\-N
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_e1de0ce8df246861c84e405d66d37457}{GAUSS\_\-N}~ALL\_\-N
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_23487499c48e5b64d05fd2249be710c1}{SOR\_\-N}~ALL\_\-N
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_4b7aa2e2b41cee6b710c7ce48115f8ee}{SOR\_\-OMEGA}~0.9
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_e64dba51c415f6acbccbfd021a88769d}{SOR\_\-TOLERANCE}~10e-6
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_3673c55137aa755f4829b6b04329c379}{SOR\_\-MAX\_\-ITERS}~1000000
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_072a640a55e457c256faa59842e0368c}{PRODUCT\_\-N}~ALL\_\-N
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_d955f5a864096d87337347af906829b1}{VECDIFF\_\-N}~ALL\_\-N
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_5463dc5662d922fb1f8772a9e8e48672}{CHAIN\_\-NR}~ALL\_\-NR
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_fbc8b36ae001421db4f569c682ca7a45}{CHAIN\_\-NC}~ALL\_\-NC
+\item 
+\#define \hyperlink{cowichan__defaults_8hpp_40496e72e1bb9b2ca7ba854fa5679b8d}{CHAIN\_\-N}~ALL\_\-N
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+Defaults for \hyperlink{class_cowichan}{Cowichan} programs. 
+
+
+
+\subsection{Define Documentation}
+\hypertarget{cowichan__defaults_8hpp_e36abbd26bf4ea979de0b63b1a37e349}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!ALL\_\-N@{ALL\_\-N}}
+\index{ALL\_\-N@{ALL\_\-N}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{ALL\_\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define ALL\_\-N~15000}}
+\label{cowichan__defaults_8hpp_e36abbd26bf4ea979de0b63b1a37e349}
+
+
+Default matrix size for square matrices for all problems. \hypertarget{cowichan__defaults_8hpp_85076a3092aabd0bc4661e9184e2ddf3}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!ALL\_\-NC@{ALL\_\-NC}}
+\index{ALL\_\-NC@{ALL\_\-NC}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{ALL\_\-NC}]{\setlength{\rightskip}{0pt plus 5cm}\#define ALL\_\-NC~15000}}
+\label{cowichan__defaults_8hpp_85076a3092aabd0bc4661e9184e2ddf3}
+
+
+Default number of columns for rectangular matrices for all problems. \hypertarget{cowichan__defaults_8hpp_30524c594b6941ca7822489d1794813b}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!ALL\_\-NR@{ALL\_\-NR}}
+\index{ALL\_\-NR@{ALL\_\-NR}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{ALL\_\-NR}]{\setlength{\rightskip}{0pt plus 5cm}\#define ALL\_\-NR~15000}}
+\label{cowichan__defaults_8hpp_30524c594b6941ca7822489d1794813b}
+
+
+Default number of rows for rectangular matrices for all problems. \hypertarget{cowichan__defaults_8hpp_40496e72e1bb9b2ca7ba854fa5679b8d}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!CHAIN\_\-N@{CHAIN\_\-N}}
+\index{CHAIN\_\-N@{CHAIN\_\-N}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{CHAIN\_\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define CHAIN\_\-N~ALL\_\-N}}
+\label{cowichan__defaults_8hpp_40496e72e1bb9b2ca7ba854fa5679b8d}
+
+
+Default matrix size for square matrices for chain. \hypertarget{cowichan__defaults_8hpp_fbc8b36ae001421db4f569c682ca7a45}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!CHAIN\_\-NC@{CHAIN\_\-NC}}
+\index{CHAIN\_\-NC@{CHAIN\_\-NC}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{CHAIN\_\-NC}]{\setlength{\rightskip}{0pt plus 5cm}\#define CHAIN\_\-NC~ALL\_\-NC}}
+\label{cowichan__defaults_8hpp_fbc8b36ae001421db4f569c682ca7a45}
+
+
+Default number of columns for rectangular matrices for chain. \hypertarget{cowichan__defaults_8hpp_5463dc5662d922fb1f8772a9e8e48672}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!CHAIN\_\-NR@{CHAIN\_\-NR}}
+\index{CHAIN\_\-NR@{CHAIN\_\-NR}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{CHAIN\_\-NR}]{\setlength{\rightskip}{0pt plus 5cm}\#define CHAIN\_\-NR~ALL\_\-NR}}
+\label{cowichan__defaults_8hpp_5463dc5662d922fb1f8772a9e8e48672}
+
+
+Default number of rows for rectangular matrices for chain. \hypertarget{cowichan__defaults_8hpp_e1de0ce8df246861c84e405d66d37457}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!GAUSS\_\-N@{GAUSS\_\-N}}
+\index{GAUSS\_\-N@{GAUSS\_\-N}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{GAUSS\_\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define GAUSS\_\-N~ALL\_\-N}}
+\label{cowichan__defaults_8hpp_e1de0ce8df246861c84e405d66d37457}
+
+
+Default square matrix size for gauss. \hypertarget{cowichan__defaults_8hpp_d97fd174769938baa91d18ac273e1f93}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!HALF\_\-NC@{HALF\_\-NC}}
+\index{HALF\_\-NC@{HALF\_\-NC}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{HALF\_\-NC}]{\setlength{\rightskip}{0pt plus 5cm}\#define HALF\_\-NC~ALL\_\-NC}}
+\label{cowichan__defaults_8hpp_d97fd174769938baa91d18ac273e1f93}
+
+
+Default number of columns for half. \hypertarget{cowichan__defaults_8hpp_3f8c101b36fa58d4d1d26cc4a77e1b51}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!HALF\_\-NR@{HALF\_\-NR}}
+\index{HALF\_\-NR@{HALF\_\-NR}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{HALF\_\-NR}]{\setlength{\rightskip}{0pt plus 5cm}\#define HALF\_\-NR~ALL\_\-NR}}
+\label{cowichan__defaults_8hpp_3f8c101b36fa58d4d1d26cc4a77e1b51}
+
+
+Default number of rows for half. \hypertarget{cowichan__defaults_8hpp_7f62220bbf93745fac5aa8e225f09126}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!HULL\_\-N@{HULL\_\-N}}
+\index{HULL\_\-N@{HULL\_\-N}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{HULL\_\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define HULL\_\-N~ALL\_\-N}}
+\label{cowichan__defaults_8hpp_7f62220bbf93745fac5aa8e225f09126}
+
+
+Default square matrix size for hull. \hypertarget{cowichan__defaults_8hpp_3ae0f26f20ab30b6bbe513eff9a18291}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!INVPERC\_\-NC@{INVPERC\_\-NC}}
+\index{INVPERC\_\-NC@{INVPERC\_\-NC}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{INVPERC\_\-NC}]{\setlength{\rightskip}{0pt plus 5cm}\#define INVPERC\_\-NC~ALL\_\-NC}}
+\label{cowichan__defaults_8hpp_3ae0f26f20ab30b6bbe513eff9a18291}
+
+
+Default number of columns for invperc. \hypertarget{cowichan__defaults_8hpp_cbaf3f96d8f75268024fb88255da23d9}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!INVPERC\_\-NFILL@{INVPERC\_\-NFILL}}
+\index{INVPERC\_\-NFILL@{INVPERC\_\-NFILL}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{INVPERC\_\-NFILL}]{\setlength{\rightskip}{0pt plus 5cm}\#define INVPERC\_\-NFILL~1000000}}
+\label{cowichan__defaults_8hpp_cbaf3f96d8f75268024fb88255da23d9}
+
+
+Default number of cells to fill. \hypertarget{cowichan__defaults_8hpp_966db6c2f5b3ed69daacad1d722b7071}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!INVPERC\_\-NR@{INVPERC\_\-NR}}
+\index{INVPERC\_\-NR@{INVPERC\_\-NR}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{INVPERC\_\-NR}]{\setlength{\rightskip}{0pt plus 5cm}\#define INVPERC\_\-NR~ALL\_\-NR}}
+\label{cowichan__defaults_8hpp_966db6c2f5b3ed69daacad1d722b7071}
+
+
+Default number of rows for invperc. \hypertarget{cowichan__defaults_8hpp_02f3c90de37aa6314330a7e0cb68a1f5}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!LIFE\_\-ITERATIONS@{LIFE\_\-ITERATIONS}}
+\index{LIFE\_\-ITERATIONS@{LIFE\_\-ITERATIONS}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{LIFE\_\-ITERATIONS}]{\setlength{\rightskip}{0pt plus 5cm}\#define LIFE\_\-ITERATIONS~3}}
+\label{cowichan__defaults_8hpp_02f3c90de37aa6314330a7e0cb68a1f5}
+
+
+Default number of life iterations. \hypertarget{cowichan__defaults_8hpp_9763036e0b951ebdb691f7336ecf0493}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!LIFE\_\-NC@{LIFE\_\-NC}}
+\index{LIFE\_\-NC@{LIFE\_\-NC}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{LIFE\_\-NC}]{\setlength{\rightskip}{0pt plus 5cm}\#define LIFE\_\-NC~ALL\_\-NC}}
+\label{cowichan__defaults_8hpp_9763036e0b951ebdb691f7336ecf0493}
+
+
+Default number of columns for life. \hypertarget{cowichan__defaults_8hpp_a597d047fbe34455bd7962e6e550adab}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!LIFE\_\-NR@{LIFE\_\-NR}}
+\index{LIFE\_\-NR@{LIFE\_\-NR}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{LIFE\_\-NR}]{\setlength{\rightskip}{0pt plus 5cm}\#define LIFE\_\-NR~ALL\_\-NR}}
+\label{cowichan__defaults_8hpp_a597d047fbe34455bd7962e6e550adab}
+
+
+Default number of rows for life. \hypertarget{cowichan__defaults_8hpp_6fb2dcd18c6df1c377f613769d6314c3}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!MANDEL\_\-DX@{MANDEL\_\-DX}}
+\index{MANDEL\_\-DX@{MANDEL\_\-DX}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{MANDEL\_\-DX}]{\setlength{\rightskip}{0pt plus 5cm}\#define MANDEL\_\-DX~1.5}}
+\label{cowichan__defaults_8hpp_6fb2dcd18c6df1c377f613769d6314c3}
+
+
+Default extent of the region along the x axis. \hypertarget{cowichan__defaults_8hpp_b1759c852c10a8d03520a84beb5378fd}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!MANDEL\_\-DY@{MANDEL\_\-DY}}
+\index{MANDEL\_\-DY@{MANDEL\_\-DY}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{MANDEL\_\-DY}]{\setlength{\rightskip}{0pt plus 5cm}\#define MANDEL\_\-DY~1.5}}
+\label{cowichan__defaults_8hpp_b1759c852c10a8d03520a84beb5378fd}
+
+
+Default extent of the region along the y axis. \hypertarget{cowichan__defaults_8hpp_c911423783b8cba366d042acd8d062f3}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!MANDEL\_\-INFINITY@{MANDEL\_\-INFINITY}}
+\index{MANDEL\_\-INFINITY@{MANDEL\_\-INFINITY}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{MANDEL\_\-INFINITY}]{\setlength{\rightskip}{0pt plus 5cm}\#define MANDEL\_\-INFINITY~2.0}}
+\label{cowichan__defaults_8hpp_c911423783b8cba366d042acd8d062f3}
+
+
+Default mandel infinity. \hypertarget{cowichan__defaults_8hpp_59c2aa73700269b6de563e60af48c6a3}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!MANDEL\_\-MAX\_\-ITER@{MANDEL\_\-MAX\_\-ITER}}
+\index{MANDEL\_\-MAX\_\-ITER@{MANDEL\_\-MAX\_\-ITER}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{MANDEL\_\-MAX\_\-ITER}]{\setlength{\rightskip}{0pt plus 5cm}\#define MANDEL\_\-MAX\_\-ITER~150}}
+\label{cowichan__defaults_8hpp_59c2aa73700269b6de563e60af48c6a3}
+
+
+Default mandel maximum number of iterations. \hypertarget{cowichan__defaults_8hpp_d60d6cbcceef6bc7249b1480c829b7bb}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!MANDEL\_\-NC@{MANDEL\_\-NC}}
+\index{MANDEL\_\-NC@{MANDEL\_\-NC}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{MANDEL\_\-NC}]{\setlength{\rightskip}{0pt plus 5cm}\#define MANDEL\_\-NC~ALL\_\-NC}}
+\label{cowichan__defaults_8hpp_d60d6cbcceef6bc7249b1480c829b7bb}
+
+
+Default number of columns for mandel. \hypertarget{cowichan__defaults_8hpp_5f41a7e62c6e0138af5a65460416d6c7}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!MANDEL\_\-NR@{MANDEL\_\-NR}}
+\index{MANDEL\_\-NR@{MANDEL\_\-NR}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{MANDEL\_\-NR}]{\setlength{\rightskip}{0pt plus 5cm}\#define MANDEL\_\-NR~ALL\_\-NR}}
+\label{cowichan__defaults_8hpp_5f41a7e62c6e0138af5a65460416d6c7}
+
+
+Default number of rows for mandel. \hypertarget{cowichan__defaults_8hpp_5d8b0b1a78ed8a193734749178c248c1}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!MANDEL\_\-X0@{MANDEL\_\-X0}}
+\index{MANDEL\_\-X0@{MANDEL\_\-X0}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{MANDEL\_\-X0}]{\setlength{\rightskip}{0pt plus 5cm}\#define MANDEL\_\-X0~0}}
+\label{cowichan__defaults_8hpp_5d8b0b1a78ed8a193734749178c248c1}
+
+
+Default x-coordinate of the lower left corner. \hypertarget{cowichan__defaults_8hpp_47e550564bb994890b2ea6816155a0fe}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!MANDEL\_\-Y0@{MANDEL\_\-Y0}}
+\index{MANDEL\_\-Y0@{MANDEL\_\-Y0}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{MANDEL\_\-Y0}]{\setlength{\rightskip}{0pt plus 5cm}\#define MANDEL\_\-Y0~0}}
+\label{cowichan__defaults_8hpp_47e550564bb994890b2ea6816155a0fe}
+
+
+Default y-coordinate of the lower left corner \hypertarget{cowichan__defaults_8hpp_2ba93b0a30632568e28703c194c2345a}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!NORM\_\-N@{NORM\_\-N}}
+\index{NORM\_\-N@{NORM\_\-N}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{NORM\_\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define NORM\_\-N~ALL\_\-N}}
+\label{cowichan__defaults_8hpp_2ba93b0a30632568e28703c194c2345a}
+
+
+Default square matrix size for norm. \hypertarget{cowichan__defaults_8hpp_113e7aa75d2b1403a5548913cd240cb4}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!OUTER\_\-N@{OUTER\_\-N}}
+\index{OUTER\_\-N@{OUTER\_\-N}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{OUTER\_\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define OUTER\_\-N~ALL\_\-N}}
+\label{cowichan__defaults_8hpp_113e7aa75d2b1403a5548913cd240cb4}
+
+
+Default square matrix size for outer. \hypertarget{cowichan__defaults_8hpp_072a640a55e457c256faa59842e0368c}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!PRODUCT\_\-N@{PRODUCT\_\-N}}
+\index{PRODUCT\_\-N@{PRODUCT\_\-N}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{PRODUCT\_\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define PRODUCT\_\-N~ALL\_\-N}}
+\label{cowichan__defaults_8hpp_072a640a55e457c256faa59842e0368c}
+
+
+Default square matrix size for product. \hypertarget{cowichan__defaults_8hpp_d07476570307484eff173eedfbddd347}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!RAND\_\-M@{RAND\_\-M}}
+\index{RAND\_\-M@{RAND\_\-M}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{RAND\_\-M}]{\setlength{\rightskip}{0pt plus 5cm}\#define RAND\_\-M~56197}}
+\label{cowichan__defaults_8hpp_d07476570307484eff173eedfbddd347}
+
+
+Default random number limit. \hypertarget{cowichan__defaults_8hpp_0c6044d9326c14200929af66072b673a}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!RAND\_\-MEAN@{RAND\_\-MEAN}}
+\index{RAND\_\-MEAN@{RAND\_\-MEAN}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{RAND\_\-MEAN}]{\setlength{\rightskip}{0pt plus 5cm}\#define RAND\_\-MEAN~0}}
+\label{cowichan__defaults_8hpp_0c6044d9326c14200929af66072b673a}
+
+
+Default random number mean for inputs. \hypertarget{cowichan__defaults_8hpp_40b63d443076ce61004bae3bf79a776b}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!RAND\_\-RANGE@{RAND\_\-RANGE}}
+\index{RAND\_\-RANGE@{RAND\_\-RANGE}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{RAND\_\-RANGE}]{\setlength{\rightskip}{0pt plus 5cm}\#define RAND\_\-RANGE~20}}
+\label{cowichan__defaults_8hpp_40b63d443076ce61004bae3bf79a776b}
+
+
+Default random number range for inputs. \hypertarget{cowichan__defaults_8hpp_32ee58f73d9de0d1d41ad46f7bff2719}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!RAND\_\-SEED@{RAND\_\-SEED}}
+\index{RAND\_\-SEED@{RAND\_\-SEED}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{RAND\_\-SEED}]{\setlength{\rightskip}{0pt plus 5cm}\#define RAND\_\-SEED~681304}}
+\label{cowichan__defaults_8hpp_32ee58f73d9de0d1d41ad46f7bff2719}
+
+
+Default random number seed. \hypertarget{cowichan__defaults_8hpp_7565d8f613d834da3b98134d4b564017}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!RANDMAT\_\-A@{RANDMAT\_\-A}}
+\index{RANDMAT\_\-A@{RANDMAT\_\-A}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{RANDMAT\_\-A}]{\setlength{\rightskip}{0pt plus 5cm}\#define RANDMAT\_\-A~1291}}
+\label{cowichan__defaults_8hpp_7565d8f613d834da3b98134d4b564017}
+
+
+Default constant A for randmat. \hypertarget{cowichan__defaults_8hpp_cacc7f34c70c2ca998f0c1372ed1db83}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!RANDMAT\_\-C@{RANDMAT\_\-C}}
+\index{RANDMAT\_\-C@{RANDMAT\_\-C}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{RANDMAT\_\-C}]{\setlength{\rightskip}{0pt plus 5cm}\#define RANDMAT\_\-C~917}}
+\label{cowichan__defaults_8hpp_cacc7f34c70c2ca998f0c1372ed1db83}
+
+
+Default constant C for randmat. \hypertarget{cowichan__defaults_8hpp_be3ee010372d99dfda2913d3d35a6a05}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!RANDMAT\_\-NC@{RANDMAT\_\-NC}}
+\index{RANDMAT\_\-NC@{RANDMAT\_\-NC}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{RANDMAT\_\-NC}]{\setlength{\rightskip}{0pt plus 5cm}\#define RANDMAT\_\-NC~ALL\_\-NC}}
+\label{cowichan__defaults_8hpp_be3ee010372d99dfda2913d3d35a6a05}
+
+
+Default number of columns for randmat. \hypertarget{cowichan__defaults_8hpp_6b2590531a8313fed76899a95ad3b625}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!RANDMAT\_\-NR@{RANDMAT\_\-NR}}
+\index{RANDMAT\_\-NR@{RANDMAT\_\-NR}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{RANDMAT\_\-NR}]{\setlength{\rightskip}{0pt plus 5cm}\#define RANDMAT\_\-NR~ALL\_\-NR}}
+\label{cowichan__defaults_8hpp_6b2590531a8313fed76899a95ad3b625}
+
+
+Default number of rows for randmat. \hypertarget{cowichan__defaults_8hpp_3673c55137aa755f4829b6b04329c379}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!SOR\_\-MAX\_\-ITERS@{SOR\_\-MAX\_\-ITERS}}
+\index{SOR\_\-MAX\_\-ITERS@{SOR\_\-MAX\_\-ITERS}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{SOR\_\-MAX\_\-ITERS}]{\setlength{\rightskip}{0pt plus 5cm}\#define SOR\_\-MAX\_\-ITERS~1000000}}
+\label{cowichan__defaults_8hpp_3673c55137aa755f4829b6b04329c379}
+
+
+Default maximum number of iterations for sor. \hypertarget{cowichan__defaults_8hpp_23487499c48e5b64d05fd2249be710c1}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!SOR\_\-N@{SOR\_\-N}}
+\index{SOR\_\-N@{SOR\_\-N}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{SOR\_\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define SOR\_\-N~ALL\_\-N}}
+\label{cowichan__defaults_8hpp_23487499c48e5b64d05fd2249be710c1}
+
+
+Default square matrix size for sor. \hypertarget{cowichan__defaults_8hpp_4b7aa2e2b41cee6b710c7ce48115f8ee}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!SOR\_\-OMEGA@{SOR\_\-OMEGA}}
+\index{SOR\_\-OMEGA@{SOR\_\-OMEGA}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{SOR\_\-OMEGA}]{\setlength{\rightskip}{0pt plus 5cm}\#define SOR\_\-OMEGA~0.9}}
+\label{cowichan__defaults_8hpp_4b7aa2e2b41cee6b710c7ce48115f8ee}
+
+
+Default omega for sor. \hypertarget{cowichan__defaults_8hpp_e64dba51c415f6acbccbfd021a88769d}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!SOR\_\-TOLERANCE@{SOR\_\-TOLERANCE}}
+\index{SOR\_\-TOLERANCE@{SOR\_\-TOLERANCE}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{SOR\_\-TOLERANCE}]{\setlength{\rightskip}{0pt plus 5cm}\#define SOR\_\-TOLERANCE~10e-6}}
+\label{cowichan__defaults_8hpp_e64dba51c415f6acbccbfd021a88769d}
+
+
+Default floating point tolerance for sor. \hypertarget{cowichan__defaults_8hpp_7c356bfeab4913aa2e5dea26de44ebfc}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!THRESH\_\-NC@{THRESH\_\-NC}}
+\index{THRESH\_\-NC@{THRESH\_\-NC}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{THRESH\_\-NC}]{\setlength{\rightskip}{0pt plus 5cm}\#define THRESH\_\-NC~ALL\_\-NC}}
+\label{cowichan__defaults_8hpp_7c356bfeab4913aa2e5dea26de44ebfc}
+
+
+Default number of columns for thresh. \hypertarget{cowichan__defaults_8hpp_4b80608f6c4617a66eba2f164afc4f3d}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!THRESH\_\-NR@{THRESH\_\-NR}}
+\index{THRESH\_\-NR@{THRESH\_\-NR}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{THRESH\_\-NR}]{\setlength{\rightskip}{0pt plus 5cm}\#define THRESH\_\-NR~ALL\_\-NR}}
+\label{cowichan__defaults_8hpp_4b80608f6c4617a66eba2f164afc4f3d}
+
+
+Default number of rows for thresh. \hypertarget{cowichan__defaults_8hpp_f85ccfff5fbed47416c64d4229d1234a}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!THRESH\_\-PERCENT@{THRESH\_\-PERCENT}}
+\index{THRESH\_\-PERCENT@{THRESH\_\-PERCENT}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{THRESH\_\-PERCENT}]{\setlength{\rightskip}{0pt plus 5cm}\#define THRESH\_\-PERCENT~0.5}}
+\label{cowichan__defaults_8hpp_f85ccfff5fbed47416c64d4229d1234a}
+
+
+Default threshold percentage. \hypertarget{cowichan__defaults_8hpp_d955f5a864096d87337347af906829b1}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!VECDIFF\_\-N@{VECDIFF\_\-N}}
+\index{VECDIFF\_\-N@{VECDIFF\_\-N}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{VECDIFF\_\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define VECDIFF\_\-N~ALL\_\-N}}
+\label{cowichan__defaults_8hpp_d955f5a864096d87337347af906829b1}
+
+
+Default square matrix size for vecdiff. \hypertarget{cowichan__defaults_8hpp_22c87347c9b1f8643a8b57e3d841303f}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!WINNOW\_\-N@{WINNOW\_\-N}}
+\index{WINNOW\_\-N@{WINNOW\_\-N}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{WINNOW\_\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define WINNOW\_\-N~ALL\_\-N}}
+\label{cowichan__defaults_8hpp_22c87347c9b1f8643a8b57e3d841303f}
+
+
+Default square matrix size for winnow. \hypertarget{cowichan__defaults_8hpp_40f06800a12a97dde304a378d7d971cc}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!WINNOW\_\-NC@{WINNOW\_\-NC}}
+\index{WINNOW\_\-NC@{WINNOW\_\-NC}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{WINNOW\_\-NC}]{\setlength{\rightskip}{0pt plus 5cm}\#define WINNOW\_\-NC~ALL\_\-NC}}
+\label{cowichan__defaults_8hpp_40f06800a12a97dde304a378d7d971cc}
+
+
+Default rectangular matrix number of columns for winnow. \hypertarget{cowichan__defaults_8hpp_cedd24970400253f48e19a285f8b8559}{
+\index{cowichan\_\-defaults.hpp@{cowichan\_\-defaults.hpp}!WINNOW\_\-NR@{WINNOW\_\-NR}}
+\index{WINNOW\_\-NR@{WINNOW\_\-NR}!cowichan_defaults.hpp@{cowichan\_\-defaults.hpp}}
+\subsubsection[{WINNOW\_\-NR}]{\setlength{\rightskip}{0pt plus 5cm}\#define WINNOW\_\-NR~ALL\_\-NR}}
+\label{cowichan__defaults_8hpp_cedd24970400253f48e19a285f8b8559}
+
+
+Default rectangular matrix number of rows for winnow. 

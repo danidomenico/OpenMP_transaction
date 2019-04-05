@@ -1,0 +1,121 @@
+\hypertarget{class_l_t_randmat}{
+\section{LTRandmat Class Reference}
+\label{class_l_t_randmat}\index{LTRandmat@{LTRandmat}}
+}
+{\tt \#include $<$randmat.hpp$>$}
+
+Inheritance diagram for LTRandmat::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{class_l_t_randmat}
+\end{center}
+\end{figure}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{class_l_t_randmat_73181e409565b18c77d880dbf4123b26}{consumeInput} ()
+\item 
+void \hyperlink{class_l_t_randmat_fffb75c16f2aaaa2f1bdb8a52f79234c}{work} ()
+\item 
+void \hyperlink{class_l_t_randmat_3adc0a50f5840dcc1228f4449e2b5da3}{produceOutput} ()
+\item 
+void \hyperlink{class_l_t_randmat_7c807565838d1882d33d183e90575653}{setup} ()
+\item 
+\hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} \hyperlink{class_l_t_randmat_cf34e6e21b7b22b315f9c8df37646448}{next} (\hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} \&current) const 
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} \hyperlink{class_l_t_randmat_eaa83f04ca349926529a5f69249358f2}{aPrime}
+\item 
+\hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} \hyperlink{class_l_t_randmat_419c5347dd2f402355088d51e03e8325}{cPrime}
+\end{CompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{CompactItemize}
+\item 
+static const char $\ast$ \hyperlink{class_l_t_randmat_0eb3b36daa68b21b70215c437976c849}{REQUEST} = \char`\"{}randmat request\char`\"{}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Tuple application to solve the bulk of the randmat cowichan problem. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_l_t_randmat_73181e409565b18c77d880dbf4123b26}{
+\index{LTRandmat@{LTRandmat}!consumeInput@{consumeInput}}
+\index{consumeInput@{consumeInput}!LTRandmat@{LTRandmat}}
+\subsubsection[{consumeInput}]{\setlength{\rightskip}{0pt plus 5cm}void LTRandmat::consumeInput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_randmat_73181e409565b18c77d880dbf4123b26}
+
+
+The consume input process is spawned once and should distribute tasks to the worker processes. 
+
+Implements \hyperlink{class_tuple_application_e163c5a536de01c8b94b49528a17dab2}{TupleApplication}.\hypertarget{class_l_t_randmat_cf34e6e21b7b22b315f9c8df37646448}{
+\index{LTRandmat@{LTRandmat}!next@{next}}
+\index{next@{next}!LTRandmat@{LTRandmat}}
+\subsubsection[{next}]{\setlength{\rightskip}{0pt plus 5cm}{\bf INT\_\-TYPE} LTRandmat::next ({\bf INT\_\-TYPE} \& {\em current}) const\hspace{0.3cm}{\tt  \mbox{[}inline, protected\mbox{]}}}}
+\label{class_l_t_randmat_cf34e6e21b7b22b315f9c8df37646448}
+
+
+Computes the next value in the random sequence. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em current}]the previous value in the random sequence. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the next value in the random sequence. \end{Desc}
+\hypertarget{class_l_t_randmat_3adc0a50f5840dcc1228f4449e2b5da3}{
+\index{LTRandmat@{LTRandmat}!produceOutput@{produceOutput}}
+\index{produceOutput@{produceOutput}!LTRandmat@{LTRandmat}}
+\subsubsection[{produceOutput}]{\setlength{\rightskip}{0pt plus 5cm}void LTRandmat::produceOutput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_randmat_3adc0a50f5840dcc1228f4449e2b5da3}
+
+
+The output producer decides when the tuple application is finished; once this function returns, the tuple application is complete. 
+
+Implements \hyperlink{class_tuple_application_8743dfcf17dedd52887c0b2ab170d8dc}{TupleApplication}.\hypertarget{class_l_t_randmat_7c807565838d1882d33d183e90575653}{
+\index{LTRandmat@{LTRandmat}!setup@{setup}}
+\index{setup@{setup}!LTRandmat@{LTRandmat}}
+\subsubsection[{setup}]{\setlength{\rightskip}{0pt plus 5cm}void LTRandmat::setup ()\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class_l_t_randmat_7c807565838d1882d33d183e90575653}
+
+
+Create the first, seed column. \hypertarget{class_l_t_randmat_fffb75c16f2aaaa2f1bdb8a52f79234c}{
+\index{LTRandmat@{LTRandmat}!work@{work}}
+\index{work@{work}!LTRandmat@{LTRandmat}}
+\subsubsection[{work}]{\setlength{\rightskip}{0pt plus 5cm}void LTRandmat::work ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_randmat_fffb75c16f2aaaa2f1bdb8a52f79234c}
+
+
+Worker processes are created and killed after the output process has finished. 
+
+Implements \hyperlink{class_tuple_application_ef6ae8bb1d697e4ed038b43320183c89}{TupleApplication}.
+
+\subsection{Member Data Documentation}
+\hypertarget{class_l_t_randmat_eaa83f04ca349926529a5f69249358f2}{
+\index{LTRandmat@{LTRandmat}!aPrime@{aPrime}}
+\index{aPrime@{aPrime}!LTRandmat@{LTRandmat}}
+\subsubsection[{aPrime}]{\setlength{\rightskip}{0pt plus 5cm}{\bf INT\_\-TYPE} {\bf LTRandmat::aPrime}\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class_l_t_randmat_eaa83f04ca349926529a5f69249358f2}
+
+
+A value to use for the next-K parallel randmat computation. \hypertarget{class_l_t_randmat_419c5347dd2f402355088d51e03e8325}{
+\index{LTRandmat@{LTRandmat}!cPrime@{cPrime}}
+\index{cPrime@{cPrime}!LTRandmat@{LTRandmat}}
+\subsubsection[{cPrime}]{\setlength{\rightskip}{0pt plus 5cm}{\bf INT\_\-TYPE} {\bf LTRandmat::cPrime}\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{class_l_t_randmat_419c5347dd2f402355088d51e03e8325}
+
+
+C value to use for the next-K parallel randmat computation. \hypertarget{class_l_t_randmat_0eb3b36daa68b21b70215c437976c849}{
+\index{LTRandmat@{LTRandmat}!REQUEST@{REQUEST}}
+\index{REQUEST@{REQUEST}!LTRandmat@{LTRandmat}}
+\subsubsection[{REQUEST}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf LTRandmat::REQUEST} = \char`\"{}randmat request\char`\"{}\hspace{0.3cm}{\tt  \mbox{[}static, protected\mbox{]}}}}
+\label{class_l_t_randmat_0eb3b36daa68b21b70215c437976c849}
+
+
+Request for a grid row to be generated. 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+cowichan\_\-lt/src/\hyperlink{randmat_8hpp}{randmat.hpp}\item 
+cowichan\_\-lt/src/\hyperlink{cowichan__lt_2src_2randmat_8cpp}{randmat.cpp}\end{CompactItemize}

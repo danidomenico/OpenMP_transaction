@@ -1,0 +1,31 @@
+\hypertarget{cowichan__openmp_2hull_8cpp}{
+\section{cowichan\_\-openmp/hull.cpp File Reference}
+\label{cowichan__openmp_2hull_8cpp}\index{cowichan\_\-openmp/hull.cpp@{cowichan\_\-openmp/hull.cpp}}
+}
+OpenMP hull implementation.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-openmp.hpp\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{CompactItemize}
+\item 
+namespace \hyperlink{namespacecowichan__openmp}{cowichan\_\-openmp}
+\begin{CompactList}\small\item\em Additional classes and functions specific to openmp implementation. \item\end{CompactList}
+
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{namespacecowichan__openmp_f261011870b201d556308f43b5b25b89}{cowichan\_\-openmp::quickhull} (\hyperlink{class_point}{PointVector} pointsIn, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} n, \hyperlink{class_point}{PointVector} pointsOut, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$hn)
+\item 
+void \hyperlink{namespacecowichan__openmp_d31787f1b4c9d57119160411e96f769f}{cowichan\_\-openmp::split} (\hyperlink{class_point}{PointVector} pointsIn, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} n, \hyperlink{class_point}{PointVector} pointsOut, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$hn, \hyperlink{class_point}{Point} $\ast$p1, \hyperlink{class_point}{Point} $\ast$p2)
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+OpenMP hull implementation. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_open_m_p_cb444dd3e2c0f1f27f4135de0279d09e}{CowichanOpenMP::hull} \end{Desc}

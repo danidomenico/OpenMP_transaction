@@ -1,0 +1,105 @@
+     1	/**
+     2	 * Parallel implementation of histogram thresholding
+     3	 *
+     4	 * \file parallel.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 03-02-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#include "parallel.h"
+    11	
+    12	/*
+    13	 * @ thresh : do body of histogram thresholding
+    14	 * > none
+    15	 * + create mask
+    16	 */
+    17	
+    18	void thresh_mpi (mpi::communicator world,
+    19	                 int2D*		matrix,			/* to threshold */
+    20	                 bool2D*	mask,			/* threshold mask */
+    21	                 int		nr,			/* row size */
+    22	                 int		nc,			/* column size */
+    23	                 real		fraction)		/* how much to keep */
+    24	{
+    25	  int		lo, hi;		/* work controls */
+    26	  int		i, r, c;		/* loop indices */
+    27	  bool		work;			/* do useful work? */
+    28	  int	      * hist_local;		/* own histogram section */
+    29	  int	retain; // number to retain
+    30	  int vmax_local;
+    31	  int vmax;
+    32	  int* hist;
+    33	
+    
+Well-commented (it's immediately clear how the function works).
+Maybe just explain exactly how the matrices are split up in a comment.
+    
+    34	  // more setup
+    35	  retain = (int)(fraction * nc * nr);
+    36	
+    37	  // any useful work to do?
+    38	  work = get_block_rows_mpi (world, 0, nr, &lo, &hi);
+    39	
+    40	  // find max value in matrix
+    41	  vmax_local = 0;
+    42	  if (work) {
+    43	    for (r = lo; r < hi; r++) {
+    44	      for (c = 0; c < nc; c++) {
+    45	        if (vmax_local < matrix[r][c]) {
+    46	          vmax_local = matrix[r][c];
+    47	        }
+    48	      }
+    49	    }
+    50	  }
+    51	  // reduce to maximum
+    52	  all_reduce (world, vmax_local, vmax, mpi::maximum<int> ());
+    53	
+    54	  hist = new int[vmax + 1];
+    55	  hist_local = new int[vmax + 1];
+    56	
+    57	  // initialize own portion of histogram
+    58	  for (i = 0; i <= vmax; i++) {
+    59	    hist_local[i] = 0;
+    60	  }
+    61	
+    62	  // count
+    63	  if (work) {
+    64	    for (r = lo; r < hi; r++) {
+    65	      for (c = 0; c < nc; c++) {
+    66	        hist_local[matrix[r][c]]++;
+    67	      }
+    68	    }
+    69	  }
+    70	
+    71	  // calculate retention
+    72	  for (i = 0; i <= vmax; i++) {
+    73	    all_reduce (world, hist_local[i], hist[i], sum<int> ());
+    74	  }
+    75	  for (i = vmax; ((i >= 0) && (retain > 0)); i--) {
+    76	    retain -= hist[i];
+    77	  }
+    78	  retain = i;
+    79	
+    80	  // threshold
+    81	  if (work) {
+    82	    for (r = lo; r < hi; r++) {
+    83	      for (c = 0; c < nc; c++) {
+    84	        mask[r][c] = matrix[r][c] > retain;
+    85	      }
+    86	    }
+    87	  }
+    88	
+    89	  // broadcast mask
+    90	  for (i = 0; i < world.size (); i++) {
+    91	    if (get_block_rows_mpi (world, 0, nr, &lo, &hi, i)) {
+    92	      broadcast (world, mask[lo], (hi - lo) * nc, i);
+    93	    }
+    94	  }
+    95	
+    96	  // takedown
+    97	  delete [] hist;
+    98	  delete [] hist_local;
+    99	
+   100	  /* return */
+   101	}

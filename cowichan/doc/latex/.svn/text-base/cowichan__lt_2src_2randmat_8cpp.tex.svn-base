@@ -1,0 +1,19 @@
+\hypertarget{cowichan__lt_2src_2randmat_8cpp}{
+\section{cowichan\_\-lt/src/randmat.cpp File Reference}
+\label{cowichan__lt_2src_2randmat_8cpp}\index{cowichan\_\-lt/src/randmat.cpp@{cowichan\_\-lt/src/randmat.cpp}}
+}
+LinuxTuples randmat implementation.  
+
+
+{\tt \#include $<$iostream$>$}\par
+{\tt \#include $<$cstdio$>$}\par
+{\tt \#include \char`\"{}randmat.hpp\char`\"{}}\par
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+LinuxTuples randmat implementation. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_linux_tuples_ff90c6a27db51366570b70d352de7fab}{CowichanLinuxTuples::randmat} \end{Desc}

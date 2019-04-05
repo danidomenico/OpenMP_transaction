@@ -1,0 +1,46 @@
+\section{Parallel Operations\label{s:ops}}
+
+This list details some operations which are supported by many parallel programming systems.
+The toys described in Section~\ref{s:toys} provide opportunities for exercising many of these,
+and implementors are encouraged to phrase discussion of their work in terms of these operations where appropriate.
+
+\begin{itemlist}
+\item	elementwise operations on arrays (unary, binary, and scalar promotion)
+\item	cumulative operations on arrays (reduction and parallel prefix)
+\item	array re-shaping and re-sizing (e.g.\ sub-array extraction)
+\item	partial (conditionally masked) versions of all of the above
+\item	regular data motion (e.g.\ circular and planar shifting)
+\item	irregular data motion (e.g.\ 1-to-1, 1-to-many, and many-to-1 permutation)
+\item	scalar and non-scalar value location (e.g.\ finding a scalar or record value in an array)
+\item	differential local addressing (i.e., subscripting an array with an array)
+\item	full or partial replication of shared read-only values
+\item	full or partial replication of shared read-mostly values with automatic consistency management
+\item	structures with rotating ownership, suitable for migration
+\item	producer-consumer structures
+\item	partitionable structures
+\item	pre-determined run-time re-partitioning (i.e., re-distributing an array)
+\item	dynamic re-partitioning (e.g.\ for load balancing)
+\item	committed mutual exclusion (e.g.\ waiting on a semaphore)
+\item	uncommitted mutual exclusion (e.g.\ lock or fail)
+\item	barrier synchronization
+\item	multiple concurrent barriers used by non-overlapping groups of processes
+\item	fetch-and-add, and other fetch-and-operate functions
+\item	pre-scheduled receipt of messages of known composition
+\item	variable-length message receipt
+\item	message selection by type
+\item	message selection by source
+\item	message selection by contents
+\item	guarded message selection (e.g.\ CSP's {\tt{alt}} construct)
+\item	broadcast and partial broadcast
+\item	split-phase (non-blocking) operations
+\item	data marshalling and unmarshalling of ``flat'' structures (e.g.\ arrays of scalars)
+\item	data marshalling and unmarshalling of nested or linked structures
+\item	heterogeneous parallelism (i.e., running different applications concurrently in one machine)
+\item	pipelining
+\item	distributed linked structures in systems without physically-shared memory
+\item	indexing of distributed shared arrays
+\item	collective I/O
+\item	uniform-size interleaved I/O
+\item	heterogeneous-size interleaved I/O
+\item	independent I/O operations on a single shared file
+\end{itemlist}

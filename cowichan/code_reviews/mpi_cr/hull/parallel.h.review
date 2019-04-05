@@ -1,0 +1,81 @@
+     1	/**
+     2	 * Parallel implementation of convex hull
+     3	 *
+     4	 * \file parallel.h
+     5	 * \author Andrew Borzenko
+     6	 * \date 03-06-09
+     7	 */
+     8	
+     9	#pragma once
+    10	#ifndef HULL_PARALLEL_H
+    11	#define HULL_PARALLEL_H
+    12	
+    13	struct minimum_x_pt {
+    14	  pt operator()(pt a, pt b)
+    15	  {
+    16	    if (a.x < b.x) {
+    17	      return a;
+    18	    }
+    19	    return b;
+    20	  }
+    21	};
+    22	
+    23	struct maximum_x_pt {
+    24	  pt operator()(pt a, pt b)
+    25	  {
+    26	    if (a.x > b.x) {
+    27	      return a;
+    28	    }
+    29	    return b;
+    30	  }
+    31	};
+    32	
+    33	struct pt_cross {
+    34	  pt p;
+    35	  real cross;
+    36	
+    37	  template<class Archive>
+    38	  void serialize(Archive & ar, const unsigned int version)
+    39	  {
+    40	    ar & p;
+    41	    ar & cross;
+    42	  }
+    43	};
+    44	
+    45	struct maximum_cp {
+    46	  pt_cross operator()(pt_cross a, pt_cross b)
+    47	  {
+    48	    if (a.cross > b.cross) {
+    49	      return a;
+    50	    }
+    51	    return b;
+    52	  }
+    53	};
+    54	
+    55	/*--------------------------------------------------------------*/
+    56	/* public functions						*/
+    57	/*--------------------------------------------------------------*/
+    58	
+    59	void hull_mpi (mpi::communicator world,
+    60	               pt1D* points,     // list of points
+    61	               int n,            // number of points
+    62	               pt1D* hullPoints, // list of points in convex hull
+    63	               int* hn);         // number of points in convex hull
+    64	
+    65	/*--------------------------------------------------------------*/
+    66	/* private functions						*/
+    67	/*--------------------------------------------------------------*/
+    68	
+    69	void split_mpi (mpi::communicator world,
+    70	                pt1D* points,     // list of points
+    71	                int n,            // number of points
+    72	                pt1D* hullPoints, // list of points in convex hull
+    73	                int* hn,          // number of points in convex hull
+    74	                pt p1,            // boundary point #1
+    75	                pt p2);           // boundary point #2
+    76	
+    77	inline real cross_mpi (pt l1,    // cross product of
+    78	                       pt l2,    // (l1,l2) and (l1,p)
+    79	                       pt p);
+    80	
+    81	#endif /* HULL_PARALLEL_H */

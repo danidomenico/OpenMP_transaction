@@ -1,0 +1,25 @@
+     1	/**
+     2	 * Parallel implementation of matrix-vector product
+     3	 *
+     4	 * \file parallel.h
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-02-09
+     7	 */
+     8	
+     9	#pragma once
+    10	#ifndef PRODUCT_PARALLEL_H
+    11	#define PRODUCT_PARALLEL_H
+    12	
+    13	/*--------------------------------------------------------------*/
+    14	/* public functions						*/
+    15	/*--------------------------------------------------------------*/
+    16	
+    17	void product_mpi(mpi::communicator world,
+    18	                 real2D* matrix,          /* to multiply by */
+    19	                 real1D* vector,          /* to be multiplied */
+    20	                 real1D* result,          /* result of multiply */
+    21	                 int  nr,                /* row size */
+    22	                 int  nc                 /* column size */
+    23	);
+    24	
+    25	#endif /* PRODUCT_PARALLEL_H */

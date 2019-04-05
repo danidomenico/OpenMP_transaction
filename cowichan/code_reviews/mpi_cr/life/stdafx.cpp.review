@@ -1,0 +1,8 @@
+     1	// stdafx.cpp : source file that includes just the standard includes
+     2	// life.pch will be the pre-compiled header
+     3	// stdafx.obj will contain the pre-compiled type information
+     4	
+     5	#include "stdafx.h"
+     6	
+     7	// TODO: reference any additional headers you need in STDAFX.H
+     8	// and not in this file

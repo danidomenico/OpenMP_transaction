@@ -1,0 +1,45 @@
+     1	/**
+     2	 * Parallel implementation of matrix-vector product
+     3	 *
+     4	 * \file parallel.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-02-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#include "parallel.h"
+    11	
+    12	void product_mpi (mpi::communicator world,
+    13	                  real2D* matrix,           /* to multiply by */
+    14	                  real1D* vector,          /* to be multiplied */
+    15	                  real1D* result,          /* result of multiply */
+    16	                  int   nr,                /* row size */
+    17	                  int		nc)                /* column size */
+    18	{
+    19	  int		lo, hi;		/* work controls */
+    20	  int		r, c;			/* loop indices */ 
+    21	  int rank;
+    22	
+    
+I don't see anything here that I would change!    
+    
+    23	  // work
+    24	  if (get_block_rows_mpi (world, 0, nr, &lo, &hi)) {
+    25	
+    26	    for (r = lo; r < hi; r ++) {
+    27	      result[r] = matrix[r][0] * vector[0];
+    28	      for (c = 1; c < nc; c++) {
+    29	        result[r] += matrix[r][c] * vector[c];
+    30	      }
+    31	    }
+    32	
+    33	  }
+    34	
+    35	  // broadcast result
+    36	  for (rank = 0; rank < world.size (); rank++) {
+    37	    if (get_block_rows_mpi (world, 0, nr, &lo, &hi, rank)) {
+    38	      broadcast (world, &result[lo], hi - lo, rank);
+    39	    }
+    40	  }
+    41	
+    42	}

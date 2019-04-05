@@ -1,0 +1,31 @@
+\hypertarget{cowichan__tbb_2outer_8cpp}{
+\section{cowichan\_\-tbb/outer.cpp File Reference}
+\label{cowichan__tbb_2outer_8cpp}\index{cowichan\_\-tbb/outer.cpp@{cowichan\_\-tbb/outer.cpp}}
+}
+TBB outer implementation.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-tbb.hpp\char`\"{}}\par
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{classcowichan__tbb_1_1_point_distances}{cowichan\_\-tbb::PointDistances}
+\begin{CompactList}\small\item\em Fills in matrix and vector with distances. \item\end{CompactList}\item 
+class \hyperlink{classcowichan__tbb_1_1_make_dominant}{cowichan\_\-tbb::MakeDominant}
+\begin{CompactList}\small\item\em Makes a given matrix diagonally dominant. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Namespaces}
+\begin{CompactItemize}
+\item 
+namespace \hyperlink{namespacecowichan__tbb}{cowichan\_\-tbb}
+\begin{CompactList}\small\item\em Additional classes and functions specific to tbb implementation. \item\end{CompactList}
+
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+TBB outer implementation. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_t_b_b_92a763b9733cdcceda13b7b7ea0bc229}{CowichanTBB::outer} \end{Desc}

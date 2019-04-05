@@ -1,0 +1,236 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%Title: /tmp/xfig-fig003612
+%%Creator: fig2dev Version 2.1.8 Patchlevel 0
+%%CreationDate: Wed Mar  1 11:03:10 1995
+%%For: gvw@dvp.cs (Greg Wilson,CSRI,LP372,1241,5389714,F,)
+%%Orientation: Portrait
+%%BoundingBox: 0 0 536 605
+%%Pages: 0
+%%EndComments
+/$F2psDict 200 dict def 
+$F2psDict begin
+$F2psDict /mtrx matrix put
+/l {lineto} bind def
+/m {moveto} bind def
+/s {stroke} bind def
+/n {newpath} bind def
+/gs {gsave} bind def
+/gr {grestore} bind def
+/clp {closepath} bind def
+/graycol {dup dup currentrgbcolor 4 -2 roll mul 4 -2 roll mul
+4 -2 roll mul setrgbcolor} bind def
+/col-1 {} def
+/col0 {0 0 0 setrgbcolor} bind def
+/col1 {0 0 1 setrgbcolor} bind def
+/col2 {0 1 0 setrgbcolor} bind def
+/col3 {0 1 1 setrgbcolor} bind def
+/col4 {1 0 0 setrgbcolor} bind def
+/col5 {1 0 1 setrgbcolor} bind def
+/col6 {1 1 0 setrgbcolor} bind def
+/col7 {1 1 1 setrgbcolor} bind def
+/col8 {.68 .85 .9 setrgbcolor} bind def
+/col9 {0 .39 0 setrgbcolor} bind def
+/col10 {.65 .17 .17 setrgbcolor} bind def
+/col11 {1 .51 0 setrgbcolor} bind def
+/col12 {.63 .13 .94 setrgbcolor} bind def
+/col13 {1 .75 .8 setrgbcolor} bind def
+/col14 {.7 .13 .13 setrgbcolor} bind def
+/col15 {1 .84 0 setrgbcolor} bind def
+ /DrawEllipse {
+	/endangle exch def
+	/startangle exch def
+	/yrad exch def
+	/xrad exch def
+	/y exch def
+	/x exch def
+	/savematrix mtrx currentmatrix def
+	x y translate xrad yrad scale 0 0 1 startangle endangle arc
+	savematrix setmatrix
+	} def
+
+	end
+/$F2psBegin {$F2psDict begin /$F2psEnteredState save def} def
+/$F2psEnd {$F2psEnteredState restore end} def
+%%EndProlog
+
+$F2psBegin
+0 setlinecap 0 setlinejoin
+-7.0 607.0 translate 0.900 -0.900 scale
+/Courier findfont 12.00 scalefont setfont
+274 149 m 
+gs 1 -1 scale (Invasion Percolation) col-1 show gr
+/Courier findfont 12.00 scalefont setfont
+424 149 m 
+gs 1 -1 scale (or) col-1 show gr
+/Courier findfont 12.00 scalefont setfont
+449 149 m 
+gs 1 -1 scale (Histogram Thresholding) col-1 show gr
+1.000 setlinewidth
+% Interpolated spline
+n 286 334 m
+	313.187 318.046 325.687 315.546 336 324 curveto
+	345.438 331.737 345.438 351.263 336 359 curveto
+	325.688 367.454 313.188 364.954 286 349 curveto
+gs col-1 s gr
+n 297.775 360.548 m 286.000 349.000 l 301.824 353.648 l gs 2 setlinejoin col-1 s gr
+/Courier findfont 12.00 scalefont setfont
+354 346 m 
+gs 1 -1 scale (Elastic Net) col-1 show gr
+0.500 setlinewidth
+% Ellipse
+n 229 239 20 5 0 360 DrawEllipse gs col-1 s gr
+1.000 setlinewidth
+% Polyline
+n 231 31 m 231 76 l gs col-1 s gr
+n 235.000 60.000 m 231.000 76.000 l 227.000 60.000 l gs 2 setlinejoin col-1 s gr
+% Polyline
+n 231 281 m 231 326 l gs col-1 s gr
+n 235.000 310.000 m 231.000 326.000 l 227.000 310.000 l gs 2 setlinejoin col-1 s gr
+% Polyline
+n 231 356 m 231 401 l gs col-1 s gr
+n 235.000 385.000 m 231.000 401.000 l 227.000 385.000 l gs 2 setlinejoin col-1 s gr
+% Polyline
+n 179 419 m 129 464 l gs col-1 s gr
+n 143.569 456.270 m 129.000 464.000 l 138.217 450.323 l gs 2 setlinejoin col-1 s gr
+% Polyline
+n 272 420 m 322 465 l gs col-1 s gr
+n 312.783 451.323 m 322.000 465.000 l 307.431 457.270 l gs 2 setlinejoin col-1 s gr
+% Polyline
+n 234 634 m 234 659 l gs col-1 s gr
+n 238.000 643.000 m 234.000 659.000 l 230.000 643.000 l gs 2 setlinejoin col-1 s gr
+% Polyline
+n 239 104 m 274 184 l gs col-1 s gr
+n 271.252 167.738 m 274.000 184.000 l 263.922 170.945 l gs 2 setlinejoin col-1 s gr
+% Polyline
+n 116 504 m 116 549 l gs col-1 s gr
+n 120.000 533.000 m 116.000 549.000 l 112.000 533.000 l gs 2 setlinejoin col-1 s gr
+% Polyline
+n 336 504 m 336 549 l gs col-1 s gr
+n 340.000 533.000 m 336.000 549.000 l 332.000 533.000 l gs 2 setlinejoin col-1 s gr
+% Polyline
+n 219 99 m 219 259 l gs col-1 s gr
+n 223.000 243.000 m 219.000 259.000 l 215.000 243.000 l gs 2 setlinejoin col-1 s gr
+% Interpolated spline
+n 286 84 m
+	313.187 68.046 325.687 65.546 336 74 curveto
+	345.438 81.737 345.438 101.263 336 109 curveto
+	325.688 117.454 313.188 114.954 286 99 curveto
+gs col-1 s gr
+n 297.775 110.548 m 286.000 99.000 l 301.824 103.648 l gs 2 setlinejoin col-1 s gr
+% Interpolated spline
+n 164 578 m
+	195.604 577.134 209.354 579.634 219 588 curveto
+	227.185 595.099 230.935 606.349 234 633 curveto
+gs col-1 s gr
+% Interpolated spline
+n 304 578 m
+	272.396 577.134 258.646 579.634 249 588 curveto
+	240.815 595.099 237.065 606.349 234 633 curveto
+gs col-1 s gr
+% Interpolated spline
+n 274 209 m
+	255.510 217.798 248.010 222.798 244 229 curveto
+	240.617 234.232 239.367 241.732 239 259 curveto
+gs col-1 s gr
+n 243.339 243.089 m 239.000 259.000 l 235.341 242.919 l gs 2 setlinejoin col-1 s gr
+% Interpolated spline
+n 366 189 m
+	393.187 173.046 405.687 170.546 416 179 curveto
+	425.438 186.737 425.438 206.263 416 214 curveto
+	405.688 222.454 393.188 219.954 366 204 curveto
+gs col-1 s gr
+n 377.775 215.548 m 366.000 204.000 l 381.824 208.648 l gs 2 setlinejoin col-1 s gr
+/Courier findfont 12.00 scalefont setfont
+93 54 m 
+gs 1 -1 scale (or) col-1 show gr
+/Courier findfont 12.00 scalefont setfont
+84 376 m 
+gs 1 -1 scale (Outer Product) col-1 show gr
+/Courier findfont 12.00 scalefont setfont
+7 301 m 
+gs 1 -1 scale (Coordinate Normalization) col-1 show gr
+/Courier findfont 12.00 scalefont setfont
+49 69 m 
+gs 1 -1 scale (Fractal Generation) col-1 show gr
+/Courier findfont 12.00 scalefont setfont
+7 41 m 
+gs 1 -1 scale (Random Number Generation) col-1 show gr
+/Courier-Oblique findfont 12.00 scalefont setfont
+203 16 m 
+gs 1 -1 scale (Scalar N) col-1 show gr
+/Courier-Oblique findfont 12.00 scalefont setfont
+193 96 m 
+gs 1 -1 scale (NxN Integer) col-1 show gr
+/Courier-Oblique findfont 12.00 scalefont setfont
+182 271 m 
+gs 1 -1 scale (L \(x,y\) Points) col-1 show gr
+/Courier-Oblique findfont 12.00 scalefont setfont
+179 346 m 
+gs 1 -1 scale (L \(x, y\) Points) col-1 show gr
+/Courier-Oblique findfont 12.00 scalefont setfont
+144 416 m 
+gs 1 -1 scale (LxL Floating Point Matrix) col-1 show gr
+/Courier-Oblique findfont 12.00 scalefont setfont
+203 674 m 
+gs 1 -1 scale (Scalar D) col-1 show gr
+/Courier findfont 12.00 scalefont setfont
+354 90 m 
+gs 1 -1 scale (Two-Dimensional Shuffle) col-1 show gr
+/Courier-Oblique findfont 12.00 scalefont setfont
+66 483 m 
+gs 1 -1 scale (Floating Point) col-1 show gr
+/Courier-Oblique findfont 12.00 scalefont setfont
+87 497 m 
+gs 1 -1 scale (L-Vector) col-1 show gr
+/Courier-Oblique findfont 12.00 scalefont setfont
+66 568 m 
+gs 1 -1 scale (Floating Point) col-1 show gr
+/Courier-Oblique findfont 12.00 scalefont setfont
+87 582 m 
+gs 1 -1 scale (L-Vector) col-1 show gr
+/Courier findfont 12.00 scalefont setfont
+143 619 m 
+gs 1 -1 scale (Vector) col-1 show gr
+/Courier findfont 12.00 scalefont setfont
+129 633 m 
+gs 1 -1 scale (Difference) col-1 show gr
+/Courier-Oblique findfont 12.00 scalefont setfont
+286 568 m 
+gs 1 -1 scale (Floating Point) col-1 show gr
+/Courier-Oblique findfont 12.00 scalefont setfont
+307 582 m 
+gs 1 -1 scale (L-Vector) col-1 show gr
+/Courier findfont 12.00 scalefont setfont
+186 526 m 
+gs 1 -1 scale (Matrix-Vector) col-1 show gr
+/Courier findfont 12.00 scalefont setfont
+207 540 m 
+gs 1 -1 scale (Product) col-1 show gr
+/Courier-Oblique findfont 12.00 scalefont setfont
+286 483 m 
+gs 1 -1 scale (Floating Point) col-1 show gr
+/Courier-Oblique findfont 12.00 scalefont setfont
+307 497 m 
+gs 1 -1 scale (L-Vector) col-1 show gr
+/Courier findfont 12.00 scalefont setfont
+339 439 m 
+gs 1 -1 scale (Successive) col-1 show gr
+/Courier findfont 12.00 scalefont setfont
+339 453 m 
+gs 1 -1 scale (Over-Relaxation) col-1 show gr
+/Courier findfont 12.00 scalefont setfont
+63 439 m 
+gs 1 -1 scale (Gaussian) col-1 show gr
+/Courier findfont 12.00 scalefont setfont
+42 453 m 
+gs 1 -1 scale (Elimination) col-1 show gr
+/Courier findfont 12.00 scalefont setfont
+14 244 m 
+gs 1 -1 scale (Weighted Point Selection) col-1 show gr
+/Courier-Oblique findfont 12.00 scalefont setfont
+273 201 m 
+gs 1 -1 scale (NxN Boolean) col-1 show gr
+/Courier findfont 12.00 scalefont setfont
+434 200 m 
+gs 1 -1 scale (Game of Life) col-1 show gr
+$F2psEnd

@@ -1,0 +1,85 @@
+\hypertarget{namespacecowichan__tbb}{
+\section{cowichan\_\-tbb Namespace Reference}
+\label{namespacecowichan__tbb}\index{cowichan\_\-tbb@{cowichan\_\-tbb}}
+}
+Additional classes and functions specific to tbb implementation.  
+
+
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{classcowichan__tbb_1_1_row_elimination}{RowElimination}
+\begin{CompactList}\small\item\em Performs row elimination, i.e. eliminate i-th column in j-th row. \item\end{CompactList}\item 
+class \hyperlink{classcowichan__tbb_1_1_shuffle}{Shuffle}
+\begin{CompactList}\small\item\em This class does a halving shuffle. \item\end{CompactList}\item 
+class \hyperlink{classcowichan__tbb_1_1_maximum_distance}{MaximumDistance}
+\begin{CompactList}\small\item\em Compute maximum distance for hull. \item\end{CompactList}\item 
+class \hyperlink{classcowichan__tbb_1_1_perc_point}{PercPoint}
+\begin{CompactList}\small\item\em Percolation point. \item\end{CompactList}\item 
+class \hyperlink{classcowichan__tbb_1_1_game_of_life}{GameOfLife}
+\begin{CompactList}\small\item\em Ping-pong solution to game of life. \item\end{CompactList}\item 
+class \hyperlink{classcowichan__tbb_1_1_mandelbrot}{Mandelbrot}
+\begin{CompactList}\small\item\em Perform mandelbrot generation. \item\end{CompactList}\item 
+class \hyperlink{classcowichan__tbb_1_1_min_max_reducer}{MinMaxReducer}
+\begin{CompactList}\small\item\em Performs the minimum and maximum reductions. \item\end{CompactList}\item 
+class \hyperlink{classcowichan__tbb_1_1_normalizer}{Normalizer}
+\begin{CompactList}\small\item\em Normalizes points. \item\end{CompactList}\item 
+class \hyperlink{classcowichan__tbb_1_1_point_distances}{PointDistances}
+\begin{CompactList}\small\item\em Fills in matrix and vector with distances. \item\end{CompactList}\item 
+class \hyperlink{classcowichan__tbb_1_1_make_dominant}{MakeDominant}
+\begin{CompactList}\small\item\em Makes a given matrix diagonally dominant. \item\end{CompactList}\item 
+class \hyperlink{classcowichan__tbb_1_1_product}{Product}
+\begin{CompactList}\small\item\em Performs matrix vector product. \item\end{CompactList}\item 
+class \hyperlink{classcowichan__tbb_1_1_random_generator}{RandomGenerator}
+\begin{CompactList}\small\item\em Random generator. \item\end{CompactList}\item 
+class \hyperlink{classcowichan__tbb_1_1_relaxer}{Relaxer}
+\begin{CompactList}\small\item\em Performs one iteration of relaxation. \item\end{CompactList}\item 
+class \hyperlink{classcowichan__tbb_1_1_max_reducer}{MaxReducer}
+\begin{CompactList}\small\item\em Finds the maximum value in the image. \item\end{CompactList}\item 
+class \hyperlink{classcowichan__tbb_1_1_histogram}{Histogram}
+\begin{CompactList}\small\item\em This class calculates the histogram of a matrix. \item\end{CompactList}\item 
+class \hyperlink{classcowichan__tbb_1_1_threshold}{Threshold}
+\begin{CompactList}\small\item\em Creates a boolean array based on a cut-off value. \item\end{CompactList}\item 
+class \hyperlink{classcowichan__tbb_1_1_norm_diff}{NormDiff}
+\begin{CompactList}\small\item\em This class takes the 1-norm of the difference between two vectors. \item\end{CompactList}\item 
+class \hyperlink{classcowichan__tbb_1_1_point_count}{PointCount}
+\begin{CompactList}\small\item\em Calculates the number of points to sort for winnow. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{namespacecowichan__tbb_08647459098335f4d3abda9054a99547}{quickhull} (\hyperlink{class_point}{PointVector} pointsIn, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} n, \hyperlink{class_point}{PointVector} pointsOut, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$hn)
+\item 
+void \hyperlink{namespacecowichan__tbb_689d689bc3d950d3dd7fb9df89d4156e}{hull\_\-split} (\hyperlink{class_point}{PointVector} pointsIn, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} n, \hyperlink{class_point}{PointVector} pointsOut, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$hn, \hyperlink{class_point}{Point} $\ast$p1, \hyperlink{class_point}{Point} $\ast$p2)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Additional classes and functions specific to tbb implementation. 
+
+
+
+\subsection{Function Documentation}
+\hypertarget{namespacecowichan__tbb_689d689bc3d950d3dd7fb9df89d4156e}{
+\index{cowichan\_\-tbb@{cowichan\_\-tbb}!hull\_\-split@{hull\_\-split}}
+\index{hull\_\-split@{hull\_\-split}!cowichan_tbb@{cowichan\_\-tbb}}
+\subsubsection[{hull\_\-split}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::hull\_\-split ({\bf PointVector} {\em pointsIn}, \/  {\bf index\_\-t} {\em n}, \/  {\bf PointVector} {\em pointsOut}, \/  {\bf index\_\-t} $\ast$ {\em hn}, \/  {\bf Point} $\ast$ {\em p1}, \/  {\bf Point} $\ast$ {\em p2})}}
+\label{namespacecowichan__tbb_689d689bc3d950d3dd7fb9df89d4156e}
+
+
+Recursive step of the quickhull algorithm - compute hull on one side of the splitting line. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pointsIn}]input points. \item[{\em n}]number of inputs points to use. \item[{\em pointsOut}]output points. \item[{\em hn}]number of output points generated so far. \item[{\em p1}]first point of the splitting line (p1,p2). \item[{\em p2}]second point of the splitting line (p1,p2). \end{description}
+\end{Desc}
+\hypertarget{namespacecowichan__tbb_08647459098335f4d3abda9054a99547}{
+\index{cowichan\_\-tbb@{cowichan\_\-tbb}!quickhull@{quickhull}}
+\index{quickhull@{quickhull}!cowichan_tbb@{cowichan\_\-tbb}}
+\subsubsection[{quickhull}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::quickhull ({\bf PointVector} {\em pointsIn}, \/  {\bf index\_\-t} {\em n}, \/  {\bf PointVector} {\em pointsOut}, \/  {\bf index\_\-t} $\ast$ {\em hn})}}
+\label{namespacecowichan__tbb_08647459098335f4d3abda9054a99547}
+
+
+Runs quickhull algorithm. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pointsIn}]input points. \item[{\em n}]number of inputs points to use. \item[{\em pointsOut}]output points. \item[{\em hn}]number of output points generated so far. \end{description}
+\end{Desc}

@@ -1,0 +1,29 @@
+\hypertarget{cowichan__serial_2mandel_8cpp}{
+\section{cowichan\_\-serial/mandel.cpp File Reference}
+\label{cowichan__serial_2mandel_8cpp}\index{cowichan\_\-serial/mandel.cpp@{cowichan\_\-serial/mandel.cpp}}
+}
+Serial mandel implementation.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-serial.hpp\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{CompactItemize}
+\item 
+namespace \hyperlink{namespacecowichan__serial}{cowichan\_\-serial}
+\begin{CompactList}\small\item\em Additional classes and functions specific to serial implementation. \item\end{CompactList}
+
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} \hyperlink{namespacecowichan__serial_4cde20338a4976564f4ceaf7a8a2c68e}{cowichan\_\-serial::mandel\_\-calc} (\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} x, \hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} y)
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+Serial mandel implementation. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_serial_97a58b7901d8a7680cc28d42cb94d532}{CowichanSerial::mandel} \end{Desc}

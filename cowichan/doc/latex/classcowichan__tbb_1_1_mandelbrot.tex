@@ -1,0 +1,138 @@
+\hypertarget{classcowichan__tbb_1_1_mandelbrot}{
+\section{cowichan\_\-tbb::Mandelbrot Class Reference}
+\label{classcowichan__tbb_1_1_mandelbrot}\index{cowichan\_\-tbb::Mandelbrot@{cowichan\_\-tbb::Mandelbrot}}
+}
+Perform mandelbrot generation.  
+
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classcowichan__tbb_1_1_mandelbrot_2bfef0a80393e6547fb979f1d2135de6}{Mandelbrot} (\hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} matrix, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_mandelbrot_698768b13a40cbab1410a4e162d1e450}{nr}, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_mandelbrot_6eed478f27f441f57438392515f0f575}{nc}, \hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} x, \hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} y, \hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} width, \hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} height)
+\item 
+void \hyperlink{classcowichan__tbb_1_1_mandelbrot_5c8093ee0a5690df3260109e03174f97}{operator()} (const \hyperlink{cowichan__tbb_8hpp_e591b8e6980ddc5982ee22655da2ab8e}{Range2D} \&range) const 
+\end{CompactItemize}
+\subsection*{Private Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} \hyperlink{classcowichan__tbb_1_1_mandelbrot_12f71733227567ee4519921eb42e505b}{mandelCalc} (\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} x, \hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} y) const 
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} \hyperlink{classcowichan__tbb_1_1_mandelbrot_640971f00a9b5d3697efbe8b9a45a56c}{\_\-matrix}
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_mandelbrot_698768b13a40cbab1410a4e162d1e450}{nr}
+\item 
+\hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_mandelbrot_6eed478f27f441f57438392515f0f575}{nc}
+\item 
+\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{classcowichan__tbb_1_1_mandelbrot_f67b1fd96e5e4aecd37d5357f89770ed}{baseX}
+\item 
+\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{classcowichan__tbb_1_1_mandelbrot_0e35b59f83677269cec9b40812c97d3c}{baseY}
+\item 
+\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{classcowichan__tbb_1_1_mandelbrot_cbe2697988d27d656dcb12fcf06674c7}{dX}
+\item 
+\hyperlink{cowichan_8hpp_4d521b2c54a1f6312cc8fa04827eaf98}{real} \hyperlink{classcowichan__tbb_1_1_mandelbrot_8fc166fc3009c058ef4b6582755f5f52}{dY}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Perform mandelbrot generation. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcowichan__tbb_1_1_mandelbrot_2bfef0a80393e6547fb979f1d2135de6}{
+\index{cowichan\_\-tbb::Mandelbrot@{cowichan\_\-tbb::Mandelbrot}!Mandelbrot@{Mandelbrot}}
+\index{Mandelbrot@{Mandelbrot}!cowichan_tbb::Mandelbrot@{cowichan\_\-tbb::Mandelbrot}}
+\subsubsection[{Mandelbrot}]{\setlength{\rightskip}{0pt plus 5cm}cowichan\_\-tbb::Mandelbrot::Mandelbrot ({\bf IntMatrix} {\em matrix}, \/  {\bf index\_\-t} {\em nr}, \/  {\bf index\_\-t} {\em nc}, \/  {\bf real} {\em x}, \/  {\bf real} {\em y}, \/  {\bf real} {\em width}, \/  {\bf real} {\em height})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_mandelbrot_2bfef0a80393e6547fb979f1d2135de6}
+
+
+Construct a mandelbrot generation object. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em matrix}]matrix to fill. \item[{\em nr}]number of rows. \item[{\em nc}]number of columns. \item[{\em x}]base x. \item[{\em y}]base y. \item[{\em width}]width. \item[{\em height}]height. \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcowichan__tbb_1_1_mandelbrot_12f71733227567ee4519921eb42e505b}{
+\index{cowichan\_\-tbb::Mandelbrot@{cowichan\_\-tbb::Mandelbrot}!mandelCalc@{mandelCalc}}
+\index{mandelCalc@{mandelCalc}!cowichan_tbb::Mandelbrot@{cowichan\_\-tbb::Mandelbrot}}
+\subsubsection[{mandelCalc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf INT\_\-TYPE} cowichan\_\-tbb::Mandelbrot::mandelCalc ({\bf real} {\em x}, \/  {\bf real} {\em y}) const\hspace{0.3cm}{\tt  \mbox{[}inline, private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_mandelbrot_12f71733227567ee4519921eb42e505b}
+
+
+Performs the mandelbrot value calculation. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em x}]x-coordinate. \item[{\em y}]y-coordinate. \end{description}
+\end{Desc}
+\hypertarget{classcowichan__tbb_1_1_mandelbrot_5c8093ee0a5690df3260109e03174f97}{
+\index{cowichan\_\-tbb::Mandelbrot@{cowichan\_\-tbb::Mandelbrot}!operator()@{operator()}}
+\index{operator()@{operator()}!cowichan_tbb::Mandelbrot@{cowichan\_\-tbb::Mandelbrot}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::Mandelbrot::operator() (const {\bf Range2D} \& {\em range}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_mandelbrot_5c8093ee0a5690df3260109e03174f97}
+
+
+Calculates a given portion of the current mandelbrot set \char`\"{}window\char`\"{}. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em range}]two-dimensional range. \end{description}
+\end{Desc}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classcowichan__tbb_1_1_mandelbrot_640971f00a9b5d3697efbe8b9a45a56c}{
+\index{cowichan\_\-tbb::Mandelbrot@{cowichan\_\-tbb::Mandelbrot}!\_\-matrix@{\_\-matrix}}
+\index{\_\-matrix@{\_\-matrix}!cowichan_tbb::Mandelbrot@{cowichan\_\-tbb::Mandelbrot}}
+\subsubsection[{\_\-matrix}]{\setlength{\rightskip}{0pt plus 5cm}{\bf IntMatrix} {\bf cowichan\_\-tbb::Mandelbrot::\_\-matrix}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_mandelbrot_640971f00a9b5d3697efbe8b9a45a56c}
+
+
+Matrix. \hypertarget{classcowichan__tbb_1_1_mandelbrot_f67b1fd96e5e4aecd37d5357f89770ed}{
+\index{cowichan\_\-tbb::Mandelbrot@{cowichan\_\-tbb::Mandelbrot}!baseX@{baseX}}
+\index{baseX@{baseX}!cowichan_tbb::Mandelbrot@{cowichan\_\-tbb::Mandelbrot}}
+\subsubsection[{baseX}]{\setlength{\rightskip}{0pt plus 5cm}{\bf real} {\bf cowichan\_\-tbb::Mandelbrot::baseX}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_mandelbrot_f67b1fd96e5e4aecd37d5357f89770ed}
+
+
+x-coordinate of the lower left corner. \hypertarget{classcowichan__tbb_1_1_mandelbrot_0e35b59f83677269cec9b40812c97d3c}{
+\index{cowichan\_\-tbb::Mandelbrot@{cowichan\_\-tbb::Mandelbrot}!baseY@{baseY}}
+\index{baseY@{baseY}!cowichan_tbb::Mandelbrot@{cowichan\_\-tbb::Mandelbrot}}
+\subsubsection[{baseY}]{\setlength{\rightskip}{0pt plus 5cm}{\bf real} {\bf cowichan\_\-tbb::Mandelbrot::baseY}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_mandelbrot_0e35b59f83677269cec9b40812c97d3c}
+
+
+y-coordinate of the lower left corner. \hypertarget{classcowichan__tbb_1_1_mandelbrot_cbe2697988d27d656dcb12fcf06674c7}{
+\index{cowichan\_\-tbb::Mandelbrot@{cowichan\_\-tbb::Mandelbrot}!dX@{dX}}
+\index{dX@{dX}!cowichan_tbb::Mandelbrot@{cowichan\_\-tbb::Mandelbrot}}
+\subsubsection[{dX}]{\setlength{\rightskip}{0pt plus 5cm}{\bf real} {\bf cowichan\_\-tbb::Mandelbrot::dX}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_mandelbrot_cbe2697988d27d656dcb12fcf06674c7}
+
+
+Extent of the region along the x axis. \hypertarget{classcowichan__tbb_1_1_mandelbrot_8fc166fc3009c058ef4b6582755f5f52}{
+\index{cowichan\_\-tbb::Mandelbrot@{cowichan\_\-tbb::Mandelbrot}!dY@{dY}}
+\index{dY@{dY}!cowichan_tbb::Mandelbrot@{cowichan\_\-tbb::Mandelbrot}}
+\subsubsection[{dY}]{\setlength{\rightskip}{0pt plus 5cm}{\bf real} {\bf cowichan\_\-tbb::Mandelbrot::dY}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_mandelbrot_8fc166fc3009c058ef4b6582755f5f52}
+
+
+Extent of the region along the y axis. \hypertarget{classcowichan__tbb_1_1_mandelbrot_6eed478f27f441f57438392515f0f575}{
+\index{cowichan\_\-tbb::Mandelbrot@{cowichan\_\-tbb::Mandelbrot}!nc@{nc}}
+\index{nc@{nc}!cowichan_tbb::Mandelbrot@{cowichan\_\-tbb::Mandelbrot}}
+\subsubsection[{nc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} {\bf cowichan\_\-tbb::Mandelbrot::nc}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_mandelbrot_6eed478f27f441f57438392515f0f575}
+
+
+Number of columns in the matrix. \hypertarget{classcowichan__tbb_1_1_mandelbrot_698768b13a40cbab1410a4e162d1e450}{
+\index{cowichan\_\-tbb::Mandelbrot@{cowichan\_\-tbb::Mandelbrot}!nr@{nr}}
+\index{nr@{nr}!cowichan_tbb::Mandelbrot@{cowichan\_\-tbb::Mandelbrot}}
+\subsubsection[{nr}]{\setlength{\rightskip}{0pt plus 5cm}{\bf index\_\-t} {\bf cowichan\_\-tbb::Mandelbrot::nr}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_mandelbrot_698768b13a40cbab1410a4e162d1e450}
+
+
+Number of rows in the matrix. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+cowichan\_\-tbb/\hyperlink{cowichan__tbb_2mandel_8cpp}{mandel.cpp}\end{CompactItemize}

@@ -1,0 +1,24 @@
+     1	/**
+     2	 * Serial implementation of halving shuffle
+     3	 *
+     4	 * \file serial.h
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-27-09
+     7	 */
+     8	
+     9	#pragma once
+    10	#ifndef HALF_SERIAL_H
+    11	#define HALF_SERIAL_H
+    12	
+    13	/*--------------------------------------------------------------*/
+    14	/* public functions						*/
+    15	/*--------------------------------------------------------------*/
+    16	
+    17	void
+    18	half(
+    19	  int2D*		matrix,			/* to shuffle */
+    20	  int		nr,			/* row size */
+    21	  int		nc			/* column size */
+    22	);
+    23	
+    24	#endif /* HALF_SERIAL_H */

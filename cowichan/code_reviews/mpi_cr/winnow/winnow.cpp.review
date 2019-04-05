@@ -1,0 +1,97 @@
+     1	/**
+     2	 * Weighted point selection
+     3	 *
+     4	 * \file winnow.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-23-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#ifdef IS_PARALLEL
+    11	  #include "parallel.h"
+    12	#else
+    13	  #include "serial.h"
+    14	#endif
+    15	
+    16	int main(int argc, char* argv[])
+    17	{
+    18	#ifdef IS_PARALLEL
+    19	  mpi::environment env(argc, argv);
+    20	  mpi::communicator world;
+    21	
+    22	#ifdef TEST_OUTPUT
+    23	  printf ("I am process %d\n", world.rank ());
+    24	#endif
+    25	#endif
+    26	
+    27	  int2D* matrix;
+    28	  bool2D* mask;
+    29	  pt1D* pt;
+    30	  int    nr;    /* row size */
+    31	  int    nc;    /* column size */
+    32	  int limit;
+    33	  int npt;
+    34	  int i,j;
+    35	
+    36	  srand (222);
+    37	
+    38	  nr = MAXEXT;
+    39	  nc = MAXEXT;
+    40	  limit = 10;
+    41	  npt = MAXEXT;
+    42	  
+    43	  matrix = new int2D[MAXEXT];
+    44	  for (i = 0; i < nr; i++)
+    45	  {
+    46	    for (j = 0; j < nc; j++)
+    47	    {
+    48	      matrix[i][j] = rand () % limit;
+    49	    }
+    50	  }
+    51	
+    52	  mask = new bool2D[MAXEXT];
+    53	  for (i = 0; i < nr; i++)
+    54	  {
+    55	    for (j = 0; j < nc; j++)
+    56	    {
+    57	      mask[i][j] = rand () % 2;
+    58	    }
+    59	  }
+    60	
+    61	  pt = new pt1D[npt];
+    62	
+    63	#ifdef TEST_OUTPUT
+    64	  printf ("Matrix:\n");
+    65	  print_matrix (matrix, nr, nc);
+    66	
+    67	  printf ("Mask:\n");
+    68	  print_matrix (mask, nr, nc);
+    69	#endif
+    70	
+    71	#ifdef TEST_TIME
+    72	  INT64 start, end;
+    73	  start = get_ticks ();
+    74	#endif
+    75	
+    76	#ifdef IS_PARALLEL
+    77	  winnow_mpi (world, matrix, mask, nr, nc, pt, npt); 
+    78	#else
+    79	  winnow (matrix, mask, nr, nc, pt, npt); 
+    80	#endif
+    81	
+    82	#ifdef TEST_TIME
+    83	  end = get_ticks ();
+    84	  print_elapsed_time (start, end);
+    85	#endif
+    86	
+    87	#ifdef TEST_OUTPUT
+    88	  printf ("Points:\n");
+    89	  print_vector (pt, nr);
+    90	#endif
+    91	
+    92	  delete [] matrix;
+    93	  delete [] mask;
+    94	  delete [] pt;
+    95	
+    96	  return 0;
+    97	}

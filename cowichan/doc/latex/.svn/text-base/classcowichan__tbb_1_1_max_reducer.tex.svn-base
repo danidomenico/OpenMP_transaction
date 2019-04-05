@@ -1,0 +1,124 @@
+\hypertarget{classcowichan__tbb_1_1_max_reducer}{
+\section{cowichan\_\-tbb::MaxReducer Class Reference}
+\label{classcowichan__tbb_1_1_max_reducer}\index{cowichan\_\-tbb::MaxReducer@{cowichan\_\-tbb::MaxReducer}}
+}
+Finds the maximum value in the image.  
+
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classcowichan__tbb_1_1_max_reducer_040700219bf9b280323932d458116a53}{MaxReducer} (\hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} image, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_max_reducer_478817df677bfd5331c8a9a7f5e62de3}{nc})
+\item 
+\hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} \hyperlink{classcowichan__tbb_1_1_max_reducer_e4c54bf79d09499d4f91457a45a06a08}{getMaximum} () const 
+\item 
+void \hyperlink{classcowichan__tbb_1_1_max_reducer_a3ee1f93e3d1cf88da3669dfe73108f9}{operator()} (const \hyperlink{cowichan__tbb_8hpp_e591b8e6980ddc5982ee22655da2ab8e}{Range2D} \&range)
+\item 
+\hyperlink{classcowichan__tbb_1_1_max_reducer_df02ca92e3124c21671407a220a8081e}{MaxReducer} (\hyperlink{classcowichan__tbb_1_1_max_reducer}{MaxReducer} \&other, split)
+\item 
+void \hyperlink{classcowichan__tbb_1_1_max_reducer_ebeb8ee596f035a94d638b497135343b}{join} (const \hyperlink{classcowichan__tbb_1_1_max_reducer}{MaxReducer} \&other)
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{cowichan_8hpp_82321152ddeeefe9c61350a42ed9e7af}{IntMatrix} \hyperlink{classcowichan__tbb_1_1_max_reducer_f8ca766f2d3f828c10b03077e41f3a6b}{\_\-image}
+\item 
+\hyperlink{cowichan_8hpp_c96945095fd0ce7186a1d00a89f77d2c}{INT\_\-TYPE} \hyperlink{classcowichan__tbb_1_1_max_reducer_73c80dd6f6ded9d51b2c83e9a4a50501}{\_\-max}
+\item 
+const \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} \hyperlink{classcowichan__tbb_1_1_max_reducer_478817df677bfd5331c8a9a7f5e62de3}{nc}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Finds the maximum value in the image. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcowichan__tbb_1_1_max_reducer_040700219bf9b280323932d458116a53}{
+\index{cowichan\_\-tbb::MaxReducer@{cowichan\_\-tbb::MaxReducer}!MaxReducer@{MaxReducer}}
+\index{MaxReducer@{MaxReducer}!cowichan_tbb::MaxReducer@{cowichan\_\-tbb::MaxReducer}}
+\subsubsection[{MaxReducer}]{\setlength{\rightskip}{0pt plus 5cm}cowichan\_\-tbb::MaxReducer::MaxReducer ({\bf IntMatrix} {\em image}, \/  {\bf index\_\-t} {\em nc})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_max_reducer_040700219bf9b280323932d458116a53}
+
+
+Constructs a max reducer. Initialise max with the lowest possible value. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em image}]image matrix. \item[{\em nc}]number of matrix columns. \end{description}
+\end{Desc}
+\hypertarget{classcowichan__tbb_1_1_max_reducer_df02ca92e3124c21671407a220a8081e}{
+\index{cowichan\_\-tbb::MaxReducer@{cowichan\_\-tbb::MaxReducer}!MaxReducer@{MaxReducer}}
+\index{MaxReducer@{MaxReducer}!cowichan_tbb::MaxReducer@{cowichan\_\-tbb::MaxReducer}}
+\subsubsection[{MaxReducer}]{\setlength{\rightskip}{0pt plus 5cm}cowichan\_\-tbb::MaxReducer::MaxReducer ({\bf MaxReducer} \& {\em other}, \/  split)\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_max_reducer_df02ca92e3124c21671407a220a8081e}
+
+
+Splitting (TBB) constructor. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em other}]object to split. \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcowichan__tbb_1_1_max_reducer_e4c54bf79d09499d4f91457a45a06a08}{
+\index{cowichan\_\-tbb::MaxReducer@{cowichan\_\-tbb::MaxReducer}!getMaximum@{getMaximum}}
+\index{getMaximum@{getMaximum}!cowichan_tbb::MaxReducer@{cowichan\_\-tbb::MaxReducer}}
+\subsubsection[{getMaximum}]{\setlength{\rightskip}{0pt plus 5cm}{\bf INT\_\-TYPE} cowichan\_\-tbb::MaxReducer::getMaximum () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_max_reducer_e4c54bf79d09499d4f91457a45a06a08}
+
+
+Get maximum value. \begin{Desc}
+\item[Returns:]Maximum value. \end{Desc}
+\hypertarget{classcowichan__tbb_1_1_max_reducer_ebeb8ee596f035a94d638b497135343b}{
+\index{cowichan\_\-tbb::MaxReducer@{cowichan\_\-tbb::MaxReducer}!join@{join}}
+\index{join@{join}!cowichan_tbb::MaxReducer@{cowichan\_\-tbb::MaxReducer}}
+\subsubsection[{join}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::MaxReducer::join (const {\bf MaxReducer} \& {\em other})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_max_reducer_ebeb8ee596f035a94d638b497135343b}
+
+
+Joiner (TBB). \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em other}]object to join. \end{description}
+\end{Desc}
+\hypertarget{classcowichan__tbb_1_1_max_reducer_a3ee1f93e3d1cf88da3669dfe73108f9}{
+\index{cowichan\_\-tbb::MaxReducer@{cowichan\_\-tbb::MaxReducer}!operator()@{operator()}}
+\index{operator()@{operator()}!cowichan_tbb::MaxReducer@{cowichan\_\-tbb::MaxReducer}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}void cowichan\_\-tbb::MaxReducer::operator() (const {\bf Range2D} \& {\em range})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classcowichan__tbb_1_1_max_reducer_a3ee1f93e3d1cf88da3669dfe73108f9}
+
+
+Calculates the maximum value over the given range. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em range}]row/column range. \end{description}
+\end{Desc}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classcowichan__tbb_1_1_max_reducer_f8ca766f2d3f828c10b03077e41f3a6b}{
+\index{cowichan\_\-tbb::MaxReducer@{cowichan\_\-tbb::MaxReducer}!\_\-image@{\_\-image}}
+\index{\_\-image@{\_\-image}!cowichan_tbb::MaxReducer@{cowichan\_\-tbb::MaxReducer}}
+\subsubsection[{\_\-image}]{\setlength{\rightskip}{0pt plus 5cm}{\bf IntMatrix} {\bf cowichan\_\-tbb::MaxReducer::\_\-image}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_max_reducer_f8ca766f2d3f828c10b03077e41f3a6b}
+
+
+Image matrix. \hypertarget{classcowichan__tbb_1_1_max_reducer_73c80dd6f6ded9d51b2c83e9a4a50501}{
+\index{cowichan\_\-tbb::MaxReducer@{cowichan\_\-tbb::MaxReducer}!\_\-max@{\_\-max}}
+\index{\_\-max@{\_\-max}!cowichan_tbb::MaxReducer@{cowichan\_\-tbb::MaxReducer}}
+\subsubsection[{\_\-max}]{\setlength{\rightskip}{0pt plus 5cm}{\bf INT\_\-TYPE} {\bf cowichan\_\-tbb::MaxReducer::\_\-max}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_max_reducer_73c80dd6f6ded9d51b2c83e9a4a50501}
+
+
+Maximum value. \hypertarget{classcowichan__tbb_1_1_max_reducer_478817df677bfd5331c8a9a7f5e62de3}{
+\index{cowichan\_\-tbb::MaxReducer@{cowichan\_\-tbb::MaxReducer}!nc@{nc}}
+\index{nc@{nc}!cowichan_tbb::MaxReducer@{cowichan\_\-tbb::MaxReducer}}
+\subsubsection[{nc}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf index\_\-t} {\bf cowichan\_\-tbb::MaxReducer::nc}\hspace{0.3cm}{\tt  \mbox{[}private\mbox{]}}}}
+\label{classcowichan__tbb_1_1_max_reducer_478817df677bfd5331c8a9a7f5e62de3}
+
+
+Number of columns in the matrix. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+cowichan\_\-tbb/\hyperlink{cowichan__tbb_2thresh_8cpp}{thresh.cpp}\end{CompactItemize}

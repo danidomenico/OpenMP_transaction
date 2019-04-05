@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/275/code_reviews/mpi_cr/mandel
+END
+serial.h.review
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/275/code_reviews/mpi_cr/mandel/serial.h.review
+END
+serial.h
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/275/code_reviews/mpi_cr/mandel/serial.h
+END
+parallel.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/275/code_reviews/mpi_cr/mandel/parallel.cpp
+END
+parallel.cpp.review
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/275/code_reviews/mpi_cr/mandel/parallel.cpp.review
+END
+serial.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/275/code_reviews/mpi_cr/mandel/serial.cpp
+END
+serial.cpp.review
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/275/code_reviews/mpi_cr/mandel/serial.cpp.review
+END
+mandel.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/275/code_reviews/mpi_cr/mandel/mandel.cpp
+END
+mandel.cpp.review
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/275/code_reviews/mpi_cr/mandel/mandel.cpp.review
+END
+parallel.h.review
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/275/code_reviews/mpi_cr/mandel/parallel.h.review
+END
+parallel.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/275/code_reviews/mpi_cr/mandel/parallel.h
+END

@@ -1,0 +1,36 @@
+\hypertarget{cowichan__tbb_2hull_8cpp}{
+\section{cowichan\_\-tbb/hull.cpp File Reference}
+\label{cowichan__tbb_2hull_8cpp}\index{cowichan\_\-tbb/hull.cpp@{cowichan\_\-tbb/hull.cpp}}
+}
+TBB hull implementation.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-tbb.hpp\char`\"{}}\par
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{classcowichan__tbb_1_1_maximum_distance}{cowichan\_\-tbb::MaximumDistance}
+\begin{CompactList}\small\item\em Compute maximum distance for hull. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Namespaces}
+\begin{CompactItemize}
+\item 
+namespace \hyperlink{namespacecowichan__tbb}{cowichan\_\-tbb}
+\begin{CompactList}\small\item\em Additional classes and functions specific to tbb implementation. \item\end{CompactList}
+
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{namespacecowichan__tbb_08647459098335f4d3abda9054a99547}{cowichan\_\-tbb::quickhull} (\hyperlink{class_point}{PointVector} pointsIn, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} n, \hyperlink{class_point}{PointVector} pointsOut, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$hn)
+\item 
+void \hyperlink{namespacecowichan__tbb_689d689bc3d950d3dd7fb9df89d4156e}{cowichan\_\-tbb::hull\_\-split} (\hyperlink{class_point}{PointVector} pointsIn, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} n, \hyperlink{class_point}{PointVector} pointsOut, \hyperlink{cowichan_8hpp_5b04577d5d21124855deaad298595371}{index\_\-t} $\ast$hn, \hyperlink{class_point}{Point} $\ast$p1, \hyperlink{class_point}{Point} $\ast$p2)
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+TBB hull implementation. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_t_b_b_0d23aa05dc21fd9e8b033769097b4b18}{CowichanTBB::hull} \end{Desc}

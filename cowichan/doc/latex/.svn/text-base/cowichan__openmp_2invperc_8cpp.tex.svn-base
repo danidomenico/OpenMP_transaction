@@ -1,0 +1,29 @@
+\hypertarget{cowichan__openmp_2invperc_8cpp}{
+\section{cowichan\_\-openmp/invperc.cpp File Reference}
+\label{cowichan__openmp_2invperc_8cpp}\index{cowichan\_\-openmp/invperc.cpp@{cowichan\_\-openmp/invperc.cpp}}
+}
+OpenMP (NOT parallel) invperc implementation.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-openmp.hpp\char`\"{}}\par
+{\tt \#include $<$queue$>$}\par
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{classcowichan__openmp_1_1_perc_point}{cowichan\_\-openmp::PercPoint}
+\begin{CompactList}\small\item\em Percolation point. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Namespaces}
+\begin{CompactItemize}
+\item 
+namespace \hyperlink{namespacecowichan__openmp}{cowichan\_\-openmp}
+\begin{CompactList}\small\item\em Additional classes and functions specific to openmp implementation. \item\end{CompactList}
+
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+OpenMP (NOT parallel) invperc implementation. 
+
+The same as \hyperlink{class_cowichan_serial_9b1cf3fcbb40498609826433b8ea2f6a}{CowichanSerial::invperc} 

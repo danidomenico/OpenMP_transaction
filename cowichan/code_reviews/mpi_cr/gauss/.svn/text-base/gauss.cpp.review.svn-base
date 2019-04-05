@@ -1,0 +1,94 @@
+     1	/**
+     2	 * Generic gauss implementation
+     3	 *
+     4	 * \file gauss.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-03-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#ifdef IS_PARALLEL
+    11	  #include "parallel.h"
+    12	#else
+    13	  #include "serial.h"
+    14	#endif
+    15	
+    16	int main(int argc, char* argv[])
+    17	{
+    18	#ifdef IS_PARALLEL
+    19	  mpi::environment env(argc, argv);
+    20	  mpi::communicator world;
+    21	
+    22	#ifdef TEST_OUTPUT
+    23	  printf ("I am process %d\n", world.rank ());
+    24	#endif
+    25	#endif
+    26	
+    27	  real2D*	matrix;			/* matrix x */
+    28	  real1D*	answer;			/* answer */
+    29	  real1D*	vector;			/* = vector */
+    30	  int		n;			/* matrix size */
+    31	  int limit;
+    32	  int i, j;
+    33	
+    34	  srand (333);
+    
+    Will have to make this seed user-settable.
+    
+    35	
+    36	  n = MAXEXT;
+    37	  limit = 10;
+    38	
+    39	  matrix = new real2D[MAXEXT];
+    40	  for (i = 0; i < n; i++)
+    41	  {
+    42	    for (j = 0; j < n; j++)
+    43	    {
+    44	      matrix[i][j] = rand () % limit;
+    45	    }
+    46	  }
+    47	
+    48	  vector = new real1D[MAXEXT];
+    49	  for (i = 0; i < n; i++) {
+    50	    vector[i] = rand () % limit;
+    51	  }
+    52	
+    53	  answer = new real1D[MAXEXT];
+    54	
+    55	#ifdef TEST_OUTPUT
+    56	  printf ("\n");
+    57	
+    58	  printf ("Matrix\n");
+    59	  print_matrix (matrix, n, n);
+    60	
+    61	  printf ("Target\n");
+    62	  print_vector (vector, n);
+    63	#endif
+    64	
+    65	#ifdef TEST_TIME
+    66	  INT64 start, end;
+    67	  start = get_ticks ();
+    68	#endif
+    69	
+    70	#ifdef IS_PARALLEL
+    71	  gauss_mpi (world, matrix, vector, answer, n);
+    72	#else
+    73	  gauss (matrix, vector, answer, n);
+    74	#endif
+    75	
+    76	#ifdef TEST_TIME
+    77	  end = get_ticks ();
+    78	  print_elapsed_time (start, end);
+    79	#endif
+    80	
+    81	#ifdef TEST_OUTPUT
+    82	  printf ("Answer\n");
+    83	  print_vector (answer, n);
+    84	#endif
+    85	
+    86	  delete [] matrix;
+    87	  delete [] vector;
+    88	  delete [] answer;
+    89	
+    90	  return 0;
+    91	}

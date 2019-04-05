@@ -1,0 +1,365 @@
+K 25
+svn:wc:ra_dav:version-url
+V 32
+/svn/!svn/ver/268/test/baselines
+END
+invperc5
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/268/test/baselines/invperc5
+END
+life1
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/268/test/baselines/life1
+END
+life2
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/268/test/baselines/life2
+END
+life3
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/268/test/baselines/life3
+END
+winnow1
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/268/test/baselines/winnow1
+END
+life4
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/268/test/baselines/life4
+END
+winnow2
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/268/test/baselines/winnow2
+END
+life5
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/268/test/baselines/life5
+END
+winnow3
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/268/test/baselines/winnow3
+END
+winnow4
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/268/test/baselines/winnow4
+END
+life6
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/268/test/baselines/life6
+END
+winnow5
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/268/test/baselines/winnow5
+END
+winnow6
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/268/test/baselines/winnow6
+END
+outer1_vec
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/268/test/baselines/outer1_vec
+END
+outer2_vec
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/268/test/baselines/outer2_vec
+END
+thresh1
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/268/test/baselines/thresh1
+END
+outer3_vec
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/268/test/baselines/outer3_vec
+END
+thresh2
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/268/test/baselines/thresh2
+END
+outer1_mat
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/268/test/baselines/outer1_mat
+END
+thresh3
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/268/test/baselines/thresh3
+END
+outer2_mat
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/268/test/baselines/outer2_mat
+END
+thresh4
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/268/test/baselines/thresh4
+END
+outer3_mat
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/268/test/baselines/outer3_mat
+END
+thresh5
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/268/test/baselines/thresh5
+END
+thresh6
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/268/test/baselines/thresh6
+END
+sor1
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/268/test/baselines/sor1
+END
+sor2
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/268/test/baselines/sor2
+END
+sor3
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/268/test/baselines/sor3
+END
+sor4
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/268/test/baselines/sor4
+END
+half1
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/268/test/baselines/half1
+END
+half2
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/268/test/baselines/half2
+END
+norm1
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/268/test/baselines/norm1
+END
+norm2
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/268/test/baselines/norm2
+END
+half3
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/268/test/baselines/half3
+END
+norm3
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/268/test/baselines/norm3
+END
+half4
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/268/test/baselines/half4
+END
+half5
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/268/test/baselines/half5
+END
+norm4
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/268/test/baselines/norm4
+END
+half6
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/268/test/baselines/half6
+END
+gauss1
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/268/test/baselines/gauss1
+END
+gauss2
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/268/test/baselines/gauss2
+END
+gauss3
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/268/test/baselines/gauss3
+END
+gauss4
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/268/test/baselines/gauss4
+END
+mandel1
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/268/test/baselines/mandel1
+END
+mandel2
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/268/test/baselines/mandel2
+END
+mandel3
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/268/test/baselines/mandel3
+END
+mandel4
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/268/test/baselines/mandel4
+END
+hull1
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/268/test/baselines/hull1
+END
+mandel5
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/268/test/baselines/mandel5
+END
+hull2
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/268/test/baselines/hull2
+END
+vecdiff1
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/268/test/baselines/vecdiff1
+END
+invperc1
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/268/test/baselines/invperc1
+END
+hull3
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/268/test/baselines/hull3
+END
+invperc2
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/268/test/baselines/invperc2
+END
+vecdiff2
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/268/test/baselines/vecdiff2
+END
+hull4
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/268/test/baselines/hull4
+END
+vecdiff3
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/268/test/baselines/vecdiff3
+END
+invperc3
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/268/test/baselines/invperc3
+END
+invperc4
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/268/test/baselines/invperc4
+END
+vecdiff4
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/268/test/baselines/vecdiff4
+END

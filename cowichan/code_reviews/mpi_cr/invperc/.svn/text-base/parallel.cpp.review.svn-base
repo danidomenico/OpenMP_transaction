@@ -1,0 +1,164 @@
+     1	/**
+     2	 * Parallel implementation of invasion percolation
+     3	 *
+     4	 * \file parallel.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 02-28-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#include "parallel.h"
+    11	
+    12	// public
+    13	
+    14	/*
+    15	 * @ invperc : do invasion percolation
+    16	 * > none
+    17	 * + fill mask
+    18	 */
+    19	
+    20	void invperc_mpi (mpi::communicator world,
+    21	                  int2D*		matrix,			/* matrix to invade */
+    22	                  bool2D*	mask,			/* mask to fill */
+    23	                  int		nr,			/* row size */
+    24	                  int		nc,			/* column size */
+    25	                  real		fraction)		/* how much to fill */
+    26	{
+    27	  int		r, c;			/* row and column indices */
+    28	  int		num, i;			/* filling index */
+    29	
+    30	  /* initialize */
+    31	  num = (int) (fraction * nr * nc);
+    32	  mapNodesType nodes;
+    33	  inv_enq_mpi (world, &nodes,
+    34	    inv_node_mpi (world, matrix[nr/2][nc/2], nr/2, nc/2));
+    35	
+    36	  /* fill */
+    37	  for (i = 0; i < num; i++) {
+    
+Needs commenting (dequeue, set mask value, enqueue).
+    
+    38	    inv_deq_mpi (world, &nodes, &r, &c);
+    39	    mask[r][c] = TRUE;
+    40	    inv_enqPt_mpi (world, &nodes, matrix, mask, nr, nc, r, c);
+    41	  }
+    42	
+    43	  /* return */
+    44	}
+    45	
+    46	// private
+    47	
+    48	/*
+    49	 * @ inv_deq : take item out of priority queue
+    50	 * > queue after dequeueing
+    51	 * + fill row and column indices
+    52	 */
+    53	
+    54	void inv_deq_mpi (mpi::communicator world,
+    55	                  mapNodesType* nodes,
+    56	                  int	      * r,			/* row index */
+    57	                  int	      * c)			/* column index */
+    58	{
+    59	  // remove the first element in Nodes
+    60	  mapNodesType::iterator iter = nodes->begin ();
+    61	
+    62	  *r = iter->second->r;
+    63	  *c = iter->second->c;
+    64	  delete iter->second;
+    65	
+    66	  nodes->erase (iter);
+    67	}
+    68	
+    69	/*
+    70	 * @ inv_enq : add item to priority queue
+    71	 * > queue after dequeueing
+    72	 * + enqueue item in given tree
+    73	 */
+    74	
+    75	void inv_enq_mpi (mpi::communicator world,
+    76	                  mapNodesType* nodes,
+    77	                  node_p node)
+    78	{
+    79	  // insert new element in Nodes
+    80	  nodes->insert (std::pair<int, node_p> (node->val, node));
+    81	}
+    82	
+    83	/*
+    84	 * @ inv_node : allocate and fill queue node
+    85	 * > new node
+    86	 */
+    87	
+    88	node_p inv_node_mpi (mpi::communicator world,
+    89	                     int		val,			/* location value */
+    90	                     int		r,			/* row index */
+    91	                     int		c)			/* column index */
+    92	{
+    93	  node_p node;
+    94	
+    95	  node = new node_t;
+    96	  node->val  = val;
+    97	  node->r    = r;
+    98	  node->c    = c;
+    99	
+   100	  return node;
+   101	}
+   102	
+   103	/*
+   104	 * @ inv_enqPt : possibly add point to priority queue
+   105	 * > new queue
+   106	 * + possibly add point to priority queue
+   107	 */
+   108	
+   109	void inv_enqPt_mpi (mpi::communicator world,
+   110	                    mapNodesType* nodes,
+   111	                    int2D*		matrix,			/* matrix of values */
+   112	                    bool2D*	mask,			/* mask to be filled */
+   113	                    int		nr,			/* number of rows */
+   114	                    int		nc,			/* number of columns */
+   115	                    int		r,			/* point row */
+   116	                    int		c)			/* point column */
+   117	{
+   118	  bool		e[8];			/* empty neighbors */
+   119	  bool		r_lo = r > 0,
+   120			r_hi = r < (nr-1),
+   121			c_lo = c > 0,
+   122			c_hi = c < (nc-1);
+
+I'm going to be honest, I spent a good bit of time on this and still don't understand
+exactly what it accomplishes! My main confusion comes from the diagram, which seems
+to counter the idea that invasion percolation only operates on immediately adjacent
+cells.
+
+   123	
+   124	  /*   0   */
+   125	  /*  1A2  */
+   126	  /* 3BXC4 */
+   127	  /*  5D6  */
+   128	  /*   7   */
+   129	  if (r_lo){
+   130	    e[0] = ((r > 1) && !mask[r-2][c]) || (r - 2 < 0);
+   131	    e[1] = (c_lo && !mask[r-1][c-1]) || (r - 1 < 0) || (c - 1 < 0);
+   132	    e[2] = (c_hi && !mask[r-1][c+1]) || (r - 1 < 0) || (c + 1 > nc - 1);
+   133	  }
+   134	  e[3] = ((c > 1) && !mask[r][c-2]) || (c - 2 < 0);
+   135	  e[4] = ((c < (nc-2)) && !mask[r][c+2]) || (c + 2 > nc - 1);
+   136	  if (r_hi){
+   137	    e[5] = (c_lo && !mask[r+1][c-1]) || (r + 1 > nr - 1) || (c - 1 < 0);
+   138	    e[6] = (c_hi && !mask[r+1][c+1]) || (r + 1 > nr - 1) || (c + 1 > nc - 1);
+   139	    e[7] = ((r < (nr-2)) && !mask[r+2][c]) || (r + 2 > nr - 2);
+   140	  }
+   141	
+   142	  if (r_lo && (!mask[r-1][c]) && e[0] && e[1] && e[2]){	/* A */
+   143	    inv_enq_mpi (world, nodes, inv_node_mpi (world, matrix[r-1][c], r-1, c));
+   144	  }
+   145	  if (c_lo && (!mask[r][c-1]) && e[1] && e[3] && e[5]){	/* B */
+   146	    inv_enq_mpi (world, nodes, inv_node_mpi (world, matrix[r][c-1], r, c-1));
+   147	  }
+   148	  if (c_hi && (!mask[r][c+1]) && e[2] && e[4] && e[6]){	/* C */
+   149	    inv_enq_mpi (world, nodes, inv_node_mpi (world, matrix[r][c+1], r, c+1));
+   150	  }
+   151	  if (r_hi && (!mask[r+1][c]) && e[5] && e[6] && e[7]){	/* D */
+   152	    inv_enq_mpi (world, nodes, inv_node_mpi (world, matrix[r+1][c], r+1, c));
+   153	  }
+   154	
+   155	}

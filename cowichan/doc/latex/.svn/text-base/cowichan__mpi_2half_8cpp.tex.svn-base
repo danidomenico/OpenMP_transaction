@@ -1,0 +1,17 @@
+\hypertarget{cowichan__mpi_2half_8cpp}{
+\section{cowichan\_\-mpi/half.cpp File Reference}
+\label{cowichan__mpi_2half_8cpp}\index{cowichan\_\-mpi/half.cpp@{cowichan\_\-mpi/half.cpp}}
+}
+MPI halving shuffle implementation.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-mpi.hpp\char`\"{}}\par
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+MPI halving shuffle implementation. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_m_p_i_154bbd1a400ee4571f761bff1cdf67cd}{CowichanMPI::half} \end{Desc}

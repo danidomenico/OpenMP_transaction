@@ -1,0 +1,17 @@
+\hypertarget{cowichan__openmp_2randmat_8cpp}{
+\section{cowichan\_\-openmp/randmat.cpp File Reference}
+\label{cowichan__openmp_2randmat_8cpp}\index{cowichan\_\-openmp/randmat.cpp@{cowichan\_\-openmp/randmat.cpp}}
+}
+OpenMP randmat implementation.  
+
+
+{\tt \#include \char`\"{}cowichan\_\-openmp.hpp\char`\"{}}\par
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+OpenMP randmat implementation. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_cowichan_open_m_p_2c7c4e4dd96f82b7280a412c1fceed2c}{CowichanOpenMP::randmat} \end{Desc}

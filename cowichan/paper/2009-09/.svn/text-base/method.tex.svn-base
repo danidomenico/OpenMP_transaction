@@ -1,0 +1,137 @@
+\section{Methodology\label{s:method}}
+
+Our aim is to assess and compare the usability of parallel programming systems.
+Here,
+we discuss issues related to choosing the problems that make up our benchmark suite,
+how to assess particular implementations,
+and other purposes which implementations of these might serve.
+Recognizing that our problems are extremely simple,
+we refer to them as ``toys''.
+
+\subsection{Criteria for Selection\label{s:method-criteria}}
+
+Our criteria for including toys are:
+
+\begin{itemlist}
+
+\item	Each toy should require no more than an hour
+	to write and test in a well-supported sequential language.
+	We feel that making individual problems more complicated will only discourage uptake.
+
+\item	Correctness must be easy to verify.
+	Toys whose output is easily visualized are therefore preferred,
+	as are toys whose results are insensitive to floating-point effects.
+
+\item	Speedup must similarly be easy to measure---while machine performance is not our focus,
+	we are generally uninterested in parallel implementations that are slower than
+	the sequential originals.
+
+\item	At least some toys should not be ``infinitely scalable''.
+	Many real-world applications are not,
+	and this suite should reflect such limitations.
+
+\item	At least some toys should require I/O,
+	since this important aspect of real-world programming is often neglected by PPS designers.
+
+\item	There should be some overlap in the toys' implementations,
+	so that implementors can demonstrate how well
+	their chosen systems take advantage of opportunities for code re-use.
+
+\item	Together,
+	the toys in the suite must exercise a wide range of parallel clich\'{e}s
+	(Appendix~\ref{s:ops} and ~\ref{s:memory}).
+	In particular,
+
+\item	Toys should be specified by inputs and outputs rather than algorithmically,
+	i.e.,
+	``sort $N$ integers'' rather than ``parallelize quicksort'',
+	so that implementors can choose algorithms that are ``natural'' for their systems.
+	Implementations that parallelize a grossly inefficient sequential algorithm
+	should expect to be criticized for doing so;
+	see Section~\ref{s:toys-invperc} for more discussion of this.
+
+\end{itemlist}
+
+\subsection{Software Engineering Issues\label{s:method-softeng}}
+
+The ``single algorithm per program'' model of many benchmarks is not representative of real programs,
+which often contain several qualitatively different phases or modules.
+A full implementation of this suite will therefore have two parts.
+In the first,
+each toy will be implemented as a stand-alone program.
+In the second,
+toys will be chained together as shown in Figure~\ref{f:chaining}.
+This will test the ease with which heterogeneous parallelism can be mixed within a single program.
+It will also show how well the system supports code re-use and information hiding,
+which are crucial to the development of large programs.
+
+\begin{figure}
+% \epsfxsize=12cm
+% \begin{center}\mbox{\epsffile{fig/chain.eps}}\end{center}
+\caption{Chaining\label{f:chaining}}
+\end{figure}
+
+Where possible,
+chaining should execute toys concurrently.
+Some parallel programming systems impose extraneous constraints on programs,
+e.g., require all processes to participate in every barrier synchronization,
+or require the same executable to be loaded onto each processor.
+These constraints can limit the exploitation of potential concurrency.
+Permitting, but not requiring, concurrent execution of several toys should uncover such limitations.
+
+\subsection{Sizing\label{s:method-size}}
+
+One crucial aspect of the specification of toys is
+the way in which the sizes of problems are determined.
+In a \emph{frozen} model,
+the actual size of each problem and/or the number of processors available would be compiled into each toy.
+A fully \emph{fluid} implementation, by contrast, would allow these sizes to be specified at run-time.
+If a system does not support fully-fluid implementations,
+it must at least use an intermediate model (which might be called \emph{slushy}),
+in which the maximum size of individual problems is specified during compilation,
+but the actual size of a problem is only determined when the toy begins to execute.
+
+\subsection{Assessing Usability\label{s:method-assess}}
+
+One way to compare the usability of parallel programming systems would be
+to measure the performance achieved by an ``average'' programmer
+as a function of time on each toy.
+By analogy with Hockney's $n_{1/2}$ measure \cite{b:hockney-perfparam},
+we could in principle find the value of $p_{1/2}$---the programming time required to achieve
+half of a machine's peak performance\footnote{Note that
+	if performance was measured as a fraction of the figures quoted by manufacturers for their machines,
+	it is unlikely that the halfway mark would ever be reached.}
+for a particular combination of programming system and problem type.
+However,
+the number of implementors required is much greater than the number we can reasonably expect.
+
+Alternatively,
+we could use code metrics
+to compare implementations of various toys.
+This is also dubious,
+both because \cite{b:el-emam-metrics} has shown that most metrics do little more than measure lines of code,
+and because of the difficulty of comparing metric values between languages.
+
+The best we can hope for now is therefore qualitative consensus,
+e.g.,
+to interview implementors about their experiences
+and ask other programmers who are familiar with the base languages used
+to read and comment on the parallel versions of the toys.
+We will also compare the length of code in parallel and sequential implementations,
+though we realize that this can exaggerate the impact of parallelization.
+
+\subsection{Other Uses for Implementations\label{s:method-uses}}
+
+This suite is intended for assessing the usability of parallel programming systems,
+but we envisage other uses.
+First, this suite will indicate
+what a mature parallel programming system should be able to support.
+In particular,
+we will ask implementors to describe how they debugged correctness and performance problems,
+and in particular what tools they used.
+(The lack of useful debugging tools is a chronic complaint among parallel programmers.)
+
+This suite should also be useful for education,
+since toys will be small enough to be understood quickly,
+and parallelizing them should be a suitable classroom exercise
+in a senior undergraduate course on parallel computing.

@@ -1,0 +1,60 @@
+\hypertarget{class_l_t_product}{
+\section{LTProduct Class Reference}
+\label{class_l_t_product}\index{LTProduct@{LTProduct}}
+}
+{\tt \#include $<$product.hpp$>$}
+
+Inheritance diagram for LTProduct::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{class_l_t_product}
+\end{center}
+\end{figure}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{class_l_t_product_377454ff007fa15f0bd378013bf1e6e6}{consumeInput} ()
+\item 
+void \hyperlink{class_l_t_product_1ba17b14e59b82c917f404cc9642bb09}{work} ()
+\item 
+void \hyperlink{class_l_t_product_d03b068863d7b2febcbb7b11ebb819ca}{produceOutput} ()
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Performs the product of a matrix and a vector in tuple-space. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_l_t_product_377454ff007fa15f0bd378013bf1e6e6}{
+\index{LTProduct@{LTProduct}!consumeInput@{consumeInput}}
+\index{consumeInput@{consumeInput}!LTProduct@{LTProduct}}
+\subsubsection[{consumeInput}]{\setlength{\rightskip}{0pt plus 5cm}void LTProduct::consumeInput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_product_377454ff007fa15f0bd378013bf1e6e6}
+
+
+The consume input process is spawned once and should distribute tasks to the worker processes. 
+
+Implements \hyperlink{class_tuple_application_e163c5a536de01c8b94b49528a17dab2}{TupleApplication}.\hypertarget{class_l_t_product_d03b068863d7b2febcbb7b11ebb819ca}{
+\index{LTProduct@{LTProduct}!produceOutput@{produceOutput}}
+\index{produceOutput@{produceOutput}!LTProduct@{LTProduct}}
+\subsubsection[{produceOutput}]{\setlength{\rightskip}{0pt plus 5cm}void LTProduct::produceOutput ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_product_d03b068863d7b2febcbb7b11ebb819ca}
+
+
+The output producer decides when the tuple application is finished; once this function returns, the tuple application is complete. 
+
+Implements \hyperlink{class_tuple_application_8743dfcf17dedd52887c0b2ab170d8dc}{TupleApplication}.\hypertarget{class_l_t_product_1ba17b14e59b82c917f404cc9642bb09}{
+\index{LTProduct@{LTProduct}!work@{work}}
+\index{work@{work}!LTProduct@{LTProduct}}
+\subsubsection[{work}]{\setlength{\rightskip}{0pt plus 5cm}void LTProduct::work ()\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_l_t_product_1ba17b14e59b82c917f404cc9642bb09}
+
+
+Worker processes are created and killed after the output process has finished. 
+
+Implements \hyperlink{class_tuple_application_ef6ae8bb1d697e4ed038b43320183c89}{TupleApplication}.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+cowichan\_\-lt/src/\hyperlink{product_8hpp}{product.hpp}\item 
+cowichan\_\-lt/src/\hyperlink{cowichan__lt_2src_2product_8cpp}{product.cpp}\end{CompactItemize}

@@ -1,0 +1,69 @@
+     1	/**
+     2	 * Serial implementation of successive over-relaxation
+     3	 *
+     4	 * \file serial.cpp
+     5	 * \author Andrew Borzenko
+     6	 * \date 03-02-09
+     7	 */
+     8	
+     9	#include "../include/main.h"
+    10	#include "serial.h"
+    11	
+    12	// public
+    13	
+    14	/*
+    15	 * @ sor : do successive over-relaxation
+    16	 * > none
+    17	 * + relax matrix to find solution
+    18	 */
+    19	
+    20	void
+    21	sor(
+    22	  real2D*	matrix,			/* to solve */
+    23	  real1D*	vector,			/* target vector */
+    24	  real1D*	answer,			/* solution found */
+    25	  int		n,			/* size */
+    26	  real		tol			/* tolerance on answer */
+    27	){
+    28	  int		r, c, t;		/* indices */
+    29	  real		sum, old, dMax, d;	/* temporaries */
+    30	#if GRAPHICS
+    31	  int		gfxCount = 0;
+    32	#endif
+    33	
+    34	  /* initialize */
+    35	  for (r=0; r<n; r++){
+    36	    answer[r] = 1.0;
+    37	  }
+    38	  dMax = 2 * tol;			/* to forestall early exit */
+    39	
+    40	#if GRAPHICS
+    41	  gfx_sor(gfxCount++, matrix, vector, answer, n);
+    42	#endif
+    43	
+    44	  for (t=0; (t<SOR_MAX_ITERS) && (dMax >= tol); t++){
+    45	    dMax = 0.0;
+    46	    for (r=0; r<n; r++){
+    47	      /* compute sum */
+    48	      sum = 0.0;
+    49	      for (c=0; c<r; c++){
+    50	        sum += matrix[r][c]*answer[c];
+    51	      }
+    52	      for (c=r+1; c<n; c++){
+    53	        sum += matrix[r][c]*answer[c];
+    54	      }
+    55	    
+    56	      /* compute difference */
+    57	      old = answer[r];
+    58	      answer[r] = (1.0-SOR_OMEGA)*old + SOR_OMEGA*(vector[r]-sum)/matrix[r][r];
+    59	      d = (real)fabs((double)(old - answer[r]));
+    60	      if (d > dMax){
+    61	        dMax = d;
+    62	      }
+    63	    }
+    64	#if GRAPHICS
+    65	    gfx_sor(gfxCount++, matrix, vector, answer, n);
+    66	#endif
+    67	  }
+    68	  /* return */
+    69	}
