@@ -8,7 +8,7 @@ Fontes disponíveis em no diretório cowichan/cowichan_openmp_transaction
 ### Problemas Cowichan
 Implementações disponíveis do diretório **cowichan/openmp_transaction**.
 
-##### Benchmarks com implementação realizada
+#### Benchmarks com implementação realizada:
 - hull
 - norm
 - outer
@@ -17,7 +17,7 @@ Implementações disponíveis do diretório **cowichan/openmp_transaction**.
 - vecdiff
 - winnow (somente quick_sort)
 
-##### Fontes originais do cowichan:
+#### Fontes originais do cowichan:
 Disponível em: https://code.google.com/archive/p/cowichan/
 
 Obs.: analisar demais benchmarks, pois a princípio não há necessidade de implementação
@@ -25,8 +25,8 @@ Obs.: analisar demais benchmarks, pois a princípio não há necessidade de impl
 ### NU-MineBench-2.0
 Implementações disponíveis do diretório **NU-MineBench-2.0/src**.
 
-##### Benchmarks com implementação realizada
+#### Benchmarks com implementação realizada:
 - ScalParC
 
-##### Fontes originais do cowichan:
+#### Fontes originais do cowichan:
 Disponível em: http://cucis.ece.northwestern.edu/projects/DMS/MineBenchDownload.html
