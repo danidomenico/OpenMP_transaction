@@ -27,6 +27,7 @@ Implementações disponíveis do diretório **NU-MineBench-2.0/src**.
 
 #### Benchmarks com implementação realizada:
 - ScalParC
+- UtilityMine
 
 #### Fontes originais do cowichan:
 Disponível em: http://cucis.ece.northwestern.edu/projects/DMS/MineBenchDownload.html
