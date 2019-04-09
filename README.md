@@ -25,7 +25,8 @@ Obs.: analisar demais benchmarks, pois a princípio não há necessidade de impl
 ### NU-MineBench-2.0
 Implementações disponíveis do diretório **NU-MineBench-2.0/src**.
 
-#### Benchmarks com implementação realizada:
+#### Benchmarks com implementação realizada (inicial):
+- Apriori
 - ScalParC
 - UtilityMine
 
