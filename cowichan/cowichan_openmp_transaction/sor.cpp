@@ -28,7 +28,7 @@ void CowichanOpenMP::sor (Matrix matrix, Vector target, Vector solution) {
             // compute sum
             sum = 0.0;
             for (c = 0; c < r; c++) {
-                sum += MATRIX_SQUARE(matrix, r, c) * solution[c]; //Precisa adicionar transação para o solution? (indice c e r) - Se sim, implementação original também está com problema
+                sum += MATRIX_SQUARE(matrix, r, c) * solution[c];
             }
             for (c = r + 1; c < n; c++) {
                 sum += MATRIX_SQUARE(matrix, r, c) * solution[c];

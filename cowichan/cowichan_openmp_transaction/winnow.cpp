@@ -46,6 +46,7 @@ void CowichanOpenMP::winnow(IntMatrix matrix, BoolMatrix mask, PointVector point
 	       //A ordem de acesso ao 'weightedPoints' não importa, pois ele será ordenado na sequência*/
 	#pragma omp parallel for schedule(static) transaction(i) 
 	for (r = 0; r < nr; r++) {
+		#pragma omp parallel for schedule(static)
 		for (c = 0; c < nc; c++) {
 			if (MATRIX_RECT(mask, r, c)) {
 				weightedPoints[i++] = WeightedPoint((real)c, (real)r, MATRIX_RECT(matrix, r, c));

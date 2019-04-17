@@ -41,7 +41,7 @@ void CowichanOpenMP::thresh(IntMatrix matrix, BoolMatrix mask) {
     }
     
     // count
-    #pragma omp for schedule(static) transaction(hist) //Transaction de um vetor? é possível?
+    #pragma omp parallel for schedule(static) transaction(hist) //Transaction de um vetor? é possível?
     for (r = 0; r < nr; r++) {
         #pragma omp parallel for schedule(static)
         for (c = 0; c < nc; c++) {
