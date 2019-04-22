@@ -19,7 +19,7 @@ void CowichanOpenMP::thresh(IntMatrix matrix, BoolMatrix mask) {
 
     // find max value in matrix
     vMax = 0;
-    #pragma omp parallel for schedule(static) transaction(vMax)
+    #pragma omp parallel for schedule(static) transaction only(vMax) exclude(matrix)
     for (r = 0; r < nr; r++) {
         #pragma omp parallel for schedule(static)
         for (c = 0; c < nc; c++) {
@@ -41,7 +41,7 @@ void CowichanOpenMP::thresh(IntMatrix matrix, BoolMatrix mask) {
     }
     
     // count
-    #pragma omp parallel for schedule(static) transaction(hist)
+    #pragma omp parallel for schedule(static) transaction only(hist) exclude(matrix)
     for (r = 0; r < nr; r++) {
         #pragma omp parallel for schedule(static)
         for (c = 0; c < nc; c++) {
