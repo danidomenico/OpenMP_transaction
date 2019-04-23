@@ -1,5 +1,5 @@
 /**
- * \file cowichan_transactional/vecdiff.cpp
+ * \file cowichan_openmp_nebelung/vecdiff.cpp
  * \brief OpenMP vecdiff implementation (transactional memory).
  * \see CowichanOpenMP::vecdiff
  */

@@ -1,5 +1,5 @@
 /**
- * \file cowichan_openmp_transaction/norm.cpp
+ * \file cowichan_openmp_wong/norm.cpp
  * \brief OpenMP hull implementation (transactional memory).
  * \see CowichanOpenMP::hull
  */
@@ -94,7 +94,7 @@ void quickhull(PointVector pointsIn, index_t n, PointVector pointsOut, index_t* 
         minPoint = &pointsIn[0];
         maxPoint = &pointsIn[0];
 
-        #pragma omp parallel for schedule(static) transaction(minPoint, maxPoint)
+        #pragma omp parallel for schedule(static) transaction
         for(index_t i = 1; i < n; i++) {
             if (minPoint->x > pointsIn[i].x) {
                 minPoint = &pointsIn[i];
@@ -137,14 +137,17 @@ void split(PointVector pointsIn, index_t n, PointVector pointsOut, index_t* hn,
         maxPoint = &pointsIn[0];
         maxCross = Point::cross (*p1, *p2, pointsIn[0]);
 
-        // compute the signed distances from the line for each point
-        #pragma omp parallel for schedule(static) transaction(maxPoint, maxCross)    
+        // compute the signed distances from the line for each point //Não precisa excluir currentCross, pois é variável local
+        #pragma omp parallel for schedule(static)
         for (index_t i = 1; i < n; i++) {
             real currentCross = Point::cross (*p1, *p2, pointsIn[i]);
-            if (currentCross > maxCross) {
-                maxPoint = &pointsIn[i];
-                maxCross = currentCross;
-            }
+			#pragma omp transaction
+			{
+				if (currentCross > maxCross) {
+					maxPoint = &pointsIn[i];
+					maxCross = currentCross;
+				}
+			}	
         }
     } else {
         maxPoint = &pointsIn[0];

@@ -1,5 +1,5 @@
 /**
- * \file cowichan_openmp_transaction/sort.hpp
+ * \file cowichan_openmp_wong/sort.hpp
  * \brief Sorting algorithms that use OpenMP.
  *
  * Two algorithms are included:

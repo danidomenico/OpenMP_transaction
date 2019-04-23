@@ -1,5 +1,5 @@
 /**
- * \file cowichan_openmp_nebelung/norm.cpp
+ * \file cowichan_openmp_wong/norm.cpp
  * \brief OpenMP norm implementation (transactional memory).
  * \see CowichanOpenMP::norm
  */
@@ -56,7 +56,7 @@ void findMinMax(PointVector points, index_t n, Point* minPoint, Point* maxPoint)
     maxPoint->x = points[0].x;
     maxPoint->y = points[0].y;
     
-    #pragma omp parallel for schedule(static) transaction only(minPoint, maxPoint) exclude(points)
+    #pragma omp parallel for schedule(static) transaction
     for(index_t i = 1; i < n; i++) {
         if(points[i].x < minPoint->x) {
             minPoint->x = points[i].x;

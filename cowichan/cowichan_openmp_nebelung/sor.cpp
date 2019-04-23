@@ -1,5 +1,5 @@
 /**
- * \file cowichan_transactional/sor.cpp
+ * \file cowichan_openmp_nebelung/sor.cpp
  * \brief OpenMP sor implementation (transactional memory).
  * \see CowichanOpenMP::sor
  */

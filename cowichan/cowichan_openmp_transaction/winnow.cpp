@@ -1,5 +1,5 @@
 /**
- * \file cowichan_transactional/winnow.cpp
+ * \file cowichan_openmp_transaction/winnow.cpp
  * \brief OpenMP winnow implementation (transactional memory).
  * \see CowichanOpenMP::winnow
  */

@@ -1,5 +1,5 @@
 /**
- * \file cowichan_transactional/outer.cpp
+ * \file cowichan_openmp_transaction/outer.cpp
  * \brief OpenMP outer implementation (transactional memory).
  * \see CowichanOpenMP::outer
  */

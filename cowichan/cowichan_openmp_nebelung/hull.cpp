@@ -1,5 +1,5 @@
 /**
- * \file cowichan_transactional/norm.cpp
+ * \file cowichan_openmp_nebelung/norm.cpp
  * \brief OpenMP hull implementation (transactional memory).
  * \see CowichanOpenMP::hull
  */

@@ -1,5 +1,5 @@
 /**
- * \file cowichan_openmp_nebelung/sort.cpp
+ * \file cowichan_openmp_wong/sort.cpp
  * \brief Implementation of OpenMP sorting algorithms.
  */
 

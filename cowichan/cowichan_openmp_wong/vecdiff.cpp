@@ -1,5 +1,5 @@
 /**
- * \file cowichan_openmp_transaction/vecdiff.cpp
+ * \file cowichan_openmp_wong/vecdiff.cpp
  * \brief OpenMP vecdiff implementation (transactional memory).
  * \see CowichanOpenMP::vecdiff
  */
@@ -13,12 +13,15 @@ real CowichanOpenMP::vecdiff (Vector actual, Vector computed) {
 
     maxDiff = (real)fabs((double)(actual[0] - computed[0]));
     
-    #pragma omp for schedule(static) private(diff) transaction(maxDiff) 
+    #pragma omp for schedule(static) private(diff)
     for (i = 1; i < n; i++) {
         diff = (real)fabs((double)(actual[i] - computed[i]));
-        if (maxDiff < diff) {
-            maxDiff = diff;
-        }
+		#pragma omp transaction
+		{
+			if (maxDiff < diff) {
+				maxDiff = diff;
+			}
+		}
     }
     
     return maxDiff;

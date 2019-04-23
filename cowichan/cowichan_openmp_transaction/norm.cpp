@@ -1,5 +1,5 @@
 /**
- * \file cowichan_transactional/norm.cpp
+ * \file cowichan_openmp_transaction/norm.cpp
  * \brief OpenMP norm implementation (transactional memory).
  * \see CowichanOpenMP::norm
  */

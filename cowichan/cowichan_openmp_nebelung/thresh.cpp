@@ -1,5 +1,5 @@
 /**
- * \file cowichan_transactional/thresh.cpp
+ * \file cowichan_openmp_nebelung/thresh.cpp
  * \brief OpenMP thresh implementation (transactional memory).
  * \see CowichanOpenMP::thresh
  */

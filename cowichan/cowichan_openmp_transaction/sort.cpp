@@ -1,5 +1,5 @@
 /**
- * \file cowichan_transactional/sort.cpp
+ * \file cowichan_openmp_transaction/sort.cpp
  * \brief Implementation of OpenMP sorting algorithms.
  */
 

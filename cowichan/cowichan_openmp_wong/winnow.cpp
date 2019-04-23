@@ -1,5 +1,5 @@
 /**
- * \file cowichan_openmp_nebelung/winnow.cpp
+ * \file cowichan_openmp_wong/winnow.cpp
  * \brief OpenMP winnow implementation (transactional memory).
  * \see CowichanOpenMP::winnow
  */
@@ -44,7 +44,7 @@ void CowichanOpenMP::winnow(IntMatrix matrix, BoolMatrix mask, PointVector point
 	// fill temporary vector
 	i = 0; //Proteje a variável 'i' na transação. 
 	       //A ordem de acesso ao 'weightedPoints' não importa, pois ele será ordenado na sequência*/
-	#pragma omp parallel for schedule(static) transaction only(i) exclude(mask, weightedPoints, matrix)
+	#pragma omp parallel for schedule(static) transaction
 	for (r = 0; r < nr; r++) {
 		#pragma omp parallel for schedule(static)
 		for (c = 0; c < nc; c++) {
@@ -104,7 +104,7 @@ index_t mask_count(BoolMatrix mask, index_t nr, index_t nc) {
 	index_t r, c;
 	index_t sum = 0;
 
-	#pragma omp parallel for schedule(static) transaction only(sum) exclude(mask, nc) //Reduction não funcionaria com laço encadeado
+	#pragma omp parallel for schedule(static) transaction //Reduction não funcionaria com laço encadeado
 	for (r = 0; r < nr; r++) {
 		#pragma omp parallel for schedule(static)
 		for (c = 0; c < nc; c++) {

@@ -1,5 +1,5 @@
 /**
- * \file cowichan_openmp_transaction/sor.cpp
+ * \file cowichan_openmp_wong/sor.cpp
  * \brief OpenMP sor implementation (transactional memory).
  * \see CowichanOpenMP::sor
  */
@@ -23,7 +23,7 @@ void CowichanOpenMP::sor (Matrix matrix, Vector target, Vector solution) {
 
         maxDiff = 0.0;
 
-        #pragma omp parallel for schedule(static) private(oldSolution, diff, sum, c) transaction(maxDiff)
+        #pragma omp parallel for schedule(static) private(oldSolution, diff, sum, c)
         for (r = 0; r < n; r++) {
             // compute sum
             sum = 0.0;
@@ -41,9 +41,12 @@ void CowichanOpenMP::sor (Matrix matrix, Vector target, Vector solution) {
 
             // compute difference
             diff = (real)fabs((double)(oldSolution - solution[r]));
-            if (diff > maxDiff){
-                maxDiff = diff;
-            }
+            #pragma omp transaction 
+			{
+				if (diff > maxDiff){
+					maxDiff = diff;
+				}
+			}	
         }
     }
 }

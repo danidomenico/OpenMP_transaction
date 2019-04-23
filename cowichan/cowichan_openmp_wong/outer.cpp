@@ -1,5 +1,5 @@
 /**
- * \file cowichan_openmp_nebelung/outer.cpp
+ * \file cowichan_openmp_wong/outer.cpp
  * \brief OpenMP outer implementation (transactional memory).
  * \see CowichanOpenMP::outer
  */
@@ -13,15 +13,20 @@ void CowichanOpenMP::outer (PointVector points, Matrix matrix, Vector vector) {
     index_t r, c; // loop indices
 
     // all elements except matrix diagonal
-    #pragma omp parallel for schedule(static) private(d) transaction only(dMax) exclude(vector, points, matrix)
+    #pragma omp parallel for schedule(static) private(d)
     for (r = 0; r < n; r++) {
         vector[r] = Point::distance (points[r], zeroPoint);
         #pragma omp parallel for schedule(static)
         for (c = 0; c < r; c++) {
             d = Point::distance (points[r], points[c]);
-            if (d > dMax) {
-                dMax = d;
-            }
+            
+            #pragma omp transaction 
+			{
+				if (d > dMax) {
+					dMax = d;
+				}
+			}
+            
             MATRIX_SQUARE(matrix, r, c) = MATRIX_SQUARE(matrix, c, r) = d;
         }
     }
